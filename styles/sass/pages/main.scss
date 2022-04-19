@@ -1,0 +1,14 @@
+@use "../base/variables";
+@use "../base/typography";
+@use "../layout/header";
+*{
+    box-sizing: border-box;
+}
+
+body{
+    // background: rgba($color: black, $alpha: 0.5);
+    background: var(--primary-color);
+}
+
+
+
