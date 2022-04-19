@@ -1,0 +1,22 @@
+:root {
+  --primary-color:#455a64;
+  --primary-light:#718792;
+  --primary-dark:#1c313a;
+  --pane-padding: 5px 42px;
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  background: var(--primary-dark);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--primary-color);
+}
+
+/*# sourceMappingURL=main.css.map */
