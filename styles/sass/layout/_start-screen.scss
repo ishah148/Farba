@@ -1,13 +1,21 @@
 .start-screen {
     height: 100vh;
     position: relative;
+    h1,
+    h2{
+        position: absolute;
+        display: none;
+    }
     .bg-video {
         position: absolute;
         right: 0;
-        bottom: 0;
+        left:0;
+        z-index: -1;
         // min-width: 100%;
         // min-height: 100%;
-        width: 400px;
-        height: 400px;
+        // width: 400px;
+        // height: 400px;
+        // height: 100%;
+        width: 100%;
     }
 }
