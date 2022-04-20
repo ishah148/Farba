@@ -3,22 +3,20 @@
 .header {
     width: 100%;
     height: 70px;
-    
-    position: fixed;
-    // background-color: var(--primary-dark) ;
-    
+    // position: fixed;
     background-color: rgba(var(--primary-dark), 0.3);
-    // background-color: rgba(var(--color), 0.8);
     display: flex;
+    justify-content: space-around;
     align-items: center;
     .logo {
-        flex: 1;
+        // flex: 1;
     }
 
     nav {
-        flex: 4;
+        width: 40%;
         ul {
             display: flex;
+            justify-content: space-around;
         }
     }
 }

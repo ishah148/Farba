@@ -1,6 +1,7 @@
 .start-screen {
     height: 100vh;
     position: relative;
+    display: flex;
     h1,
     h2{
         position: absolute;
@@ -10,12 +11,8 @@
         position: absolute;
         right: 0;
         left:0;
-        z-index: -1;
-        // min-width: 100%;
-        // min-height: 100%;
-        // width: 400px;
-        // height: 400px;
-        // height: 100%;
+        z-index: -100;
         width: 100%;
+        max-height: 1200px;
     }
 }
