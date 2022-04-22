@@ -1,0 +1,11 @@
+@use "../base";
+
+.photo{
+    width: 100%;
+}
+
+.photo__container{
+    max-width: var(--max-width);
+    padding: 40px var(--padding-primary) 0;
+    margin: 0 auto;
+}
