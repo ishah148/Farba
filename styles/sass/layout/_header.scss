@@ -2,6 +2,7 @@
 
 .header {
     position: fixed;
+    z-index: 7;
     width: 100%;
     background-color: rgba(var(--primary-dark), 0.3);
     // background: red;

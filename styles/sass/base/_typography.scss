@@ -1,17 +1,40 @@
 @use "./fonts";
 
+* {
+    font-family: "Montserrat";
+}
+
 .header{
     color: wheat;
     font-family: "Montserrat";
 }
 
-h1,h2,p{
+.header__container .logo {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+.wrapper__right .item {
+    text-align: right;
+    font-size: 32px;
+    font-family: "Montserrat";
+    font-style: normal;
     color: white;
 }
 
-h1{
+.wrapper__left .title {
     font-size: 68px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
+    color: white;
 }
-h2{
-    font-size: 32px;
+
+.wrapper__left .subtitle {
+    font-weight: 300;
+    color: white;
 }
+

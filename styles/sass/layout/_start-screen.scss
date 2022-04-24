@@ -36,7 +36,8 @@
             .wrapper__right{
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 80px;
                 height: 400px;
                 width: 300px;
             }
