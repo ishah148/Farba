@@ -1,11 +1,17 @@
 @use "./fonts";
+* {
+    font-family: "Montserrat";
+    color: white;
+}
+
 
 .header{
-    color: wheat;
+    color: white;
     font-family: "Montserrat";
 }
 
 h1,h2,p{
+    font-family: "Montserrat";
     color: white;
 }
 
@@ -14,4 +20,19 @@ h1{
 }
 h2{
     font-size: 32px;
+}
+
+
+.bold {
+    font-style: 50px;
+    font-family: "Montserrat";
+    color: white;
+    font-weight: 600;
+}
+
+.LIGHT {
+    font-family: "Montserrat";
+    color: white;
+    font-weight: 300;
+    font-style: 50px;
 }
