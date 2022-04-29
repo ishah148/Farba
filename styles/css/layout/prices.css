@@ -137,84 +137,6 @@ body {
   --padding-primary: 40px;
 }
 
-.header {
-  position: fixed;
-  z-index: 10;
-  width: 100%;
-  background-color: rgba(var(--primary-dark), 0.3);
-}
-.header__container {
-  margin: 0 auto;
-  max-width: var(--max-width);
-  height: 80px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.header__logo-img {
-  width: 52px;
-  height: 80px;
-  border-radius: 50%;
-}
-
-.menu {
-  width: 40%;
-}
-.menu__list {
-  display: flex;
-  justify-content: space-around;
-}
-
-.start-screen {
-  width: 100%;
-}
-.start-screen__wrapper {
-  position: relative;
-  display: flex;
-  padding: 55% var(--padding-primary) 0;
-  overflow: hidden;
-}
-.start-screen__wrapper .background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -100;
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-.start-screen__container {
-  background: rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  display: flex;
-}
-.start-screen__content {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15%;
-}
-.start-screen__first-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: min-content;
-}
-.start-screen__second-column {
-  height: 100%;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  justify-content: center;
-  width: min-content;
-}
-
 .title-wrapper {
   position: relative;
   display: flex;
@@ -240,26 +162,6 @@ body {
   background-color: var(--primary-color);
 }
 
-.portfolio__wrapper {
-  max-width: var(--max-width);
-  padding: 40px var(--padding-primary) 0;
-  margin: 0 auto;
-}
-.portfolio__container {
-  height: 2000px;
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-.portfolio__card {
-  width: 350px;
-}
-.portfolio__card img {
-  width: 100%;
-}
-
 .prices__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 0;
@@ -274,4 +176,4 @@ body {
   gap: 15px;
 }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=prices.css.map */

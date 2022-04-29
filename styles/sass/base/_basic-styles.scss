@@ -1,5 +1,3 @@
-
-
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -30,8 +28,7 @@ a:focus {
     cursor: pointer;
 }
 
-
-button{
+button {
     cursor: pointer;
 }
 
@@ -49,6 +46,8 @@ button {
 
 body {
     position: relative;
+    // background: rgba($color: black, $alpha: 0.5);
+    background: var(--primary-color);
 }
 
 // .container {
@@ -59,7 +58,9 @@ body {
 .is-hidden {
     display: none;
 }
- 
-img,a,span {
+
+img,
+a,
+span {
     display: block;
 }

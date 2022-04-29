@@ -5,15 +5,9 @@
 
 @use "../base";
 @use "../layout";
+@use "../components";
 
-*{
-    box-sizing: border-box;
-}
 
-body{
-    // background: rgba($color: black, $alpha: 0.5);
-    background: var(--primary-color);
-}
 
 
 

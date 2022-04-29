@@ -1,7 +1,8 @@
 @use "../base";
 @use "../components";
 
-.portfolio {
+
+.prices {
     &__wrapper {
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 0;
@@ -17,17 +18,4 @@
         gap: 15px;
 
     }
-
-    &__card {
-        width: 350px;
-        img {
-            // width: 350px;
-            width: 100%;
-        }
-        // &1{
-        //      // grid-column: span 2;
-        // }
-    }
 }
-
-
