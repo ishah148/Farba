@@ -2,20 +2,25 @@
 
 .header {
     position: fixed;
+    z-index: 10;
     width: 100%;
     background-color: rgba(var(--primary-dark), 0.3);
-    // background: red;
-}
-.header__container {
-    margin: 0 auto;
-    max-width: var(--max-width);
-    
-    height: 70px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
 
+    &__container {
+        margin: 0 auto;
+        max-width: var(--max-width);
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__logo-img {
+        width: 52px;
+        height: 80px;
+        border-radius: 50%;
+    }
+}
 
 .menu {
     width: 40%;

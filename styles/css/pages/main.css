@@ -88,44 +88,35 @@ img, a, span {
   font-weight: 300;
   font-display: swap;
 }
-* {
+*,
+html,
+body {
   font-family: "Montserrat";
-  color: white;
+  color: var(--primary-extra-light);
 }
 
-.header {
-  color: white;
-  font-family: "Montserrat";
+.header__contacts {
+  font-size: 25px;
 }
 
-h1, h2, p {
-  font-family: "Montserrat";
-  color: white;
+.start-screen {
+  user-select: none;
 }
-
-h1 {
+.start-screen__title {
   font-size: 68px;
 }
-
-h2 {
-  font-size: 32px;
+.start-screen__column-item {
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
 }
 
-.bold {
-  font-style: 50px;
-  font-family: "Montserrat";
-  color: white;
-  font-weight: 600;
-}
-
-.LIGHT {
-  font-family: "Montserrat";
-  color: white;
-  font-weight: 300;
-  font-style: 50px;
+.menu__list-item {
+  cursor: pointer;
 }
 
 :root {
+  --primary-extra-light: #ffffff;
   --primary-color:#455a64;
   --primary-light:#718792;
   --primary-dark: 111,111,111;
@@ -136,17 +127,22 @@ h2 {
 
 .header {
   position: fixed;
+  z-index: 10;
   width: 100%;
   background-color: rgba(var(--primary-dark), 0.3);
 }
-
 .header__container {
   margin: 0 auto;
   max-width: var(--max-width);
-  height: 70px;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.header__logo-img {
+  width: 52px;
+  height: 80px;
+  border-radius: 50%;
 }
 
 .menu {
@@ -175,7 +171,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 4;
+  z-index: 5;
   display: flex;
 }
 .start-screen__container .background-video {
@@ -187,27 +183,27 @@ h2 {
   aspect-ratio: 16/9;
 }
 .start-screen__content {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   height: 100%;
-  padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 15%;
 }
-.start-screen__content .wrapper__left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 400px;
-  width: 300px;
-}
-.start-screen__content .wrapper__right {
+.start-screen__first-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 400px;
-  width: 300px;
+  width: min-content;
+}
+.start-screen__second-column {
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  width: min-content;
 }
 
 .portfolio {

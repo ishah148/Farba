@@ -1,38 +1,36 @@
 @use "./fonts";
-* {
+
+*,
+html,
+body {
     font-family: "Montserrat";
-    color: white;
+    color: var(--primary-extra-light);
+}
+
+.header {
+    &__contacts {
+        font-size: 25px;
+    }
 }
 
 
-.header{
-    color: white;
-    font-family: "Montserrat";
-}
-
-h1,h2,p{
-    font-family: "Montserrat";
-    color: white;
-}
-
-h1{
-    font-size: 68px;
-}
-h2{
-    font-size: 32px;
+.start-screen {
+    user-select: none;
+    &__title {
+        // color: #6f9898;
+        font-size: 68px;
+    }
+    &__column-item{
+        // color: #6f9898;
+        font-size: 35px;
+        font-weight: bold;
+        letter-spacing: 0.06em;
+    }
 }
 
 
-.bold {
-    font-style: 50px;
-    font-family: "Montserrat";
-    color: white;
-    font-weight: 600;
-}
-
-.LIGHT {
-    font-family: "Montserrat";
-    color: white;
-    font-weight: 300;
-    font-style: 50px;
+.menu {
+    &__list-item {
+        cursor: pointer;
+    }
 }
