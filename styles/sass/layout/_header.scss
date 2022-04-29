@@ -4,7 +4,7 @@
     position: fixed;
     z-index: 10;
     width: 100%;
-    background-color: rgba(var(--primary-dark), 0.3);
+    background-color:  var( --primary-dark);
 
     &__container {
         margin: 0 auto;
@@ -24,6 +24,7 @@
 
 .menu {
     width: 40%;
+
     &__list {
         display: flex;
         justify-content: space-around;

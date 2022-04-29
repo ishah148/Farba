@@ -9,11 +9,13 @@ body {
 
 .title-wrapper {
     &__section-title {
-       font-weight: bold;
+        font-weight: bold;
         font-size: 40px;
         line-height: 80px;
         text-align: center;
-        color: var(--gold-to-black);
+        color: var(--primary-gold);
+        // color: var(--primary-extra-light);
+        cursor: default;
     }
 }
 
@@ -23,26 +25,61 @@ body {
     }
 }
 
+.menu {
+    &__list-item {
+        cursor: pointer;
+    }
+
+    &__list-item:nth-child(1):hover,
+    &__link:hover {
+        transition: 0.3s;
+        color: var(--primary-light);
+    }
+}
 
 .start-screen {
     user-select: none;
     &__title {
         // color: #6f9898;
         // color: var(--primary-gold);
-        font-size: 68px;
+        font-size: 60px;
+        font-weight: bold;
     }
-    &__column-item{
+    &__column-item {
         // color: #6f9898;
         // color: var(--primary-gold);
         font-size: 35px;
-        font-weight: bold;
+        font-weight: 300;
         letter-spacing: 0.06em;
     }
 }
 
+.prices {
+    &__card {
+        text-align: center;
+        cursor: default;
+    }
 
-.menu {
-    &__list-item {
-        cursor: pointer;
+    &__card-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--primary-light);
+    }
+
+    &__card-subtitle {
+        font-size: 19px;
+        font-weight: 300;
+    }
+
+    &__services {
+        font-style: italic;
+    }
+
+    &__price-tag {
+        font-size: 28px;
+    }
+
+    &__item-service {
+        font-size: 22px;
     }
 }
