@@ -14,15 +14,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    .logo {
-        // flex: 1;
-    }
+}
 
-    nav {
-        width: 40%;
-        ul {
-            display: flex;
-            justify-content: space-around;
-        }
+
+.menu {
+    width: 40%;
+    &__list {
+        display: flex;
+        justify-content: space-around;
     }
 }
