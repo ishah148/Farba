@@ -23,6 +23,10 @@
         padding: 20px;
         border: 2px solid var(--primary-light);
         border-radius: 5px;
+        &.hover {
+            transition: 0.5s;
+            border-color: var(--primary-gold);
+        }
     }
 
     &__card-title {
@@ -47,5 +51,6 @@
         right: 0;
         bottom: 30px;
         margin: 0 auto;
+
     }
 }

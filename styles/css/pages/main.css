@@ -325,6 +325,10 @@ body {
   border: 2px solid var(--primary-light);
   border-radius: 5px;
 }
+.prices__card.hover {
+  transition: 0.5s;
+  border-color: var(--primary-gold);
+}
 .prices__card-title {
   margin-bottom: 5px;
 }
