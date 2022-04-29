@@ -137,10 +137,18 @@ body {
   text-align: center;
   cursor: default;
 }
+.prices__card.hover {
+  transition: 0.5s;
+  border-color: var(--primary-gold);
+}
 .prices__card-title {
   font-size: 40px;
   font-weight: bold;
   color: var(--primary-light);
+}
+.prices__card-title.hover {
+  transition: 0.5s;
+  color: var(--primary-gold);
 }
 .prices__card-subtitle {
   font-size: 19px;
@@ -324,10 +332,6 @@ body {
   padding: 20px;
   border: 2px solid var(--primary-light);
   border-radius: 5px;
-}
-.prices__card.hover {
-  transition: 0.5s;
-  border-color: var(--primary-gold);
 }
 .prices__card-title {
   margin-bottom: 5px;

@@ -58,12 +58,20 @@ body {
     &__card {
         text-align: center;
         cursor: default;
+        &.hover {
+            transition: 0.5s;
+            border-color: var(--primary-gold);
+        }
     }
 
     &__card-title {
         font-size: 40px;
         font-weight: bold;
         color: var(--primary-light);
+        &.hover {
+            transition: 0.5s;
+            color: var(--primary-gold);
+        }
     }
 
     &__card-subtitle {
