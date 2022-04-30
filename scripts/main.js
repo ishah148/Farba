@@ -1,4 +1,5 @@
-import { hamburger, burgerMenuLinks, blackout, addMenu, closeMenu, burgerMenuListItems} from "./hamburger.js"
+import { hamburger, burgerMenuLinks, blackout, addMenu, closeMenu, burgerMenuListItems} from "./hamburger.js";
+import {switchLang, chooseLangButton} from "./switch_lang.js";
 
 // price cards hover
 let priceCards = document.querySelectorAll('.prices__card');
@@ -55,3 +56,9 @@ burgerMenuListItems.forEach((item) => {
         item.classList.remove('list-item--active')
     })
 })
+
+
+
+//switch lang
+
+switchLang.addEventListener('click',chooseLangButton);

@@ -422,6 +422,40 @@ body {
   background-color: #e1e2e1;
 }
 
+.switch-lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70px;
+  height: 50px;
+}
+
+.slash {
+  display: block;
+  font-weight: 700;
+  color: var(--primary-extra-light);
+}
+
+.en,
+.ru {
+  display: block;
+  padding: 0;
+  color: var(--primary-extra-light);
+  font-weight: 700;
+  font-family: inherit;
+  background-color: transparent;
+  border: 0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.en:hover,
+.ru:hover,
+.en.active,
+.ru.active {
+  color: var(--primary-gold);
+}
+
 .portfolio__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 0;

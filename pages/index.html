@@ -19,7 +19,7 @@
             </div>
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__list-item">
+                    <li class="menu__list-item" data-translate="portfolio">
                         Портфолио
                         
                         <!--- ЭТО ВЫЕЗЖАЮЩИЙ БЛОК !!!!!!!!!!-->
@@ -32,16 +32,21 @@
                         <!--Косметика-->
                     </li>
                     <li class="menu__list-item">
-                        <a class="menu__link" href="#price-section">Цены</a>
+                        <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
                     </li>
                     <!-- ссылки на текущую -->
                     <li class="menu__list-item">
-                        <a class="menu__link">Контакты</a>
+                        <a class="menu__link" data-translate="contacts">Контакты</a>
                     </li>
                     <!-- ссылки на текущую -->
                 </ul>
             </nav>
             <div class="header__contacts">+375 (29) 777-40-29</div>
+            <div class="switch-lang">
+                <button class="en" data-switch="en">en</button>
+                <span class="slash">/</span>
+                <button class="ru active" data-switch="ru">ru</button>
+            </div>
         </div>
     </header>
     <main class="main">
@@ -57,13 +62,13 @@
             <nav class="burger-menu__content">
                 <ul class="burger-menu__list">
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link">Портфолио</a>
+                        <a class="burger-menu__link" data-translate="portfolio">Портфолио</a>
                     </li>
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" href="#">Цены</a>
+                        <a class="burger-menu__link" href="#" data-translate="prices" >Цены</a>
                     </li>
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" href="#">Контакты</a>
+                        <a class="burger-menu__link" href="#" data-translate="contacts">Контакты</a>
                     </li>
                 </ul>
             </nav>
@@ -74,7 +79,7 @@
                 <div class="start-screen__container">
                     <div class="start-screen__content">
                         <div class="start-screen__first-column">
-                            <h1 class="start-screen__title">Создаем&nbsp;контент для&nbsp;маркетплейсов</h1>
+                            <h1 class="start-screen__title" data-translate="title">Создаем&nbsp;контент для&nbsp;маркетплейсов</h1>
                         </div>
                         <div class="start-screen__second-column">
                             <p class="start-screen__column-item">Ozon</з>
@@ -96,7 +101,7 @@
         <section class="portfolio">
             <div class="portfolio__wrapper">
                 <div class="title-wrapper">
-                    <div class="title-wrapper__section-title">
+                    <div class="title-wrapper__section-title" data-translate="portfolio">
                         Портфолио
                     </div>
                 </div>
@@ -148,7 +153,7 @@
         <section class="prices" id="price-section">
             <div class="prices__wrapper">
                 <div class="title-wrapper">
-                    <div class="title-wrapper__section-title">
+                    <div class="title-wrapper__section-title" data-translate="prices">
                         Цены
                     </div>
                 </div>
