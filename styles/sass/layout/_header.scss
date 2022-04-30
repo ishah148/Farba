@@ -2,27 +2,31 @@
 
 .header {
     position: fixed;
+    z-index: 10;
     width: 100%;
-    background-color: rgba(var(--primary-dark), 0.3);
-    // background: red;
-}
-.header__container {
-    margin: 0 auto;
-    max-width: var(--max-width);
-    
-    height: 70px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    .logo {
-        // flex: 1;
+    background-color:  var( --primary-dark);
+
+    &__container {
+        margin: 0 auto;
+        max-width: var(--max-width);
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
 
-    nav {
-        width: 40%;
-        ul {
-            display: flex;
-            justify-content: space-around;
-        }
+    &__logo-img {
+        width: 52px;
+        height: 80px;
+        border-radius: 50%;
+    }
+}
+
+.menu {
+    width: 40%;
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
     }
 }

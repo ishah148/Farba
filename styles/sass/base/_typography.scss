@@ -1,38 +1,93 @@
 @use "./fonts";
-* {
+
+*,
+html,
+body {
     font-family: "Montserrat";
-    color: white;
+    color: var(--primary-extra-light);
 }
 
-
-.header{
-    color: white;
-    font-family: "Montserrat";
+.title-wrapper {
+    &__section-title {
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 80px;
+        text-align: center;
+        color: var(--primary-gold);
+        // color: var(--primary-extra-light);
+        cursor: default;
+    }
 }
 
-h1,h2,p{
-    font-family: "Montserrat";
-    color: white;
+.header {
+    &__contacts {
+        font-size: 25px;
+    }
 }
 
-h1{
-    font-size: 68px;
-}
-h2{
-    font-size: 32px;
-}
+.menu {
+    &__list-item {
+        cursor: pointer;
+    }
 
-
-.bold {
-    font-style: 50px;
-    font-family: "Montserrat";
-    color: white;
-    font-weight: 600;
+    &__list-item:nth-child(1):hover,
+    &__link:hover {
+        transition: 0.3s;
+        color: var(--primary-light);
+    }
 }
 
-.LIGHT {
-    font-family: "Montserrat";
-    color: white;
-    font-weight: 300;
-    font-style: 50px;
+.start-screen {
+    user-select: none;
+    &__title {
+        // color: #6f9898;
+        // color: var(--primary-gold);
+        font-size: 60px;
+        font-weight: bold;
+    }
+    &__column-item {
+        // color: #6f9898;
+        // color: var(--primary-gold);
+        font-size: 35px;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+    }
+}
+
+.prices {
+    &__card {
+        text-align: center;
+        cursor: default;
+        &.hover {
+            transition: 0.5s;
+            border-color: var(--primary-gold);
+        }
+    }
+
+    &__card-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: var(--primary-light);
+        &.hover {
+            transition: 0.5s;
+            color: var(--primary-gold);
+        }
+    }
+
+    &__card-subtitle {
+        font-size: 19px;
+        font-weight: 300;
+    }
+
+    &__services {
+        font-style: italic;
+    }
+
+    &__price-tag {
+        font-size: 28px;
+    }
+
+    &__item-service {
+        font-size: 22px;
+    }
 }

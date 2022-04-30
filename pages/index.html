@@ -11,40 +11,82 @@
 </head>
 
 <body>
+    <div class="blackout"></div>
     <header class="header">
         <div class="header__container">
-            <div class="logo">LOREM</div>
-            <nav>
-                <ul>
-                    <li>Портфолио</li> 
-                    <!-- ювелирка бытовая техника и т.д -->
-                    <li>Цены</li>
+            <div class="header__logo">   
+                 <img class="header__logo-img" src="../assets/images/logo-farba-300.png" alt="logo">
+            </div>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item" data-translate="portfolio">
+                        Портфолио
+                        
+                        <!--- ЭТО ВЫЕЗЖАЮЩИЙ БЛОК !!!!!!!!!!-->
+                        <!-- ювелирка-->
+                        <!--Ювелирка  -->
+                        <!--Мебель  -->
+                        <!--Коляски-->
+                        <!--Бытовая техника  -->
+                        <!--Футболки  -->
+                        <!--Косметика-->
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
+                    </li>
                     <!-- ссылки на текущую -->
-                    <li>Контакты</li>
+                    <li class="menu__list-item">
+                        <a class="menu__link" data-translate="contacts">Контакты</a>
+                    </li>
                     <!-- ссылки на текущую -->
                 </ul>
-
-
-                <!-- НОМЕР -->
             </nav>
-            <div class="contacts"></div>
+            <div class="header__contacts">+375 (29) 777-40-29</div>
+            <div class="switch-lang">
+                <button class="en" data-switch="en">en</button>
+                <span class="slash">/</span>
+                <button class="ru active" data-switch="ru">ru</button>
+            </div>
         </div>
     </header>
     <main class="main">
+        <div class="hamburger">
+            <div class="hamburger__line"></div>
+            <div class="hamburger__line"></div>
+            <div class="hamburger__line"></div>
+        </div>
+        <div class="burger-menu">
+            <div class="burger-menu__logo">   
+                <img class="burger-menu__logo-img" src="../assets/images/logo-farba-300.png" alt="logo">
+           </div>
+            <nav class="burger-menu__content">
+                <ul class="burger-menu__list">
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" data-translate="portfolio">Портфолио</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#" data-translate="prices" >Цены</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#" data-translate="contacts">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
         <section class="start-screen">
-            <div class="start-screen__container">
-                <div class="overlay">
-                    <div class="content">
-                        <div class="wrapper__left">
-                            <h2 class="">Создаем контент для маркетлейсов</h2>
-                            
+            <div class="start-screen__wrapper">
+                <div class="start-screen__container">
+                    <div class="start-screen__content">
+                        <div class="start-screen__first-column">
+                            <h1 class="start-screen__title" data-translate="title">Создаем&nbsp;контент для&nbsp;маркетплейсов</h1>
                         </div>
-                        <div class="wrapper__right">
-                            <h2>Ozon</h2>
-                            <h2>Wildberis</h2>
-                            <h2>Amazon</h2>
-                            <h2>Onliner</h2>
-                            <h2>Deal.by</h2>
+                        <div class="start-screen__second-column">
+                            <p class="start-screen__column-item">Ozon</з>
+                            <p class="start-screen__column-item">Wildberis</p>
+                            <p class="start-screen__column-item">Amazon</p>
+                            <p class="start-screen__column-item">Onliner</p>
+                            <p class="start-screen__column-item">Deal.by</p>
                         </div>
                     </div>
                 </div>
@@ -56,72 +98,112 @@
             </div>
         </section>
 
-        <section class="photo">
-            <div class="photo__container">
-                <div class="image-wrapper">
-                    <div class="card card1">
+        <section class="portfolio">
+            <div class="portfolio__wrapper">
+                <div class="title-wrapper">
+                    <div class="title-wrapper__section-title" data-translate="portfolio">
+                        Портфолио
+                    </div>
+                </div>
+                <div class="portfolio__container">
+                    <div class="portfolio__card portfolio__card1">
                         <img src="../assets/images/2.webp" alt="">
                     </div>
-                    <div class="card card2">
+                    <div class="portfolio__card portfolio__card2">
                         <img src="../assets/images/1.webp" alt="">
                     </div>
-                    <div class="card card3">
+                    <div class="portfolio__card portfolio__card3">
                         <img src="../assets/images/3.webp" alt="">
                     </div>
-                    <div class="card card4">
+                    <div class="portfolio__card portfolio__card4">
                         <img src="../assets/images/7.webp" alt="">
                     </div>
-                    <div class="card card5">
+                    <div class="portfolio__card portfolio__card5">
                         <img src="../assets/images/5.webp" alt="">
                     </div>
-                    <div class="card card6">
+                    <div class="portfolio__card portfolio__card6">
                         <img src="../assets/images/6.webp" alt="">
                     </div>
-                    <div class="card card7">
+                    <div class="portfolio__card portfolio__card7">
                         <img src="../assets/images/4.webp" alt="">
                     </div>
-                    <div class="card card8">
+                    <div class="portfolio__card portfolio__card8">
                         <img src="../assets/images/8.webp" alt="">
                     </div>
-                    <div class="card card9">
+                    <div class="portfolio__card portfolio__card9">
                         <img src="../assets/images/9.webp" alt="">
                     </div>
-                    <div class="card card10">
+                    <div class="portfolio__card portfolio__card10">
                         <img src="../assets/images/10.webp" alt="">
                     </div>
-                    <div class="card card11">
+                    <div class="portfolio__card portfolio__card11">
                         <img src="../assets/images/11.webp" alt="">
                     </div>
-                    <div class="card card12">
-                        <img src="../assets/images/12.webp" alt="">
-                    </div>
-                    <div class="card card12">
+                    <div class="portfolio__card portfolio__card12">
                         <img src="../assets/images/12.webp" alt="">
                     </div>
                 </div>
-                
             </div>
         </section>
 
         <section class="video">
             <div class="video__container"></div>
         </section>
-        <section class="prices">
-            <div class="prices__contaiter"></div>
+
+        <section class="prices" id="price-section">
+            <div class="prices__wrapper">
+                <div class="title-wrapper">
+                    <div class="title-wrapper__section-title" data-translate="prices">
+                        Цены
+                    </div>
+                </div>
+                <div class="prices__container">
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Standard</h2>
+                        <p class="prices__card-subtitle">Стандартный набор услуг</p>
+                        <p class="prices__price-tag">130 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Монтаж видео</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение месяца</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Gold</h2>
+                        <p class="prices__card-subtitle">Любая ваша фантазия</p>
+                        <p class="prices__price-tag">300 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Монтаж видео</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение недели</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Premium</h2>
+                        <p class="prices__card-subtitle">Набор услуг премиум</p>
+                        <p class="prices__price-tag">200 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение двух недель</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="footer">
-        <h1>
 
-            Привет йцаршгцрмшгвмшисмдличсмоыоайфяцыч
-        </h1>
-        <div class="bold">
-            BOLDJIFOISDFJISDFISF
-        </div>
-        <div class="LIGHT">
-            DFJSDFFDSOFOIDSFDFODI
-        </div>
     </footer>
+    <script type="module" src="../scripts/main.js"></script>
 </body>
 
 </html>

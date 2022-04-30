@@ -1,0 +1,19 @@
+
+
+
+.default-button {
+    width: 155px;
+    height: 40px;
+    font-family: inherit;
+    text-align: center;
+    background-color: var(--primary-gold);
+    border: 0;
+    border-radius: 10px;
+    color: var(--primary-color);
+
+    &:hover {
+        transition: 0.5s;
+        background-color: var(--primary-light);
+        color: var(--primary-extra-light);
+    }
+}

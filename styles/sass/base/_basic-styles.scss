@@ -1,5 +1,3 @@
-
-
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -19,6 +17,7 @@ h5,
 h6,
 p {
     margin: 0;
+    font-weight: 400;
 }
 
 a,
@@ -30,8 +29,7 @@ a:focus {
     cursor: pointer;
 }
 
-
-button{
+button {
     cursor: pointer;
 }
 
@@ -49,6 +47,13 @@ button {
 
 body {
     position: relative;
+    // background: rgba($color: black, $alpha: 0.5);
+    background: var(--primary-color);
+}
+
+body.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
 }
 
 // .container {
@@ -59,7 +64,26 @@ body {
 .is-hidden {
     display: none;
 }
- 
-img,a,span {
+
+img,
+a,
+span {
     display: block;
+}
+
+.blackout {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 15;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+}
+
+.blackout.visible {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
 }
