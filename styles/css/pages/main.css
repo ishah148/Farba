@@ -191,7 +191,7 @@ body {
   --primary-extra-dark: #000000;
   --primary-color:#455a64;
   --primary-light:#718792;
-  --primary-dark: rgba(111,111,111, 0.3);
+  --primary-dark: rgba(111,111,111);
   --primary-gold: #bdae82;
   --pane-padding: 5px 42px;
   --max-width:1440px;
@@ -203,6 +203,10 @@ body {
   z-index: 10;
   width: 100%;
   background-color: var(--primary-dark);
+  transition: all 0.5s;
+}
+.header--transparent {
+  background: rgba(111, 111, 111, 0.3);
 }
 .header__container {
   margin: 0 auto;
