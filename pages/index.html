@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/css/normalize.css">
+    <link rel="stylesheet" href="../styles/css/pages/main.css">
+    <title>Farba Studio</title>
+</head>
+
+<body>
+    <div class="blackout"></div>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <img class="header__logo-img" src="../assets/images/logo-farba-300.png" alt="logo">
+            </div>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item" data-translate="portfolio">
+                        Портфолио
+
+                        <!--- ЭТО ВЫЕЗЖАЮЩИЙ БЛОК !!!!!!!!!!-->
+                        <!-- ювелирка-->
+                        <!--Ювелирка  -->
+                        <!--Мебель  -->
+                        <!--Коляски-->
+                        <!--Бытовая техника  -->
+                        <!--Футболки  -->
+                        <!--Косметика-->
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
+                    </li>
+                    <!-- ссылки на текущую -->
+                    <li class="menu__list-item">
+                        <a class="menu__link" data-translate="contacts">Контакты</a>
+                    </li>
+                    <!-- ссылки на текущую -->
+                </ul>
+            </nav>
+            <div class="header__contacts">+375 (29) 777-40-29</div>
+            <div class="switch-lang">
+                <button class="en" data-switch="en">en</button>
+                <span class="slash">/</span>
+                <button class="ru active" data-switch="ru">ru</button>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="hamburger">
+            <div class="hamburger__line"></div>
+            <div class="hamburger__line"></div>
+            <div class="hamburger__line"></div>
+        </div>
+        <div class="burger-menu">
+            <div class="burger-menu__logo">
+                <img class="burger-menu__logo-img" src="../assets/images/logo-farba-300.png" alt="logo">
+            </div>
+            <nav class="burger-menu__content">
+                <ul class="burger-menu__list">
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" data-translate="portfolio">Портфолио</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#" data-translate="prices">Цены</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#" data-translate="contacts">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <section class="start-screen">
+            <div class="start-screen__wrapper">
+                <div class="start-screen__container">
+                    <div class="start-screen__content">
+                        <div class="start-screen__first-column">
+                            <h1 class="start-screen__title" data-translate="title">Создаем&nbsp;контент
+                                для&nbsp;маркетплейсов</h1>
+                        </div>
+                        <div class="start-screen__second-column">
+                            <p class="start-screen__column-item">Ozon</з>
+                            <p class="start-screen__column-item">Wildberis</p>
+                            <p class="start-screen__column-item">Amazon</p>
+                            <p class="start-screen__column-item">Onliner</p>
+                            <p class="start-screen__column-item">Deal.by</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <video autoplay muted loop class="background-video"> -->
+                <video muted loop class="background-video">
+                    <source src="../assets/video/video_hd.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section class="portfolio">
+            <div class="portfolio__wrapper">
+                <div class="title-wrapper">
+                    <div class="title-wrapper__section-title" data-translate="portfolio">
+                        Портфолио
+                    </div>
+                </div>
+                <div class="portfolio__container">
+                    <div class="portfolio__card portfolio__card1">
+                        <img src="../assets/images/2.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card2">
+                        <img src="../assets/images/1.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card3">
+                        <img src="../assets/images/3.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card4">
+                        <img src="../assets/images/7.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card5">
+                        <img src="../assets/images/5.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card6">
+                        <img src="../assets/images/6.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card7">
+                        <img src="../assets/images/4.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card8">
+                        <img src="../assets/images/8.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card9">
+                        <img src="../assets/images/9.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card10">
+                        <img src="../assets/images/10.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card11">
+                        <img src="../assets/images/11.webp" alt="">
+                    </div>
+                    <div class="portfolio__card portfolio__card12">
+                        <img src="../assets/images/12.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video">
+            <div class="video__container"></div>
+        </section>
+
+        <section class="prices" id="price-section">
+            <div class="prices__wrapper">
+                <div class="title-wrapper">
+                    <div class="title-wrapper__section-title" data-translate="prices">
+                        Цены
+                    </div>
+                </div>
+                <div class="prices__container">
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Standard</h2>
+                        <p class="prices__card-subtitle">Стандартный набор услуг</p>
+                        <p class="prices__price-tag">130 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Монтаж видео</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение месяца</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Gold</h2>
+                        <p class="prices__card-subtitle">Любая ваша фантазия</p>
+                        <p class="prices__price-tag">300 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Монтаж видео</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение недели</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                    <div class="prices__card">
+                        <h2 class="prices__card-title">Premium</h2>
+                        <p class="prices__card-subtitle">Набор услуг премиум</p>
+                        <p class="prices__price-tag">200 BYN/час</p>
+                        <div class="prices__services">
+                            <p class="prices__item-service">Предметная съёмка</p>
+                            <p class="prices__item-service">Ретушь</p>
+                            <p class="prices__item-service">Aренда студии</p>
+                            <p class="prices__item-service">Готовность в течение двух недель</p>
+                        </div>
+                        <button class="prices__button default-button">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <h1>Контакты</h2>
+                <div class="contacts__wrapper">
+
+                    <div class="footer__contacts">
+                        <p class="footer__contacts-contacts">Звоните и пишите</p>
+                        <p class="footer__contacts-contacts">lorem</p>
+                        <p class="footer__contacts-contacts">lorem 2</p>
+                        <p class="footer__contacts-contacts">lorem 3</p>
+                    </div>
+                    <div class="yandex__map">
+                        <!-- https://yandex.ru/maps/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&source=constructorLink -->
+                        <!-- <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&amp;width=596&amp;height=403&amp;lang=ru_RU&amp;scroll=true"></script> -->
+                        <iframe
+                            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&amp;source=constructor"
+                            width="596" height="403" frameborder="0"></iframe>
+                    </div>
+                </div>
+        </div>
+    </footer>
+    <script src="../scripts/header.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
+</body>
+
+</html>
