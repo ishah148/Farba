@@ -3,12 +3,12 @@
 window.addEventListener('scroll', function() {
     if(pageYOffset){
         document.querySelector('header').classList.add('header--transparent');
-        document.querySelector('.pseudo-header').classList.add('header--transparent');
+        // document.querySelector('.pseudo-header').classList.add('header--transparent');
     }
     
     if(!pageYOffset){
         document.querySelector('header').classList.remove('header--transparent');
-        document.querySelector('.pseudo-header').classList.remove('header--transparent');
+        // document.querySelector('.pseudo-header').classList.remove('header--transparent');
     }
 });
 
