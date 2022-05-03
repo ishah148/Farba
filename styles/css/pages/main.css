@@ -205,6 +205,8 @@ h1 {
   --pane-padding: 5px 42px;
   --max-width:1440px;
   --padding-primary: 40px;
+  --map-width:400px;
+  --map-height:250px;
 }
 
 .header {
@@ -226,8 +228,7 @@ h1 {
   align-items: center;
 }
 .header__logo-img {
-  width: 52px;
-  height: 80px;
+  width: 40px;
   border-radius: 50%;
 }
 
@@ -294,7 +295,7 @@ h1 {
   display: flex;
   justify-content: center;
   height: 80px;
-  width: 50%;
+  width: 35%;
   margin: 0px auto 30px auto;
 }
 .title-wrapper:before {
@@ -532,22 +533,45 @@ footer {
   width: 100%;
 }
 
-.footer__container {
+.footer__wrapper {
   max-width: var(--max-width);
+  padding: 0 var(--padding-primary) 20px;
   display: flex;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.footer__container h1 {
+.footer__wrapper h1 {
   margin-bottom: 30px;
 }
-.footer__container .contacts__wrapper {
+.footer__wrapper .contacts__container {
   width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+@media (max-width: 1024px) {
+  .footer__wrapper .contacts__container {
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer__wrapper .contacts__container .footer__contacts {
+    align-self: flex-start;
+  }
+}
+.footer__wrapper .contacts__container .yandex__map {
+  width: 45%;
+}
+@media (max-width: 1024px) {
+  .footer__wrapper .contacts__container .yandex__map {
+    width: 100%;
+  }
+}
+.footer__wrapper .contacts__container .yandex__map iframe {
+  width: 100%;
+  aspect-ratio: 3/2;
 }
 
 /*# sourceMappingURL=main.css.map */
