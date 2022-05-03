@@ -12,6 +12,11 @@
   --map-width:400px;
   --map-height:250px;
 }
+@media (max-width: 1024px) {
+  :root{
+    --padding-primary: 20px;
+  }
+}
 // ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1200px);
 $mobile-s:320px;
 $mobile-m:576px;

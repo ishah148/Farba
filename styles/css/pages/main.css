@@ -209,6 +209,11 @@ h1 {
   --map-height:250px;
 }
 
+@media (max-width: 1024px) {
+  :root {
+    --padding-primary: 20px;
+  }
+}
 .header {
   position: fixed;
   z-index: 10;
@@ -272,8 +277,7 @@ h1 {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 15%;
+  justify-content: space-evenly;
 }
 .start-screen__first-column {
   display: flex;
@@ -476,12 +480,32 @@ h1 {
   margin: 0 auto;
 }
 .portfolio__container {
-  height: 2000px;
+  height: 1150px;
   align-content: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 15px;
+}
+@media (max-width: 1800px) {
+  .portfolio__container {
+    height: 1650px;
+  }
+}
+@media (max-width: 1400px) {
+  .portfolio__container {
+    height: 1800px;
+  }
+}
+@media (max-width: 1024px) {
+  .portfolio__container {
+    height: 2630px;
+  }
+}
+@media (max-width: 768px) {
+  .portfolio__container {
+    height: 5100px;
+  }
 }
 .portfolio__card {
   width: 350px;
@@ -500,6 +524,13 @@ h1 {
   align-content: flex-start;
   justify-content: center;
   gap: 20px;
+}
+@media (max-width: 1024px) {
+  .prices__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
 }
 .prices__card {
   position: relative;
