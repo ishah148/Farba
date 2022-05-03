@@ -1,3 +1,4 @@
+<
 https://www.instagram.com/studio_farba/
 https://vk.com/studio_farba
 
@@ -48,3 +49,4 @@ svg спрайт - Иконки соцсетей
 
 
 
+=

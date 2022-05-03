@@ -7,6 +7,10 @@ body {
     color: var(--primary-extra-light);
 }
 
+h1{
+    font-size: 40px;
+}
+
 .title-wrapper {
     &__section-title {
         font-weight: bold;
@@ -90,4 +94,10 @@ body {
     &__item-service {
         font-size: 22px;
     }
+}
+
+
+.footer__contacts-contacts{
+    font-size: 22px;
+    line-height: 240%;
 }

@@ -9,13 +9,24 @@
     }
 
     &__container {
-        height: 2000px;
+        height: 1150px;
         align-content: center;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         gap: 15px;
-
+        @media (max-width: 1800px ) {
+            height: 1650px;
+        }
+        @media (max-width: 1400px) {
+            height: 1800px;
+        }
+        @media (max-width: 1024px) {
+            height: 2630px;
+        }
+        @media (max-width: 768px) {
+            height: 5100px;
+        }
     }
 
     &__card {
