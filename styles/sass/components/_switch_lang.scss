@@ -8,26 +8,13 @@
 
   .slash {
     display: block;
-    font-weight: 700;
-    color:  var(--primary-extra-light);
   }
 
   .en,
   .ru {
     display: block;
     padding: 0;
-    color:  var(--primary-extra-light);
-    font-weight: 700;
-    font-family: inherit;
     background-color: transparent;
     border: 0;
     transition: 0.5s;
-    cursor: pointer;
-  }
-
-  .en:hover,
-  .ru:hover,
-  .en.active,
-  .ru.active {
-    color: var(--primary-gold);
   }
