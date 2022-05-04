@@ -1,32 +1,57 @@
 @use "../base";
 @use "../components";
+@use "../base/variables" as var;
 
 .portfolio {
     &__wrapper {
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 0;
         margin: 0 auto;
+        @media (max-width: var.$mobile-m) {
+            padding: 40px 10px 0;
+        }
     }
 
     &__container {
-        height: 2000px;
+        height: 1150px;
         align-content: center;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         gap: 15px;
+        @media (max-width: 1800px ) {
+            height: 1650px;
+        }
+        @media (max-width: 1400px) {
+            height: 1800px;
+        }
+        @media (max-width: 1024px) {
+            height: 2630px;
+        }
+        @media (max-width: var.$tablet) {
+            height: 5200px;
+        }
+        @media (max-width: var.$mobile-m) {
+            height: auto;
+            flex-wrap: nowrap;
 
+        }
+        // @media (max-width: var.$mobile-s) {
+        //     height: auto;
+        // }
     }
 
     &__card {
         width: 350px;
-        img {
-            // width: 350px;
+        @media (max-width: var.$mobile-m) {
             width: 100%;
         }
-        // &1{
-        //      // grid-column: span 2;
-        // }
+        @media (max-width: var.$mobile-s) {
+            width: 95%;
+        }
+        img {
+            width: 100%;
+        }
     }
 }
 

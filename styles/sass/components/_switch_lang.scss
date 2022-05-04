@@ -1,33 +1,42 @@
+@use "../base/variables" as var;
 .switch-lang {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 70px;
     height: 50px;
+    &--header{
+      @media (max-width: var.$tablet) {
+        display: none;
+      }
+      .ru,
+      .en{
+        border-bottom: 2px solid rgb(111, 111, 111);
+      }
+    }
+    &--burger{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 
   .slash {
     display: block;
-    font-weight: 700;
-    color:  var(--primary-extra-light);
   }
 
   .en,
   .ru {
     display: block;
     padding: 0;
-    color:  var(--primary-extra-light);
-    font-weight: 700;
-    font-family: inherit;
     background-color: transparent;
     border: 0;
     transition: 0.5s;
+    border-bottom: 2px solid var(--primary-light);
     cursor: pointer;
+    &.active{
+      border-bottom: 2px solid var(--primary-gold);
+    }
   }
 
-  .en:hover,
-  .ru:hover,
-  .en.active,
-  .ru.active {
-    color: var(--primary-gold);
-  }
+

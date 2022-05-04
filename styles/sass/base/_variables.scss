@@ -1,3 +1,9 @@
+$mobile-s:320px;
+$mobile-m:576px;
+$tablet:768px;
+$laptop:1024px;
+$laptop-l:1440px;
+
 :root {
   --primary-extra-light: #ffffff;
   --primary-extra-dark: #000000;
@@ -9,4 +15,18 @@
   --pane-padding: 5px 42px;
   --max-width:1440px;
   --padding-primary: 40px;
+  --map-width:400px;
+  --map-height:250px;
 }
+@media (max-width: 1024px) {
+  :root{
+    --padding-primary: 20px;
+  }
+}
+@media (max-width: 320px ) {
+  :root{
+    --padding-primary: 10px;
+  }
+  
+}
+// ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1200px);
