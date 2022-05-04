@@ -40,7 +40,6 @@
         gap: 40px;
     }
 
-
     .list-item--active:after {
         transition: 0.5s;
         content: "";
@@ -48,19 +47,6 @@
         width: 100%;
         height: 3px;
         background-color: var(--primary-gold);
-    }
-
-    &__link {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 51px;
-        color: var(--primary-extra-light);
-        transition: 0.5s;
-        &:hover {
-            transition: 0.5s;
-            color: var(--primary-gold)
-        }
     }
 
     &::-webkit-scrollbar {
