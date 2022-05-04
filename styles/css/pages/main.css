@@ -247,13 +247,13 @@ h1 {
   letter-spacing: 0.06em;
 }
 
+.prices__card-wrapper.hover {
+  transition: 0.5s;
+  border-color: var(--primary-gold);
+}
 .prices__card {
   text-align: center;
   cursor: default;
-}
-.prices__card.hover {
-  transition: 0.5s;
-  border-color: var(--primary-gold);
 }
 .prices__card-title {
   font-size: 1.25rem;

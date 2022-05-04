@@ -119,13 +119,17 @@ h1 {
 }
 
 .prices {
-    &__card {
-        text-align: center;
-        cursor: default;
+
+    &__card-wrapper{
         &.hover {
             transition: 0.5s;
             border-color: var(--primary-gold);
         }
+    }
+
+    &__card {
+        text-align: center;
+        cursor: default;
     }
 
     &__card-title {
