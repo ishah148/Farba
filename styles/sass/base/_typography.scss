@@ -1,5 +1,5 @@
 @use "./fonts";
-
+@use "../base/variables" as var;
 *,
 html,
 body {
@@ -7,7 +7,20 @@ body {
     font-size: 32px;
     color: var(--primary-extra-light);
 }
-
+html {
+    @media (max-width: var.$tablet) {
+        font-size: 26px;
+    }
+    @media (max-width:var.$mobile-m){
+        font-size: 22px;
+    }
+    @media (max-width:var.$mobile-s){
+        font-size: 18px;
+    }
+}
+a,p,div,li,button{
+    font-size: 0.6rem;
+}
 h1 {
     font-size: 1.25rem;
 }
@@ -71,31 +84,20 @@ h1 {
     color: var(--primary-extra-light);
 }
 
-
 .en,
 .ru {
-  color:  var(--primary-extra-light);
-  font-weight: 700;
-  font-family: inherit;
-  cursor: pointer;
+    color: var(--primary-extra-light);
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
 }
 
 .en:hover,
 .ru:hover,
 .en.active,
 .ru.active {
-  color: var(--primary-gold);
+    color: var(--primary-gold);
 }
-
-
-
-
-
-
-
-
-
-
 
 /**************************************/
 
