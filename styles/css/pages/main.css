@@ -214,6 +214,11 @@ h1 {
     --padding-primary: 20px;
   }
 }
+@media (max-width: 320px) {
+  :root {
+    --padding-primary: 10px;
+  }
+}
 .header {
   position: fixed;
   z-index: 10;
@@ -507,8 +512,18 @@ h1 {
     height: 5100px;
   }
 }
+@media (max-width: 320px) {
+  .portfolio__container {
+    height: auto;
+  }
+}
 .portfolio__card {
   width: 350px;
+}
+@media (max-width: 320px) {
+  .portfolio__card {
+    width: 95%;
+  }
 }
 .portfolio__card img {
   width: 100%;
