@@ -119,13 +119,17 @@ h1 {
 }
 
 .prices {
-    &__card {
-        text-align: center;
-        cursor: default;
+
+    &__card-wrapper{
         &.hover {
             transition: 0.5s;
             border-color: var(--primary-gold);
         }
+    }
+
+    &__card {
+        text-align: center;
+        cursor: default;
     }
 
     &__card-title {
@@ -141,18 +145,15 @@ h1 {
     &__card-subtitle {
         font-size: 0.56rem;
         font-weight: 300;
-    }
-
-    &__services {
-        font-style: italic;
-    }
-
+    } 
+    
     &__price-tag {
         font-size: 0.875rem;
     }
 
     &__item-service {
         font-size: 0.68rem;
+        font-style: italic;
     }
 }
 

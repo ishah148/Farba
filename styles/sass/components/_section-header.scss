@@ -1,12 +1,26 @@
 @use "../base";
+@use "../base/variables" as var;
 
 .title-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
     height: 80px;
-    width: 35%;
+    width: 445px;
     margin: 0px auto 30px auto;
+    @media (max-width: var.$tablet) {
+        height: 65px;
+    }
+
+    @media (max-width:var.$mobile-m){
+        height: 52px;
+        width: 300px;
+    }
+
+    @media (max-width:var.$mobile-s){
+        height: 42px;
+        width: 90%;
+    }
 
     &:before {
         position: absolute;

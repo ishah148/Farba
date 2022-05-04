@@ -247,13 +247,13 @@ h1 {
   letter-spacing: 0.06em;
 }
 
+.prices__card-wrapper.hover {
+  transition: 0.5s;
+  border-color: var(--primary-gold);
+}
 .prices__card {
   text-align: center;
   cursor: default;
-}
-.prices__card.hover {
-  transition: 0.5s;
-  border-color: var(--primary-gold);
 }
 .prices__card-title {
   font-size: 1.25rem;
@@ -268,14 +268,12 @@ h1 {
   font-size: 0.56rem;
   font-weight: 300;
 }
-.prices__services {
-  font-style: italic;
-}
 .prices__price-tag {
   font-size: 0.875rem;
 }
 .prices__item-service {
   font-size: 0.68rem;
+  font-style: italic;
 }
 
 .footer__contacts-contacts {
@@ -377,8 +375,25 @@ h1 {
   display: flex;
   justify-content: center;
   height: 80px;
-  width: 35%;
+  width: 445px;
   margin: 0px auto 30px auto;
+}
+@media (max-width: 768px) {
+  .title-wrapper {
+    height: 65px;
+  }
+}
+@media (max-width: 576px) {
+  .title-wrapper {
+    height: 52px;
+    width: 300px;
+  }
+}
+@media (max-width: 320px) {
+  .title-wrapper {
+    height: 42px;
+    width: 90%;
+  }
 }
 .title-wrapper:before {
   position: absolute;
@@ -516,7 +531,7 @@ h1 {
 }
 .switch-lang--header .ru,
 .switch-lang--header .en {
-  border-bottom: 2px solid rgb(111, 111, 111);
+  border-bottom: 2px solid #6f6f6f;
 }
 .switch-lang--burger {
   position: absolute;
@@ -587,6 +602,11 @@ h1 {
   padding: 40px var(--padding-primary) 0;
   margin: 0 auto;
 }
+@media (max-width: 576px) {
+  .portfolio__wrapper {
+    padding: 40px 10px 0;
+  }
+}
 .portfolio__container {
   height: 1150px;
   align-content: center;
@@ -656,8 +676,7 @@ h1 {
     gap: 30px;
   }
 }
-.prices__card {
-  position: relative;
+.prices__card-wrapper {
   height: 450px;
   width: 300px;
   padding: 20px;
@@ -665,9 +684,20 @@ h1 {
   border-radius: 5px;
 }
 @media (max-width: 576px) {
-  .prices__card {
+  .prices__card-wrapper {
     width: auto;
     height: auto;
+  }
+}
+.prices__card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (max-width: 576px) {
+  .prices__card {
+    gap: 30px;
   }
 }
 .prices__card-title {
@@ -683,10 +713,6 @@ h1 {
   margin-bottom: 6px;
 }
 .prices__button {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 30px;
   margin: 0 auto;
 }
 

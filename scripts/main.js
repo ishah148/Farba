@@ -2,7 +2,7 @@ import { hamburger, burgerMenuLinks, blackout, addMenu, closeMenu, burgerMenuLis
 import {switchLang, chooseLangButton} from "./switch_lang.js";
 
 // price cards hover
-let priceCards = document.querySelectorAll('.prices__card');
+let priceCards = document.querySelectorAll('.prices__card-wrapper');
 
 //burger menu
 let laptopMinWidth = window.matchMedia("(min-width: 768px)");
