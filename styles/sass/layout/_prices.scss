@@ -22,8 +22,7 @@
         }
     }
 
-    &__card {
-        position: relative;
+    &__card-wrapper {
         height: 450px;
         width: 300px;
         padding: 20px;
@@ -32,6 +31,16 @@
         @media (max-width: var.$mobile-m) {
             width: auto;
             height: auto;
+        }
+    }
+
+    &__card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media (max-width: var.$mobile-m) {
+            gap: 30px
         }
     }
 
@@ -52,11 +61,6 @@
     }
 
     &__button {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 30px;
         margin: 0 auto;
-
     }
 }
