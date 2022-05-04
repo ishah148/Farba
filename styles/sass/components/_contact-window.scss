@@ -1,0 +1,45 @@
+@use "../base/variables" as var;
+.contacts-window {
+    position: fixed;
+    background: var(--primary-color);
+    opacity: 0.98;
+    // height: 50px;
+    width: 50px;
+    bottom: 20px;
+    right: 20px;
+    
+    &__svg-icon {
+        width: 50px;
+        height: 50px;
+        &.phone{
+            width: 50px;
+            height: 50px;
+            transform: rotate(0deg);
+            &.phone--rotate{
+                transition: all 0.5s;
+                transform: rotate(-360deg);
+            }
+            &.phone--rotate-return{
+                transition: all 0.5s;
+                // transform: rotate(720deg);
+            }
+        }
+    }
+    &--hidden{
+        height: 50px;
+        // overflow: hidden;
+        
+    }
+    &-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        bottom: 75px;
+        transition: all 0.3s;
+        &.contacts-window--hidden{
+        bottom: -75px;
+        }
+
+    }
+}
