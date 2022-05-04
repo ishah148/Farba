@@ -12,6 +12,7 @@
 
 <body>
     <div class="blackout"></div>
+    <!--  !header -->
     <header class="header">
         <div class="header__container">
             <div class="header__logo">
@@ -21,7 +22,7 @@
                 <ul class="menu__list">
                     <li class="menu__list-item" data-translate="portfolio">
                         Портфолио
-
+                        <!-- TODO -->
                         <!--- ЭТО ВЫЕЗЖАЮЩИЙ БЛОК !!!!!!!!!!-->
                         <!-- ювелирка-->
                         <!--Ювелирка  -->
@@ -42,19 +43,21 @@
                 </ul>
             </nav>
             <div class="header__contacts">+375 (29) 777-40-29</div>
-            <div class="switch-lang">
+            <!-- !burger  -->
+            <div class="hamburger"> 
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+            </div>
+            <div class="switch-lang switch-lang--header">
                 <button class="en" data-switch="en">en</button>
                 <span class="slash">/</span>
                 <button class="ru active" data-switch="ru">ru</button>
             </div>
         </div>
     </header>
+    <!-- !main -->
     <main class="main">
-        <div class="hamburger">
-            <div class="hamburger__line"></div>
-            <div class="hamburger__line"></div>
-            <div class="hamburger__line"></div>
-        </div>
         <div class="burger-menu">
             <div class="burger-menu__logo">
                 <img class="burger-menu__logo-img" src="../assets/images/logo-farba-300.png" alt="logo">
@@ -71,9 +74,14 @@
                         <a class="burger-menu__link" href="#" data-translate="contacts">Контакты</a>
                     </li>
                 </ul>
+                <div class="switch-lang switch-lang--burger">
+                    <button class="en" data-switch="en">en</button>
+                    <span class="slash">/</span>
+                    <button class="ru active" data-switch="ru">ru</button>
+                </div>
             </nav>
         </div>
-
+        <!-- !video -->
         <section class="start-screen">
             <div class="start-screen__wrapper">
                 <div class="start-screen__container">
@@ -98,7 +106,7 @@
                 </video>
             </div>
         </section>
-
+        <!-- !portfolio -->
         <section class="portfolio">
             <div class="portfolio__wrapper">
                 <div class="title-wrapper">
@@ -146,7 +154,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- !videos -->
         <section class="video">
             <div class="video__container"></div>
         </section>
@@ -158,6 +166,7 @@
                         Цены
                     </div>
                 </div>
+                <!-- !tables -->
                 <div class="prices__container">
                     <div class="prices__card">
                         <h2 class="prices__card-title">Standard</h2>
@@ -201,6 +210,7 @@
             </div>
         </section>
     </main>
+    <!-- !footer -->
     <footer class="footer">
         <div class="footer__wrapper">
             <div class="title-wrapper">

@@ -26,15 +26,23 @@
             height: 2630px;
         }
         @media (max-width: var.$tablet) {
-            height: 5100px;
+            height: 5200px;
         }
-        @media (max-width: var.$mobile-s) {
+        @media (max-width: var.$mobile-m) {
             height: auto;
+            flex-wrap: nowrap;
+
         }
+        // @media (max-width: var.$mobile-s) {
+        //     height: auto;
+        // }
     }
 
     &__card {
         width: 350px;
+        @media (max-width: var.$mobile-m) {
+            width: 100%;
+        }
         @media (max-width: var.$mobile-s) {
             width: 95%;
         }

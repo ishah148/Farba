@@ -1,6 +1,6 @@
 @use "../base";
 @use "../components";
-
+@use "../base/variables" as var;
 
 .prices {
     
@@ -29,6 +29,10 @@
         padding: 20px;
         border: 2px solid var(--primary-light);
         border-radius: 5px;
+        @media (max-width: var.$mobile-m) {
+            width: auto;
+            height: auto;
+        }
     }
 
     &__card-title {
