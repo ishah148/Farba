@@ -1,13 +1,14 @@
+@use "../base/variables" as var;
 .hamburger {
     display: none;
     z-index: 50;
-    @media (max-width: 768px)  {
+    @media (max-width: var.$tablet)  {
         width: 30px;
         height: 22px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        position: absolute;
+        // position: absolute;
         top: 30px;
         right: 33px;
         cursor: pointer;
