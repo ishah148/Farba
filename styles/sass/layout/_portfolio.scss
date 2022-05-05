@@ -7,11 +7,19 @@
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 0;
         margin: 0 auto;
+        overflow: hidden; // TODO: remove this 
         @media (max-width: var.$mobile-m) {
             padding: 40px 10px 0;
         }
     }
-
+    .buttons-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding: var(--padding-primary);
+        gap: 20px;
+    }
     &__container {
         height: 1150px;
         align-content: center;

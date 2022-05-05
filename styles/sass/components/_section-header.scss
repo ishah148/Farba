@@ -8,6 +8,7 @@
     height: 80px;
     width: 445px;
     margin: 0px auto 30px auto;
+    align-items: center;
     @media (max-width: var.$tablet) {
         height: 65px;
     }

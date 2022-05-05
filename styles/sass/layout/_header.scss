@@ -17,10 +17,13 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        @media (max-width: var.$tablet) {
+            height: 50px;
+        }
     }
 
     &__logo-img {
-        width: 40px;
+        width: 30px;
         border-radius: 50%;
     }
 

@@ -91,7 +91,7 @@
                                 для&nbsp;маркетплейсов</h1>
                         </div>
                         <div class="start-screen__second-column">
-                            <p class="start-screen__column-item">Ozon</з>
+                            <p class="start-screen__column-item">Ozon</p>
                             <p class="start-screen__column-item">Wildberis</p>
                             <p class="start-screen__column-item">Amazon</p>
                             <p class="start-screen__column-item">Onliner</p>
@@ -110,10 +110,17 @@
         <section class="portfolio">
             <div class="portfolio__wrapper">
                 <div class="title-wrapper">
-                    <div class="title-wrapper__section-title" data-translate="portfolio">
+                    <h2 class="title-wrapper__section-title" data-translate="portfolio">
                         Портфолио
-                    </div>
+                    </h2>
                 </div>
+                <div class="buttons-container">
+                    <button class="buttons-container__button default-button" data-photo="furniture">Мебель</button>
+                    <button class="buttons-container__button default-button" data-photo="technics">Техника</button>
+                    <button class="buttons-container__button default-button" data-photo="jewerly">Ювелирка</button>
+                    <button class="buttons-container__button default-button" data-photo="clothes">Одежда</button>
+                </div>
+                <!--  -->
                 <div class="portfolio__container">
                     <div class="portfolio__card portfolio__card1">
                         <img src="../assets/images/2.webp" alt="">
@@ -162,9 +169,9 @@
         <section class="prices" id="price-section">
             <div class="prices__wrapper">
                 <div class="title-wrapper">
-                    <div class="title-wrapper__section-title" data-translate="prices">
+                    <h2 class="title-wrapper__section-title" data-translate="prices">
                         Цены
-                    </div>
+                    </h2>
                 </div>
                 <!-- !tables -->
                 <div class="prices__container">
@@ -232,9 +239,9 @@
     <footer class="footer">
         <div class="footer__wrapper">
             <div class="title-wrapper">
-                <div class="title-wrapper__section-title" data-translate="portfolio">
+                <h2 class="title-wrapper__section-title" data-translate="portfolio">
                     Контакты
-                </div>
+                </h2>
             </div>
             <div class="contacts__container">
 
@@ -255,23 +262,39 @@
         </div>
         <!-- <img src="../assets/svg/sprite.svg" alt=""> -->
         <div class="contacts-window contacts-window--hidden">
-            <svg class="contacts-window__svg-icon phone phone--rotate-return">
-                <use xlink:href="../assets/svg/sprite.svg#phone"></use>
-            </svg>
-            <div class="contacts-window-container contacts-window--hidden ">
-                <svg class="contacts-window__svg-icon ">
-                    <use xlink:href="../assets/svg/sprite.svg#gmail_logo_icon_147283"></use>
-                </svg><svg class="contacts-window__svg-icon">
-                    <use xlink:href="../assets/svg/sprite.svg#Viber_icon-icons.com_66792"></use>
-                </svg><svg class="contacts-window__svg-icon">
-                    <use xlink:href="../assets/svg/sprite.svg#whatsapp_logo_icon_147205"></use>
-                </svg><svg class="contacts-window__svg-icon">
-                    <use xlink:href="../assets/svg/sprite.svg#telegram_logo_icon_168692"></use>
+            <div class="contacts-window__svg-icon phone phone--rotate-return">
+                <svg>
+                    <use xlink:href="../assets/svg/sprite.svg#phone"></use>
                 </svg>
+            </div>
+            <div class="contacts-window-container contacts-window--hidden ">
+                <a href="mailto:"></a>
+                <a href="mailto:ishah.1996@gmail.com">
+                    <svg class="contacts-window__svg-icon ">
+                        <use xlink:href="../assets/svg/sprite.svg#gmail_logo_icon_147283"></use>
+                    </svg>
+                </a>
+                <a href="viber://chat?number=%2B375259041736">
+                    <svg class="contacts-window__svg-icon">
+                        <use xlink:href="../assets/svg/sprite.svg#Viber_icon-icons.com_66792"></use>
+                    </svg>
+                </a>
+                <a href="https://wa.me/%2B375259041736">
+                    <svg class="contacts-window__svg-icon">
+                        <use xlink:href="../assets/svg/sprite.svg#whatsapp_logo_icon_147205"></use>
+                    </svg>
+                </a>
+                <a href="https://telegram.me/IgorTg123">
+                    <svg class="contacts-window__svg-icon">
+                        <use xlink:href="../assets/svg/sprite.svg#telegram_logo_icon_168692"></use>
+                    </svg>
+                </a>
+
             </div>
 
         </div>
     </footer>
+    <script src="../scripts/photo.js"></script>
     <script src="../scripts/contact-window.js"></script>
     <script src="../scripts/header.js"></script>
     <script type="module" src="../scripts/main.js"></script>
