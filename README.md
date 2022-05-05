@@ -2,6 +2,8 @@
 https://www.instagram.com/studio_farba/
 https://vk.com/studio_farba
 
+Мебель Техника Ювелирка Одежда и коляски Аксессуары
+
 TO DO LIST (first-line):
 Выпадающий список в хедере
 Секция с картой (в футер?)

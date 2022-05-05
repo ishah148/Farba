@@ -402,6 +402,7 @@ button {
   height: 80px;
   width: 445px;
   margin: 0px auto 30px auto;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .title-wrapper {
@@ -624,17 +625,31 @@ button {
 }
 .contacts-window-container.contacts-window--hidden {
   bottom: -75px;
+  right: 21px;
+  transition: all 0.3s;
+}
+.contacts-window-container.contacts-window--hidden svg {
+  width: 8px;
 }
 
 .portfolio__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 0;
   margin: 0 auto;
+  overflow: hidden;
 }
 @media (max-width: 576px) {
   .portfolio__wrapper {
     padding: 40px 10px 0;
   }
+}
+.portfolio .buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: var(--padding-primary);
+  gap: 20px;
 }
 .portfolio__container {
   height: 1150px;
@@ -714,7 +729,6 @@ button {
 }
 @media (max-width: 576px) {
   .prices__card-wrapper {
-    width: auto;
     height: auto;
   }
 }
