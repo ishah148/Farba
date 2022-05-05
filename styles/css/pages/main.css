@@ -162,12 +162,12 @@ body {
   }
 }
 
-a, p, div, li, button {
+a,
+p,
+div,
+li,
+button {
   font-size: 0.6rem;
-}
-
-h1 {
-  font-size: 1.25rem;
 }
 
 .default-button {
@@ -238,13 +238,23 @@ h1 {
   user-select: none;
 }
 .start-screen__title {
-  font-size: 1.875rem;
+  font-size: 1.7rem;
   font-weight: bold;
+}
+@media (max-width: 1024px) {
+  .start-screen__title {
+    font-size: 1.25rem;
+  }
 }
 .start-screen__column-item {
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.06em;
+}
+@media (max-width: 768px) {
+  .start-screen__column-item {
+    font-size: 0.8rem;
+  }
 }
 
 .prices__card-wrapper.hover {
@@ -299,8 +309,13 @@ h1 {
   justify-content: space-around;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .header__container {
+    height: 50px;
+  }
+}
 .header__logo-img {
-  width: 40px;
+  width: 30px;
   border-radius: 50%;
 }
 @media (max-width: 768px) {
@@ -353,7 +368,12 @@ h1 {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+@media (max-width: 1024px) {
+  .start-screen__content {
+    width: 90%;
+  }
 }
 .start-screen__first-column {
   display: flex;
@@ -368,6 +388,11 @@ h1 {
   flex-direction: column;
   justify-content: center;
   width: min-content;
+}
+@media (max-width: 576px) {
+  .start-screen__second-column {
+    gap: 10px;
+  }
 }
 
 .title-wrapper {
