@@ -1,4 +1,6 @@
 @use "../base";
+@use "../base/variables" as var;
+
 .start-screen {
     width: 100%;
 
@@ -35,7 +37,10 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        @media (max-width: var.$laptop) {
+            width: 90%;
+        }
     }
 
     &__first-column {
@@ -52,5 +57,8 @@
         flex-direction: column;
         justify-content: center;
         width: min-content;
+        @media (max-width: var.$mobile-m) {
+            gap: 10px;
+        }
     }
 }
