@@ -20,7 +20,7 @@ priceCards.forEach((card)=>{
     })
 })
 
-
+console.log('222222222222222222222222')
 //burger-menu
 
 
