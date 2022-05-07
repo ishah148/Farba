@@ -591,6 +591,7 @@ button {
   width: 50px;
   bottom: 20px;
   right: 20px;
+  z-index: 10;
 }
 .contacts-window__svg-icon {
   width: 50px;
@@ -636,7 +637,6 @@ button {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 0;
   margin: 0 auto;
-  overflow: hidden;
 }
 @media (max-width: 576px) {
   .portfolio__wrapper {
@@ -652,41 +652,18 @@ button {
   gap: 20px;
 }
 .portfolio__container {
-  height: 1150px;
   align-content: center;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
 }
-@media (max-width: 1800px) {
-  .portfolio__container {
-    height: 1650px;
-  }
-}
-@media (max-width: 1400px) {
-  .portfolio__container {
-    height: 1800px;
-  }
-}
-@media (max-width: 1024px) {
-  .portfolio__container {
-    height: 2630px;
-  }
-}
-@media (max-width: 768px) {
-  .portfolio__container {
-    height: 5200px;
-  }
-}
-@media (max-width: 576px) {
-  .portfolio__container {
-    height: auto;
-    flex-wrap: nowrap;
-  }
-}
 .portfolio__card {
   width: 350px;
+  height: 350px;
+  overflow: hidden;
 }
 @media (max-width: 576px) {
   .portfolio__card {
