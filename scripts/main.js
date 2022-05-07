@@ -5,7 +5,6 @@ import { switchLang, chooseLangButton } from './switch_lang.js';
 
 // price cards hover
 const priceCards = document.querySelectorAll('.prices__card-wrapper');
-
 // burger menu
 const laptopMinWidth = window.matchMedia('(min-width: 768px)');
 
@@ -20,8 +19,6 @@ priceCards.forEach((card) => {
     card.querySelector('.prices__card-title').classList.remove('hover');
   });
 });
-alert('111')
-console.log('222222222222222222222222');
 // burger-menu
 
 laptopMinWidth.addEventListener('change', (laptopMinScreenSize) => {
@@ -29,8 +26,6 @@ laptopMinWidth.addEventListener('change', (laptopMinScreenSize) => {
     closeMenu();
   }
 });
-goo
-debu
 
 blackout.addEventListener('click', () => closeMenu());
 
@@ -41,7 +36,6 @@ hamburger.addEventListener('click', (event) => {
     addMenu();
   }
 });
-foo()
 
 burgerMenuLinks.forEach((link) => {
   link.addEventListener('click', () => closeMenu());
