@@ -52,11 +52,12 @@
     }
 
     &__card {
-        width: 350px;
-        height: 350px; // TODO REMOVE THIS!
+        width: 300px;
+        height: 300px; // TODO REMOVE THIS!
         overflow: hidden;// TODO REMOVE THIS!
         @media (max-width: var.$mobile-m) {
-            width: 100%;
+            // width: 100%;
+            width: 40%;
         }
         @media (max-width: var.$mobile-s) {
             width: 95%;
