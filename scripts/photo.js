@@ -25,7 +25,7 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     // ! correct
     // dataAtr = 'jewerly'
     console.log(dataAtr)
-    let max = 20;
+    let max = 20; //TODO correct!
     if(dataAtr === 'portfolio'){max = 12}
     if(dataAtr === 'jewerly'){max = 43}
     for (let i = 1; i < max; i++) {
