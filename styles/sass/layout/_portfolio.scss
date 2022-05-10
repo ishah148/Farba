@@ -2,17 +2,18 @@
 @use "../components";
 @use "../base/variables" as var;
 
+
 .portfolio {
     &__wrapper {
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 0;
         margin: 0 auto;
-        // overflow: hidden; // TODO: remove this 
+        // overflow: hidden; // TODO: remove this
         @media (max-width: var.$mobile-m) {
             padding: 40px 10px 0;
         }
     }
-    .buttons-container{
+    .buttons-container {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -22,50 +23,56 @@
     }
     &__container {
         // height: 1150px;
-        align-content: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
+        
+        width: min-content;
+        
+        display: grid;
+        margin: 0 auto;
+        grid-template-columns: repeat(3,1fr);
+        // grid-template-columns: auto auto auto;
+        grid-auto-flow: row;
+        // grid-template-rows: repeat(4,[row] 1fr);
         gap: 15px;
-        // @media (max-width: 1800px ) {
-        //     height: 1650px;
-        // }
-        // @media (max-width: 1400px) {
-        //     height: 1800px;
-        // }
-        // @media (max-width: 1024px) {
-        //     height: 2630px;
-        // }
-        // @media (max-width: var.$tablet) {
-        //     height: 5200px;
-        // }
-        // @media (max-width: var.$mobile-m) {
-        //     height: auto;
-        //     flex-wrap: nowrap;
+        .g1-2{
+            
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        .g2-1{
+            
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .g1-1{
+            
+            grid-column: span 1;
+            grid-row: span 1;
+        }
 
-        // }
-        // @media (max-width: var.$mobile-s) {
-        //     height: auto;
-        // }
+        @media (max-width:var.$tablet){
+            width: 500px;
+            grid-template-columns: repeat(2,1fr);
+        }
     }
 
+
     &__card {
-        width: 300px;
-        height: 300px; // TODO REMOVE THIS!
-        overflow: hidden;// TODO REMOVE THIS!
+        // width: 300px;
+        // height: 300px; // TODO REMOVE THIS!
+        
         @media (max-width: var.$mobile-m) {
             // width: 100%;
-            width: 40%;
+            
         }
         @media (max-width: var.$mobile-s) {
-            width: 95%;
+            
         }
         img {
-            width: 100%;
+            @media (max-width: var.$tablet ){
+                // width: 100%;
+                width: 123px;
+                object-fit: contain;
+            }
         }
     }
 }
-
-

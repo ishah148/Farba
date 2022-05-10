@@ -25,7 +25,7 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     // ! correct
     // dataAtr = 'jewerly'
     console.log(dataAtr)
-    let max = 20; //TODO correct!
+    let max = 10; //TODO correct!
     if(dataAtr === 'portfolio'){max = 12}
     if(dataAtr === 'jewerly'){max = 43}
     for (let i = 1; i < max; i++) {
@@ -35,8 +35,23 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
 
 function createCard(dataAtr,page) {
     let newCard = document.createElement('div');
+
     newCard.classList.add("portfolio__card");
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" alt="">`
+    newCard.classList.add(`${dataAtr}_${page}`);
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" alt="">`;
     elems.portfolioContainer.append(newCard)
+    let imgH = newCard.querySelector('img').naturalHeight;
+    let imgW = newCard.querySelector('img').naturalWidth;
+    // console.log(newCard.querySelector('img').naturalWidth)
+    // console.log(newCard.querySelector('img').naturalHeight)
+    if(imgH === 615 && imgW === 300){
+        newCard.classList.add("g1-2");
+    }
+    if(imgH === 300 && imgW === 615){
+        newCard.classList.add("g2-1");
+    }
+    if(imgH === 300 && imgW === 300){
+        newCard.classList.add("g1-1");
+    }
 }
 

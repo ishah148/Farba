@@ -652,31 +652,36 @@ button {
   gap: 20px;
 }
 .portfolio__container {
-  align-content: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  width: min-content;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: row;
   gap: 15px;
 }
-.portfolio__card {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
+.portfolio__container .g1-2 {
+  grid-column: span 1;
+  grid-row: span 2;
 }
-@media (max-width: 576px) {
-  .portfolio__card {
-    width: 40%;
+.portfolio__container .g2-1 {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.portfolio__container .g1-1 {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+@media (max-width: 768px) {
+  .portfolio__container {
+    width: 500px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 320px) {
-  .portfolio__card {
-    width: 95%;
+@media (max-width: 768px) {
+  .portfolio__card img {
+    width: 123px;
+    object-fit: contain;
   }
-}
-.portfolio__card img {
-  width: 100%;
 }
 
 .prices__wrapper {
