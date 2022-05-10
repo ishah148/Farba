@@ -2,7 +2,6 @@
 @use "../components";
 @use "../base/variables" as var;
 
-
 .portfolio {
     &__wrapper {
         max-width: var(--max-width);
@@ -23,55 +22,68 @@
     }
     &__container {
         // height: 1150px;
-        
+        grid-template-columns: repeat(4, 1fr);
         width: min-content;
-        width: 900px;
         display: grid;
-        margin: 0 auto;
-        grid-template-columns: repeat(3,1fr);
-        // grid-template-columns: auto auto auto;
-        grid-auto-flow: row;
-        // grid-template-rows: repeat(4,[row] 1fr);
+        margin: 0 auto;    
+        grid-auto-flow: row dense;
         gap: 15px;
-        .g1-2{
-            
+        @media (max-width: var.$laptop-l) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width:1300px){
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 990px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: 665px) {
+            width: auto;
+            // .g1-2,
+            // .g2-1,
+            // .g1-1{
+            //     // grid-column: span 1;
+            //     // grid-row: span 1;
+                img{
+                    // width: 120px;
+                    width: 100%;
+                    // object-fit: cover;
+                    
+                }
+            // }
+        }
+
+        
+        .g1-2 {
             grid-column: span 1;
             grid-row: span 2;
         }
-        .g2-1{
-            
+        .g2-1 {
             grid-column: span 2;
             grid-row: span 1;
         }
-        .g1-1{
-            
+        .g1-1 {
             grid-column: span 1;
             grid-row: span 1;
         }
-
-        @media (max-width:var.$tablet){
-            // width: 500px;
-            grid-template-columns: repeat(2,1fr);
-        }
     }
-
 
     &__card {
         // width: 300px;
         // height: 300px; // TODO REMOVE THIS!
-        
+
         @media (max-width: var.$mobile-m) {
-            // width: 100%;
-            
+            // width: 40%;
+            img{
+                width: 100%;
+            }
+            // width: fit-content;
         }
         @media (max-width: var.$mobile-s) {
-            
         }
         img {
-            @media (max-width: var.$tablet ){
+            @media (max-width: var.$tablet) {
                 // width: 100%;
-                
-                // object-fit: contain;
             }
         }
     }
