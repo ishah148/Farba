@@ -25,7 +25,7 @@
         // height: 1150px;
         
         width: min-content;
-        
+        width: 900px;
         display: grid;
         margin: 0 auto;
         grid-template-columns: repeat(3,1fr);
@@ -50,7 +50,7 @@
         }
 
         @media (max-width:var.$tablet){
-            width: 500px;
+            // width: 500px;
             grid-template-columns: repeat(2,1fr);
         }
     }
@@ -70,8 +70,8 @@
         img {
             @media (max-width: var.$tablet ){
                 // width: 100%;
-                width: 123px;
-                object-fit: contain;
+                
+                // object-fit: contain;
             }
         }
     }

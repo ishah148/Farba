@@ -1,10 +1,24 @@
 const elems = {
     buttons: document.querySelectorAll('.buttons-container__button'),
     portfolioContainer: document.querySelector('.portfolio__container'),
-    getPortfolioCards: function (){
+    getPortfolioCards: function () {
         return document.querySelectorAll('.portfolio__card');
     },
 }
+
+
+
+function getRange(max) {
+    let arr = []
+    for (let i = 1; i <= max; i++) {
+        arr.push(i)
+    }
+    function shuffleArr(arr) {
+        return arr.sort(() => Math.random() - 0.5)
+    }
+    return shuffleArr(arr) 
+}
+
 // *furniture
 //elems.buttons[0].dataset.photo
 elems.buttons.forEach(button => {
@@ -24,16 +38,17 @@ function removeCards() {
 function newCards(dataAtr) { //  dataAtr - our folder!!!
     // ! correct
     // dataAtr = 'jewerly'
-    console.log(dataAtr)
-    let max = 10; //TODO correct!
-    if(dataAtr === 'portfolio'){max = 12}
-    if(dataAtr === 'jewerly'){max = 43}
+    // console.log(dataAtr)
+    let max = 20; //TODO correct!
+    if (dataAtr === 'portfolio') { max = 12 }
+    if (dataAtr === 'jewerly') { max = 43 }
+    let temp = getRange(max)
     for (let i = 1; i < max; i++) {
-        createCard(dataAtr,i);
+        createCard(dataAtr, temp[i]);
     }
 }
 
-function createCard(dataAtr,page) {
+function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
 
     newCard.classList.add("portfolio__card");
@@ -44,13 +59,13 @@ function createCard(dataAtr,page) {
     let imgW = newCard.querySelector('img').naturalWidth;
     // console.log(newCard.querySelector('img').naturalWidth)
     // console.log(newCard.querySelector('img').naturalHeight)
-    if(imgH === 615 && imgW === 300){
+    if (imgH === 615 && imgW === 300) {
         newCard.classList.add("g1-2");
     }
-    if(imgH === 300 && imgW === 615){
+    if (imgH === 300 && imgW === 615) {
         newCard.classList.add("g2-1");
     }
-    if(imgH === 300 && imgW === 300){
+    if (imgH === 300 && imgW === 300) {
         newCard.classList.add("g1-1");
     }
 }

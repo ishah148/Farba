@@ -653,6 +653,7 @@ button {
 }
 .portfolio__container {
   width: min-content;
+  width: 900px;
   display: grid;
   margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
@@ -673,17 +674,9 @@ button {
 }
 @media (max-width: 768px) {
   .portfolio__container {
-    width: 500px;
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 768px) {
-  .portfolio__card img {
-    width: 123px;
-    object-fit: contain;
-  }
-}
-
 .prices__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 30px;
