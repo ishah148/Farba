@@ -6,7 +6,10 @@ const elems = {
     },
 }
 
-
+// window.addEventListener('load',(event)=>{
+//     console.log(event)
+//     checkStyle()
+// })
 
 function getRange(max) {
     let arr = []
@@ -16,7 +19,7 @@ function getRange(max) {
     function shuffleArr(arr) {
         return arr.sort(() => Math.random() - 0.5)
     }
-    return shuffleArr(arr) 
+    return shuffleArr(arr)
 }
 
 // *furniture
@@ -32,13 +35,9 @@ function switchPhotos(event) {
 
 function removeCards() {
     elems.getPortfolioCards().forEach(card => card.remove())
-    // elems.getPortfolioCards().forEach(card => console.log(card))
 }
 
 function newCards(dataAtr) { //  dataAtr - our folder!!!
-    // ! correct
-    // dataAtr = 'jewerly'
-    // console.log(dataAtr)
     let max = 20; //TODO correct!
     if (dataAtr === 'portfolio') { max = 12 }
     if (dataAtr === 'jewerly' || dataAtr === 'furniture') { max = 43 }
@@ -46,27 +45,50 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     for (let i = 1; i < max; i++) {
         createCard(dataAtr, temp[i]);
     }
+    // setTimeout(() => { // ! Костыль
+    //     checkStyle()
+    // }, 1400); //TODO correct it shit!!!!!!!!!!!!
+
+
 }
+
 
 function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
-
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
     newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" alt="">`;
     elems.portfolioContainer.append(newCard)
-    let imgH = newCard.querySelector('img').naturalHeight;
-    let imgW = newCard.querySelector('img').naturalWidth;
-    // console.log(newCard.querySelector('img').naturalWidth)
-    // console.log(newCard.querySelector('img').naturalHeight)
-    if (imgH === 615 && imgW === 300) {
-        newCard.classList.add("g1-2");
-    }
-    if (imgH === 300 && imgW === 615) {
-        newCard.classList.add("g2-1");
-    }
-    if (imgH === 300 && imgW === 300) {
-        newCard.classList.add("g1-1");
+}
+
+function checkStyle() {
+    elems.getPortfolioCards().forEach(card => {
+        addGridStyle(card,'furniture')
+    })
+    function addGridStyle(card,dataAtr) {
+        let imgH = card.querySelector('img').naturalHeight
+        let imgW = card.querySelector('img').naturalWidth
+
+        if (dataAtr === 'furniture') {
+            if (imgH === 615 && imgW === 300) {
+                card.classList.add("g1-2");
+            }
+            if (imgH === 300 && imgW === 615) {
+                card.classList.add("g2-1");
+            }
+            if (imgH === 300 && imgW === 300) {
+                card.classList.add("g1-1");
+            }
+        }
     }
 }
 
+
+
+
+const gridConfig = [
+    {
+        dataAtr: '',
+
+    },
+]
