@@ -70,18 +70,22 @@ function checkStyle(dataAtr) {
         let imgH = card.querySelector('img').naturalHeight
         let imgW = card.querySelector('img').naturalWidth
 
-        if (dataAtr === 'furniture' || dataAtr === 'prams') {
-            if (imgH === 615 && imgW === 300) {
+        // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
+            if(dataAtr){
+            if (imgW === 300 && imgH === 615) {
                 card.classList.add("g1-2");
             }
-            if (imgH === 300 && imgW === 615) {
+            if (imgW === 615 && imgH === 300) {
                 card.classList.add("g2-1");
             }
-            if (imgH === 300 && imgW === 300) {
+            if (imgW === 300 && imgH === 300 ) {
                 card.classList.add("g1-1");
             }
-            if (imgH === 615 && imgW === 615) {
+            if (imgW === 615 && imgH === 615) {
                 card.classList.add("g2-2");
+            }
+            if (imgW === 300 && imgH === 200) {
+                card.classList.add("g3-2");
             }
         }
     }
