@@ -701,7 +701,7 @@ button {
 }
 .portfolio__container .g1-0_66 {
   grid-column: span 6;
-  grid-row: span 2;
+  grid-row: span 4;
 }
 .portfolio__container .g2-1_5 {
   grid-column: span 12;
