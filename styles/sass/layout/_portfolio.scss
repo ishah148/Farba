@@ -89,7 +89,9 @@
     &__card {
         // width: 300px;
         // height: 300px; // TODO REMOVE THIS!
-
+        img{
+            width: 100%;
+        }
         @media (max-width: var.$mobile-m) {
             // width: 40%;
             img{

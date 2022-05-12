@@ -712,6 +712,9 @@ button {
   grid-column: span 6;
   grid-row: span 9;
 }
+.portfolio__card img {
+  width: 100%;
+}
 @media (max-width: 576px) {
   .portfolio__card img {
     width: 100%;
