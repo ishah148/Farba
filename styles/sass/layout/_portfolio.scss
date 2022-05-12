@@ -72,12 +72,19 @@
             grid-column: span var.$grid-ratio*2;
             grid-row: span var.$grid-ratio*2;
         }
-        .g3-2{
-            grid-column: span 3;
+        .g1-0_66{
+            grid-column: span var.$grid-ratio*1;
             grid-row: span 2;
         }
+        .g2-1_5{
+            grid-column: span var.$grid-ratio*2;
+            grid-row: span var.$grid-ratio*1.5;
+        }
+        .g1-1_5{
+            grid-column: span var.$grid-ratio*1;
+            grid-row: span var.$grid-ratio*1.5;
+        }
     }
-
     &__card {
         // width: 300px;
         // height: 300px; // TODO REMOVE THIS!

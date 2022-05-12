@@ -652,27 +652,27 @@ button {
   gap: 20px;
 }
 .portfolio__container {
-  grid-template-columns: repeat(12, 100px);
-  grid-template-rows: repeat(4, 100px);
+  grid-template-columns: repeat(24, 50px);
+  grid-template-rows: repeat(4, 50px);
   width: min-content;
   display: grid;
   margin: 0 auto;
   grid-auto-flow: row dense;
-  gap: 5px;
+  gap: 2.5px;
 }
 @media (max-width: 1440px) {
   .portfolio__container {
-    grid-template-columns: repeat(4, 3fr);
+    grid-template-columns: repeat(4, 6fr);
   }
 }
 @media (max-width: 1300px) {
   .portfolio__container {
-    grid-template-columns: repeat(3, 3fr);
+    grid-template-columns: repeat(3, 6fr);
   }
 }
 @media (max-width: 990px) {
   .portfolio__container {
-    grid-template-columns: repeat(2, 3fr);
+    grid-template-columns: repeat(2, 6fr);
   }
 }
 @media (max-width: 665px) {
@@ -684,24 +684,32 @@ button {
   }
 }
 .portfolio__container .g1-2 {
-  grid-column: span 3;
-  grid-row: span 6;
+  grid-column: span 6;
+  grid-row: span 12;
 }
 .portfolio__container .g2-1 {
-  grid-column: span 6;
-  grid-row: span 3;
+  grid-column: span 12;
+  grid-row: span 6;
 }
 .portfolio__container .g1-1 {
-  grid-column: span 3;
-  grid-row: span 3;
-}
-.portfolio__container .g2-2 {
   grid-column: span 6;
   grid-row: span 6;
 }
-.portfolio__container .g3-2 {
-  grid-column: span 3;
+.portfolio__container .g2-2 {
+  grid-column: span 12;
+  grid-row: span 12;
+}
+.portfolio__container .g1-0_66 {
+  grid-column: span 6;
   grid-row: span 2;
+}
+.portfolio__container .g2-1_5 {
+  grid-column: span 12;
+  grid-row: span 9;
+}
+.portfolio__container .g1-1_5 {
+  grid-column: span 6;
+  grid-row: span 9;
 }
 @media (max-width: 576px) {
   .portfolio__card img {

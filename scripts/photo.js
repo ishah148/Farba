@@ -85,7 +85,13 @@ function checkStyle(dataAtr) {
                 card.classList.add("g2-2");
             }
             if (imgW === 300 && imgH === 200) {
-                card.classList.add("g3-2");
+                card.classList.add("g1-0_66"); //1 0.66
+            }
+            if (imgW === 300 && imgH === 450) {
+                card.classList.add("g1-1_5"); //1 0.66
+            }
+            if (imgW === 615 && imgH === 410) {
+                card.classList.add("g2-1_5"); //1 0.66
             }
         }
     }
