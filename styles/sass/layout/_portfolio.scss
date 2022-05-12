@@ -89,8 +89,9 @@
     &__card {
         // width: 300px;
         // height: 300px; // TODO REMOVE THIS!
+        align-self: center;
         img{
-            width: 100%;
+            width: 100%; // TODO REMOVE THIS! discass with Vadim!
         }
         @media (max-width: var.$mobile-m) {
             // width: 40%;
