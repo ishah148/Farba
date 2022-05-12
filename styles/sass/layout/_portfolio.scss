@@ -29,15 +29,16 @@
         display: grid;
         margin: 0 auto;    
         grid-auto-flow: row dense;
-        gap: 15px / var.$grid-ratio;
+        row-gap: 30px / var.$grid-ratio;
+        column-gap: 30px / var.$grid-ratio;
         @media (max-width: var.$laptop-l) {
-            grid-template-columns: repeat(4, var.$grid-ratio*1fr);
+            grid-template-columns: repeat(4*var.$grid-ratio, 300px /var.$grid-ratio);
         }
         @media (max-width:1300px){
-            grid-template-columns: repeat(3, var.$grid-ratio*1fr);
+            grid-template-columns: repeat(3*var.$grid-ratio, 300px /var.$grid-ratio);
         }
         @media (max-width: 990px) {
-            grid-template-columns: repeat(2, var.$grid-ratio*1fr);
+            grid-template-columns: repeat(2*var.$grid-ratio, 300px /var.$grid-ratio);
         }
         @media (max-width: 665px) {
             width: auto;

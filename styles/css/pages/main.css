@@ -658,21 +658,22 @@ button {
   display: grid;
   margin: 0 auto;
   grid-auto-flow: row dense;
-  gap: 2.5px;
+  row-gap: 5px;
+  column-gap: 5px;
 }
 @media (max-width: 1440px) {
   .portfolio__container {
-    grid-template-columns: repeat(4, 6fr);
+    grid-template-columns: repeat(24, 50px);
   }
 }
 @media (max-width: 1300px) {
   .portfolio__container {
-    grid-template-columns: repeat(3, 6fr);
+    grid-template-columns: repeat(18, 50px);
   }
 }
 @media (max-width: 990px) {
   .portfolio__container {
-    grid-template-columns: repeat(2, 6fr);
+    grid-template-columns: repeat(12, 50px);
   }
 }
 @media (max-width: 665px) {
