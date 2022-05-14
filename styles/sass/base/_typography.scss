@@ -29,9 +29,19 @@ button {
 .default-button {
     font-family: inherit;
     text-align: center;
-    color: var(--primary-color);
-    &:hover {
+
+    &--light {
+        color: var(--primary-color);
+        &:hover {
+            color: var(--primary-extra-light);
+        }
+    }
+
+    &--dark {
         color: var(--primary-extra-light);
+        &:hover {
+            color: var(--primary-color);
+        }
     }
 }
 
@@ -163,7 +173,33 @@ button {
     }
 }
 
-.footer__contacts-contacts {
-    font-size: 0.68rem;
-    line-height: 240%;
+/****************************/
+
+
+.contacts {
+    &__email-input,
+    &__phone-input,
+    &__textarea {
+        font-family: inherit;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color: var(--primary-extra-light);
+    }
+
+    &__email-input::placeholder,
+    &__phone-input::placeholder,
+    &__textarea::placeholder {
+        font-family: inherit;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color: var(--primary-extra-light);
+    }
 }
+
+
+

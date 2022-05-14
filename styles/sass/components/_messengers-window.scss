@@ -1,5 +1,5 @@
 @use "../base/variables" as var;
-.contacts-window {
+.messengers-window {
     position: fixed;
     // background: var(--primary-color);
     background: transparent;
@@ -34,14 +34,14 @@
         height: 50px;
         // overflow: hidden;
     }
-    &-container {
+    &__links-container {
         display: flex;
         flex-direction: column;
         gap: 10px;
         position: absolute;
         bottom: 75px;
         transition: all 0.3s;
-        &.contacts-window--hidden {
+        &.messengers-window--hidden {
             bottom: -75px;
             right: 21px;
             transition: all 0.3s;

@@ -173,10 +173,18 @@ button {
 .default-button {
   font-family: inherit;
   text-align: center;
+}
+.default-button--light {
   color: var(--primary-color);
 }
-.default-button:hover {
+.default-button--light:hover {
   color: var(--primary-extra-light);
+}
+.default-button--dark {
+  color: var(--primary-extra-light);
+}
+.default-button--dark:hover {
+  color: var(--primary-color);
 }
 
 .title-wrapper__section-title {
@@ -286,9 +294,23 @@ button {
   font-style: italic;
 }
 
-.footer__contacts-contacts {
-  font-size: 0.68rem;
-  line-height: 240%;
+/****************************/
+.contacts__email-input, .contacts__phone-input, .contacts__textarea {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--primary-extra-light);
+}
+.contacts__email-input::placeholder, .contacts__phone-input::placeholder, .contacts__textarea::placeholder {
+  font-family: inherit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--primary-extra-light);
 }
 
 .header {
@@ -440,13 +462,22 @@ button {
 .default-button {
   width: 155px;
   height: 40px;
-  background-color: var(--primary-gold);
   border: 0;
   border-radius: 10px;
 }
-.default-button:hover {
+.default-button--light {
+  background-color: var(--primary-gold);
+}
+.default-button--light:hover {
   transition: 0.5s;
   background-color: var(--primary-light);
+}
+.default-button--dark {
+  background-color: var(--primary-light);
+}
+.default-button--dark:hover {
+  transition: 0.5s;
+  background-color: var(--primary-gold);
 }
 
 .hamburger {
@@ -584,7 +615,7 @@ button {
   border-bottom: 2px solid var(--primary-gold);
 }
 
-.contacts-window {
+.messengers-window {
   position: fixed;
   background: transparent;
   opacity: 0.98;
@@ -593,30 +624,30 @@ button {
   right: 20px;
   z-index: 10;
 }
-.contacts-window__svg-icon {
+.messengers-window__svg-icon {
   width: 50px;
   height: 50px;
 }
-.contacts-window__svg-icon svg {
+.messengers-window__svg-icon svg {
   width: 50px;
   height: 50px;
 }
-.contacts-window__svg-icon.phone {
+.messengers-window__svg-icon.phone {
   width: 50px;
   height: 50px;
   transform: rotate(0deg);
 }
-.contacts-window__svg-icon.phone.phone--rotate {
+.messengers-window__svg-icon.phone.phone--rotate {
   transition: all 0.5s;
   transform: rotate(-360deg);
 }
-.contacts-window__svg-icon.phone.phone--rotate-return {
+.messengers-window__svg-icon.phone.phone--rotate-return {
   transition: all 0.5s;
 }
-.contacts-window--hidden {
+.messengers-window--hidden {
   height: 50px;
 }
-.contacts-window-container {
+.messengers-window__links-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -624,13 +655,31 @@ button {
   bottom: 75px;
   transition: all 0.3s;
 }
-.contacts-window-container.contacts-window--hidden {
+.messengers-window__links-container.messengers-window--hidden {
   bottom: -75px;
   right: 21px;
   transition: all 0.3s;
 }
-.contacts-window-container.contacts-window--hidden svg {
+.messengers-window__links-container.messengers-window--hidden svg {
   width: 8px;
+}
+
+.yandex-map {
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .yandex-map {
+    width: 100%;
+  }
+}
+.yandex-map iframe {
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+.yandex-map #ymaps1651786334678464887 {
+  width: 100%;
+  aspect-ratio: 3/2;
 }
 
 .portfolio__wrapper {
@@ -780,53 +829,53 @@ button {
   margin: 0 auto;
 }
 
-footer {
+.contacts {
   width: 100%;
 }
-
-.footer__wrapper {
+.contacts__container {
   max-width: var(--max-width);
   padding: 0 var(--padding-primary) 20px;
   display: flex;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
-.footer__wrapper h1 {
+.contacts__container h1 {
   margin-bottom: 30px;
 }
-.footer__wrapper .contacts__container {
-  width: 80%;
+.contacts__inner {
+  width: 90%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 5%;
 }
 @media (max-width: 1024px) {
-  .footer__wrapper .contacts__container {
+  .contacts__inner {
     align-items: center;
     flex-direction: column;
-    gap: 30px;
-  }
-  .footer__wrapper .contacts__container .footer__contacts {
-    align-self: flex-start;
   }
 }
-.footer__wrapper .contacts__container .yandex__map {
-  width: 45%;
+.contacts__form {
+  width: 40%;
 }
-@media (max-width: 1024px) {
-  .footer__wrapper .contacts__container .yandex__map {
-    width: 100%;
-  }
-}
-.footer__wrapper .contacts__container .yandex__map iframe {
+.contacts__email-input, .contacts__phone-input, .contacts__textarea {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary-light);
   width: 100%;
-  aspect-ratio: 3/2;
+  border-radius: 8px;
 }
-.footer__wrapper .contacts__container .yandex__map #ymaps1651786334678464887 {
-  width: 100%;
-  aspect-ratio: 3/2;
+.contacts__email-input, .contacts__phone-input {
+  height: 50px;
+  padding: 5px 0px 0px 20px;
+  margin: 0px 0px 20px 0px;
+  display: block;
+}
+.contacts__textarea {
+  resize: none;
+  height: 100px;
+  padding: 5px 0px 0px 20px;
+  margin: 0px 0px 30px 0px;
+  display: block;
 }
 
 /*# sourceMappingURL=main.css.map */

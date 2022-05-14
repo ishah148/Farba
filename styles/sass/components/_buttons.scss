@@ -1,14 +1,23 @@
 
-
-
 .default-button {
     width: 155px;
     height: 40px;
-    background-color: var(--primary-gold);
     border: 0;
     border-radius: 10px;
-    &:hover {
-        transition: 0.5s;
+
+    &--light {
+        background-color: var(--primary-gold);
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-light);
+        }
+    }
+
+    &--dark {
         background-color: var(--primary-light);
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-gold);
+        }
     }
 }
