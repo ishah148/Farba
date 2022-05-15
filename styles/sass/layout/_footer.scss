@@ -1,0 +1,55 @@
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    &__container{
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        padding: 0 120px;
+        margin: 0 auto;
+    }
+
+    &__copyright,
+    &__about-link {
+        display: block;
+    }
+
+    &__about-us {
+        margin-right: 25%;
+        margin-left: 25%;
+    }
+
+    &__links-list {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    & .svg-icon {
+        fill: var(--primary-extra-light);
+        &:hover {
+            transition: 0.4s;
+            fill: var(--primary-light);
+        }
+    }
+
+    &__inst-icon {
+        width: 27px;
+        height: 27px;
+    }
+    
+    &__fb-icon {
+        width: 17px;
+        height: 27px;
+    }
+    
+    &__vk-icon {
+        width: 27px;
+        height: 27px;
+    }
+}
+

@@ -23,22 +23,22 @@
     &__container {
         // height: 1150px;
         // grid-template-columns: repeat(4,var.$grid-ratio*150px); // old value
-        grid-template-columns: repeat(4*var.$grid-ratio, 300px / var.$grid-ratio);
-        grid-template-rows: repeat(4,300px / var.$grid-ratio);
+        // grid-template-columns: repeat(4*var.$grid-ratio, 300px / var.$grid-ratio); //TODO
+   //     grid-template-rows: repeat(4,300px / var.$grid-ratio); //TODO
         width: min-content;
         display: grid;
         margin: 0 auto;    
         grid-auto-flow: row dense;
-        row-gap: 30px / var.$grid-ratio;
-        column-gap: 30px / var.$grid-ratio;
+        // row-gap: 30px / var.$grid-ratio;  //TODO
+        // column-gap: 30px / var.$grid-ratio; //TODO
         @media (max-width: var.$laptop-l) {
-            grid-template-columns: repeat(4*var.$grid-ratio, 300px /var.$grid-ratio);
+            // grid-template-columns: repeat(4*var.$grid-ratio, 300px /var.$grid-ratio); //TODO 
         }
         @media (max-width:1300px){
-            grid-template-columns: repeat(3*var.$grid-ratio, 300px /var.$grid-ratio);
+            // grid-template-columns: repeat(3*var.$grid-ratio, 300px /var.$grid-ratio); //TODO
         }
         @media (max-width: 990px) {
-            grid-template-columns: repeat(2*var.$grid-ratio, 300px /var.$grid-ratio);
+            // grid-template-columns: repeat(2*var.$grid-ratio, 300px /var.$grid-ratio); //TODO
         }
         @media (max-width: 665px) {
             width: auto;

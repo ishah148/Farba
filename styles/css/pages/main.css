@@ -313,6 +313,21 @@ button {
   color: var(--primary-extra-light);
 }
 
+.footer__copyright {
+  user-select: none;
+  font-size: 20px;
+  line-height: 50px;
+  color: var(--primary-extra-light);
+}
+.footer__about-link {
+  line-height: 50px;
+  color: var(--primary-extra-light);
+}
+.footer__about-link:hover {
+  transition: 0.4s;
+  color: var(--primary-light);
+}
+
 .header {
   position: fixed;
   z-index: 10;
@@ -620,21 +635,19 @@ button {
   background: transparent;
   opacity: 0.98;
   width: 50px;
-  bottom: 20px;
+  bottom: 44px;
   right: 20px;
   z-index: 10;
 }
 .messengers-window__svg-icon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 .messengers-window__svg-icon svg {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 }
 .messengers-window__svg-icon.phone {
-  width: 50px;
-  height: 50px;
   transform: rotate(0deg);
 }
 .messengers-window__svg-icon.phone.phone--rotate {
@@ -701,29 +714,10 @@ button {
   gap: 20px;
 }
 .portfolio__container {
-  grid-template-columns: repeat(24, 50px);
-  grid-template-rows: repeat(4, 50px);
   width: min-content;
   display: grid;
   margin: 0 auto;
   grid-auto-flow: row dense;
-  row-gap: 5px;
-  column-gap: 5px;
-}
-@media (max-width: 1440px) {
-  .portfolio__container {
-    grid-template-columns: repeat(24, 50px);
-  }
-}
-@media (max-width: 1300px) {
-  .portfolio__container {
-    grid-template-columns: repeat(18, 50px);
-  }
-}
-@media (max-width: 990px) {
-  .portfolio__container {
-    grid-template-columns: repeat(12, 50px);
-  }
 }
 @media (max-width: 665px) {
   .portfolio__container {
@@ -876,6 +870,53 @@ button {
   padding: 5px 0px 0px 20px;
   margin: 0px 0px 30px 0px;
   display: block;
+}
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.footer__container {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  padding: 0 120px;
+  margin: 0 auto;
+}
+.footer__copyright, .footer__about-link {
+  display: block;
+}
+.footer__about-us {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.footer__links-list {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .svg-icon {
+  fill: var(--primary-extra-light);
+}
+.footer .svg-icon:hover {
+  transition: 0.4s;
+  fill: var(--primary-light);
+}
+.footer__inst-icon {
+  width: 27px;
+  height: 27px;
+}
+.footer__fb-icon {
+  width: 17px;
+  height: 27px;
+}
+.footer__vk-icon {
+  width: 27px;
+  height: 27px;
 }
 
 /*# sourceMappingURL=main.css.map */
