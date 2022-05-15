@@ -39,7 +39,7 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     }
     setTimeout(() => { // ! Костыль
         checkStyle(dataAtr)
-    }, 500); //TODO correct it shit!!!!!!!!!!!!
+    }, 1500); //TODO correct it shit!!!!!!!!!!!!
 }
 
 function getRange(max) {
