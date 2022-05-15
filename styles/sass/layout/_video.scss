@@ -1,0 +1,38 @@
+.video {
+    padding: 50px 0;
+    &__container {
+        max-width: 1200px;
+        margin: 0px auto;
+        padding: 0px 15px;
+    }
+
+    &__content {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(430px,1fr));
+    }
+}
+
+
+.item {
+    &__video {
+        position: relative;
+        margin-bottom: 15px;
+        aspect-ratio: 16/9;  // РАБОТАЕТ ТОЛЬКО В ХРОМЕ!!!!!!
+       // padding-bottom: 56%; //АЛЬТЕРНАТИВА для кроссбраузерности
+    }
+
+    &__video iframe {
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__text {
+        font-size: 18px;
+        line-height: 150%;
+    }
+}

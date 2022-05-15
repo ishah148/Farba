@@ -766,6 +766,38 @@ button {
     width: 100%;
   }
 }
+.video {
+  padding: 50px 0;
+}
+.video__container {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 15px;
+}
+.video__content {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+}
+
+.item__video {
+  position: relative;
+  margin-bottom: 15px;
+  aspect-ratio: 16/9;
+}
+.item__video iframe {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.item__text {
+  font-size: 18px;
+  line-height: 150%;
+}
+
 .prices__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 30px;
