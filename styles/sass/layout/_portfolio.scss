@@ -7,12 +7,12 @@
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 0;
         margin: 0 auto;
-        // overflow: hidden; // TODO: remove this 
+        // overflow: hidden; // TODO: remove this
         @media (max-width: var.$mobile-m) {
             padding: 40px 10px 0;
         }
     }
-    .buttons-container{
+    .buttons-container {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -22,50 +22,90 @@
     }
     &__container {
         // height: 1150px;
-        align-content: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 15px;
-        // @media (max-width: 1800px ) {
-        //     height: 1650px;
-        // }
-        // @media (max-width: 1400px) {
-        //     height: 1800px;
-        // }
-        // @media (max-width: 1024px) {
-        //     height: 2630px;
-        // }
-        // @media (max-width: var.$tablet) {
-        //     height: 5200px;
-        // }
-        // @media (max-width: var.$mobile-m) {
-        //     height: auto;
-        //     flex-wrap: nowrap;
+        // grid-template-columns: repeat(4,var.$grid-ratio*150px); // old value
+        grid-template-columns: repeat(4*var.$grid-ratio, 300px / var.$grid-ratio);
+        grid-template-rows: repeat(4,300px / var.$grid-ratio);
+        width: min-content;
+        display: grid;
+        margin: 0 auto;    
+        grid-auto-flow: row dense;
+        row-gap: 30px / var.$grid-ratio;
+        column-gap: 30px / var.$grid-ratio;
+        @media (max-width: var.$laptop-l) {
+            grid-template-columns: repeat(4*var.$grid-ratio, 300px /var.$grid-ratio);
+        }
+        @media (max-width:1300px){
+            grid-template-columns: repeat(3*var.$grid-ratio, 300px /var.$grid-ratio);
+        }
+        @media (max-width: 990px) {
+            grid-template-columns: repeat(2*var.$grid-ratio, 300px /var.$grid-ratio);
+        }
+        @media (max-width: 665px) {
+            width: auto;
+            // .g1-2,
+            // .g2-1,
+            // .g1-1{
+            //     // grid-column: span 1;
+            //     // grid-row: span 1;
+                img{
+                    // width: 120px;
+                    width: 100%;
+                    // object-fit: cover;
+                    
+                }
+            // }
+        }
 
-        // }
-        // @media (max-width: var.$mobile-s) {
-        //     height: auto;
-        // }
+        
+        .g1-2 { // 
+            grid-column: span var.$grid-ratio*1;
+            grid-row: span var.$grid-ratio*2;
+        }
+        .g2-1 {
+            grid-column: span var.$grid-ratio*2;
+            grid-row: span var.$grid-ratio*1;
+        }
+        .g1-1 {
+            grid-column: span var.$grid-ratio*1;
+            grid-row: span var.$grid-ratio*1;
+        }
+        .g2-2{
+            grid-column: span var.$grid-ratio*2;
+            grid-row: span var.$grid-ratio*2;
+        }
+        .g1-0_66{
+            grid-column: span var.$grid-ratio*1;
+            grid-row: span 4;
+        }
+        .g2-1_5{
+            grid-column: span var.$grid-ratio*2;
+            grid-row: span var.$grid-ratio*1.5;
+        }
+        .g1-1_5{
+            grid-column: span var.$grid-ratio*1;
+            grid-row: span var.$grid-ratio*1.5;
+        }
     }
-
     &__card {
-        width: 300px;
-        height: 300px; // TODO REMOVE THIS!
-        overflow: hidden;// TODO REMOVE THIS!
+        // width: 300px;
+        // height: 300px; // TODO REMOVE THIS!
+        align-self: center;
+        img{
+            width: 100%; // TODO REMOVE THIS! discass with Vadim!
+        }
         @media (max-width: var.$mobile-m) {
-            // width: 100%;
-            width: 40%;
+            // width: 40%;
+            img{
+                width: 100%;
+            }
+            // width: fit-content;
         }
         @media (max-width: var.$mobile-s) {
-            width: 95%;
         }
         img {
-            width: 100%;
+            @media (max-width: var.$tablet) {
+                // width: 100%;
+            }
         }
     }
 }
-
-

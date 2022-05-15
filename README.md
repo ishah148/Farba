@@ -55,3 +55,5 @@ height: 50px;
 Техника:
 Фото как в изначальном портфолио с примера
 МетаТэг Фотки
+
+width: 100%; // TODO REMOVE THIS! discass with Vadim!
