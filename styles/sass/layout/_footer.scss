@@ -1,47 +1,66 @@
-@use "../base";
-@use "../components";
-footer {
-    width: 100%;
-}
-.footer__wrapper {
-    max-width: var(--max-width);
-    padding: 0 var(--padding-primary) 20px;
-    display: flex;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    h1 {
-        margin-bottom: 30px;
-    }
-    .contacts__container {
-        width: 80%;
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    &__container{
+        height: 60px;
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        @media (max-width: 1024px) {
-            align-items: center;
-            flex-direction: column;
-            gap: 30px;
-            .footer__contacts{
-                align-self: flex-start;
-            }
-        }
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--max-width);
+        padding: 0 120px;
+        margin: 0 auto;
+    }
 
-        .yandex__map {
-            width: 45%;
-            @media (max-width: 1024px) {
-                width: 100%;
-            }
-            iframe {
-                width: 100%;
-                aspect-ratio: 3/2;
-            }
-            #ymaps1651786334678464887 {
-                width: 100%;
-                aspect-ratio: 3/2;
-            }
+    &__copyright,
+    &__about-link {
+        display: block;
+        @media (max-width: 700px) {
+           width: 20%;
         }
+    }
 
+    &__about-us {
+        margin-right: 25%;
+        margin-left: 25%;
+        @media (max-width: 700px) {
+            margin-right: 7%;
+            margin-left: 7%;
+        }
+    }
+
+    &__links-list {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: 700px) {
+            gap: 10px;
+            width: 50%;
+        }
+    }
+
+    & .svg-icon {
+        fill: var(--primary-extra-light);
+        &:hover {
+            transition: 0.4s;
+            fill: var(--primary-light);
+        }
+    }
+
+    &__inst-icon {
+        width: 27px;
+        height: 27px;
+    }
+    
+    &__fb-icon {
+        width: 17px;
+        height: 27px;
+    }
+    
+    &__vk-icon {
+        width: 27px;
+        height: 27px;
     }
 }
+
