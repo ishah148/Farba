@@ -23,84 +23,84 @@
     &__container {
         // height: 1150px;
         // grid-template-columns: repeat(4,var.$grid-ratio*150px); // old value
-        // grid-template-columns: repeat(4*var.$grid-ratio, 300px / var.$grid-ratio); //TODO
-   //     grid-template-rows: repeat(4,300px / var.$grid-ratio); //TODO
+        grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        grid-template-rows: repeat(4, calc(300px / var.$grid-ratio));
         width: min-content;
         display: grid;
-        margin: 0 auto;    
+        margin: 0 auto;
         grid-auto-flow: row dense;
-        // row-gap: 30px / var.$grid-ratio;  //TODO
-        // column-gap: 30px / var.$grid-ratio; //TODO
+        row-gap: calc(30px / var.$grid-ratio);
+        column-gap: calc(30px / var.$grid-ratio);
         @media (max-width: var.$laptop-l) {
-            // grid-template-columns: repeat(4*var.$grid-ratio, 300px /var.$grid-ratio); //TODO 
+            grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
-        @media (max-width:1300px){
-            // grid-template-columns: repeat(3*var.$grid-ratio, 300px /var.$grid-ratio); //TODO
+        @media (max-width: 1370px) {
+            grid-template-columns: repeat(3 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
-        @media (max-width: 990px) {
-            // grid-template-columns: repeat(2*var.$grid-ratio, 300px /var.$grid-ratio); //TODO
+        @media (max-width: 1070px) {
+            grid-template-columns: repeat(2 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
-        @media (max-width: 665px) {
+        @media (max-width: 700px) {
             width: auto;
+            grid-template-columns: repeat(2 * var.$grid-ratio, 0.083fr);
+            // grid-template-columns: repeat(1, 1fr);
             // .g1-2,
             // .g2-1,
             // .g1-1{
             //     // grid-column: span 1;
             //     // grid-row: span 1;
-                img{
-                    // width: 120px;
-                    width: 100%;
-                    // object-fit: cover;
-                    
-                }
+
+            img {
+                // width: 120px;
+                width: 100%;
+                // object-fit: cover;
+            }
             // }
         }
 
-        
-        .g1-2 { // 
-            grid-column: span var.$grid-ratio*1;
-            grid-row: span var.$grid-ratio*2;
+        .g1-2 {
+            //
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 2;
         }
         .g2-1 {
-            grid-column: span var.$grid-ratio*2;
-            grid-row: span var.$grid-ratio*1;
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 1;
         }
         .g1-1 {
-            grid-column: span var.$grid-ratio*1;
-            grid-row: span var.$grid-ratio*1;
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 1;
         }
-        .g2-2{
-            grid-column: span var.$grid-ratio*2;
-            grid-row: span var.$grid-ratio*2;
+        .g2-2 {
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 2;
         }
-        .g1-0_66{
-            grid-column: span var.$grid-ratio*1;
+        .g1-0_66 {
+            grid-column: span var.$grid-ratio * 1;
             grid-row: span 4;
         }
-        .g2-1_5{
-            grid-column: span var.$grid-ratio*2;
-            grid-row: span var.$grid-ratio*1.5;
+        .g2-1_5 {
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 1.5;
         }
-        .g1-1_5{
-            grid-column: span var.$grid-ratio*1;
-            grid-row: span var.$grid-ratio*1.5;
+        .g1-1_5 {
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 1.5;
         }
     }
     &__card {
         // width: 300px;
         // height: 300px; // TODO REMOVE THIS!
         align-self: center;
-        img{
+        img {
             width: 100%; // TODO REMOVE THIS! discass with Vadim!
         }
         @media (max-width: var.$mobile-m) {
             // width: 40%;
-            img{
+            img {
                 width: 100%;
             }
             // width: fit-content;
-        }
-        @media (max-width: var.$mobile-s) {
         }
         img {
             @media (max-width: var.$tablet) {

@@ -54,4 +54,10 @@
         margin: 0px 0px 30px 0px;
         display: block;
     }
+
+    &__button {
+        @media (max-width: 1024px) {
+            margin: 0 auto;
+        }
+    }
 }

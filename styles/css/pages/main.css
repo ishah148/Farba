@@ -690,6 +690,11 @@ button {
   width: 100%;
   aspect-ratio: 3/2;
 }
+@media (max-width: 1024px) {
+  .yandex-map iframe {
+    margin-top: 40px;
+  }
+}
 .yandex-map #ymaps1651786334678464887 {
   width: 100%;
   aspect-ratio: 3/2;
@@ -714,14 +719,34 @@ button {
   gap: 20px;
 }
 .portfolio__container {
+  grid-template-columns: repeat(24, 50px);
+  grid-template-rows: repeat(4, 50px);
   width: min-content;
   display: grid;
   margin: 0 auto;
   grid-auto-flow: row dense;
+  row-gap: 5px;
+  column-gap: 5px;
 }
-@media (max-width: 665px) {
+@media (max-width: 1440px) {
+  .portfolio__container {
+    grid-template-columns: repeat(24, 50px);
+  }
+}
+@media (max-width: 1370px) {
+  .portfolio__container {
+    grid-template-columns: repeat(18, 50px);
+  }
+}
+@media (max-width: 1070px) {
+  .portfolio__container {
+    grid-template-columns: repeat(12, 50px);
+  }
+}
+@media (max-width: 700px) {
   .portfolio__container {
     width: auto;
+    grid-template-columns: repeat(12, 0.083fr);
   }
   .portfolio__container img {
     width: 100%;
@@ -778,6 +803,11 @@ button {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+}
+@media (max-width: 576px) {
+  .video__content {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
 }
 
 .item__video {
@@ -903,6 +933,11 @@ button {
   margin: 0px 0px 30px 0px;
   display: block;
 }
+@media (max-width: 1024px) {
+  .contacts__button {
+    margin: 0 auto;
+  }
+}
 
 .footer {
   padding-top: 40px;
@@ -920,9 +955,20 @@ button {
 .footer__copyright, .footer__about-link {
   display: block;
 }
+@media (max-width: 700px) {
+  .footer__copyright, .footer__about-link {
+    width: 20%;
+  }
+}
 .footer__about-us {
   margin-right: 25%;
   margin-left: 25%;
+}
+@media (max-width: 700px) {
+  .footer__about-us {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
 }
 .footer__links-list {
   width: 200px;
@@ -930,6 +976,12 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 700px) {
+  .footer__links-list {
+    gap: 10px;
+    width: 50%;
+  }
 }
 .footer .svg-icon {
   fill: var(--primary-extra-light);

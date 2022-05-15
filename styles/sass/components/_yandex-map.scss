@@ -8,6 +8,9 @@
         border-radius: 8px;
         width: 100%;
         aspect-ratio: 3/2;
+        @media (max-width: 1024px) {
+            margin-top: 40px;
+        }
     }
     #ymaps1651786334678464887 {
         width: 100%;

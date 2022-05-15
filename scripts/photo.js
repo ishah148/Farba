@@ -6,27 +6,18 @@ const elems = {
     },
 }
 
-// window.addEventListener('load',(event)=>{
-//     console.log(event)
-//     checkStyle()
-// })
-
-function getRange(max) {
-    let arr = []
-    for (let i = 1; i <= max; i++) {
-        arr.push(i)
-    }
-    function shuffleArr(arr) {
-        return arr.sort(() => Math.random() - 0.5)
-    }
-    return shuffleArr(arr)
-}
+window.addEventListener('load',(event)=>{
+    console.log(event)
+    newCards('furniture');
+})
 
 // *furniture
 //elems.buttons[0].dataset.photo
 elems.buttons.forEach(button => {
     button.onclick = switchPhotos;
 })
+
+
 
 function switchPhotos(event) {
     removeCards()
@@ -48,11 +39,19 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     }
     setTimeout(() => { // ! Костыль
         checkStyle(dataAtr)
-    }, 1400); //TODO correct it shit!!!!!!!!!!!!
-
-
+    }, 500); //TODO correct it shit!!!!!!!!!!!!
 }
 
+function getRange(max) {
+    let arr = []
+    for (let i = 1; i <= max; i++) {
+        arr.push(i)
+    }
+    function shuffleArr(arr) {
+        return arr.sort(() => Math.random() - 0.5)
+    }
+    return shuffleArr(arr)
+}
 
 function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
