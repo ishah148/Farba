@@ -173,10 +173,18 @@ button {
 .default-button {
   font-family: inherit;
   text-align: center;
+}
+.default-button--light {
   color: var(--primary-color);
 }
-.default-button:hover {
+.default-button--light:hover {
   color: var(--primary-extra-light);
+}
+.default-button--dark {
+  color: var(--primary-extra-light);
+}
+.default-button--dark:hover {
+  color: var(--primary-color);
 }
 
 .title-wrapper__section-title {
@@ -286,9 +294,38 @@ button {
   font-style: italic;
 }
 
-.footer__contacts-contacts {
-  font-size: 0.68rem;
-  line-height: 240%;
+/****************************/
+.contacts__email-input, .contacts__phone-input, .contacts__textarea {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--primary-extra-light);
+}
+.contacts__email-input::placeholder, .contacts__phone-input::placeholder, .contacts__textarea::placeholder {
+  font-family: inherit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--primary-extra-light);
+}
+
+.footer__copyright {
+  user-select: none;
+  font-size: 20px;
+  line-height: 50px;
+  color: var(--primary-extra-light);
+}
+.footer__about-link {
+  line-height: 50px;
+  color: var(--primary-extra-light);
+}
+.footer__about-link:hover {
+  transition: 0.4s;
+  color: var(--primary-light);
 }
 
 .header {
@@ -440,13 +477,22 @@ button {
 .default-button {
   width: 155px;
   height: 40px;
-  background-color: var(--primary-gold);
   border: 0;
   border-radius: 10px;
 }
-.default-button:hover {
+.default-button--light {
+  background-color: var(--primary-gold);
+}
+.default-button--light:hover {
   transition: 0.5s;
   background-color: var(--primary-light);
+}
+.default-button--dark {
+  background-color: var(--primary-light);
+}
+.default-button--dark:hover {
+  transition: 0.5s;
+  background-color: var(--primary-gold);
 }
 
 .hamburger {
@@ -584,39 +630,37 @@ button {
   border-bottom: 2px solid var(--primary-gold);
 }
 
-.contacts-window {
+.messengers-window {
   position: fixed;
   background: transparent;
   opacity: 0.98;
   width: 50px;
-  bottom: 20px;
+  bottom: 44px;
   right: 20px;
   z-index: 10;
 }
-.contacts-window__svg-icon {
-  width: 50px;
-  height: 50px;
+.messengers-window__svg-icon {
+  width: 45px;
+  height: 45px;
 }
-.contacts-window__svg-icon svg {
-  width: 50px;
-  height: 50px;
+.messengers-window__svg-icon svg {
+  width: 45px;
+  height: 45px;
 }
-.contacts-window__svg-icon.phone {
-  width: 50px;
-  height: 50px;
+.messengers-window__svg-icon.phone {
   transform: rotate(0deg);
 }
-.contacts-window__svg-icon.phone.phone--rotate {
+.messengers-window__svg-icon.phone.phone--rotate {
   transition: all 0.5s;
   transform: rotate(-360deg);
 }
-.contacts-window__svg-icon.phone.phone--rotate-return {
+.messengers-window__svg-icon.phone.phone--rotate-return {
   transition: all 0.5s;
 }
-.contacts-window--hidden {
+.messengers-window--hidden {
   height: 50px;
 }
-.contacts-window-container {
+.messengers-window__links-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -624,13 +668,36 @@ button {
   bottom: 75px;
   transition: all 0.3s;
 }
-.contacts-window-container.contacts-window--hidden {
+.messengers-window__links-container.messengers-window--hidden {
   bottom: -75px;
   right: 21px;
   transition: all 0.3s;
 }
-.contacts-window-container.contacts-window--hidden svg {
+.messengers-window__links-container.messengers-window--hidden svg {
   width: 8px;
+}
+
+.yandex-map {
+  width: 50%;
+}
+@media (max-width: 1024px) {
+  .yandex-map {
+    width: 100%;
+  }
+}
+.yandex-map iframe {
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+@media (max-width: 1024px) {
+  .yandex-map iframe {
+    margin-top: 40px;
+  }
+}
+.yandex-map #ymaps1651786334678464887 {
+  width: 100%;
+  aspect-ratio: 3/2;
 }
 
 .portfolio__wrapper {
@@ -666,19 +733,20 @@ button {
     grid-template-columns: repeat(24, 50px);
   }
 }
-@media (max-width: 1300px) {
+@media (max-width: 1370px) {
   .portfolio__container {
     grid-template-columns: repeat(18, 50px);
   }
 }
-@media (max-width: 990px) {
+@media (max-width: 1070px) {
   .portfolio__container {
     grid-template-columns: repeat(12, 50px);
   }
 }
-@media (max-width: 665px) {
+@media (max-width: 700px) {
   .portfolio__container {
     width: auto;
+    grid-template-columns: repeat(12, 0.083fr);
   }
   .portfolio__container img {
     width: 100%;
@@ -723,6 +791,43 @@ button {
     width: 100%;
   }
 }
+.video {
+  padding: 50px 0;
+}
+.video__container {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 15px;
+}
+.video__content {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+}
+@media (max-width: 576px) {
+  .video__content {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+}
+
+.item__video {
+  position: relative;
+  margin-bottom: 15px;
+  aspect-ratio: 16/9;
+}
+.item__video iframe {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.item__text {
+  font-size: 18px;
+  line-height: 150%;
+}
+
 .prices__wrapper {
   max-width: var(--max-width);
   padding: 40px var(--padding-primary) 30px;
@@ -780,53 +885,122 @@ button {
   margin: 0 auto;
 }
 
-footer {
+.contacts {
   width: 100%;
 }
-
-.footer__wrapper {
+.contacts__container {
   max-width: var(--max-width);
   padding: 0 var(--padding-primary) 20px;
   display: flex;
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
-.footer__wrapper h1 {
+.contacts__container h1 {
   margin-bottom: 30px;
 }
-.footer__wrapper .contacts__container {
-  width: 80%;
+.contacts__inner {
+  width: 90%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 5%;
 }
 @media (max-width: 1024px) {
-  .footer__wrapper .contacts__container {
+  .contacts__inner {
     align-items: center;
     flex-direction: column;
-    gap: 30px;
-  }
-  .footer__wrapper .contacts__container .footer__contacts {
-    align-self: flex-start;
   }
 }
-.footer__wrapper .contacts__container .yandex__map {
-  width: 45%;
+.contacts__form {
+  width: 40%;
+}
+.contacts__email-input, .contacts__phone-input, .contacts__textarea {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary-light);
+  width: 100%;
+  border-radius: 8px;
+}
+.contacts__email-input, .contacts__phone-input {
+  height: 50px;
+  padding: 5px 0px 0px 20px;
+  margin: 0px 0px 20px 0px;
+  display: block;
+}
+.contacts__textarea {
+  resize: none;
+  height: 100px;
+  padding: 5px 0px 0px 20px;
+  margin: 0px 0px 30px 0px;
+  display: block;
 }
 @media (max-width: 1024px) {
-  .footer__wrapper .contacts__container .yandex__map {
-    width: 100%;
+  .contacts__button {
+    margin: 0 auto;
   }
 }
-.footer__wrapper .contacts__container .yandex__map iframe {
-  width: 100%;
-  aspect-ratio: 3/2;
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
-.footer__wrapper .contacts__container .yandex__map #ymaps1651786334678464887 {
-  width: 100%;
-  aspect-ratio: 3/2;
+.footer__container {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  padding: 0 120px;
+  margin: 0 auto;
+}
+.footer__copyright, .footer__about-link {
+  display: block;
+}
+@media (max-width: 700px) {
+  .footer__copyright, .footer__about-link {
+    width: 20%;
+  }
+}
+.footer__about-us {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+@media (max-width: 700px) {
+  .footer__about-us {
+    margin-right: 7%;
+    margin-left: 7%;
+  }
+}
+.footer__links-list {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .footer__links-list {
+    gap: 10px;
+    width: 50%;
+  }
+}
+.footer .svg-icon {
+  fill: var(--primary-extra-light);
+}
+.footer .svg-icon:hover {
+  transition: 0.4s;
+  fill: var(--primary-light);
+}
+.footer__inst-icon {
+  width: 27px;
+  height: 27px;
+}
+.footer__fb-icon {
+  width: 17px;
+  height: 27px;
+}
+.footer__vk-icon {
+  width: 27px;
+  height: 27px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,24 +1,22 @@
 @use "../base/variables" as var;
-.contacts-window {
+.messengers-window {
     position: fixed;
     // background: var(--primary-color);
     background: transparent;
     opacity: 0.98;
     // height: 50px;
     width: 50px;
-    bottom: 20px;
+    bottom: 44px;
     right: 20px;
     z-index: 10;
     &__svg-icon {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         svg {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
         }
         &.phone {
-            width: 50px;
-            height: 50px;
             transform: rotate(0deg);
             &.phone--rotate {
                 transition: all 0.5s;
@@ -34,14 +32,14 @@
         height: 50px;
         // overflow: hidden;
     }
-    &-container {
+    &__links-container {
         display: flex;
         flex-direction: column;
         gap: 10px;
         position: absolute;
         bottom: 75px;
         transition: all 0.3s;
-        &.contacts-window--hidden {
+        &.messengers-window--hidden {
             bottom: -75px;
             right: 21px;
             transition: all 0.3s;
