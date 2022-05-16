@@ -254,6 +254,11 @@ button {
     font-size: 1.25rem;
   }
 }
+@media (max-width: 450px) {
+  .start-screen__title {
+    font-size: 0.75rem;
+  }
+}
 .start-screen__column-item {
   font-size: 1rem;
   font-weight: 300;
@@ -720,7 +725,6 @@ button {
 }
 .portfolio__container {
   grid-template-columns: repeat(24, 50px);
-  grid-template-rows: repeat(4, 50px);
   width: min-content;
   display: grid;
   margin: 0 auto;
@@ -745,11 +749,20 @@ button {
 }
 @media (max-width: 700px) {
   .portfolio__container {
-    width: auto;
-    grid-template-columns: repeat(12, 0.083fr);
+    width: 350px;
+    grid-template-columns: repeat(12, 25px);
   }
   .portfolio__container img {
-    width: 100%;
+    width: 150px;
+  }
+}
+@media (max-width: 350px) {
+  .portfolio__container {
+    width: 300px;
+    grid-template-columns: repeat(12, 20px);
+  }
+  .portfolio__container img {
+    width: 120px;
   }
 }
 .portfolio__container .g1-2 {
@@ -914,6 +927,11 @@ button {
 .contacts__form {
   width: 40%;
 }
+@media (max-width: 550px) {
+  .contacts__form {
+    width: 100%;
+  }
+}
 .contacts__email-input, .contacts__phone-input, .contacts__textarea {
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid var(--primary-light);
@@ -951,6 +969,11 @@ button {
   max-width: var(--max-width);
   padding: 0 120px;
   margin: 0 auto;
+}
+@media (max-width: 450px) {
+  .footer__container {
+    padding: 0 15px;
+  }
 }
 .footer__copyright, .footer__about-link {
   display: block;
