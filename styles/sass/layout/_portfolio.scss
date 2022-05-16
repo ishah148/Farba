@@ -38,6 +38,15 @@
         row-gap: calc(30px / var.$grid-ratio);
         column-gap: calc(30px / var.$grid-ratio);
         // gap: 15px;
+
+        // !experimental start !
+        height: -webkit-fill-available;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        // !  experimental end  !
         @media (max-width: var.$laptop-l) {
             grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
@@ -99,18 +108,15 @@
         }
     }
     &__card {
-        // width: 300px;
-        // height: 300px; // TODO REMOVE THIS!
+
         align-self: center;
         img {
             width: 100%; // TODO REMOVE THIS! discass with Vadim!
         }
         @media (max-width: var.$mobile-m) {
-            // width: 40%;
             img {
                 width: 100%;
             }
-            // width: fit-content;
         }
         img {
             @media (max-width: var.$tablet) {
