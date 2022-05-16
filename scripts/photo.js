@@ -43,7 +43,7 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
     // await checkStyle()
 
     setTimeout(() => { // ! Костыль
-        checkStyle(dataAtr)
+        // checkStyle(dataAtr)
     }, 1500); //TODO correct it shit!!!!!!!!!!!!
 }
 
@@ -62,7 +62,7 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" alt="">`;
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     elems.portfolioContainer.append(newCard)
 }
 
@@ -102,7 +102,39 @@ function checkStyle(dataAtr) {
     }
 }
 
+function addGridStyleOnload(id) {
 
+    card = document.getElementById(`${id}`)
+    // console.log(card)
+    // return
+    let imgH = card.naturalHeight
+    let imgW = card.naturalWidth
+    console.log('imgH',imgH)
+    // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
+        if(1){
+        if (imgW === 300 && imgH === 615) {
+            card.parentElement.classList.add("g1-2");
+        }
+        if (imgW === 615 && imgH === 300) {
+            card.parentElement.classList.add("g2-1");
+        }
+        if (imgW === 300 && imgH === 300 ) {
+            card.parentElement.classList.add("g1-1");
+        }
+        if (imgW === 615 && imgH === 615) {
+            card.parentElement.classList.add("g2-2");
+        }
+        if (imgW === 300 && imgH === 200) {
+            card.parentElement.classList.add("g1-0_66"); //1 0.66
+        }
+        if (imgW === 300 && imgH === 450) {
+            card.parentElement.classList.add("g1-1_5"); //1 0.66
+        }
+        if (imgW === 615 && imgH === 410) {
+            card.parentElement.classList.add("g2-1_5"); //1 0.66
+        }
+    }
+}
 
 
 const gridConfig = [
