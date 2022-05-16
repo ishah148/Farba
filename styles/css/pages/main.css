@@ -750,12 +750,6 @@ button {
   grid-auto-flow: row dense;
   row-gap: 5px;
   column-gap: 5px;
-  height: -webkit-fill-available;
-}
-.portfolio__container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 @media (max-width: 1440px) {
   .portfolio__container {
@@ -825,7 +819,13 @@ button {
   grid-row: span 9;
 }
 .portfolio__card {
+  height: -webkit-fill-available;
   align-self: center;
+}
+.portfolio__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .portfolio__card img {
   width: 100%;
