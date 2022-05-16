@@ -27,18 +27,21 @@ function switchPhotos(event) {
 function removeCards() {
     elems.getPortfolioCards().forEach(card => card.remove())
 }
-
-async function newCards(dataAtr) { //  dataAtr - our folder!!!
+//! async
+function newCards(dataAtr) { //  dataAtr - our folder!!!
     let max = 20; //TODO correct!
     if (dataAtr === 'portfolio') { max = 12 }
     if (dataAtr === 'jewerly' || dataAtr === 'furniture') { max = 43 }
     if( dataAtr === 'prams'){max = 42}
     if( dataAtr === 'technics'){max = 43}
     let temp = getRange(max)
-    
+    // stage 1
     for (let i = 1; i < max; i++) {
         createCard(dataAtr, temp[i]);
     }
+
+    // await checkStyle()
+
     setTimeout(() => { // ! Костыль
         checkStyle(dataAtr)
     }, 1500); //TODO correct it shit!!!!!!!!!!!!
