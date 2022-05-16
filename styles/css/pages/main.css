@@ -593,6 +593,12 @@ button {
   border-radius: 10px;
   background-color: #e1e2e1;
 }
+.burger-menu .burger-menu__svg {
+  margin-top: 50px;
+}
+.burger-menu .burger-menu__svg:hover {
+  fill: rgba(0, 0, 0, 0.5019607843);
+}
 
 .switch-lang {
   display: flex;
