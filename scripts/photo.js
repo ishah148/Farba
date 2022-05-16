@@ -40,11 +40,9 @@ function newCards(dataAtr) { //  dataAtr - our folder!!!
         createCard(dataAtr, temp[i]);
     }
 
-    // await checkStyle()
-
-    setTimeout(() => { // ! Костыль
+    // setTimeout(() => { // ! Костыль
         // checkStyle(dataAtr)
-    }, 1500); //TODO correct it shit!!!!!!!!!!!!
+    // }, 1500); //TODO correct it shit!!!!!!!!!!!!
 }
 
 function getRange(max) {
@@ -66,7 +64,7 @@ function createCard(dataAtr, page) {
     elems.portfolioContainer.append(newCard)
 }
 
-function checkStyle(dataAtr) {
+function checkStyle(dataAtr) { // TODO delete, old
     elems.getPortfolioCards().forEach(card => {
         addGridStyle(card, dataAtr)
     })
@@ -103,13 +101,9 @@ function checkStyle(dataAtr) {
 }
 
 function addGridStyleOnload(id) {
-
     card = document.getElementById(`${id}`)
-    // console.log(card)
-    // return
     let imgH = card.naturalHeight
     let imgW = card.naturalWidth
-    console.log('imgH',imgH)
     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
         if(1){
         if (imgW === 300 && imgH === 615) {
