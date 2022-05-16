@@ -734,6 +734,14 @@ button {
   padding: var(--padding-primary);
   gap: 20px;
 }
+@media (max-width: 768px) {
+  .portfolio .buttons-container {
+    gap: 12px;
+  }
+  .portfolio .buttons-container button {
+    width: 100px;
+  }
+}
 .portfolio__container {
   grid-template-columns: repeat(24, 50px);
   width: min-content;

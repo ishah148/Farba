@@ -19,6 +19,12 @@
         flex-wrap: wrap;
         padding: var(--padding-primary);
         gap: 20px;
+        @media (max-width: var.$tablet) {
+            gap: 12px;
+            button{
+                width: 100px;
+            }
+        }
     }
     &__container {
         // height: 1150px;
