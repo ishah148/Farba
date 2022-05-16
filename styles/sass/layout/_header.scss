@@ -18,13 +18,16 @@
         justify-content: space-around;
         align-items: center;
         @media (max-width: var.$tablet) {
-            height: 50px;
+            height: 30px;
         }
     }
 
     &__logo-img {
         width: 30px;
         border-radius: 50%;
+        @media (max-width: var.$tablet) {
+            width: 20px;
+        }
     }
 
     &__contacts{

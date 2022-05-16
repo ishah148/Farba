@@ -27,19 +27,22 @@ function switchPhotos(event) {
 function removeCards() {
     elems.getPortfolioCards().forEach(card => card.remove())
 }
-
+//! async
 function newCards(dataAtr) { //  dataAtr - our folder!!!
     let max = 20; //TODO correct!
     if (dataAtr === 'portfolio') { max = 12 }
     if (dataAtr === 'jewerly' || dataAtr === 'furniture') { max = 43 }
     if( dataAtr === 'prams'){max = 42}
+    if( dataAtr === 'technics'){max = 43}
     let temp = getRange(max)
+    // stage 1
     for (let i = 1; i < max; i++) {
         createCard(dataAtr, temp[i]);
     }
-    setTimeout(() => { // ! Костыль
-        checkStyle(dataAtr)
-    }, 1500); //TODO correct it shit!!!!!!!!!!!!
+
+    // setTimeout(() => { // ! Костыль
+        // checkStyle(dataAtr)
+    // }, 1500); //TODO correct it shit!!!!!!!!!!!!
 }
 
 function getRange(max) {
@@ -57,14 +60,15 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" alt="">`;
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     elems.portfolioContainer.append(newCard)
 }
 
-function checkStyle(dataAtr) {
+function checkStyle(dataAtr) { // TODO delete, old
     elems.getPortfolioCards().forEach(card => {
         addGridStyle(card, dataAtr)
     })
+
     function addGridStyle(card, dataAtr) {
         let imgH = card.querySelector('img').naturalHeight
         let imgW = card.querySelector('img').naturalWidth
@@ -96,7 +100,35 @@ function checkStyle(dataAtr) {
     }
 }
 
-
+function addGridStyleOnload(id) {
+    card = document.getElementById(`${id}`)
+    let imgH = card.naturalHeight
+    let imgW = card.naturalWidth
+    // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
+        if(1){
+        if (imgW === 300 && imgH === 615) {
+            card.parentElement.classList.add("g1-2");
+        }
+        if (imgW === 615 && imgH === 300) {
+            card.parentElement.classList.add("g2-1");
+        }
+        if (imgW === 300 && imgH === 300 ) {
+            card.parentElement.classList.add("g1-1");
+        }
+        if (imgW === 615 && imgH === 615) {
+            card.parentElement.classList.add("g2-2");
+        }
+        if (imgW === 300 && imgH === 200) {
+            card.parentElement.classList.add("g1-0_66"); //1 0.66
+        }
+        if (imgW === 300 && imgH === 450) {
+            card.parentElement.classList.add("g1-1_5"); //1 0.66
+        }
+        if (imgW === 615 && imgH === 410) {
+            card.parentElement.classList.add("g2-1_5"); //1 0.66
+        }
+    }
+}
 
 
 const gridConfig = [

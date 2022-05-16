@@ -122,6 +122,9 @@ button {
         @media (max-width: var.$laptop) {
             font-size: 1.25rem;
         }
+        @media (max-width: 450px) {
+            font-size: 0.75rem;
+        }
     }
     &__column-item {
         // color: #6f9898;
