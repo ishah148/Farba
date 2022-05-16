@@ -563,6 +563,11 @@ button {
     transition: 0.5s all;
   }
 }
+@media (max-width: 350px) {
+  .burger-menu {
+    width: 280px;
+  }
+}
 @media (max-width: 768px) {
   .burger-menu.visible {
     right: 0vw;
@@ -818,20 +823,20 @@ button {
   grid-column: span 6;
   grid-row: span 9;
 }
-.portfolio__card {
+.portfolio .portfolio__card {
   height: -webkit-fill-available;
   align-self: center;
 }
-.portfolio__card img {
+.portfolio .portfolio__card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.portfolio__card img {
+.portfolio .portfolio__card img {
   width: 100%;
 }
 @media (max-width: 576px) {
-  .portfolio__card img {
+  .portfolio .portfolio__card img {
     width: 100%;
   }
 }

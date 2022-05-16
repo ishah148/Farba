@@ -99,7 +99,8 @@
             grid-row: span var.$grid-ratio * 1.5;
         }
     }
-    &__card {
+    // &__card {
+    .portfolio__card {
         // !experimental start !
         height: -webkit-fill-available;
         img {

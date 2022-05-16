@@ -15,7 +15,9 @@
         opacity: 0.95;
         transition: 0.5s all;
     }
-
+    @media (max-width: 350px) {
+        width: 280px;
+    }
     &.visible {
         @media (max-width: 768px) {
             right: 0vw;
