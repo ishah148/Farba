@@ -353,12 +353,17 @@ button {
 }
 @media (max-width: 768px) {
   .header__container {
-    height: 50px;
+    height: 30px;
   }
 }
 .header__logo-img {
   width: 30px;
   border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .header__logo-img {
+    width: 20px;
+  }
 }
 @media (max-width: 768px) {
   .header__contacts {
@@ -762,7 +767,7 @@ button {
     width: 150px;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .portfolio__container {
     width: 300px;
     grid-template-columns: repeat(12, 20px);

@@ -31,6 +31,7 @@
         grid-auto-flow: row dense;
         row-gap: calc(30px / var.$grid-ratio);
         column-gap: calc(30px / var.$grid-ratio);
+        // gap: 15px;
         @media (max-width: var.$laptop-l) {
             grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
@@ -47,7 +48,7 @@
                 width: 150px;
             }
         }
-        @media (max-width: 350px) {
+        @media (max-width: 400px) {
             width: 300px;
             grid-template-columns: repeat(2 * var.$grid-ratio, 20px);
             img {
