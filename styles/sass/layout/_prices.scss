@@ -11,7 +11,8 @@
 
     &__cards-container {
         display: flex;
-        align-content: flex-start;
+        // align-content: flex-start;
+        align-items: center;
         justify-content: center;
         gap: 20px;
         @media (max-width: var.$laptop-m) {
@@ -26,10 +27,26 @@
     }
 
     &__card-wrapper {
-        height: 650px;
+        &:nth-child(1),
+        &:nth-child(3){
+            height: 600px;
+            border: 2px solid var(--primary-light);
+            &.hover {
+                transition: 0.5s;
+                border-color: var(--primary-gold);
+            }
+        }
+    
+        &:nth-child(2){
+            height: 625px;
+            border: 3px solid var(--primary-light);
+            &.hover {
+                transition: 0.5s;
+                border-color: var(--primary-gold);
+            }
+        }
         width: 380px;
         padding: 15px;
-        border: 2px solid var(--primary-light);
         border-radius: 5px;
         @media (max-width: var.$mobile-m) {
             // width: auto;
@@ -92,7 +109,7 @@
     margin: 0 auto;
     width: 70%;
     overflow: hidden;
-    max-height: 1000px; // ! transition depends on it
+    max-height: 1100px; // ! transition depends on it
     transition: max-height 0.3s ease-in; // ! if you change the time - you need to change the timeout in script
     &.invisible {
         transition: max-height 0.3s ease-in; 
@@ -102,16 +119,27 @@
     &__header,
     &__subheader,
     &__row {
-        padding: 25px 30px;
-        margin-bottom: 2px;
         display: flex;
         justify-content: space-between;
         border-radius: 3px;
         background-color: #95a5a6;
     }
 
+    &__header,
+    &__subheader {
+        padding: 15px 30px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+
+    &__subheader {
+        justify-content: center;
+    }
+
     &__row {
+        padding: 25px 30px;
         background-color: var(--primary-light);
+        margin-bottom: 2px;
     }
     &__col-1 {
         flex-basis: 60%;

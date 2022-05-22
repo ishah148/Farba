@@ -145,15 +145,6 @@ button {
     }
 }
 
-.prices {
-    &__card-wrapper {
-        &.hover {
-            transition: 0.5s;
-            border-color: var(--primary-gold);
-        }
-    }
-}
-
 .price-card {
     text-align: center;
     cursor: default;
@@ -203,6 +194,10 @@ button {
 
     &__col-2 {
         text-align: right;
+    }
+
+    &__subheader &__col-1{
+        text-align: center;
     }
 }
 
