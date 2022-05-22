@@ -159,6 +159,10 @@ button {
             transition: 0.5s;
             color: var(--primary-gold);
         }
+
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.9rem;
+        }
     }
 
     &__card-subtitle {
@@ -173,6 +177,9 @@ button {
     &__item-service {
         font-size: 0.68rem;
         font-style: italic;
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.55rem;
+        }
     }
 }
 

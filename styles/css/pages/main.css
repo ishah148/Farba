@@ -287,6 +287,11 @@ button {
   transition: 0.5s;
   color: var(--primary-gold);
 }
+@media (max-width: 1280px) {
+  .prices__card-title {
+    font-size: 0.9rem;
+  }
+}
 .prices__card-subtitle {
   font-size: 0.56rem;
   font-weight: 300;
@@ -297,6 +302,11 @@ button {
 .prices__item-service {
   font-size: 0.68rem;
   font-style: italic;
+}
+@media (max-width: 1280px) {
+  .prices__item-service {
+    font-size: 0.55rem;
+  }
 }
 
 /****************************/
@@ -607,7 +617,7 @@ button {
   margin-top: 50px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: rgba(0, 0, 0, 0.5019607843);
+  fill: #00000080;
 }
 
 .switch-lang {
@@ -888,7 +898,12 @@ button {
   justify-content: center;
   gap: 20px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
+  .prices__container {
+    gap: 10px;
+  }
+}
+@media (max-width: 1080px) {
   .prices__container {
     flex-direction: column;
     align-items: center;
@@ -896,15 +911,27 @@ button {
   }
 }
 .prices__card-wrapper {
-  height: 450px;
-  width: 300px;
-  padding: 20px;
+  height: 650px;
+  width: 380px;
+  padding: 15px;
   border: 2px solid var(--primary-light);
   border-radius: 5px;
 }
 @media (max-width: 576px) {
   .prices__card-wrapper {
     height: auto;
+  }
+}
+@media (max-width: 1280px) {
+  .prices__card-wrapper {
+    width: 320px;
+    height: 565px;
+    padding: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .prices__card-wrapper {
+    height: 500px;
   }
 }
 .prices__card {
@@ -925,10 +952,10 @@ button {
   margin-bottom: 25px;
 }
 .prices__price-tag {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 .prices__item-service {
-  margin-bottom: 6px;
+  margin-bottom: 14px;
 }
 .prices__button {
   margin: 0 auto;
@@ -962,6 +989,11 @@ button {
 }
 .contacts__form {
   width: 40%;
+}
+@media (max-width: 1024px) {
+  .contacts__form {
+    width: 60%;
+  }
 }
 @media (max-width: 550px) {
   .contacts__form {
@@ -1053,8 +1085,8 @@ button {
   width: 27px;
   height: 27px;
 }
-.footer__fb-icon {
-  width: 17px;
+.footer__vim-icon {
+  width: 27px;
   height: 27px;
 }
 .footer__vk-icon {
