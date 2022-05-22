@@ -999,6 +999,13 @@ button {
 .price-list {
   margin: 0 auto;
   width: 70%;
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 0.3s ease-in;
+}
+.price-list.invisible {
+  transition: max-height 0.3s ease-in;
+  max-height: 0px;
 }
 .price-list__header, .price-list__subheader, .price-list__row {
   padding: 25px 30px;
