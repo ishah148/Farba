@@ -1,5 +1,7 @@
 @use "../base";
 @use "../components";
+@use "../base/variables" as var;
+
 .contacts {
     width: 100%;
 
@@ -20,7 +22,7 @@
         display: flex;
         justify-content: center;
         gap: 5%;
-        @media (max-width: 1024px) {
+        @media (max-width: var.$laptop) {
             align-items: center;
             flex-direction: column;
         }
@@ -28,6 +30,11 @@
 
     &__form {
         width: 40%;
+
+        @media (max-width: var.$laptop) {
+            width: 60%;
+        }
+
         @media (max-width: 550px) {
             width: 100%;
         }

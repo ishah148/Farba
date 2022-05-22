@@ -43,6 +43,13 @@ button {
             color: var(--primary-color);
         }
     }
+
+    &--gold {
+        color: var(--primary-extra-dark);
+        &:hover {
+            color: var(--primary-dark);
+        }
+    }
 }
 
 .title-wrapper {
@@ -145,13 +152,13 @@ button {
             border-color: var(--primary-gold);
         }
     }
+}
 
-    &__card {
-        text-align: center;
-        cursor: default;
-    }
+.price-card {
+    text-align: center;
+    cursor: default;
 
-    &__card-title {
+    &__title {
         font-size: 1.25rem;
         font-weight: bold;
         color: var(--primary-light);
@@ -159,9 +166,13 @@ button {
             transition: 0.5s;
             color: var(--primary-gold);
         }
+
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.9rem;
+        }
     }
 
-    &__card-subtitle {
+    &__subtitle {
         font-size: 0.56rem;
         font-weight: 300;
     }
@@ -173,11 +184,29 @@ button {
     &__item-service {
         font-size: 0.68rem;
         font-style: italic;
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.55rem;
+        }
+    }
+}
+
+.price-list {
+    &__header {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__col-1 {
+        text-align: left;
+    }
+
+    &__col-2 {
+        text-align: right;
     }
 }
 
 /****************************/
-
 
 .contacts {
     &__email-input,
@@ -204,7 +233,6 @@ button {
     }
 }
 
-
 .footer {
     &__copyright {
         user-select: none;
@@ -213,15 +241,12 @@ button {
         color: var(--primary-extra-light);
     }
 
-    &__about-link{
-      line-height: 50px;
-      color: var(--primary-extra-light);
-      &:hover{
-        transition: 0.4s;
-        color: var(--primary-light);
-      }
+    &__about-link {
+        line-height: 50px;
+        color: var(--primary-extra-light);
+        &:hover {
+            transition: 0.4s;
+            color: var(--primary-light);
+        }
     }
 }
-
-
-
