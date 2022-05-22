@@ -156,11 +156,11 @@ const body = document.querySelector('body');
 
 
 function openFullSizePhoto(src) {
-    let newSrc = src.replace(/(..\/\w+\/\w+\/)(\w+)/, '$1$2__full');
+    let newSrc = src.replace(/(..\/\w+\/\w+\/)(\w+)/, '$1$2_full');
     console.log(newSrc)
 
     // modalWindow = createModalWindow(newSrc);
-    modalWindow = createModalWindow(src);
+    modalWindow = createModalWindow(newSrc);
     modalWindowWrapper.append(modalWindow);
     modalWindow.style.transition = 'transform 0.5s ease 0s';
     closeButton = modalWindow.querySelector(".modal-window__close-button");
@@ -176,12 +176,12 @@ function openFullSizePhoto(src) {
 
 
 function createModalWindow(src) {
-
+    console.log('===',src)
     let newWindow = document.createElement('div');
     newWindow.classList.add('modal-window');
     newWindow.innerHTML = `
         <img src='${src}' alt = ''>
-        <button class="modal-window__close-button">
+        <button class="modal-window__close-button">x
             <svg class="modal-window__svg-cross">
                 <use xlink:href="../assets/svg/sprite.svg#Vector"></use>
               </svg>
