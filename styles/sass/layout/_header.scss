@@ -7,7 +7,7 @@
     background-color:  var( --primary-dark);
     transition: all 0.5s;
     &--transparent{
-        background: rgba(111,111,111, 0.8);
+        background: rgba(111,111,111, 0.9);
     }
 
     &__container {
@@ -23,8 +23,8 @@
     }
 
     &__logo-img {
-        width: 30px;
-        border-radius: 50%;
+        width: 136px;
+        fill: white;
         @media (max-width: var.$tablet) {
             width: 20px;
         }

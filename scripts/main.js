@@ -36,7 +36,7 @@ priceListButton.addEventListener('click', () => {
         if (priceListButton.classList.contains('window-closed')) {
             priceList.classList.remove('invisible');
             priceListButton.classList.remove('window-closed');
-            priceListButton.innerHTML = 'Cкрыть прайс-лист';
+            priceListButton.innerHTML = 'Cкрыть прайс';
             setTimeout(() => {
                 const yOffset = -100;
                 const yPosition = priceList.getBoundingClientRect().top + window.pageYOffset + yOffset;
