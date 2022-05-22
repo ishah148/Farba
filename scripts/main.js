@@ -10,13 +10,13 @@ let laptopMinWidth = window.matchMedia("(min-width: 768px)");
 
 //price cards hover
 priceCards.forEach((card)=>{
-    card.querySelector('.prices__button').addEventListener('mouseover', ()=>{
+    card.querySelector('.price-card__button').addEventListener('mouseover', ()=>{
         card.classList.add('hover');
-        card.querySelector('.prices__card-title').classList.add('hover');
+        card.querySelector('.price-card__title').classList.add('hover');
     })
-    card.querySelector('.prices__button').addEventListener('mouseout', ()=>{
+    card.querySelector('.price-card__button').addEventListener('mouseout', ()=>{
         card.classList.remove('hover');
-        card.querySelector('.prices__card-title').classList.remove('hover');
+        card.querySelector('.price-card__title').classList.remove('hover');
     })
 })
 

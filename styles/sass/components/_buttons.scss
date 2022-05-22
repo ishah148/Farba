@@ -20,4 +20,13 @@
             background-color: var(--primary-gold);
         }
     }
+
+    &--gold {
+        // background-color: var(--primary-gold);
+        background-color: #bdae82; 
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-extra-light);
+        }
+    }
 }

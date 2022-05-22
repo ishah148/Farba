@@ -186,6 +186,12 @@ button {
 .default-button--dark:hover {
   color: var(--primary-color);
 }
+.default-button--gold {
+  color: var(--primary-extra-dark);
+}
+.default-button--gold:hover {
+  color: var(--primary-dark);
+}
 
 .title-wrapper__section-title {
   font-weight: bold;
@@ -274,39 +280,52 @@ button {
   transition: 0.5s;
   border-color: var(--primary-gold);
 }
-.prices__card {
+
+.price-card {
   text-align: center;
   cursor: default;
 }
-.prices__card-title {
+.price-card__title {
   font-size: 1.25rem;
   font-weight: bold;
   color: var(--primary-light);
 }
-.prices__card-title.hover {
+.price-card__title.hover {
   transition: 0.5s;
   color: var(--primary-gold);
 }
 @media (max-width: 1280px) {
-  .prices__card-title {
+  .price-card__title {
     font-size: 0.9rem;
   }
 }
-.prices__card-subtitle {
+.price-card__subtitle {
   font-size: 0.56rem;
   font-weight: 300;
 }
-.prices__price-tag {
+.price-card__price-tag {
   font-size: 0.875rem;
 }
-.prices__item-service {
+.price-card__item-service {
   font-size: 0.68rem;
   font-style: italic;
 }
 @media (max-width: 1280px) {
-  .prices__item-service {
+  .price-card__item-service {
     font-size: 0.55rem;
   }
+}
+
+.price-list__header {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.price-list__col-1 {
+  text-align: left;
+}
+.price-list__col-2 {
+  text-align: right;
 }
 
 /****************************/
@@ -513,6 +532,13 @@ button {
 .default-button--dark:hover {
   transition: 0.5s;
   background-color: var(--primary-gold);
+}
+.default-button--gold {
+  background-color: #bdae82;
+}
+.default-button--gold:hover {
+  transition: 0.5s;
+  background-color: var(--primary-extra-light);
 }
 
 .hamburger {
@@ -892,19 +918,19 @@ button {
   padding: 40px var(--padding-primary) 30px;
   margin: 0 auto;
 }
-.prices__container {
+.prices__cards-container {
   display: flex;
   align-content: flex-start;
   justify-content: center;
   gap: 20px;
 }
 @media (max-width: 1280px) {
-  .prices__container {
+  .prices__cards-container {
     gap: 10px;
   }
 }
 @media (max-width: 1080px) {
-  .prices__container {
+  .prices__cards-container {
     flex-direction: column;
     align-items: center;
     gap: 30px;
@@ -934,31 +960,83 @@ button {
     height: 500px;
   }
 }
-.prices__card {
+.prices__table-wrapper {
+  margin: 90px auto 50px auto;
+}
+.prices__price-list-button {
+  margin: 30px auto 0 auto;
+  width: 190px;
+  height: 55px;
+}
+
+.price-card {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 @media (max-width: 576px) {
-  .prices__card {
+  .price-card {
     gap: 30px;
   }
 }
-.prices__card-title {
+.price-card__title {
   margin-bottom: 5px;
 }
-.prices__card-subtitle {
+.price-card__subtitle {
   margin-bottom: 25px;
 }
-.prices__price-tag {
+.price-card__price-tag {
   margin-bottom: 30px;
 }
-.prices__item-service {
+.price-card__item-service {
   margin-bottom: 14px;
 }
-.prices__button {
+.price-card__button {
   margin: 0 auto;
+}
+
+.price-list {
+  margin: 0 auto;
+  width: 70%;
+}
+.price-list__header, .price-list__subheader, .price-list__row {
+  padding: 25px 30px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 3px;
+  background-color: #95a5a6;
+}
+.price-list__row {
+  background-color: var(--primary-light);
+}
+.price-list__col-1 {
+  flex-basis: 60%;
+}
+.price-list__col-2 {
+  flex-basis: 30%;
+}
+@media (max-width: 768px) {
+  .price-list {
+    width: 100%;
+  }
+  .price-list__header {
+    display: none;
+  }
+  .price-list__column {
+    flex-basis: 100%;
+  }
+  .price-list__column {
+    display: flex;
+    padding: 10px 0;
+  }
+  .price-list__column:before {
+    padding-right: 10px;
+    content: attr(data-label);
+    flex-basis: 50%;
+    text-align: right;
+  }
 }
 
 .contacts {
