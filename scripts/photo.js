@@ -8,7 +8,7 @@ const elems = {
 
 window.addEventListener('load', (event) => {
     // console.log(event)
-    newCards('furniture');
+    newCards('portfolio');
 })
 
 // *furniture
@@ -62,7 +62,7 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}_mini/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     newCard.addEventListener('click', (event) => {   // TODO повесеить на родителя, а не добавлять каждому элементу
         openFullSizePhoto(newCard.firstChild.getAttribute('src'));
     })
@@ -104,11 +104,23 @@ function checkStyle(dataAtr) { // TODO delete, old
     //     }
     // }
 }
-
-function addGridStyleOnload(id) {
-    card = document.getElementById(`${id}`)
+async function addGridStyleOnload(id, dataAtr, page) {
+    const card = document.getElementById(`${id}`)
+    card.removeAttribute('onload')
     let imgH = card.naturalHeight
     let imgW = card.naturalWidth
+    let img = new Image()
+
+    img.onload = function () {
+        card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+        // console.log(card.src)
+        console.dir(card)
+    }
+    img.onerror = function () {
+        console.log('error')
+    };
+    img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+
     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
     if (1) {
         if (imgW === 300 && imgH === 615) {
@@ -176,7 +188,7 @@ function openFullSizePhoto(src) {
 
 
 function createModalWindow(src) {
-    console.log('===',src)
+    console.log('===', src)
     let newWindow = document.createElement('div');
     newWindow.classList.add('modal-window__container');
     newWindow.innerHTML = `
