@@ -5,9 +5,17 @@ const elems = {
         return document.querySelectorAll('.portfolio__card');
     },
 }
+const configAtr = {
+    'portfolio': 86,
+    'furniture': 43,
+    'jewerly': 62,
+    'prams': 42,
+    'technics': 43,
+    'clothes': 30,
+}
 
 window.addEventListener('load', (event) => {
-    // console.log(event)
+    console.log(event)
     newCards('portfolio');
 })
 
@@ -18,7 +26,6 @@ elems.buttons.forEach(button => {
 })
 
 
-
 function switchPhotos(event) {
     removeCards()
     newCards(event.currentTarget.dataset.photo)
@@ -27,24 +34,13 @@ function switchPhotos(event) {
 function removeCards() {
     elems.getPortfolioCards().forEach(card => card.remove())
 }
-//! async
-function newCards(dataAtr) { //  dataAtr - our folder!!!
-    let max = 20; //TODO correct!
-    if (dataAtr === 'portfolio') { max = 86 }
-    if (dataAtr === 'furniture') { max = 43 }
-    if (dataAtr === 'jewerly') { max = 62 }
-    if (dataAtr === 'prams') { max = 42 }
-    if (dataAtr === 'technics') { max = 43 }
-    if (dataAtr === 'clothes') { max = 30 }
-    let temp = getRange(max)
-    // stage 1
-    for (let i = 1; i < max; i++) {
+
+function newCards(dataAtr) {
+    let temp = getRange(configAtr[dataAtr])
+    for (let i = 1; i < configAtr[dataAtr]; i++) {
         createCard(dataAtr, temp[i]);
     }
 
-    // setTimeout(() => { // ! Костыль
-    // checkStyle(dataAtr)
-    // }, 1500); //TODO correct it shit!!!!!!!!!!!!
 }
 
 function getRange(max) {
@@ -69,52 +65,15 @@ function createCard(dataAtr, page) {
     elems.portfolioContainer.append(newCard)
 }
 
-function checkStyle(dataAtr) { // TODO delete, old
-    elems.getPortfolioCards().forEach(card => {
-        addGridStyle(card, dataAtr)
-    })
-
-    // function addGridStyle(card, dataAtr) {
-    //     let imgH = card.querySelector('img').naturalHeight
-    //     let imgW = card.querySelector('img').naturalWidth
-
-    //     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
-    //     if (dataAtr) {
-    //         if (imgW === 300 && imgH === 615) {
-    //             card.classList.add("g1-2");
-    //         }
-    //         if (imgW === 615 && imgH === 300) {
-    //             card.classList.add("g2-1");
-    //         }
-    //         if (imgW === 300 && imgH === 300) {
-    //             card.classList.add("g1-1");
-    //         }
-    //         if (imgW === 615 && imgH === 615) {
-    //             card.classList.add("g2-2");
-    //         }
-    //         if (imgW === 300 && imgH === 200) {
-    //             card.classList.add("g1-0_66"); //1 0.66
-    //         }
-    //         if (imgW === 300 && imgH === 450) {
-    //             card.classList.add("g1-1_5"); //1 0.66
-    //         }
-    //         if (imgW === 615 && imgH === 410) {
-    //             card.classList.add("g2-1_5"); //1 0.66
-    //         }
-    //     }
-    // }
-}
 async function addGridStyleOnload(id, dataAtr, page) {
     const card = document.getElementById(`${id}`)
-    card.removeAttribute('onload')
+    card.removeAttribute('onload') // avoid loop!
     let imgH = card.naturalHeight
     let imgW = card.naturalWidth
     let img = new Image()
 
     img.onload = function () {
         card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-        // console.log(card.src)
-        console.dir(card)
     }
     img.onerror = function () {
         console.log('error')
@@ -148,65 +107,19 @@ async function addGridStyleOnload(id, dataAtr, page) {
 }
 
 
-const gridConfig = [
-    {
-        dataAtr: '',
 
-    },
-]
+//// function newCards(dataAtr) { //  dataAtr - our folder!!!
+//     // let max = 20; //TODO correct!
+//     // if (dataAtr === 'portfolio') { max = 86 }
+//     // if (dataAtr === 'furniture') { max = 43 }
+//     // if (dataAtr === 'jewerly') { max = 62 }
+//     // if (dataAtr === 'prams') { max = 42 }
+//     // if (dataAtr === 'technics') { max = 43 }
+//     // if (dataAtr === 'clothes') { max = 30 }
+////     let temp = getRange(configAtr[dataAtr])
+//     // stage 1
+////     for (let i = 1; i < configAtr[dataAtr]; i++) {
+////         createCard(dataAtr, temp[i]);
+////     }
 
-
-
-
-
-//////////////////////////////// !modal window //////////////////////////
-const modalWindowWrapper = document.querySelector(".modal-window__wrapper");
-let closeButton;
-let modalWindow;
-const body = document.querySelector('body');
-
-
-
-function openFullSizePhoto(src) {
-    let newSrc = src.replace(/(..\/\w+\/\w+\/)(\w+)/, '$1$2_full');
-    console.log(newSrc)
-
-    // modalWindow = createModalWindow(newSrc);
-    modalWindow = createModalWindow(newSrc);
-    modalWindowWrapper.append(modalWindow);
-    modalWindow.style.transition = 'transform 0.5s ease 0s';
-    closeButton = modalWindow.querySelector(".modal-window__close-button");
-    closeButton.addEventListener('click', () => {
-        closeModalWindow();
-    })
-    body.classList.add('stop-scrolling');
-    setTimeout(() => {
-        modalWindowWrapper.classList.add('visible');
-    }, 50);
-
-}
-
-
-function createModalWindow(src) {
-    console.log('===', src)
-    let newWindow = document.createElement('div');
-    newWindow.classList.add('modal-window__container');
-    newWindow.innerHTML = `
-        <img src='${src}' alt = ''>
-        <button class="modal-window__close-button">
-        
-        <svg class="modal-window__svg-cross">
-        <use xlink:href="../assets/svg/cross.svg#cross"></use>
-        </svg>
-        
-        </button>`
-    return newWindow;
-}
-
-
-function closeModalWindow() {
-    modalWindow.style.transition = 'none';
-    document.querySelector(".modal-window__container").remove();
-    body.classList.remove('stop-scrolling');
-    modalWindowWrapper.classList.remove('visible');
-}
+//// }
