@@ -74,35 +74,35 @@ function checkStyle(dataAtr) { // TODO delete, old
         addGridStyle(card, dataAtr)
     })
 
-    function addGridStyle(card, dataAtr) {
-        let imgH = card.querySelector('img').naturalHeight
-        let imgW = card.querySelector('img').naturalWidth
+    // function addGridStyle(card, dataAtr) {
+    //     let imgH = card.querySelector('img').naturalHeight
+    //     let imgW = card.querySelector('img').naturalWidth
 
-        // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
-        if (dataAtr) {
-            if (imgW === 300 && imgH === 615) {
-                card.classList.add("g1-2");
-            }
-            if (imgW === 615 && imgH === 300) {
-                card.classList.add("g2-1");
-            }
-            if (imgW === 300 && imgH === 300) {
-                card.classList.add("g1-1");
-            }
-            if (imgW === 615 && imgH === 615) {
-                card.classList.add("g2-2");
-            }
-            if (imgW === 300 && imgH === 200) {
-                card.classList.add("g1-0_66"); //1 0.66
-            }
-            if (imgW === 300 && imgH === 450) {
-                card.classList.add("g1-1_5"); //1 0.66
-            }
-            if (imgW === 615 && imgH === 410) {
-                card.classList.add("g2-1_5"); //1 0.66
-            }
-        }
-    }
+    //     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
+    //     if (dataAtr) {
+    //         if (imgW === 300 && imgH === 615) {
+    //             card.classList.add("g1-2");
+    //         }
+    //         if (imgW === 615 && imgH === 300) {
+    //             card.classList.add("g2-1");
+    //         }
+    //         if (imgW === 300 && imgH === 300) {
+    //             card.classList.add("g1-1");
+    //         }
+    //         if (imgW === 615 && imgH === 615) {
+    //             card.classList.add("g2-2");
+    //         }
+    //         if (imgW === 300 && imgH === 200) {
+    //             card.classList.add("g1-0_66"); //1 0.66
+    //         }
+    //         if (imgW === 300 && imgH === 450) {
+    //             card.classList.add("g1-1_5"); //1 0.66
+    //         }
+    //         if (imgW === 615 && imgH === 410) {
+    //             card.classList.add("g2-1_5"); //1 0.66
+    //         }
+    //     }
+    // }
 }
 
 function addGridStyleOnload(id) {
@@ -178,13 +178,15 @@ function openFullSizePhoto(src) {
 function createModalWindow(src) {
     console.log('===',src)
     let newWindow = document.createElement('div');
-    newWindow.classList.add('modal-window');
+    newWindow.classList.add('modal-window__container');
     newWindow.innerHTML = `
         <img src='${src}' alt = ''>
-        <button class="modal-window__close-button">x
-            <svg class="modal-window__svg-cross">
-                <use xlink:href="../assets/svg/sprite.svg#Vector"></use>
-              </svg>
+        <button class="modal-window__close-button">
+        
+        <svg class="modal-window__svg-cross">
+        <use xlink:href="../assets/svg/cross.svg#cross"></use>
+        </svg>
+        
         </button>`
     return newWindow;
 }
@@ -192,7 +194,7 @@ function createModalWindow(src) {
 
 function closeModalWindow() {
     modalWindow.style.transition = 'none';
-    document.querySelector(".modal-window").remove();
+    document.querySelector(".modal-window__container").remove();
     body.classList.remove('stop-scrolling');
     modalWindowWrapper.classList.remove('visible');
 }
