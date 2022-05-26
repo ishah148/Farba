@@ -22,29 +22,24 @@
             </div>
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__list-item" data-translate="portfolio">
-                        Портфолио
-                        <!-- TODO -->
-                        <!--- ЭТО ВЫЕЗЖАЮЩИЙ БЛОК !!!!!!!!!!-->
-                        <!-- ювелирка-->
-                        <!--Ювелирка  -->
-                        <!--Мебель  -->
-                        <!--Коляски-->
-                        <!--Бытовая техника  -->
-                        <!--Футболки  -->
-                        <!--Косметика-->
+                    <li class="menu__list-item">
+                        <a class="menu__link" href="#portfolio-section" data-translate="photo">Фото</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__link" href="#video-section" data-translate="video">Видео</a>
+                    </li>
+                    <li class="menu__list-item">
+                        <a class="menu__link" href="#" data-translate="">360°</a>
                     </li>
                     <li class="menu__list-item">
                         <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
                     </li>
-                    <!-- ссылки на текущую -->
                     <li class="menu__list-item">
-                        <a class="menu__link" data-translate="contacts">Контакты</a>
+                        <a class="menu__link" href="#contacts-section" data-translate="contacts">Контакты</a>
                     </li>
-                    <!-- ссылки на текущую -->
                 </ul>
             </nav>
-            <div class="header__contacts">+375 (29) 777-40-29</div>
+            <div class="header__contacts">+375 (29) 777-40-59</div>
             <!-- !burger  -->
             <div class="hamburger">
                 <div class="hamburger__line"></div>
@@ -61,29 +56,36 @@
     <!-- !main -->
     <main class="main">
         <div class="burger-menu">
+            <div class="switch-lang switch-lang--burger">
+                <button class="en" data-switch="en">en</button>
+                <span class="slash">/</span>
+                <button class="ru active" data-switch="ru">ru</button>
+            </div>
             <div class="burger-menu__logo">
                 <!-- <svg class="svg-icon burger-menu__svg" target="_blank">
                     <use xlink:href="../assets/svg/burger_sprite.svg#burger"></use>
                 </svg> -->
                 <img class="burger-menu__svg" src="../assets/images/Farba_logo_w.svg" alt="logo">
             </div>
+            <div class="burger-menu__contacts">+375 (29) 777-40-59</div>
             <nav class="burger-menu__content">
                 <ul class="burger-menu__list">
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" data-translate="portfolio">Портфолио</a>
+                        <a class="burger-menu__link" href="#portfolio-section" data-translate="photo">Фото</a>
                     </li>
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" href="#" data-translate="prices">Цены</a>
+                        <a class="burger-menu__link" href="#video-section" data-translate="video">Видео</a>
                     </li>
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" href="#" data-translate="contacts">Контакты</a>
+                        <a class="burger-menu__link" href="#" data-translate="">360°</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#price-section" data-translate="prices">Цены</a>
+                    </li>
+                    <li class="burger-menu__list-item">
+                        <a class="burger-menu__link" href="#contacts-section" data-translate="contacts">Контакты</a>
                     </li>
                 </ul>
-                <div class="switch-lang switch-lang--burger">
-                    <button class="en" data-switch="en">en</button>
-                    <span class="slash">/</span>
-                    <button class="ru active" data-switch="ru">ru</button>
-                </div>
             </nav>
         </div>
         <!-- !video -->
@@ -112,7 +114,7 @@
             </div>
         </section>
         <!-- !portfolio -->
-        <section class="portfolio">
+        <section class="portfolio" id="portfolio-section">
             <div class="portfolio__wrapper">
                 <div class="title-wrapper">
                     <h2 class="title-wrapper__section-title" data-translate="portfolio">
@@ -140,7 +142,7 @@
             </div>
         </section>
         <!-- !video -->
-        <section class="video">
+        <section class="video" id="video-section">
             <div class="title-wrapper">
                 <h2 class="title-wrapper__section-title" data-translate="video">
                     Видео
@@ -314,7 +316,7 @@
             </div>
         </section>
         <!-- !contacts -->
-        <section class="contacts">
+        <section class="contacts" id="contacts-section">
             <div class="contacts__container">
                 <div class="title-wrapper">
                     <h2 class="title-wrapper__section-title" data-translate="portfolio">
