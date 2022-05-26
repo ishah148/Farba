@@ -170,9 +170,16 @@ button {
   font-size: 0.6rem;
 }
 
+.modal-window__container,
+.switch-lang,
+.burger-menu__logo {
+  user-select: none;
+}
+
 .default-button {
   font-family: inherit;
   text-align: center;
+  user-select: none;
 }
 .default-button--light {
   color: var(--primary-color);
@@ -205,6 +212,12 @@ button {
 .header__contacts {
   font-size: 0.78rem;
 }
+.header__logo {
+  user-select: none;
+}
+.header .menu__list {
+  user-select: none;
+}
 
 .menu__list-item {
   cursor: pointer;
@@ -225,6 +238,10 @@ button {
 .burger-menu__link:hover {
   transition: 0.5s;
   color: var(--primary-gold);
+}
+.burger-menu__contacts {
+  text-align: center;
+  font-size: 0.78rem;
 }
 
 .slash {
@@ -610,9 +627,6 @@ button {
     right: 0vw;
   }
 }
-.burger-menu__logo {
-  margin-bottom: 60px;
-}
 .burger-menu__logo-img {
   margin: 0 auto;
   width: 71px;
@@ -623,7 +637,11 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
+}
+.burger-menu__contacts {
+  margin-top: 30px;
+  margin-bottom: 70px;
 }
 .burger-menu .list-item--active:after {
   transition: 0.5s;
@@ -666,9 +684,7 @@ button {
   border-bottom: 2px solid transparent;
 }
 .switch-lang--burger {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-left: 20px;
 }
 
 .slash {
@@ -737,25 +753,6 @@ button {
   width: 8px;
 }
 
-.modal-window {
-  justify-content: space-between;
-  position: absolute;
-  width: max-content;
-  max-height: 80vh;
-  background-color: var(--primary-light);
-  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-  border-radius: 1.2%;
-  transform: scale(0);
-  transition: transform 0.5s ease 0s;
-}
-.modal-window button {
-  height: 50px;
-  width: 50px;
-  background: red;
-  text-align: right;
-  color: red;
-  border-radius: 50%;
-}
 .modal-window__wrapper {
   justify-content: center;
   align-items: center;
@@ -764,44 +761,68 @@ button {
   height: 0;
   max-width: 100%;
   z-index: 30;
-  background-color: rgba(0, 0, 0, 0);
   -webkit-transition: background-color 0.5s ease;
   -moz-transition: background-color 0.5s ease;
   -o-transition: background-color 0.5s ease;
   transition: background-color 0.5s ease;
 }
-.modal-window__wrapper:hover .modal-window__close-button {
-  background-color: var(--primary);
+.modal-window__wrapper.visible .modal-window__container {
+  display: flex;
+  transform: scale(1);
 }
 .modal-window__wrapper.visible {
   width: 100vw;
   height: 100vh;
   display: flex;
+  padding: 10%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
 }
-.modal-window__wrapper.visible .modal-window {
-  display: flex;
-  transform: scale(1);
-}
-.modal-window__img {
+.modal-window__wrapper .modal-window__container {
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   border-radius: 1.2%;
+  transform: scale(0);
+  transition: transform 0.5s ease 0s;
 }
-.modal-window__close-button {
+.modal-window__wrapper .modal-window__container img {
+  display: block;
+  border-radius: 1.2%;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 8.25rem);
+  max-width: 100vw;
+  object-fit: contain;
+  align-self: center;
+}
+.modal-window__wrapper .modal-window__container .modal-window__close-button {
   top: -52px;
   right: -43px;
   position: absolute;
   transition: 0.5s;
 }
-.modal-window__svg-cross {
-  width: 12px;
-  height: 12px;
+@media (max-width: 768px) {
+  .modal-window__wrapper .modal-window__container .modal-window__close-button {
+    top: -32px;
+    right: -32px;
+  }
 }
-.modal-window:hover .modal-window__close-button {
-  background-color: transparent;
+.modal-window__wrapper .modal-window__container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: 0;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.6);
 }
-.modal-window__wrapper .modal-window__close-button:hover {
-  background-color: var(--primary);
+.modal-window__wrapper .modal-window__container button .modal-window__svg-cross {
+  width: 30%;
+  height: 30%;
+  fill: var(--primary-light);
 }
 
 .yandex-map {
