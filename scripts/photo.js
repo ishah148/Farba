@@ -1,10 +1,13 @@
 const elems = {
     buttons: document.querySelectorAll('.buttons-container__button'),
     portfolioContainer: document.querySelector('.portfolio__container'),
+    video:document.querySelector('video'),
+    source:document.querySelector('source'),
     getPortfolioCards: function () {
         return document.querySelectorAll('.portfolio__card');
     },
 }
+
 const configAtr = {
     'portfolio': 86,
     'furniture': 43,
@@ -18,6 +21,17 @@ window.addEventListener('load', (event) => {
     console.log(event)
     newCards('portfolio');
 })
+window.addEventListener('photoDowloaded', () => {
+    console.log('yeaaaaaaa');
+    const currentTime = elems.video.currentTime;
+    // elems.video.pause();
+    // let video = new Video()
+    elems.source.setAttribute('src', '../assets/video/video_hd.mp4');
+    elems.video.load();
+    elems.video.play();
+    // elems.video.currentTime = currentTime;
+})
+
 
 // *furniture
 //elems.buttons[0].dataset.photo
@@ -58,14 +72,24 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     newCard.addEventListener('click', (event) => {   // TODO повесеить на родителя, а не добавлять каждому элементу
         openFullSizePhoto(newCard.firstChild.getAttribute('src'));
     })
     elems.portfolioContainer.append(newCard)
 }
+let i = 1
+
+
 
 async function addGridStyleOnload(id, dataAtr, page) {
+    i++;
+    console.log()
+
+    if (i === configAtr[dataAtr]) {
+        console.log('done!')
+        window.dispatchEvent(new CustomEvent('photoDowloaded'))
+    }
     const card = document.getElementById(`${id}`)
     card.removeAttribute('onload') // avoid loop!
     let imgH = card.naturalHeight
