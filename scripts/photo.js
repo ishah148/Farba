@@ -58,7 +58,7 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement('div');
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}_mini/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
+    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     newCard.addEventListener('click', (event) => {   // TODO повесеить на родителя, а не добавлять каждому элементу
         openFullSizePhoto(newCard.firstChild.getAttribute('src'));
     })
@@ -73,12 +73,12 @@ async function addGridStyleOnload(id, dataAtr, page) {
     let img = new Image()
 
     img.onload = function () {
-        card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+        // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
     }
     img.onerror = function () {
         console.log('error')
     };
-    img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+    // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 
     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
     if (1) {
