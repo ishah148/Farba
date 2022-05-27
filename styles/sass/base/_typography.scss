@@ -1,0 +1,268 @@
+@use "./fonts";
+@use "../base/variables" as var;
+*,
+html,
+body {
+    font-family: "Montserrat";
+    font-size: 32px;
+    color: var(--primary-extra-light);
+}
+html {
+    @media (max-width: var.$tablet) {
+        font-size: 26px;
+    }
+    @media (max-width: var.$mobile-m) {
+        font-size: 22px;
+    }
+    @media (max-width: var.$mobile-s) {
+        font-size: 18px;
+    }
+}
+a,
+p,
+div,
+li,
+button {
+    font-size: 0.6rem;
+}
+
+.modal-window__container,
+.switch-lang,
+.burger-menu__logo {
+    user-select: none;
+}
+
+.default-button {
+    font-family: inherit;
+    text-align: center;
+    user-select: none;
+    &--light {
+        color: var(--primary-color);
+        &:hover {
+            color: var(--primary-extra-light);
+        }
+    }
+
+    &--dark {
+        color: var(--primary-extra-light);
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+    &--gold {
+        color: var(--primary-extra-dark);
+        &:hover {
+            color: var(--primary-dark);
+        }
+    }
+}
+
+.title-wrapper {
+    &__section-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+        text-align: center;
+        color: var(--primary-gold);
+        // color: var(--primary-extra-light);
+        cursor: default;
+    }
+}
+
+.header {
+    &__contacts {
+        font-size: 0.78rem;
+    }
+
+    &__logo {
+        user-select: none;
+    }
+
+    .menu {
+        &__list {
+            user-select: none;
+        }
+    }
+}
+
+.menu {
+    &__list-item {
+        cursor: pointer;
+    }
+
+    &__list-item:nth-child(1):hover,
+    &__link:hover {
+        transition: 0.3s;
+        color: var(--primary-light);
+    }
+}
+
+.burger-menu {
+    &__link {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 51px;
+        color: var(--primary-extra-light);
+        transition: 0.5s;
+        &:hover {
+            transition: 0.5s;
+            color: var(--primary-gold);
+        }
+    }
+
+    &__contacts {
+        text-align: center;
+        font-size: 0.78rem; //! переопределяется верхним правилом a,p,div,li,button {font-size: 0.6rem;}
+    }
+}
+
+.slash {
+    font-weight: 700;
+    color: var(--primary-extra-light);
+}
+
+.en,
+.ru {
+    color: var(--primary-extra-light);
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.en:hover,
+.ru:hover,
+.en.active,
+.ru.active {
+    color: var(--primary-gold);
+}
+
+/**************************************/
+
+.start-screen {
+    user-select: none;
+    &__title {
+        // color: #6f9898;
+        // color: var(--primary-gold);
+        font-size: 1.7rem;
+        font-weight: bold;
+        @media (max-width: var.$laptop) {
+            font-size: 1.25rem;
+        }
+        @media (max-width: 450px) {
+            font-size: 0.75rem;
+        }
+    }
+    &__column-item {
+        // color: #6f9898;
+        // color: var(--primary-gold);
+        font-size: 1rem;
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        @media (max-width: var.$tablet) {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.price-card {
+    text-align: center;
+    cursor: default;
+
+    &__title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: var(--primary-light);
+        &.hover {
+            transition: 0.5s;
+            color: var(--primary-gold);
+        }
+
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.9rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: 0.56rem;
+        font-weight: 300;
+    }
+
+    &__price-tag {
+        font-size: 0.875rem;
+    }
+
+    &__item-service {
+        font-size: 0.68rem;
+        font-style: italic;
+        @media (max-width: var.$laptop-m) {
+            font-size: 0.55rem;
+        }
+    }
+}
+
+.price-list {
+    &__header {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__col-1 {
+        text-align: left;
+    }
+
+    &__col-2 {
+        text-align: right;
+    }
+
+    &__subheader &__col-1{
+        text-align: center;
+    }
+}
+
+/****************************/
+
+.contacts {
+    &__email-input,
+    &__phone-input,
+    &__textarea {
+        font-family: inherit;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color: var(--primary-extra-light);
+    }
+
+    &__email-input::placeholder,
+    &__phone-input::placeholder,
+    &__textarea::placeholder {
+        font-family: inherit;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 40px;
+        color: var(--primary-extra-light);
+    }
+}
+
+.footer {
+    &__copyright {
+        user-select: none;
+        font-size: 20px;
+        line-height: 50px;
+        color: var(--primary-extra-light);
+    }
+
+    &__about-link {
+        line-height: 50px;
+        color: var(--primary-extra-light);
+        &:hover {
+            transition: 0.4s;
+            color: var(--primary-light);
+        }
+    }
+}

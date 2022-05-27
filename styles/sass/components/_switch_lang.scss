@@ -1,0 +1,40 @@
+@use "../base/variables" as var;
+.switch-lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70px;
+  height: 50px;
+
+  &--header {
+    @media (max-width: var.$tablet) {
+      display: none;
+    }
+    .ru,
+    .en {
+      border-bottom: 2px solid transparent;
+    }
+  }
+
+  &--burger {
+    margin-left: 20px;
+  }
+}
+
+.slash {
+  display: block;
+}
+
+.en,
+.ru {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  transition: 0.5s;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  &.active {
+    border-bottom: 2px solid var(--primary-gold);
+  }
+}

@@ -1,0 +1,51 @@
+@use "../base/variables" as var;
+.messengers-window {
+    position: fixed;
+    // background: var(--primary-color);
+    background: transparent;
+    opacity: 0.98;
+    // height: 50px;
+    width: 50px;
+    bottom: 44px;
+    right: 20px;
+    z-index: 10;
+    &__svg-icon {
+        width: 45px;
+        height: 45px;
+        svg {
+            width: 45px;
+            height: 45px;
+        }
+        &.phone {
+            transform: rotate(0deg);
+            &.phone--rotate {
+                transition: all 0.5s;
+                transform: rotate(-360deg);
+            }
+            &.phone--rotate-return {
+                transition: all 0.5s;
+                // transform: rotate(720deg);
+            }
+        }
+    }
+    &--hidden {
+        height: 50px;
+        // overflow: hidden;
+    }
+    &__links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        bottom: 75px;
+        transition: all 0.3s;
+        &.messengers-window--hidden {
+            bottom: -75px;
+            right: 21px;
+            transition: all 0.3s;
+            svg {
+                width: 8px;
+            }
+        }
+    }
+}

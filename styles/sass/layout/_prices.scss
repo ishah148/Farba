@@ -1,0 +1,173 @@
+@use "../base";
+@use "../components";
+@use "../base/variables" as var;
+
+.prices {
+    &__wrapper {
+        max-width: var(--max-width);
+        padding: 40px var(--padding-primary) 30px;
+        margin: 0 auto;
+    }
+
+    &__cards-container {
+        display: flex;
+        // align-content: flex-start;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        @media (max-width: var.$laptop-m) {
+            gap: 10px;
+        }
+        // @media (max-width: 1024px) {
+        @media (max-width: 1080px) {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+    }
+
+    &__card-wrapper {
+        &:nth-child(1),
+        &:nth-child(3){
+            height: 600px;
+            border: 2px solid var(--primary-light);
+            &.hover {
+                transition: 0.5s;
+                border-color: var(--primary-gold);
+            }
+        }
+    
+        &:nth-child(2){
+            height: 625px;
+            border: 3px solid var(--primary-light);
+            &.hover {
+                transition: 0.5s;
+                border-color: var(--primary-gold);
+            }
+        }
+        width: 380px;
+        padding: 15px;
+        border-radius: 5px;
+        @media (max-width: var.$mobile-m) {
+            // width: auto;
+            height: auto;
+        }
+
+        @media (max-width: var.$laptop-m) {
+            width: 320px;
+            height: 565px;
+            padding: 10px;
+        }
+
+        @media (max-width: var.$tablet) {
+            height: 500px;
+        }
+    }
+
+    &__table-wrapper {
+        margin: 90px auto 50px auto;
+    }
+
+    &__price-list-button {
+        margin: 30px auto 0 auto;
+        width: 190px;
+        height: 55px;
+    }
+}
+
+.price-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: var.$mobile-m) {
+        gap: 30px;
+    }
+
+    &__title {
+        margin-bottom: 5px;
+    }
+
+    &__subtitle {
+        margin-bottom: 25px;
+    }
+
+    &__price-tag {
+        margin-bottom: 30px;
+    }
+
+    &__item-service {
+        margin-bottom: 14px;
+    }
+
+    &__button {
+        margin: 0 auto;
+    }
+}
+
+.price-list {
+    margin: 0 auto;
+    width: 70%;
+    overflow: hidden;
+    max-height: 1100px; // ! transition depends on it
+    transition: max-height 0.3s ease-in; // ! if you change the time - you need to change the timeout in script
+    &.invisible {
+        transition: max-height 0.3s ease-in; 
+        max-height: 0px;
+    }
+
+    &__header,
+    &__subheader,
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 3px;
+        background-color: #95a5a6;
+    }
+
+    &__header,
+    &__subheader {
+        padding: 15px 30px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+
+    &__subheader {
+        justify-content: center;
+    }
+
+    &__row {
+        padding: 25px 30px;
+        background-color: var(--primary-light);
+        margin-bottom: 2px;
+    }
+    &__col-1 {
+        flex-basis: 60%;
+    }
+    &__col-2 {
+        flex-basis: 30%;
+    }
+
+    @media (max-width: var.$tablet) {
+        width: 100%;
+
+        &__header {
+            display: none;
+        }
+
+        &__column {
+            flex-basis: 100%;
+        }
+        &__column {
+            display: flex;
+            padding: 10px 0;
+            &:before {
+                
+                padding-right: 10px;
+                content: attr(data-label);
+                flex-basis: 50%;
+                text-align: right;
+            }
+        }
+    }
+}
