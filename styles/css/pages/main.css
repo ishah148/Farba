@@ -170,9 +170,16 @@ button {
   font-size: 0.6rem;
 }
 
+.modal-window__container,
+.switch-lang,
+.burger-menu__logo {
+  user-select: none;
+}
+
 .default-button {
   font-family: inherit;
   text-align: center;
+  user-select: none;
 }
 .default-button--light {
   color: var(--primary-color);
@@ -205,6 +212,12 @@ button {
 .header__contacts {
   font-size: 0.78rem;
 }
+.header__logo {
+  user-select: none;
+}
+.header .menu__list {
+  user-select: none;
+}
 
 .menu__list-item {
   cursor: pointer;
@@ -225,6 +238,10 @@ button {
 .burger-menu__link:hover {
   transition: 0.5s;
   color: var(--primary-gold);
+}
+.burger-menu__contacts {
+  text-align: center;
+  font-size: 0.78rem;
 }
 
 .slash {
@@ -610,9 +627,6 @@ button {
     right: 0vw;
   }
 }
-.burger-menu__logo {
-  margin-bottom: 60px;
-}
 .burger-menu__logo-img {
   margin: 0 auto;
   width: 71px;
@@ -623,7 +637,11 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
+}
+.burger-menu__contacts {
+  margin-top: 30px;
+  margin-bottom: 70px;
 }
 .burger-menu .list-item--active:after {
   transition: 0.5s;
@@ -646,7 +664,7 @@ button {
   width: 130px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: rgba(0, 0, 0, 0.5019607843);
+  fill: #00000080;
 }
 
 .switch-lang {
@@ -666,9 +684,7 @@ button {
   border-bottom: 2px solid transparent;
 }
 .switch-lang--burger {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-left: 20px;
 }
 
 .slash {
@@ -766,7 +782,6 @@ button {
   justify-content: space-between;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   border-radius: 1.2%;
   transform: scale(0);
   transition: transform 0.5s ease 0s;
