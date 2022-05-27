@@ -1,15 +1,15 @@
 const translateObj = {
     'en': {
-      'photo': 'Фото',
-      'video': 'Видео',
+      'photo': 'Photo',
+      'video': 'Video',
       'portfolio': 'Portfolio',
       'prices': 'Price',
       'contacts': 'Contacts',
       'title': 'We create content for marketplaces',
     },
     'ru': {
-      'photo': 'Photo',
-      'video': 'Video',
+      'photo': 'Фото',
+      'video': 'Видео',
       'portfolio': 'Портфолио',
       'prices': 'Цены',
       'contacts': 'Контакты',

@@ -26,6 +26,8 @@ button {
     font-size: 0.6rem;
 }
 
+.menu__list,
+.burger-menu__list,
 .modal-window__container,
 .switch-lang,
 .burger-menu__logo {
@@ -78,12 +80,6 @@ button {
     &__logo {
         user-select: none;
     }
-
-    .menu {
-        &__list {
-            user-select: none;
-        }
-    }
 }
 
 .menu {
@@ -121,6 +117,9 @@ button {
 .slash {
     font-weight: 700;
     color: var(--primary-extra-light);
+    @media (max-width: var.$tablet) {
+        font-size: 0.8rem;
+    }
 }
 
 .en,
