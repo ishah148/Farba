@@ -4,7 +4,7 @@
 html,
 body {
     font-family: "Montserrat";
-    font-size: 32px;
+    font-size: 28px;
     color: var(--primary-extra-light);
 }
 html {
@@ -18,14 +18,10 @@ html {
         font-size: 18px;
     }
 }
-a,
-p,
-div,
-li,
-button {
-    font-size: 0.6rem;
-}
 
+
+.menu__list,
+.burger-menu__list,
 .modal-window__container,
 .switch-lang,
 .burger-menu__logo {
@@ -73,22 +69,26 @@ button {
 .header {
     &__contacts {
         font-size: 0.78rem;
+        @media (max-width: var.$laptop) {
+            font-size: 0.6rem;
+        }
     }
 
     &__logo {
         user-select: none;
-    }
-
-    .menu {
-        &__list {
-            user-select: none;
-        }
     }
 }
 
 .menu {
     &__list-item {
         cursor: pointer;
+    }
+
+    &__link {
+        font-size: 0.8rem;
+        @media (max-width: var.$laptop) {
+            font-size: 0.6rem;
+        }
     }
 
     &__list-item:nth-child(1):hover,
@@ -114,13 +114,17 @@ button {
 
     &__contacts {
         text-align: center;
-        font-size: 0.78rem; //! переопределяется верхним правилом a,p,div,li,button {font-size: 0.6rem;}
+        font-size: 0.78rem;
     }
 }
 
 .slash {
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--primary-extra-light);
+    @media (max-width: var.$laptop) {
+        font-size: 0.6rem;
+    }
 }
 
 .en,
@@ -128,7 +132,11 @@ button {
     color: var(--primary-extra-light);
     font-weight: 700;
     font-family: inherit;
+    font-size: 0.8rem;
     cursor: pointer;
+    @media (max-width: var.$laptop) {
+        font-size: 0.6rem;
+    }
 }
 
 .en:hover,
