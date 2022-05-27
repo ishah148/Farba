@@ -1,5 +1,8 @@
 @use "./fonts";
 @use "../base/variables" as var;
+
+//!basic stiles
+
 *,
 html,
 body {
@@ -7,6 +10,7 @@ body {
     font-size: 28px;
     color: var(--primary-extra-light);
 }
+
 html {
     @media (max-width: var.$tablet) {
         font-size: 26px;
@@ -24,12 +28,17 @@ html {
 .burger-menu__list,
 .modal-window__container,
 .switch-lang,
-.burger-menu__logo {
+.burger-menu__logo,
+.yandex-map {
     user-select: none;
 }
 
+
+//!components styles 
+
 .default-button {
     font-family: inherit;
+    font-size: 0.7rem;
     text-align: center;
     user-select: none;
     &--light {
@@ -52,6 +61,10 @@ html {
             color: var(--primary-dark);
         }
     }
+
+    @media (max-width: var.$tablet) {
+        font-size: 0.6rem;
+    }
 }
 
 .title-wrapper {
@@ -65,6 +78,10 @@ html {
         cursor: default;
     }
 }
+
+
+
+// !layout styles
 
 .header {
     &__contacts {
@@ -257,15 +274,24 @@ html {
     }
 }
 
+.video {
+    .item {
+        &__text {
+            text-align: center;
+        }
+    }
+}
+
 .footer {
     &__copyright {
         user-select: none;
-        font-size: 20px;
+        font-size: 0.7rem;
         line-height: 50px;
         color: var(--primary-extra-light);
     }
 
     &__about-link {
+        font-size: 0.7rem;
         line-height: 50px;
         color: var(--primary-extra-light);
         &:hover {

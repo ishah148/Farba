@@ -1,20 +1,29 @@
 @use "../base/variables" as var;
+
 .messengers-window {
     position: fixed;
     // background: var(--primary-color);
     background: transparent;
     opacity: 0.98;
     // height: 50px;
-    width: 50px;
-    bottom: 44px;
+    width: fit-content;
+    bottom: 50px;
     right: 20px;
     z-index: 10;
     &__svg-icon {
         width: 45px;
         height: 45px;
+        @media (max-width: var.$tablet) {
+            width: 35px;
+            height: 35px;
+        }
         svg {
             width: 45px;
             height: 45px;
+            @media (max-width: var.$tablet) {
+                width: 35px;
+                height: 35px;
+            }
         }
         &.phone {
             transform: rotate(0deg);
@@ -29,8 +38,12 @@
         }
     }
     &--hidden {
-        height: 50px;
+        height: 45px;
         // overflow: hidden;
+        @media (max-width: var.$tablet) {
+            width: 35px;
+            height: 35px;
+        }
     }
     &__links-container {
         display: flex;
@@ -46,6 +59,10 @@
             svg {
                 width: 8px;
             }
+            @media (max-width: var.$tablet) {
+                right: -10px;
+            }
         }
     }
+    
 }
