@@ -1367,4 +1367,19 @@ body {
   font-size: 10px;
 }
 
+.td-wrapper {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 60px;
+  cursor: pointer;
+}
+.td-wrapper .block {
+  width: 150px;
+  height: 150px;
+  border: 1px solid green;
+  margin: 0 auto;
+}
+
 /*# sourceMappingURL=main.css.map */
