@@ -1345,4 +1345,26 @@ body {
   height: 27px;
 }
 
+#jpg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  z-index: 500;
+}
+#jpg span {
+  font-size: 10px;
+}
+
+#webp {
+  position: fixed;
+  bottom: 0;
+  left: 240px;
+  height: 20px;
+  z-index: 500;
+}
+#webp span {
+  font-size: 10px;
+}
+
 /*# sourceMappingURL=main.css.map */
