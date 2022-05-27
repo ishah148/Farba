@@ -142,7 +142,7 @@ span {
 html,
 body {
   font-family: "Montserrat";
-  font-size: 32px;
+  font-size: 28px;
   color: var(--primary-extra-light);
 }
 
@@ -160,14 +160,6 @@ body {
   html {
     font-size: 18px;
   }
-}
-
-a,
-p,
-div,
-li,
-button {
-  font-size: 0.6rem;
 }
 
 .menu__list,
@@ -214,12 +206,25 @@ button {
 .header__contacts {
   font-size: 0.78rem;
 }
+@media (max-width: 1024px) {
+  .header__contacts {
+    font-size: 0.6rem;
+  }
+}
 .header__logo {
   user-select: none;
 }
 
 .menu__list-item {
   cursor: pointer;
+}
+.menu__link {
+  font-size: 0.8rem;
+}
+@media (max-width: 1024px) {
+  .menu__link {
+    font-size: 0.6rem;
+  }
 }
 .menu__list-item:nth-child(1):hover, .menu__link:hover {
   transition: 0.3s;
@@ -244,12 +249,13 @@ button {
 }
 
 .slash {
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--primary-extra-light);
 }
 @media (max-width: 768px) {
   .slash {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -258,7 +264,14 @@ button {
   color: var(--primary-extra-light);
   font-weight: 700;
   font-family: inherit;
+  font-size: 0.8rem;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .en,
+.ru {
+    font-size: 0.6rem;
+  }
 }
 
 .en:hover,
@@ -410,7 +423,7 @@ button {
 }
 @media (max-width: 768px) {
   .header__logo-img {
-    width: 20px;
+    width: 100px;
   }
 }
 @media (max-width: 768px) {
@@ -423,7 +436,7 @@ button {
 }
 @media (max-width: 768px) {
   .header .menu {
-    width: 60%;
+    display: none;
   }
 }
 .header .menu__list {
