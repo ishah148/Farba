@@ -26,19 +26,32 @@ window.addEventListener('photoDowloaded', () => {
     const currentTime = elems.video.currentTime;
     // elems.video.pause();
     // let video = new Video()
-    elems.source.setAttribute('src', '../assets/video/video_hd.mp4');
+    elems.source.setAttribute('src', '../assets/video/video_fullHD_clip.mp4');
     elems.video.load();
     elems.video.play();
     // elems.video.currentTime = currentTime;
 })
 
 
-// *furniture
 //elems.buttons[0].dataset.photo
 elems.buttons.forEach(button => {
     button.onclick = switchPhotos;
 })
 
+document.getElementById('jpg').onclick = function (){
+    let reg = /\.\w+$/m
+    document.querySelectorAll('.portfolio__card img').forEach( img => img.src = img.src.replace(reg,'.jpg') )
+    if(document.querySelector('.modal-window__container img')){
+        document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.jpg')
+    }
+}
+document.getElementById('webp').onclick = function (){
+    let reg = /\.\w+$/m
+    document.querySelectorAll('.portfolio__card img').forEach( img => img.src = img.src.replace(reg,'.webp') )
+    if(document.querySelector('.modal-window__container img')){
+        document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.webp')
+    }
+}
 
 function switchPhotos(event) {
     removeCards()
@@ -84,8 +97,6 @@ let i = 1
 
 async function addGridStyleOnload(id, dataAtr, page) {
     i++;
-    console.log()
-
     if (i === configAtr[dataAtr]) {
         console.log('done!')
         window.dispatchEvent(new CustomEvent('photoDowloaded'))
@@ -94,14 +105,14 @@ async function addGridStyleOnload(id, dataAtr, page) {
     card.removeAttribute('onload') // avoid loop!
     let imgH = card.naturalHeight
     let imgW = card.naturalWidth
-    let img = new Image()
+    // let img = new Image()
 
-    img.onload = function () {
-        // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-    }
-    img.onerror = function () {
-        console.log('error')
-    };
+    // img.onload = function () {
+    //     // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+    // }
+    // img.onerror = function () {
+    //     console.log('error')
+    // };
     // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 
     // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
