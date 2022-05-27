@@ -26,10 +26,16 @@ button {
     font-size: 0.6rem;
 }
 
+.modal-window__container,
+.switch-lang,
+.burger-menu__logo {
+    user-select: none;
+}
+
 .default-button {
     font-family: inherit;
     text-align: center;
-
+    user-select: none;
     &--light {
         color: var(--primary-color);
         &:hover {
@@ -68,6 +74,16 @@ button {
     &__contacts {
         font-size: 0.78rem;
     }
+
+    &__logo {
+        user-select: none;
+    }
+
+    .menu {
+        &__list {
+            user-select: none;
+        }
+    }
 }
 
 .menu {
@@ -94,6 +110,11 @@ button {
             transition: 0.5s;
             color: var(--primary-gold);
         }
+    }
+
+    &__contacts {
+        text-align: center;
+        font-size: 0.78rem; //! переопределяется верхним правилом a,p,div,li,button {font-size: 0.6rem;}
     }
 }
 
