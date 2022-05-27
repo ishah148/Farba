@@ -13,12 +13,12 @@
     &__container {
         margin: 0 auto;
         max-width: var(--max-width);
-        height: 80px;
+        height: 65px;
         display: flex;
         justify-content: space-around;
         align-items: center;
         @media (max-width: var.$tablet) {
-            height: 30px;
+            height: 40px;
         }
     }
 
@@ -26,7 +26,7 @@
         width: 136px;
         fill: white;
         @media (max-width: var.$tablet) {
-            width: 20px;
+            width: 100px;
         }
     }
 
@@ -38,7 +38,7 @@
     .menu {
         width: 40%;
         @media (max-width:var.$tablet ) {
-            width: 60%;
+            display: none;
         }
         &__list {
             display: flex;
