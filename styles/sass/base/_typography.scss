@@ -114,7 +114,7 @@ html {
 
     &__contacts {
         text-align: center;
-        font-size: 0.78rem; //! переопределяется верхним правилом a,p,div,li,button {font-size: 0.6rem;}
+        font-size: 0.78rem;
     }
 }
 
@@ -122,7 +122,7 @@ html {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--primary-extra-light);
-    @media (max-width: var.$tablet) {
+    @media (max-width: var.$laptop) {
         font-size: 0.6rem;
     }
 }
@@ -134,7 +134,7 @@ html {
     font-family: inherit;
     font-size: 0.8rem;
     cursor: pointer;
-    @media (max-width: var.$tablet) {
+    @media (max-width: var.$laptop) {
         font-size: 0.6rem;
     }
 }

@@ -6,9 +6,13 @@
   width: 70px;
   height: 50px;
 
+  @media (max-width: var.$laptop) {
+    width: 55px;
+  }
+
   @media (max-width: var.$tablet) {
     height: 40px;
-}
+  }
 
   &--header {
     @media (max-width: var.$tablet) {

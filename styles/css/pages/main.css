@@ -253,7 +253,7 @@ body {
   font-weight: 700;
   color: var(--primary-extra-light);
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .slash {
     font-size: 0.6rem;
   }
@@ -267,7 +267,7 @@ body {
   font-size: 0.8rem;
   cursor: pointer;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .en,
 .ru {
     font-size: 0.6rem;
@@ -722,6 +722,11 @@ body {
   justify-content: space-between;
   width: 70px;
   height: 50px;
+}
+@media (max-width: 1024px) {
+  .switch-lang {
+    width: 55px;
+  }
 }
 @media (max-width: 768px) {
   .switch-lang {
