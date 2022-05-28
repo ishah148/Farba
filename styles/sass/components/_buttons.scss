@@ -1,7 +1,8 @@
+@use "../base/variables" as var;
 
 .default-button {
     width: 155px;
-    height: 40px;
+    height: 45px;
     border: 0;
     border-radius: 10px;
 
@@ -28,5 +29,10 @@
             transition: 0.5s;
             background-color: var(--primary-extra-light);
         }
+    }
+
+    @media (max-width: var.$mobile-s) {
+        width: 135px;
+        height: 35px;
     }
 }

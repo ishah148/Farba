@@ -133,7 +133,7 @@ span {
     --padding-primary: 20px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 768px) {
   :root {
     --padding-primary: 10px;
   }
@@ -166,12 +166,14 @@ body {
 .burger-menu__list,
 .modal-window__container,
 .switch-lang,
-.burger-menu__logo {
+.burger-menu__logo,
+.yandex-map {
   user-select: none;
 }
 
 .default-button {
   font-family: inherit;
+  font-size: 0.7rem;
   text-align: center;
   user-select: none;
 }
@@ -192,6 +194,11 @@ body {
 }
 .default-button--gold:hover {
   color: var(--primary-dark);
+}
+@media (max-width: 768px) {
+  .default-button {
+    font-size: 0.6rem;
+  }
 }
 
 .title-wrapper__section-title {
@@ -328,6 +335,11 @@ body {
     font-size: 0.9rem;
   }
 }
+@media (max-width: 576px) {
+  .price-card__title {
+    font-size: 1rem;
+  }
+}
 .price-card__subtitle {
   font-size: 0.56rem;
   font-weight: 300;
@@ -341,7 +353,12 @@ body {
 }
 @media (max-width: 1280px) {
   .price-card__item-service {
-    font-size: 0.55rem;
+    font-size: 0.6rem;
+  }
+}
+@media (max-width: 576px) {
+  .price-card__item-service {
+    font-size: 0.7rem;
   }
 }
 
@@ -371,21 +388,27 @@ body {
 }
 .contacts__email-input::placeholder, .contacts__phone-input::placeholder, .contacts__textarea::placeholder {
   font-family: inherit;
-  font-size: 20px;
+  font-size: 0.8rem;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 40px;
+  line-height: 1.5rem;
   color: var(--primary-extra-light);
+}
+
+.video .item__text {
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 150%;
 }
 
 .footer__copyright {
   user-select: none;
-  font-size: 20px;
+  font-size: 0.7rem;
   line-height: 50px;
   color: var(--primary-extra-light);
 }
 .footer__about-link {
+  font-size: 0.7rem;
   line-height: 50px;
   color: var(--primary-extra-light);
 }
@@ -550,7 +573,7 @@ body {
 
 .default-button {
   width: 155px;
-  height: 40px;
+  height: 45px;
   border: 0;
   border-radius: 10px;
 }
@@ -575,6 +598,12 @@ body {
   transition: 0.5s;
   background-color: var(--primary-extra-light);
 }
+@media (max-width: 320px) {
+  .default-button {
+    width: 135px;
+    height: 35px;
+  }
+}
 
 .hamburger {
   display: none;
@@ -587,7 +616,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 13px;
     right: 13px;
     cursor: pointer;
@@ -763,8 +792,8 @@ body {
   position: fixed;
   background: transparent;
   opacity: 0.98;
-  width: 50px;
-  bottom: 44px;
+  width: fit-content;
+  bottom: 50px;
   right: 20px;
   z-index: 10;
 }
@@ -772,9 +801,21 @@ body {
   width: 45px;
   height: 45px;
 }
+@media (max-width: 768px) {
+  .messengers-window__svg-icon {
+    width: 35px;
+    height: 35px;
+  }
+}
 .messengers-window__svg-icon svg {
   width: 45px;
   height: 45px;
+}
+@media (max-width: 768px) {
+  .messengers-window__svg-icon svg {
+    width: 35px;
+    height: 35px;
+  }
 }
 .messengers-window__svg-icon.phone {
   transform: rotate(0deg);
@@ -787,7 +828,13 @@ body {
   transition: all 0.5s;
 }
 .messengers-window--hidden {
-  height: 50px;
+  height: 45px;
+}
+@media (max-width: 768px) {
+  .messengers-window--hidden {
+    width: 35px;
+    height: 35px;
+  }
 }
 .messengers-window__links-container {
   display: flex;
@@ -804,6 +851,11 @@ body {
 }
 .messengers-window__links-container.messengers-window--hidden svg {
   width: 8px;
+}
+@media (max-width: 768px) {
+  .messengers-window__links-container.messengers-window--hidden {
+    right: -10px;
+  }
 }
 
 .modal-window__wrapper {
@@ -918,13 +970,26 @@ body {
   flex-wrap: wrap;
   padding: var(--padding-primary);
   gap: 20px;
+  width: 1120px;
+  margin: 0 auto;
+}
+@media (max-width: 1280px) {
+  .portfolio .buttons-container {
+    width: 700px;
+  }
 }
 @media (max-width: 768px) {
   .portfolio .buttons-container {
+    width: 400px;
     gap: 12px;
   }
   .portfolio .buttons-container button {
     width: 100px;
+  }
+}
+@media (max-width: 576px) {
+  .portfolio .buttons-container {
+    width: 265px;
   }
 }
 .portfolio__container {
@@ -1028,6 +1093,11 @@ body {
   margin: 0px auto;
   padding: 0px 15px;
 }
+@media (max-width: 576px) {
+  .video__container {
+    padding: 0px 5px;
+  }
+}
 .video__content {
   display: grid;
   gap: 20px;
@@ -1036,6 +1106,11 @@ body {
 @media (max-width: 576px) {
   .video__content {
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+}
+@media (max-width: 320px) {
+  .video__content {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 }
 
@@ -1051,10 +1126,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-}
-.item__text {
-  font-size: 18px;
-  line-height: 150%;
 }
 
 .prices__wrapper {
@@ -1093,6 +1164,21 @@ body {
   transition: 0.5s;
   border-color: var(--primary-gold);
 }
+@media (max-width: 1280px) {
+  .prices__card-wrapper:nth-child(1), .prices__card-wrapper:nth-child(3) {
+    height: 540px;
+  }
+}
+@media (max-width: 768px) {
+  .prices__card-wrapper:nth-child(1), .prices__card-wrapper:nth-child(3) {
+    height: 500px;
+  }
+}
+@media (max-width: 320px) {
+  .prices__card-wrapper:nth-child(1), .prices__card-wrapper:nth-child(3) {
+    min-height: 425px;
+  }
+}
 .prices__card-wrapper:nth-child(2) {
   height: 625px;
   border: 3px solid var(--primary-light);
@@ -1101,21 +1187,42 @@ body {
   transition: 0.5s;
   border-color: var(--primary-gold);
 }
-@media (max-width: 576px) {
-  .prices__card-wrapper {
-    height: auto;
+@media (max-width: 1280px) {
+  .prices__card-wrapper:nth-child(2) {
+    height: 590px;
+  }
+}
+@media (max-width: 1280px) {
+  .prices__card-wrapper:nth-child(2) {
+    height: 550px;
+  }
+}
+@media (max-width: 320px) {
+  .prices__card-wrapper:nth-child(2) {
+    min-height: 460px;
   }
 }
 @media (max-width: 1280px) {
   .prices__card-wrapper {
     width: 320px;
-    height: 565px;
     padding: 10px;
   }
 }
 @media (max-width: 768px) {
   .prices__card-wrapper {
+    width: 310px;
     height: 500px;
+  }
+}
+@media (max-width: 576px) {
+  .prices__card-wrapper {
+    width: 290px;
+  }
+}
+@media (max-width: 320px) {
+  .prices__card-wrapper {
+    width: 95%;
+    height: auto;
   }
 }
 .prices__table-wrapper {
@@ -1125,6 +1232,18 @@ body {
   margin: 30px auto 0 auto;
   width: 190px;
   height: 55px;
+}
+@media (max-width: 768px) {
+  .prices__price-list-button {
+    height: 45px;
+    width: 155px;
+  }
+}
+@media (max-width: 320px) {
+  .prices__price-list-button {
+    width: 135px;
+    height: 35px;
+  }
 }
 
 .price-card {
@@ -1270,9 +1389,25 @@ body {
   margin: 0px 0px 30px 0px;
   display: block;
 }
+.contacts__button {
+  width: 185px;
+  height: 60px;
+}
 @media (max-width: 1024px) {
   .contacts__button {
     margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  .contacts__button {
+    width: 165px;
+    height: 45px;
+  }
+}
+@media (max-width: 320px) {
+  .contacts__button {
+    width: 145px;
+    height: 35px;
   }
 }
 
@@ -1289,15 +1424,17 @@ body {
   padding: 0 120px;
   margin: 0 auto;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   .footer__container {
+    margin: 0px auto 0px 0px;
+    width: 80%;
     padding: 0 15px;
   }
 }
 .footer__copyright, .footer__about-link {
   display: block;
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .footer__copyright, .footer__about-link {
     width: 20%;
   }
@@ -1306,43 +1443,39 @@ body {
   margin-right: 25%;
   margin-left: 25%;
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .footer__about-us {
     margin-right: 7%;
     margin-left: 7%;
   }
 }
 .footer__links-list {
-  width: 200px;
+  width: 170px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .footer__links-list {
     gap: 10px;
     width: 50%;
   }
 }
-.footer .svg-icon {
+.footer__svg-icon {
+  width: 27px;
+  height: 27px;
   fill: var(--primary-extra-light);
 }
-.footer .svg-icon:hover {
+.footer__svg-icon:hover {
   transition: 0.4s;
   fill: var(--primary-light);
 }
-.footer__inst-icon {
-  width: 27px;
-  height: 27px;
-}
-.footer__vim-icon {
-  width: 27px;
-  height: 27px;
-}
-.footer__vk-icon {
-  width: 27px;
-  height: 27px;
+@media (max-width: 768px) {
+  .footer__svg-icon {
+    width: 17px;
+    height: 17px;
+  }
 }
 
 #jpg {

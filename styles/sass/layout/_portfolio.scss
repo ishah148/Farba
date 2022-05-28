@@ -19,11 +19,23 @@
         flex-wrap: wrap;
         padding: var(--padding-primary);
         gap: 20px;
+        width: 1120px;
+        margin: 0 auto;
+
+        @media (max-width: var.$laptop-m) {
+            width: 700px;
+        }
+
         @media (max-width: var.$tablet) {
+            width: 400px;
             gap: 12px;
             button {
                 width: 100px;
             }
+        }
+
+        @media (max-width: var.$mobile-m) {
+            width: 265px;
         }
     }
     &__container {

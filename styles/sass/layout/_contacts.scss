@@ -66,8 +66,20 @@
     }
 
     &__button {
-        @media (max-width: 1024px) {
+        width: 185px;
+        height: 60px;
+        @media (max-width: var.$laptop) {
             margin: 0 auto;
+        }
+
+        @media (max-width: var.$tablet) {
+            width: 165px;
+            height: 45px;
+        }
+
+        @media (max-width: var.$mobile-s) {
+            width: 145px;
+            height: 35px;
         }
     }
 }
