@@ -207,6 +207,10 @@ html {
         @media (max-width: var.$laptop-m) {
             font-size: 0.9rem;
         }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 1rem;
+        }
     }
 
     &__subtitle {
@@ -221,8 +225,13 @@ html {
     &__item-service {
         font-size: 0.68rem;
         font-style: italic;
+
         @media (max-width: var.$laptop-m) {
-            font-size: 0.55rem;
+            font-size: 0.6rem;
+        }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 0.7rem;
         }
     }
 }
@@ -265,11 +274,10 @@ html {
     &__phone-input::placeholder,
     &__textarea::placeholder {
         font-family: inherit;
-        font-size: 20px;
+        font-size: 0.8rem;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 40px;
+        line-height: 1.5rem;
         color: var(--primary-extra-light);
     }
 }
@@ -278,6 +286,8 @@ html {
     .item {
         &__text {
             text-align: center;
+            font-size: 0.8rem;
+            line-height: 150%;
         }
     }
 }
