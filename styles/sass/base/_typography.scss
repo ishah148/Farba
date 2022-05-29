@@ -237,10 +237,21 @@ html {
 }
 
 .price-list {
-    &__header {
-        font-size: 14px;
+    &__header &__column,
+    &__subheader &__column{
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
+        @media (max-width: var.$tablet) {
+            font-size: 0.7rem;
+        }
+    }
+
+    &__row &__column {
+        font-size: 0.7rem;
+        @media (max-width: var.$tablet) {
+            font-size: 0.6rem;
+        }
     }
 
     &__col-1 {

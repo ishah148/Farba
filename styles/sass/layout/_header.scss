@@ -20,6 +20,9 @@
         @media (max-width: var.$tablet) {
             height: 40px;
         }
+        @media (max-width: var.$mobile-m) {
+            height: 30px;
+        }
     }
 
     &__logo-img {
@@ -27,6 +30,9 @@
         fill: white;
         @media (max-width: var.$tablet) {
             width: 100px;
+        }
+        @media (max-width: var.$mobile-m) {
+            width: 75px;
         }
     }
 
