@@ -362,10 +362,23 @@ body {
   }
 }
 
-.price-list__header {
-  font-size: 14px;
+.price-list__header .price-list__column, .price-list__subheader .price-list__column {
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+@media (max-width: 768px) {
+  .price-list__header .price-list__column, .price-list__subheader .price-list__column {
+    font-size: 0.7rem;
+  }
+}
+.price-list__row .price-list__column {
+  font-size: 0.7rem;
+}
+@media (max-width: 768px) {
+  .price-list__row .price-list__column {
+    font-size: 0.6rem;
+  }
 }
 .price-list__col-1 {
   text-align: left;
@@ -1275,9 +1288,9 @@ body {
 
 .price-list {
   margin: 0 auto;
-  width: 70%;
+  width: 75%;
   overflow: hidden;
-  max-height: 1100px;
+  max-height: 1140px;
   transition: max-height 0.3s ease-in;
 }
 .price-list.invisible {
@@ -1289,11 +1302,27 @@ body {
   justify-content: space-between;
   border-radius: 3px;
   background-color: #95a5a6;
+  gap: 10%;
+}
+@media (max-width: 576px) {
+  .price-list__header, .price-list__subheader, .price-list__row {
+    gap: 3%;
+  }
 }
 .price-list__header, .price-list__subheader {
   padding: 15px 30px;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .price-list__header, .price-list__subheader {
+    padding: 10px 20px;
+  }
+}
+@media (max-width: 576px) {
+  .price-list__header, .price-list__subheader {
+    padding: 10px 10px;
+  }
 }
 .price-list__subheader {
   justify-content: center;
@@ -1301,7 +1330,17 @@ body {
 .price-list__row {
   padding: 25px 30px;
   background-color: var(--primary-light);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
+}
+@media (max-width: 768px) {
+  .price-list__row {
+    padding: 15px 20px;
+  }
+}
+@media (max-width: 576px) {
+  .price-list__row {
+    padding: 15px 10px;
+  }
 }
 .price-list__col-1 {
   flex-basis: 60%;
@@ -1311,23 +1350,12 @@ body {
 }
 @media (max-width: 768px) {
   .price-list {
-    width: 100%;
+    width: 85%;
   }
-  .price-list__header {
-    display: none;
-  }
-  .price-list__column {
-    flex-basis: 100%;
-  }
-  .price-list__column {
-    display: flex;
-    padding: 10px 0;
-  }
-  .price-list__column:before {
-    padding-right: 10px;
-    content: attr(data-label);
-    flex-basis: 50%;
-    text-align: right;
+}
+@media (max-width: 576px) {
+  .price-list {
+    width: 95%;
   }
 }
 
