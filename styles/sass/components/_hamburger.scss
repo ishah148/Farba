@@ -8,11 +8,14 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        position: absolute;
+        position: fixed;
         top: 13px;
         right: 13px;
         cursor: pointer;
         user-select: none;
+        @media (max-width: var.$mobile-m) {
+          top: 6px;
+      }
     }
 
     &__line {

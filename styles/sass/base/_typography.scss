@@ -1,5 +1,8 @@
 @use "./fonts";
 @use "../base/variables" as var;
+
+//!basic stiles
+
 *,
 html,
 body {
@@ -7,6 +10,7 @@ body {
     font-size: 28px;
     color: var(--primary-extra-light);
 }
+
 html {
     @media (max-width: var.$tablet) {
         font-size: 26px;
@@ -24,12 +28,17 @@ html {
 .burger-menu__list,
 .modal-window__container,
 .switch-lang,
-.burger-menu__logo {
+.burger-menu__logo,
+.yandex-map {
     user-select: none;
 }
 
+
+//!components styles 
+
 .default-button {
     font-family: inherit;
+    font-size: 0.7rem;
     text-align: center;
     user-select: none;
     &--light {
@@ -52,6 +61,10 @@ html {
             color: var(--primary-dark);
         }
     }
+
+    @media (max-width: var.$tablet) {
+        font-size: 0.6rem;
+    }
 }
 
 .title-wrapper {
@@ -65,6 +78,10 @@ html {
         cursor: default;
     }
 }
+
+
+
+// !layout styles
 
 .header {
     &__contacts {
@@ -190,6 +207,10 @@ html {
         @media (max-width: var.$laptop-m) {
             font-size: 0.9rem;
         }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 1rem;
+        }
     }
 
     &__subtitle {
@@ -204,17 +225,33 @@ html {
     &__item-service {
         font-size: 0.68rem;
         font-style: italic;
+
         @media (max-width: var.$laptop-m) {
-            font-size: 0.55rem;
+            font-size: 0.6rem;
+        }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 0.7rem;
         }
     }
 }
 
 .price-list {
-    &__header {
-        font-size: 14px;
+    &__header &__column,
+    &__subheader &__column{
+        font-size: 0.8rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
+        @media (max-width: var.$tablet) {
+            font-size: 0.7rem;
+        }
+    }
+
+    &__row &__column {
+        font-size: 0.7rem;
+        @media (max-width: var.$tablet) {
+            font-size: 0.6rem;
+        }
     }
 
     &__col-1 {
@@ -248,24 +285,34 @@ html {
     &__phone-input::placeholder,
     &__textarea::placeholder {
         font-family: inherit;
-        font-size: 20px;
+        font-size: 0.8rem;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 40px;
+        line-height: 1.5rem;
         color: var(--primary-extra-light);
+    }
+}
+
+.video {
+    .item {
+        &__text {
+            text-align: center;
+            font-size: 0.8rem;
+            line-height: 150%;
+        }
     }
 }
 
 .footer {
     &__copyright {
         user-select: none;
-        font-size: 20px;
+        font-size: 0.7rem;
         line-height: 50px;
         color: var(--primary-extra-light);
     }
 
     &__about-link {
+        font-size: 0.7rem;
         line-height: 50px;
         color: var(--primary-extra-light);
         &:hover {

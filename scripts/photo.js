@@ -18,18 +18,13 @@ const configAtr = {
 }
 
 window.addEventListener('load', (event) => {
-    console.log(event)
+
     newCards('portfolio');
 })
 window.addEventListener('photoDowloaded', () => {
-    console.log('yeaaaaaaa');
-    const currentTime = elems.video.currentTime;
-    // elems.video.pause();
-    // let video = new Video()
     elems.source.setAttribute('src', '../assets/video/video_fullHD_clip.mp4');
     elems.video.load();
     elems.video.play();
-    // elems.video.currentTime = currentTime;
 })
 
 
@@ -55,7 +50,9 @@ document.getElementById('webp').onclick = function (){
 
 function switchPhotos(event) {
     removeCards()
-    newCards(event.currentTarget.dataset.photo)
+    newCards(event.currentTarget.dataset.photo) 
+    // TODO remove !
+    debugClipboard()
 }
 
 function removeCards() {
@@ -98,7 +95,6 @@ let i = 1
 async function addGridStyleOnload(id, dataAtr, page) {
     i++;
     if (i === configAtr[dataAtr]) {
-        console.log('done!')
         window.dispatchEvent(new CustomEvent('photoDowloaded'))
     }
     const card = document.getElementById(`${id}`)
@@ -141,20 +137,15 @@ async function addGridStyleOnload(id, dataAtr, page) {
     }
 }
 
-
-
-//// function newCards(dataAtr) { //  dataAtr - our folder!!!
-//     // let max = 20; //TODO correct!
-//     // if (dataAtr === 'portfolio') { max = 86 }
-//     // if (dataAtr === 'furniture') { max = 43 }
-//     // if (dataAtr === 'jewerly') { max = 62 }
-//     // if (dataAtr === 'prams') { max = 42 }
-//     // if (dataAtr === 'technics') { max = 43 }
-//     // if (dataAtr === 'clothes') { max = 30 }
-////     let temp = getRange(configAtr[dataAtr])
-//     // stage 1
-////     for (let i = 1; i < configAtr[dataAtr]; i++) {
-////         createCard(dataAtr, temp[i]);
-////     }
-
-//// }
+function debugClipboard(){
+        // TODO delete: debug!!!
+        let a = []
+        document.querySelectorAll('.portfolio__container img').forEach(i => a.push(...i.src.match(/\w+_\d+/)))
+        let b = JSON.stringify(a)
+        // console.log(b)
+        let input = document.querySelector('.contacts__textarea')
+        input.textContent = b
+        input.select()
+        document.execCommand("copy");
+        // TODO 
+}
