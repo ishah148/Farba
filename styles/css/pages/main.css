@@ -453,6 +453,11 @@ body {
     height: 40px;
   }
 }
+@media (max-width: 576px) {
+  .header__container {
+    height: 30px;
+  }
+}
 .header__logo-img {
   width: 136px;
   fill: white;
@@ -460,6 +465,11 @@ body {
 @media (max-width: 768px) {
   .header__logo-img {
     width: 100px;
+  }
+}
+@media (max-width: 576px) {
+  .header__logo-img {
+    width: 75px;
   }
 }
 @media (max-width: 768px) {
@@ -634,6 +644,11 @@ body {
     right: 13px;
     cursor: pointer;
     user-select: none;
+  }
+}
+@media (max-width: 768px) and (max-width: 576px) {
+  .hamburger {
+    top: 6px;
   }
 }
 .hamburger__line {
@@ -878,7 +893,7 @@ body {
   width: 0;
   height: 0;
   max-width: 100%;
-  z-index: 30;
+  z-index: 100;
   -webkit-transition: background-color 0.5s ease;
   -moz-transition: background-color 0.5s ease;
   -o-transition: background-color 0.5s ease;
@@ -906,13 +921,9 @@ body {
 }
 .modal-window__wrapper .modal-window__container img {
   display: block;
-  border-radius: 1.2%;
   width: 100%;
-  height: 100%;
   max-height: calc(100vh - 8.25rem);
   max-width: 100vw;
-  object-fit: contain;
-  align-self: center;
 }
 .modal-window__wrapper .modal-window__container .modal-window__close-button {
   top: -52px;
@@ -926,6 +937,18 @@ body {
     right: -32px;
   }
 }
+.modal-window__wrapper .modal-window__container .modal-window__right-button {
+  bottom: -60px;
+  right: 35%;
+  position: absolute;
+  transition: 0.5s;
+}
+.modal-window__wrapper .modal-window__container .modal-window__left-button {
+  bottom: -60px;
+  left: 35%;
+  position: absolute;
+  transition: 0.5s;
+}
 .modal-window__wrapper .modal-window__container button {
   display: flex;
   justify-content: center;
@@ -935,12 +958,14 @@ body {
   border-radius: 50%;
   border: 0;
   backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--primary-extra-light);
 }
-.modal-window__wrapper .modal-window__container button .modal-window__svg-cross {
+.modal-window__wrapper .modal-window__container button .modal-window__cross,
+.modal-window__wrapper .modal-window__container button .modal-window__arrow-left,
+.modal-window__wrapper .modal-window__container button .modal-window__arrow-right {
   width: 30%;
   height: 30%;
-  fill: var(--primary-light);
+  fill: var(--primary-extra-dark);
 }
 
 .yandex-map {
