@@ -1,8 +1,16 @@
 import { hamburger, burgerMenuLinks, blackout, addMenu, closeMenu, burgerMenuListItems } from "./hamburger.js";
 import { switchLang, chooseLangButton } from "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
-const tg = new TelegramSendMessage("contacts-window__form", "contacts-window__form");
+const tg = new TelegramSendMessage("contacts-window__form");
 
+//message window
+const msgSelectors = [
+    ".contacts-window__container",".contacts-window__wrapper"
+]
+document.querySelector('.contacts-window__button').onclick = openMessageWindow;
+function openMessageWindow(){
+    msgSelectors.forEach(selector => document.querySelector(selector).classList.toggle('open'))
+} 
 // price cards hover
 let priceCards = document.querySelectorAll('.prices__card-wrapper');
 

@@ -1,52 +1,52 @@
-.contacts-window__wrapper {
-}
-.contacts-window__container {
-}
-.contacts-window__connect {
-}
-.contacts-window__h2 {
-}
-.contacts-window__icons-container {
-}
-.contacts-window__icon {
-}
-.contacts-window__phone-container {
-}
-.contacts-window__order-call {
-}
-.contacts-window__button-send {
-}
-.contacts-window__text-me {
-}
-.contacts-window__border {
-}
-.contacts-window__border-main {
-}
-.contacts-window__button {
-}
 
 $border-color: #f5f5f6;
 
 .contacts-window__wrapper {
     position: fixed;
-    width: 340px;
-    height: 555px;
+    width: 50px;
+    height: 50px;
     border: 1px solid black;
-    bottom: 0px;
-    right: 40px;
-    // background: transparent;
-    z-index: 10; //TODO check!
-    .contacts-window__container {
+    display: flex;
+    justify-content: center;
+    bottom: 10px;
+    right: 0px;
+    
+    transition: all 0.5s;
+    // transform: scale(0.01);
+    // z-index: -1;
+    &.open {
         z-index: 10; //TODO check!
+        transition: all 0.5s;
+        // width: 340px;
+        width: 100vw;
+        margin: 0 auto;
+        height: 555px;
+    }
+    .contacts-window__container {
         position: relative;
         background: #1c313a;
-        width: 340px;
-        height: 494px;
+        width: 0;
+        height: 0;
         padding: 40px 15px 0px 15px;
         border: 1px solid black;
         display: flex;
         flex-direction: column;
         gap: 30px;
+        transform: scale(0.1);
+        transition: all 0.5s;
+        overflow: hidden;
+        top: 90%;
+        left: 90%;
+        z-index: -1;
+        &.open {
+            z-index: 20; //TODO check!
+            top: 0;
+            left: 0;
+            transition: all 0.5s;
+            width: 340px;
+            height: 494px;
+            transform: scale(1);
+        }
         .contacts-window__h2 {
             text-align: center;
             font-size: 24px;
@@ -107,6 +107,7 @@ $border-color: #f5f5f6;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative;
             .contacts-window__border-main {
                 overflow: hidden;
                 width: 305px;
@@ -118,17 +119,29 @@ $border-color: #f5f5f6;
                 font-size: 20px;
                 text-align: center;
                 padding: 2px;
-            }
-            .contacts-window__border {
-                width: 283px;
-                height: 45px;
-                top: -39px;
-                left: 11px;
-                z-index: -1;
                 position: relative;
+
+            }
+            .contacts-window__decorate-border-container {
+            }
+
+            .contacts-window__border-test{
+                width: 283px;
+                height: 15px;
                 border: 2px solid white;
                 border-radius: 10px;
+                position: absolute;
+                &.decore--up{
+                    top: 40px;
+                    left: 10px;
+                }
+                &.decore--down{
+                    top: 72px;
+                    left: 10px;
+                }
+                // transform: translateY(-10px);
             }
+
         }
     }
     .contacts-window__button {
@@ -136,9 +149,47 @@ $border-color: #f5f5f6;
         height: 50px;
         border: 1px solid $border-color;
         border-radius: 50%;
+        position: absolute;
+        
         // align-self: flex-end;
         position: fixed;
-        right: 20px;
+        // top: 0;
+        right: 0px;
         bottom: 10px;
     }
 }
+
+
+
+            // .contacts-window__border {
+            //     display: none; // ! del
+            //     width: 283px;
+            //     height: 45px;
+            //     top: -39px;
+            //     left: 11px;
+            //     // z-index: -1;
+            //     position: relative;
+            //     border: 2px solid white;
+            //     border-radius: 10px;
+            // }
+
+                        // .contacts-window__border-test-down {
+            //     top: 10px;
+            //     width: 283px;
+            //     height: 15px;
+            //     border: 2px solid white;
+            //     border-radius: 10px;
+            //     top: -10px;
+            // }
+
+                            // &::before{
+                //     position: absolute;
+                //     content: '';
+                //     width: 283px;
+                //     height: 45px;
+                //     top: -8px;
+                //     left: 10px;
+                //     border: 2px solid red;
+                //     // z-index: -1;
+                //     border-radius: 10px;
+                // }

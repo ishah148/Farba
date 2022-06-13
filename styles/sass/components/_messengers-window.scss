@@ -1,6 +1,7 @@
 @use "../base/variables" as var;
 
 .messengers-window {
+    display: none;
     position: fixed;
     // background: var(--primary-color);
     background: transparent;

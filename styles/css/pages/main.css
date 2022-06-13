@@ -817,6 +817,7 @@ body {
 }
 
 .messengers-window {
+  display: none;
   position: fixed;
   background: transparent;
   opacity: 0.98;
@@ -993,24 +994,47 @@ body {
 
 .contacts-window__wrapper {
   position: fixed;
-  width: 340px;
-  height: 555px;
+  width: 50px;
+  height: 50px;
   border: 1px solid black;
-  bottom: 0px;
-  right: 40px;
+  display: flex;
+  justify-content: center;
+  bottom: 10px;
+  right: 0px;
+  transition: all 0.5s;
+}
+.contacts-window__wrapper.open {
   z-index: 10;
+  transition: all 0.5s;
+  width: 100vw;
+  margin: 0 auto;
+  height: 555px;
 }
 .contacts-window__wrapper .contacts-window__container {
-  z-index: 10;
   position: relative;
   background: #1c313a;
-  width: 340px;
-  height: 494px;
+  width: 0;
+  height: 0;
   padding: 40px 15px 0px 15px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  transform: scale(0.1);
+  transition: all 0.5s;
+  overflow: hidden;
+  top: 90%;
+  left: 90%;
+  z-index: -1;
+}
+.contacts-window__wrapper .contacts-window__container.open {
+  z-index: 20;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  width: 340px;
+  height: 494px;
+  transform: scale(1);
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__h2 {
   text-align: center;
@@ -1067,6 +1091,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border-main {
   overflow: hidden;
@@ -1079,24 +1104,31 @@ body {
   font-size: 20px;
   text-align: center;
   padding: 2px;
-}
-.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border {
-  width: 283px;
-  height: 45px;
-  top: -39px;
-  left: 11px;
-  z-index: -1;
   position: relative;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border-test {
+  width: 283px;
+  height: 15px;
   border: 2px solid white;
   border-radius: 10px;
+  position: absolute;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border-test.decore--up {
+  top: 40px;
+  left: 10px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border-test.decore--down {
+  top: 72px;
+  left: 10px;
 }
 .contacts-window__wrapper .contacts-window__button {
   width: 50px;
   height: 50px;
   border: 1px solid #f5f5f6;
   border-radius: 50%;
+  position: absolute;
   position: fixed;
-  right: 20px;
+  right: 0px;
   bottom: 10px;
 }
 
