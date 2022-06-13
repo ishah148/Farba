@@ -770,7 +770,7 @@ body {
   width: 130px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: #00000080;
+  fill: rgba(0, 0, 0, 0.5019607843);
 }
 
 .switch-lang {
@@ -989,6 +989,115 @@ body {
 .yandex-map #ymaps1651786334678464887 {
   width: 100%;
   aspect-ratio: 3/2;
+}
+
+.contacts-window__wrapper {
+  position: fixed;
+  width: 340px;
+  height: 555px;
+  border: 1px solid black;
+  bottom: 0px;
+  right: 40px;
+  z-index: 10;
+}
+.contacts-window__wrapper .contacts-window__container {
+  z-index: 10;
+  position: relative;
+  background: #1c313a;
+  width: 340px;
+  height: 494px;
+  padding: 40px 15px 0px 15px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__h2 {
+  text-align: center;
+  font-size: 24px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__connect {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__connect .contacts-window__icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__connect .contacts-window__phone-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid #f5f5f6;
+  gap: 10px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form {
+  font-size: 20px;
+  color: #989898;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form input {
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px;
+  height: 30px;
+  color: #000000;
+  border: none;
+  -moz-appearance: textfield;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__button-send {
+  color: white;
+  background: transparent;
+  text-decoration: none;
+  border: none;
+  align-self: center;
+  width: 218px;
+  border-bottom: 1px solid white;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border-main {
+  overflow: hidden;
+  width: 305px;
+  height: 33px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background: #1c313a;
+  text-align: center;
+  font-size: 20px;
+  text-align: center;
+  padding: 2px;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__text-me .contacts-window__border {
+  width: 283px;
+  height: 45px;
+  top: -39px;
+  left: 11px;
+  z-index: -1;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.contacts-window__wrapper .contacts-window__button {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #f5f5f6;
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
 }
 
 .portfolio__wrapper {
