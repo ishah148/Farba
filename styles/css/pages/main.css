@@ -77,6 +77,7 @@ span {
 }
 
 .blackout.visible {
+  backdrop-filter: blur(10px);
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -1010,12 +1011,12 @@ body {
   right: 0px;
   width: 100vw;
   height: 555px;
-  transition: all 0.5s;
+  transition: z-index 0.3s;
   overflow: hidden;
 }
 .contacts-window__wrapper.open {
-  z-index: 10;
-  transition: all 0.5s;
+  z-index: 20;
+  transition: z-index 0.3s;
   width: 100vw;
   height: 555px;
 }
@@ -1032,14 +1033,14 @@ body {
   background: #1c313a;
   border-radius: 20px;
   transform: scale(0.01);
-  transition: transform 0.3s, right 0.5s, bottom 0.5s;
+  transition: transform 0.3s, right 0.4s, bottom 0.4s;
 }
 .contacts-window__wrapper .contacts-window__container.open {
   position: absolute;
   z-index: 20;
   right: var(--right-msg-window);
   bottom: 60px;
-  transition: transform 0.3s, right 0.5s, bottom 0.5s;
+  transition: transform 0.3s, right 0.4s, bottom 0.4s;
   width: var(--msg-window-width);
   height: 494px;
   transform: scale(1);
