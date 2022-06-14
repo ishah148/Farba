@@ -10,7 +10,7 @@ const msgSelectors = [
 document.querySelector('.contacts-window__button').onclick = openMessageWindow;
 function openMessageWindow(){
     msgSelectors.forEach(selector => document.querySelector(selector).classList.toggle('open'))
-} 
+}
 // price cards hover
 let priceCards = document.querySelectorAll('.prices__card-wrapper');
 
