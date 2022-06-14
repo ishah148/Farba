@@ -17,7 +17,94 @@ const configAtr = {
     clothes: 30,
 };
 const orderPhotos = {
-    portfolio : ["99","55","31","34","4","46","77","53","27","68","33","57","75","3","70","84","65","24","39","48","16","28","22","44","19","17","71","50","21","79","81","38","36","9","5","29","80","58","49","52","83","60","12","59","47","15","69","82","85","7","32","78","43","64","74","8","35","72","18","11","61","63","51","2","62","37","1","54","41","67","26","40","10","66","20","23","86","6","45","56","76","13","42","14","25","30"]
+    portfolio: [
+        "99",
+        "55",
+        "31",
+        "34",
+        "4",
+        "46",
+        "77",
+        "53",
+        "27",
+        "68",
+        "33",
+        "57",
+        "75",
+        "3",
+        "70",
+        "84",
+        "65",
+        "24",
+        "39",
+        "48",
+        "16",
+        "28",
+        "22",
+        "44",
+        "19",
+        "17",
+        "71",
+        "50",
+        "21",
+        "79",
+        "81",
+        "38",
+        "36",
+        "9",
+        "5",
+        "29",
+        "80",
+        "58",
+        "49",
+        "52",
+        "83",
+        "60",
+        "12",
+        "59",
+        "47",
+        "15",
+        "69",
+        "82",
+        "85",
+        "7",
+        "32",
+        "78",
+        "43",
+        "64",
+        "74",
+        "8",
+        "35",
+        "72",
+        "18",
+        "11",
+        "61",
+        "63",
+        "51",
+        "2",
+        "62",
+        "37",
+        "1",
+        "54",
+        "41",
+        "67",
+        "26",
+        "40",
+        "10",
+        "66",
+        "20",
+        "23",
+        "86",
+        "6",
+        "45",
+        "56",
+        "76",
+        "13",
+        "42",
+        "14",
+        "25",
+        "30",
+    ],
 };
 
 window.addEventListener("load", (event) => {
@@ -47,11 +134,12 @@ function removeCards() {
 
 function newCards(dataAtr) {
     let temp = getRange(configAtr[dataAtr]);
-    if(orderPhotos[dataAtr]){ // adaptive to orderPhotos array
-        temp = orderPhotos[dataAtr].map(i => +i)
-        console.log('newTemp' + temp)
+    if (orderPhotos[dataAtr]) {
+        // adaptive to orderPhotos array
+        temp = orderPhotos[dataAtr].map((i) => +i);
+        console.log("newTemp" + temp);
     }
-    console.log(temp)
+    console.log(temp);
     for (let i = 1; i < configAtr[dataAtr]; i++) {
         createCard(dataAtr, temp[i]);
     }
@@ -99,31 +187,49 @@ async function addGridStyleOnload(id, dataAtr, page) {
     //     console.log('error')
     // };
     // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+    const configGridStyles = [
+        {
+            width: 300,
+            height: 615,
+            class: "g1-2",
+        },
+        {
+            width: 615,
+            height: 300,
+            class: "g2-1",
+        },
+        {
+            width: 300,
+            height: 300,
+            class: "g1-1",
+        },
+        {
+            width: 615,
+            height: 615,
+            class: "g2-2",
+        },
+        {
+            width: 300,
+            height: 200,
+            class: "g1-0_66",
+        },
+        {
+            width: 300,
+            height: 450,
+            class: "g1-1_5",
+        },
+        {
+            width: 615,
+            height: 410,
+            class: "g2-1_5",
+        },
+    ];
+    configGridStyles.forEach((config) => {
+        if (imgW === config.width && imgH === config.height) {
+            card.parentElement.classList.add(config.class);
+        }
+    });
 
-    // if (dataAtr === 'furniture' || dataAtr === 'prams') { // TODO return this
-    if (1) {
-        if (imgW === 300 && imgH === 615) {
-            card.parentElement.classList.add("g1-2");
-        }
-        if (imgW === 615 && imgH === 300) {
-            card.parentElement.classList.add("g2-1");
-        }
-        if (imgW === 300 && imgH === 300) {
-            card.parentElement.classList.add("g1-1");
-        }
-        if (imgW === 615 && imgH === 615) {
-            card.parentElement.classList.add("g2-2");
-        }
-        if (imgW === 300 && imgH === 200) {
-            card.parentElement.classList.add("g1-0_66"); //1 0.66
-        }
-        if (imgW === 300 && imgH === 450) {
-            card.parentElement.classList.add("g1-1_5"); //1 0.66
-        }
-        if (imgW === 615 && imgH === 410) {
-            card.parentElement.classList.add("g2-1_5"); //1 0.66
-        }
-    }
 }
 
 function debugClipboard() {
@@ -154,3 +260,4 @@ function debugClipboard() {
     //     }
     // }
 }
+

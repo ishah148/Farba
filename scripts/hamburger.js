@@ -2,9 +2,10 @@
 export const hamburger = document.querySelector('.hamburger');
 export const burgerMenuLinks = document.querySelectorAll('.burger-menu__link')
 export const blackout = document.querySelector('.blackout');
+export const burgerMenuListItems = document.querySelectorAll('.burger-menu__list-item'); // TODO add this to obj and use {}
+
 const burgerMenu = document.querySelector('.burger-menu');
 const body = document.querySelector('body');
-export const burgerMenuListItems = document.querySelectorAll('.burger-menu__list-item');
 
 
 export function addMenu() {

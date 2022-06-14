@@ -11,6 +11,7 @@ import TelegramSendMessage from "./tg_bot.js";
 const tg = new TelegramSendMessage("contacts-window__form");
 
 //message window
+function messageWindowEvents(){}
 const msgSelectors = [
     ".contacts-window__container",
     ".contacts-window__wrapper",
@@ -22,7 +23,9 @@ function openMessageWindow() {
         document.querySelector(selector).classList.toggle("open")
     );
     blackout.classList.toggle("visible");
-    document.querySelector(".contacts-window__wrapper").addEventListener('click',closeMessageWindow)
+    document.querySelector(".contacts-window__wrapper").addEventListener('click',(e)=>{
+            if(e.target.classList.contains('contacts-window__wrapper')) closeMessageWindow()
+    })
 }
 function closeMessageWindow(){
     msgSelectors.forEach((selector) =>
@@ -31,6 +34,7 @@ function closeMessageWindow(){
     blackout.classList.remove("visible");
     document.querySelector(".contacts-window__wrapper").removeEventListener('click',closeMessageWindow)
 }
+
 // price cards hover
 let priceCards = document.querySelectorAll(".prices__card-wrapper");
 
