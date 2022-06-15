@@ -1,3 +1,18 @@
+let configAtr;
+let orderPhotos;
+let configGridStyles;
+(async function () {
+    const module = await import('./photo_config.js');
+    console.log(module)
+    // console.log('test',module.configAtr)
+    window.addEventListener("load", () => {
+        newCards("portfolio");
+    });
+    configAtr =  module.configAtr;
+    orderPhotos = module.orderPhotos;
+    configGridStyles = module.configGridStyles;
+}());
+
 const elems = {
     buttons: document.querySelectorAll(".buttons-container__button"),
     portfolioContainer: document.querySelector(".portfolio__container"),
@@ -7,119 +22,26 @@ const elems = {
         return document.querySelectorAll(".portfolio__card");
     },
 };
+function galeryEventsInit(){
+    window.addEventListener("photoDowloaded", () => {
+        elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+        elems.video.load();
+        elems.video.play();
+    });
+    elems.buttons.forEach((button) => {
+        button.onclick = switchPhotos;
+    });
+    elems.portfolioContainer.addEventListener("click", (e) => {
+        // TODO повесил на родителя
+        console.log('target',e.target.src)
+        // console.log('=>',newCard.firstChild.getAttribute("src"))
+        openFullSizePhoto(e.target.src);
+    });
+}
+galeryEventsInit()
 
-const configAtr = {
-    portfolio: 86,
-    furniture: 43,
-    jewerly: 62,
-    prams: 42,
-    technics: 43,
-    clothes: 30,
-};
-const orderPhotos = {
-    portfolio: [
-        "99",
-        "55",
-        "31",
-        "34",
-        "4",
-        "46",
-        "77",
-        "53",
-        "27",
-        "68",
-        "33",
-        "57",
-        "75",
-        "3",
-        "70",
-        "84",
-        "65",
-        "24",
-        "39",
-        "48",
-        "16",
-        "28",
-        "22",
-        "44",
-        "19",
-        "17",
-        "71",
-        "50",
-        "21",
-        "79",
-        "81",
-        "38",
-        "36",
-        "9",
-        "5",
-        "29",
-        "80",
-        "58",
-        "49",
-        "52",
-        "83",
-        "60",
-        "12",
-        "59",
-        "47",
-        "15",
-        "69",
-        "82",
-        "85",
-        "7",
-        "32",
-        "78",
-        "43",
-        "64",
-        "74",
-        "8",
-        "35",
-        "72",
-        "18",
-        "11",
-        "61",
-        "63",
-        "51",
-        "2",
-        "62",
-        "37",
-        "1",
-        "54",
-        "41",
-        "67",
-        "26",
-        "40",
-        "10",
-        "66",
-        "20",
-        "23",
-        "86",
-        "6",
-        "45",
-        "56",
-        "76",
-        "13",
-        "42",
-        "14",
-        "25",
-        "30",
-    ],
-};
-
-window.addEventListener("load", (event) => {
-    newCards("portfolio");
-});
-window.addEventListener("photoDowloaded", () => {
-    elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
-    elems.video.load();
-    elems.video.play();
-});
 
 //elems.buttons[0].dataset.photo
-elems.buttons.forEach((button) => {
-    button.onclick = switchPhotos;
-});
 
 function switchPhotos(event) {
     removeCards();
@@ -160,15 +82,21 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement("div");
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" id = "${dataAtr}_${page}-img" onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
-    newCard.addEventListener("click", (event) => {
-        // TODO повесеить на родителя, а не добавлять каждому элементу
-        openFullSizePhoto(newCard.firstChild.getAttribute("src"));
-    });
+    newCard.innerHTML = 
+        `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" 
+        id = "${dataAtr}_${page}-img" 
+        onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" 
+        alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
+    // newCard.addEventListener("click", (e) => {
+    //     // TODO повесеить на родителя, а не добавлять каждому элементу
+    //     console.log('target',e.target.src)
+    //     console.log('=>',newCard.firstChild.getAttribute("src"))
+    //     openFullSizePhoto(newCard.firstChild.getAttribute("src"));
+    // });
     elems.portfolioContainer.append(newCard);
 }
-let i = 1;
 
+let i = 1;
 async function addGridStyleOnload(id, dataAtr, page) {
     i++;
     if (i === configAtr[dataAtr]) {
@@ -178,58 +106,11 @@ async function addGridStyleOnload(id, dataAtr, page) {
     card.removeAttribute("onload"); // avoid loop!
     let imgH = card.naturalHeight;
     let imgW = card.naturalWidth;
-    // let img = new Image()
-
-    // img.onload = function () {
-    //     // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-    // }
-    // img.onerror = function () {
-    //     console.log('error')
-    // };
-    // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-    const configGridStyles = [
-        {
-            width: 300,
-            height: 615,
-            class: "g1-2",
-        },
-        {
-            width: 615,
-            height: 300,
-            class: "g2-1",
-        },
-        {
-            width: 300,
-            height: 300,
-            class: "g1-1",
-        },
-        {
-            width: 615,
-            height: 615,
-            class: "g2-2",
-        },
-        {
-            width: 300,
-            height: 200,
-            class: "g1-0_66",
-        },
-        {
-            width: 300,
-            height: 450,
-            class: "g1-1_5",
-        },
-        {
-            width: 615,
-            height: 410,
-            class: "g2-1_5",
-        },
-    ];
     configGridStyles.forEach((config) => {
         if (imgW === config.width && imgH === config.height) {
             card.parentElement.classList.add(config.class);
         }
     });
-
 }
 
 function debugClipboard() {
@@ -244,7 +125,21 @@ function debugClipboard() {
     input.textContent = b;
     input.select();
     document.execCommand("copy");
-    // TODO
+
+}
+
+    // let img = new Image()
+
+    // img.onload = function () {
+    //     // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+    // }
+    // img.onerror = function () {
+    //     console.log('error')
+    // };
+    // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+
+
+        // TODO
     // document.getElementById('jpg').onclick = function (){
     //     let reg = /\.\w+$/m
     //     document.querySelectorAll('.portfolio__card img').forEach( img => img.src = img.src.replace(reg,'.jpg') )
@@ -259,5 +154,3 @@ function debugClipboard() {
     //         document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.webp')
     //     }
     // }
-}
-
