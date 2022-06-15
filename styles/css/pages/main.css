@@ -927,18 +927,18 @@ body {
   border-radius: 1.2%;
   transform: translate(0px, 0px);
   transform: scale(0);
-  transition: transform 0.5s ease 0.3s;
+  transition: transform 0.5s;
 }
 .modal-window__wrapper .modal-window__container.prev--slide {
-  transition: transform 0.5s ease 0.3s;
+  transition: transform 0.5s;
   transform: translate(-100vw, 0px);
 }
 .modal-window__wrapper .modal-window__container.next--slide {
-  transition: transform 0.5s ease 0.3s;
+  transition: transform 0.5s;
   transform: translate(100vw, 0px);
 }
 .modal-window__wrapper .modal-window__container.current--slide {
-  transition: transform 0.5s ease 0.3s;
+  transition: transform 0.5s;
   transform: translate(0px, 0px);
 }
 .modal-window__wrapper .modal-window__container img {

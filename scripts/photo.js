@@ -67,16 +67,27 @@ class Slider {
         closeButton.onclick = this.closeModalWindow;
         console.log(leftButton);
     }
+
     nextPhoto() {
         console.log("next");
         this.currentOrder++;
-
-        document.querySelector('.next--slide').classList.replace('next--slide','current--slide')
         document.querySelector('.current--slide').classList.replace('current--slide','prev--slide')
+        document.querySelector('.next--slide').classList.replace('next--slide','current--slide')
         this.generateNext();
         this.clearSlides(0)
+        this.clearSlides();
     }
 
+    prevPhoto() {
+        console.log("prev");
+        if(this.currentOrder === 1) return -1
+        this.currentOrder--
+        document.querySelector('.current--slide').classList.replace('current--slide','next--slide')
+        document.querySelector('.prev--slide').classList.replace('prev--slide','current--slide')
+        this.generatePrev();
+        this.clearSlides(3)
+        
+    }
     generateNext() {
         const html = `
         <div class="modal-window__container next--slide" >
@@ -93,22 +104,14 @@ class Slider {
 
     clearSlides(order) {
         let slides = this.getSlides();
-        // if (slides.length === 8) {
-        //     slides[0].remove();
-        //     slides[7].remove();
-        // }
-        slides[order].remove()
+        if(slides[order]){
+            slides[order].remove()
+        }
     }
 
 
 
 
-    prevPhoto() {
-        console.log("prev");
-        this.currentOrder--;
-        this.generatePrev();
-        this.clearSlides();
-    }
     generatePrev() {
         const html = `
         <div class="modal-window__container prev--slide" >
