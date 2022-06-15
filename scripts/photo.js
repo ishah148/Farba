@@ -22,6 +22,8 @@ const elems = {
         return document.querySelectorAll(".portfolio__card");
     },
 };
+
+galeryEventsInit()
 function galeryEventsInit(){
     window.addEventListener("photoDowloaded", () => {
         elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
@@ -33,12 +35,15 @@ function galeryEventsInit(){
     });
     elems.portfolioContainer.addEventListener("click", (e) => {
         // TODO повесил на родителя
-        console.log('target',e.target.src)
-        // console.log('=>',newCard.firstChild.getAttribute("src"))
-        openFullSizePhoto(e.target.src);
+        // console.log(e.target.id.split())
+        const dataAtr = e.target.id.split('_')[0]
+        const currentPage = e.target.id.split('-')[0].split('_')[1]
+        const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`)
+        // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
+        openFullSize(e.target.src,dataAtr,currentPage,currentPos,orderPhotos[dataAtr]);
     });
 }
-galeryEventsInit()
+
 
 
 //elems.buttons[0].dataset.photo
@@ -92,7 +97,7 @@ function createCard(dataAtr, page) {
     //     console.log('target',e.target.src)
     //     console.log('=>',newCard.firstChild.getAttribute("src"))
     //     openFullSizePhoto(newCard.firstChild.getAttribute("src"));
-    // });
+    // }); // TODO test!
     elems.portfolioContainer.append(newCard);
 }
 
@@ -127,6 +132,74 @@ function debugClipboard() {
     document.execCommand("copy");
 
 }
+
+
+
+class FullSize{
+    constructor(src,dataAtr,currentPage,currentPos,orderPhotos){
+        this.src = src;
+    }
+    init(){
+        console.log(this.src)
+        // openFullSize.openFullSizePhoto(e.target.src,dataAtr,currentPage,currentPos,orderPhotos[dataAtr]);
+    }
+    openFullSizePhoto(){
+        this.createModalWindow('1',this.src)
+    }
+    getArrayOrders(){
+
+    }
+    getDataAtr(){
+
+    }
+    createModalWindow(src) {
+        console.log('createModalWindow')
+        let newWindow = document.createElement('div');
+        newWindow.classList.add('modal-window__container');
+        newWindow.innerHTML = `
+            <img src='${src}' alt = ''>
+            <button class="modal-window__close-button">
+                <svg class="modal-window__cross">
+                    <use xlink:href="../assets/svg/sprite.svg#cross"></use>
+                </svg>
+            </button>
+            <button class="modal-window__left-button">
+                <svg class="modal-window__arrow-left">
+                    <use xlink:href="../assets/svg/sprite.svg#arrow-left"></use>
+                </svg>
+            </button>
+            <button class="modal-window__right-button">
+                <svg class="modal-window__arrow-right">
+                    <use xlink:href="../assets/svg/sprite.svg#arrow-right"></use>
+                </svg>
+            </button>
+            `
+        return newWindow;
+    }
+    
+    
+    closeModalWindow() {
+        modalWindow.style.transition = 'none';
+        document.querySelector(".modal-window__container").remove();
+        body.classList.remove('stop-scrolling');
+        modalWindowWrapper.classList.remove('visible');
+    }
+}
+
+const openFullSize = new FullSize()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // let img = new Image()
 
