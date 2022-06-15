@@ -14,7 +14,7 @@ let configGridStyles;
     configGridStyles = module.configGridStyles;
 })();
 
-class FullSize {
+class Slider {
     // openFullSize.openFullSizePhoto(e.target.src,dataAtr,currentPage,currentPos,orderPhotos[dataAtr]);
     constructor(src, dataAtr, currentPage, currentOrder, orderPhotos) {
         this.src = src;
@@ -32,27 +32,17 @@ class FullSize {
         this.createModalWindow(this.src);
         console.log(this);
     }
-    openFullSizePhoto() {
-        // modalWindow = createModalWindow(newSrc);
-        // modalWindowWrapper.append(modalWindow);
-        // modalWindow.style.transition = "transform 0.5s ease 0s";
-        // closeButton = modalWindow.querySelector(".modal-window__close-button");
-        // rightButton = modalWindow.querySelector(".modal-window__right-button");
-        // leftButton = modalWindow.querySelector(".modal-window__left-button");
-    }
-    getArrayOrders() {}
-    getDataAtr() {}
+    getArrayOrders() { }
+    getDataAtr() { }
     getSrc(order = 0) {
-        return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${
-            this.orderPhotos[this.currentOrder + order]
-        }.webp`;
+        return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
     }
     getSlides() {
         return this.wrapper.querySelectorAll(".modal-window__container");
     }
     createModalWindow(src) {
         const modalWindowHTML = `
-        <div class="modal-window__container">
+        <div class="modal-window__container current--slide">
             <img src='${src}' alt = ''>
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
@@ -61,55 +51,35 @@ class FullSize {
             </button>
         </div>
         `;
+        this.generateNext()
+        this.generatePrev()
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
         this.wrapper.classList.add("visible");
         this.addEvents();
         // return newWindow;
     }
     addEvents() {
-        const closeButton = document.querySelector(
-            ".modal-window__close-button"
-        );
-        const rightButton = document.querySelector(
-            ".modal-window__right-button"
-        );
+        const closeButton = document.querySelector(".modal-window__close-button");
+        const rightButton = document.querySelector(".modal-window__right-button");
         const leftButton = document.querySelector(".modal-window__left-button");
         rightButton.onclick = this.nextPhoto.bind(this);
-        leftButton.onclick = this.previousPhoto.bind(this);
+        leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
         console.log(leftButton);
     }
     nextPhoto() {
         console.log("next");
         this.currentOrder++;
-        this.clearOutsideSlides();
-        this.generatePrev();
+
+        document.querySelector('.next--slide').classList.replace('next--slide','current--slide')
+        document.querySelector('.current--slide').classList.replace('current--slide','prev--slide')
         this.generateNext();
+        this.clearSlides(0)
     }
-
-    previousPhoto() {
-        console.log("prev");
-        this.currentOrder--;
-        this.clearOutsideSlides();
-        this.generatePrev();
-        this.generateNext();
-    }
-
-    clearOutsideSlides() {
-        let slides = this.getSlides();
-        if (slides.length === 3) {
-            slides[0].remove();
-            slides[2].remove();
-        }
-    }
-
-    show;
 
     generateNext() {
         const html = `
-        <div class="modal-window__container" style = "transform: translate3d(${
-            window.innerWidth
-        }, 0px, 0px) scale(1);">
+        <div class="modal-window__container next--slide" >
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
@@ -121,9 +91,27 @@ class FullSize {
         this.wrapper.insertAdjacentHTML("beforeend", html);
     }
 
+    clearSlides(order) {
+        let slides = this.getSlides();
+        // if (slides.length === 8) {
+        //     slides[0].remove();
+        //     slides[7].remove();
+        // }
+        slides[order].remove()
+    }
+
+
+
+
+    prevPhoto() {
+        console.log("prev");
+        this.currentOrder--;
+        this.generatePrev();
+        this.clearSlides();
+    }
     generatePrev() {
         const html = `
-        <div class="modal-window__container" style = "transform: translate3d(${-window.innerWidth}, 0px, 0px) scale(1);">
+        <div class="modal-window__container prev--slide" >
             <img src='${this.getSrc(this.PREV)}' alt = ''>
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
@@ -132,7 +120,7 @@ class FullSize {
             </button>
         </div>    
         `;
-        this.wrapper.insertAdjacentHTML("beforeend", html);
+        this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
     closeModalWindow() {
@@ -174,7 +162,7 @@ function galeryEventsInit() {
         const currentPage = e.target.id.split("-")[0].split("_")[1];
         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
         // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
-        const openFullSize = new FullSize(
+        const openSlider = new Slider(
             e.target.src,
             dataAtr,
             currentPage,
@@ -233,7 +221,7 @@ function createCard(dataAtr, page) {
     //     // TODO повесеить на родителя, а не добавлять каждому элементу
     //     console.log('target',e.target.src)
     //     console.log('=>',newCard.firstChild.getAttribute("src"))
-    //     openFullSizePhoto(newCard.firstChild.getAttribute("src"));
+    //     openSliderPhoto(newCard.firstChild.getAttribute("src"));
     // }); // TODO test!
     elems.portfolioContainer.append(newCard);
 }

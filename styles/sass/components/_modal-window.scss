@@ -49,8 +49,22 @@
         align-items: center;
         // background-color: var(--primary-light);
         border-radius: 1.2%;
+        transform: translate(0px,0px);
         transform: scale(0);
-        transition: transform 0.5s ease 0s;
+        transition: transform 0.5s ease 0.3s;
+        &.prev--slide{
+            transition: transform 0.5s ease 0.3s;
+            transform: translate(-100vw,0px);
+        }
+        &.next--slide{
+            transition: transform 0.5s ease 0.3s;
+            transform: translate(100vw,0px);
+        }
+        &.current--slide{
+            transition: transform 0.5s ease 0.3s;
+            transform: translate(0px,0px);
+        }
+
         img {
             display: block;
             width: 100%;
