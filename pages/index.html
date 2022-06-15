@@ -14,8 +14,57 @@
 <body>
     <div class="blackout"></div>
     <div class="modal-window__wrapper"></div>
+    <div class="contacts-window__wrapper">
+        <div class="contacts-window__container">
+            <div class="contacts-window__connect">
+                <h2 class="contacts-window__h2">МЫ НА СВЯЗИ</h2>
+                <div class="contacts-window__icons-container">
+
+                    <a href="viber://chat?number=%2B375259041736" target="_blank">
+                        <img class="contacts-window__icon" src="../assets/png_icons/viber.png" alt="">
+                    </a>
+                    <a href="https://wa.me/%2B375259041736" target="_blank">
+                        <img class="contacts-window__icon" src="../assets/png_icons/whats_app.png" alt="">
+                    </a>
+                    <a href="https://telegram.me/IgorTg123" target="_blank">
+                        <img class="contacts-window__icon" src="../assets/png_icons/telegram.png" alt="">
+                    </a>
+                    <a href="tel:+375259041736">
+                        <img class="contacts-window__icon" src="../assets/png_icons/phone.png" alt="">
+                    </a>
+
+                </div>
+                <div class="contacts-window__phone-container">
+                    <img class="contacts-window__vibration-icon" src="../assets/png_icons/vibration.png" alt="">
+                    <h2 class="contacts-window__h2">+375 29 777 40 59</h2>
+                </div>
+            </div>
+            <div class="contacts-window__order-call">
+                <form method="post" id="contacts-window__form" class="contacts-window__form">
+
+                    <input type="text" name="userName" placeholder="Имя" />
+                    <input type="tel" name="userNumber" placeholder="Номер" />
+                    <button id="contacts-window__button-send" class="contacts-window__button-send">ЗАКАЗАТЬ
+                        ЗВОНОК</button>
+                </form>
+            </div>
+            <div class="contacts-window__text-me">
+                <h2 class="contacts-window__h2">НАПИСАТЬ</h2>
+                <a href="mailto:ishah.1996@gmail.com" target="_blank">
+                    <div class="contacts-window__decorate-border-container"></div>
+                    <div class="contacts-window__border-test decore--up"></div>
+                    <div class="contacts-window__border-test decore--down"></div>
+                    <div class="contacts-window__border-main">stfarba@gmail.com
+                    </div>
+                    <!-- <div class="contacts-window__border"></div>  -->
+                </a>
+            </div>
+        </div>
+    </div>
+    <button class="contacts-window__button"></button>
     <!--  !header -->
     <header class="header">
+        <div id="newForm"></div>
         <div class="header__container">
             <div class="header__logo">
                 <img class="header__logo-img" src="../assets/images/Farba_logo_svg.svg" alt="logo">
@@ -29,7 +78,7 @@
                         <a class="menu__link" href="#video-section" data-translate="video">Видео</a>
                     </li>
                     <li class="menu__list-item">
-                        <a class="menu__link" href="#" data-translate="">360°</a>
+                        <a class="menu__link" href="#">360°</a>
                     </li>
                     <li class="menu__list-item">
                         <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
@@ -40,12 +89,7 @@
                 </ul>
             </nav>
             <div class="header__contacts">+375 (29) 777-40-59</div>
-            <!-- !burger  -->
-            <div class="hamburger">
-                <div class="hamburger__line"></div>
-                <div class="hamburger__line"></div>
-                <div class="hamburger__line"></div>
-            </div>
+            <!--!switch-lang-->
             <div class="switch-lang switch-lang--header">
                 <button class="en" data-switch="en">en</button>
                 <span class="slash">/</span>
@@ -77,7 +121,7 @@
                         <a class="burger-menu__link" href="#video-section" data-translate="video">Видео</a>
                     </li>
                     <li class="burger-menu__list-item">
-                        <a class="burger-menu__link" href="#" data-translate="">360°</a>
+                        <a class="burger-menu__link" href="#">360°</a>
                     </li>
                     <li class="burger-menu__list-item">
                         <a class="burger-menu__link" href="#price-section" data-translate="prices">Цены</a>
@@ -91,6 +135,12 @@
         <!-- !video -->
         <section class="start-screen">
             <div class="start-screen__wrapper">
+                <!-- !burger  -->
+                <div class="hamburger">
+                    <div class="hamburger__line"></div>
+                    <div class="hamburger__line"></div>
+                    <div class="hamburger__line"></div>
+                </div>
                 <div class="start-screen__container">
                     <div class="start-screen__content">
                         <div class="start-screen__first-column">
@@ -109,7 +159,7 @@
 
                 <!-- <video autoplay muted loop class="background-video"> -->
                 <video muted autoplay loop class="background-video">
-                    <source src="../assets/video/video_low.mp4" type="video/mp4">
+                    <source src="../assets/video/video_360_clip.mp4" type="video/mp4">
                 </video>
             </div>
         </section>
@@ -118,12 +168,13 @@
             <div class="portfolio__wrapper">
                 <div class="title-wrapper">
                     <h2 class="title-wrapper__section-title" data-translate="portfolio">
-                        Портфолио
+                        Фото
                     </h2>
                 </div>
                 <div class="buttons-container">
                     <button class="buttons-container__button default-button default-button--light"
-                    data-photo="portfolio">Разное</button>
+                        data-photo="portfolio">Разное</button>
+
                     <button class="buttons-container__button default-button default-button--light"
                         data-photo="furniture">Мебель</button>
                     <button class="buttons-container__button default-button default-button--light"
@@ -135,8 +186,6 @@
                     <button class="buttons-container__button default-button default-button--light"
                         data-photo="prams">Коляски</button>
                     <!--  TODO -->
-                    <button class="buttons-container__button default-button default-button--light" id="jpg"> <span style="color:red">to JPG</span></button>
-                    <button class="buttons-container__button default-button default-button--light" id="webp"> <span style="color:red">to WebP</span></button>
                 </div>
                 <!--  -->
                 <div class="portfolio__container">
@@ -151,40 +200,52 @@
                     Видео
                 </h2>
             </div>
-            <div class="video__container">
+            <!-- <div class="video__container">
                 <div class="video__content">
                     <div class="item">
                         <div class="item__video">
-
                             <iframe src="https://player.vimeo.com/video/708241282?h=fe0a037538" frameborder="0"
                                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <p class="item__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="item__text">Рекламный видеоролик - Лофт Мебель</p>
                     </div>
                     <div class="item">
                         <div class="item__video">
                             <iframe src="https://player.vimeo.com/video/573038029?h=34102d82eb" frameborder="0"
                                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <p class="item__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="item__text">Видеоролик - Распаковка и установка полки</p>
                     </div>
                     <div class="item">
                         <div class="item__video">
                             <iframe src="https://player.vimeo.com/video/573034115?h=4c39c52f03" frameborder="0"
                                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <p class="item__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="item__text">Рекламный видеоролик - Обзор детской коляски</p>
                     </div>
                     <div class="item">
                         <div class="item__video">
-
                             <iframe src="https://player.vimeo.com/video/619274393?h=3c81c4bfaa" frameborder="0"
                                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <p class="item__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p class="item__text">Рекламный видеоролик - Обзор посудомоечной машины</p>
+                    </div>
+                    <div class="item">
+                        <div class="item__video">
+                            <iframe src="https://player.vimeo.com/video/619272950?h=1498543161" frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="item__text">Рекламный видеоролик 3D - Обзор варочной панели</p>
+                    </div>
+                    <div class="item">
+                        <div class="item__video">
+                            <iframe src="https://player.vimeo.com/video/619271827?h=74d8e01700" frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="item__text">Рекламный видеоролик - Обзор духового шкафа</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
         <!-- !prices -->
         <section class="prices" id="price-section">
@@ -207,7 +268,8 @@
                                     <p class="price-card__item-service">5 фотографий</p>
                                     <p class="price-card__item-service">Aренда студии</p>
                                     <p class="price-card__item-service">Ретушь фото</p>
-                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов</p>
+                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов
+                                    </p>
                                 </div>
                             </div>
                             <div class="price-card__button-wrapper">
@@ -230,7 +292,8 @@
                                     <p class="price-card__item-service">Фото 360 градусов - 1шт</p>
                                     <p class="price-card__item-service">Инфографика с продающим описанием - 1шт</p>
                                     <p class="price-card__item-service">Видео-обзор - 1шт</p>
-                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов</p>
+                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов
+                                    </p>
                                 </div>
                             </div>
                             <div class="price-card__button-wrapper">
@@ -252,7 +315,8 @@
                                     <p class="price-card__item-service">Ретушь фото</p>
                                     <p class="price-card__item-service">Фото 360 градусов - 1шт</p>
                                     <p class="price-card__item-service">Инфографика с продающим описанием - 1шт</p>
-                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов</p>
+                                    <p class="price-card__item-service">Адаптация под требования сайта и маркетплейсов
+                                    </p>
                                 </div>
                             </div>
                             <div class="price-card__button-wrapper">
@@ -270,7 +334,8 @@
                             <div class="price-list__column price-list__col-2">Стоимость</div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Предметная фотосъёмка</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Предметная фотосъёмка
+                            </div>
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">от 12BYN/фото</div>
                         </li>
                         <li class="price-list__row">
@@ -278,15 +343,18 @@
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">от 45BYN</div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Продуктовый мобильный видеоролик</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Продуктовый мобильный
+                                видеоролик</div>
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">от 150BYN</div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Видеоинфографика (на основе фотографий)</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Видеоинфографика (на
+                                основе фотографий)</div>
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">от 120BYN</div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Рекламный видеоролик</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Рекламный видеоролик
+                            </div>
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">от 2500BYN</div>
                         </li>
                         <li class="price-list__row">
@@ -294,7 +362,8 @@
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">25BYN/шт.</div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Инфографика (5шт.)</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Инфографика (5шт.)
+                            </div>
                             <div class="price-list__column price-list__col-2" data-label="Стоимость">90 BYN</div>
                         </li>
                         <li class="price-list__subheader">
@@ -303,18 +372,24 @@
                         </li>
                         <li class="price-list__row">
                             <div class="price-list__column price-list__col-1" data-label="Услуга">Услуги стилиста</div>
-                            <div class="price-list__column price-list__col-2" data-label="Стоимость">цена договорная</div>
+                            <div class="price-list__column price-list__col-2" data-label="Стоимость">цена договорная
+                            </div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Доставка до студии</div>
-                            <div class="price-list__column price-list__col-2" data-label="Стоимость">цена договорная</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Доставка до студии
+                            </div>
+                            <div class="price-list__column price-list__col-2" data-label="Стоимость">цена договорная
+                            </div>
                         </li>
                         <li class="price-list__row">
-                            <div class="price-list__column price-list__col-1" data-label="Услуга">Разработка стиля карточек товара (контента)</div>
-                            <div class="price-list__column price-list__col-2" data-label="Стоимость">100BYN (бесплатно&nbsp;от&nbsp;100&nbsp;фото)</div>
+                            <div class="price-list__column price-list__col-1" data-label="Услуга">Разработка стиля
+                                карточек товара (контента)</div>
+                            <div class="price-list__column price-list__col-2" data-label="Стоимость">100BYN
+                                (бесплатно&nbsp;от&nbsp;100&nbsp;фото)</div>
                         </li>
                     </ul>
-                    <button class="prices__price-list-button default-button default-button--dark window-closed">Показать прайс</button>
+                    <button class="prices__price-list-button default-button default-button--dark window-closed">Показать
+                        прайс</button>
                 </div>
             </div>
         </section>
@@ -335,7 +410,7 @@
                         <textarea class="contacts__textarea" name="comment" id="label" cols="30" rows="10"
                             placeholder="Оставьте ваше сообщение.." data-translate="form-comment"></textarea>
                         <button class="contacts__button default-button default-button--dark" type="submit"
-                            data-translate="send-message">Send message</button>
+                            data-translate="send-message" data-translate="send-message">Отправить сообщение</button>
                     </form>
                     <div class="yandex-map">
                         <!-- https://yandex.ru/maps/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&source=constructorLink -->
@@ -394,21 +469,21 @@
                 <ul class="footer__links-list">
                     <li class="footer__link-item">
                         <a class="footer__link" href="https://www.instagram.com/farbapro/" target="_blank">
-                            <svg class="svg-icon footer__inst-icon">
+                            <svg class="footer__svg-icon footer__inst-icon">
                                 <use xlink:href="../assets/svg/sprite.svg#inst"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="footer__link-item">
                         <a class="footer__link" href="https://vimeo.com/farbapro" target="_blank">
-                            <svg class="svg-icon footer__vim-icon">
+                            <svg class="footer__svg-icon footer__vim-icon">
                                 <use xlink:href="../assets/svg/sprite.svg#vim"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="footer__link-item">
                         <a class="footer__link" href="https://vk.com/studio_farba" target="_blank">
-                            <svg class="svg-icon footer__vk-icon">
+                            <svg class="footer__svg-icon footer__vk-icon">
                                 <use xlink:href="../assets/svg/sprite.svg#vk"></use>
                             </svg>
                         </a>
@@ -422,6 +497,7 @@
     <script src="../scripts/messengers-window.js"></script>
     <script src="../scripts/header.js"></script>
     <script src="../scripts/modal-window.js"></script>
+    <script src="../scripts/pagination.js"></script>
     <script type="module" src="../scripts/main.js"></script>
 </body>
 
