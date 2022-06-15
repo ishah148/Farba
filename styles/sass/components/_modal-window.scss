@@ -2,6 +2,7 @@
 // @use "./buttons";
 
 .modal-window__wrapper {
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -33,7 +34,9 @@
 
     .modal-window__container {
         justify-content: space-between;
-        // position: absolute; // тронул
+        position: absolute; // тронул
+        left: 0;right: 0;top: 0;bottom: 0;
+        margin: auto;
         // width: max-content; // тронул
         // width: 100%;
         // height: 100%;
@@ -51,11 +54,11 @@
         img {
             display: block;
             width: 100%;
-          //height: 100%;  //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+          height: 100%;  //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
             max-height: calc(100vh - 8.25rem);
             max-width: 100vw;
-          //object-fit: contain; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
-          //align-self: center; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+          object-fit: contain; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+          align-self: center; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
         }
 
         .modal-window__close-button {

@@ -13,7 +13,18 @@
 
 <body>
     <div class="blackout"></div>
-    <div class="modal-window__wrapper"></div>
+    <div class="modal-window__wrapper">
+        <button class="modal-window__left-button">
+            <svg class="modal-window__arrow-left">
+                <use xlink:href="../assets/svg/sprite.svg#arrow-left"></use>
+            </svg>
+        </button>
+        <button class="modal-window__right-button">
+            <svg class="modal-window__arrow-right">
+                    <use xlink:href="../assets/svg/sprite.svg#arrow-right"></use>
+            </svg>
+        </button>
+    </div>
     <div class="contacts-window__wrapper">
         <div class="contacts-window__container">
             <div class="contacts-window__connect">
@@ -200,8 +211,8 @@
                     Видео
                 </h2>
             </div>
-            <!-- <div class="video__container">
-                <div class="video__content">
+            <div class="video__container" style="display: none;">
+                <!-- <div class="video__content">
                     <div class="item">
                         <div class="item__video">
                             <iframe src="https://player.vimeo.com/video/708241282?h=fe0a037538" frameborder="0"
@@ -244,8 +255,8 @@
                         </div>
                         <p class="item__text">Рекламный видеоролик - Обзор духового шкафа</p>
                     </div>
-                </div>
-            </div> -->
+                </div> -->
+            </div>
         </section>
         <!-- !prices -->
         <section class="prices" id="price-section">
@@ -412,7 +423,7 @@
                         <button class="contacts__button default-button default-button--dark" type="submit"
                             data-translate="send-message" data-translate="send-message">Отправить сообщение</button>
                     </form>
-                    <div class="yandex-map">
+                    <div class="yandex-map" style="display: none;">
                         <!-- https://yandex.ru/maps/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&source=constructorLink -->
                         <!-- <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aaa33da6bf9bb2dc47d4b7cf0611a11ea60c6cb3bac5c2dd11b7489db5082e789&amp;width=596&amp;height=403&amp;lang=ru_RU&amp;scroll=true"></script> -->
                         <iframe
@@ -502,3 +513,6 @@
 </body>
 
 </html>
+
+
+

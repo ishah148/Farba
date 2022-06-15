@@ -1,5 +1,6 @@
 export const configAtr = {
-    portfolio: 86,
+    portfolio: 15,
+    // portfolio: 86,
     furniture: 43,
     jewerly: 62,
     prams: 42,
