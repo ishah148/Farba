@@ -28,12 +28,16 @@ class Slider {
         this.init();
     }
     init() {
-        console.log();
+        console.log(this.wrapper)
+        document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
         console.log(this);
     }
     getArrayOrders() { }
     getDataAtr() { }
+    test(){
+        console.log('test')
+    }
     getSrc(order = 0) {
         return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
     }
@@ -44,11 +48,6 @@ class Slider {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
             <img src='${src}' alt = ''>
-            <button class="modal-window__close-button">
-                <svg class="modal-window__cross">
-                    <use xlink:href="../assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
         </div>
         `;
         this.generateNext()
@@ -71,8 +70,8 @@ class Slider {
     nextPhoto() {
         console.log("next");
         this.currentOrder++;
-        document.querySelector('.current--slide').classList.replace('current--slide','prev--slide')
-        document.querySelector('.next--slide').classList.replace('next--slide','current--slide')
+        document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
+        document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNext();
         this.clearSlides(0)
         this.clearSlides();
@@ -80,23 +79,19 @@ class Slider {
 
     prevPhoto() {
         console.log("prev");
-        if(this.currentOrder === 1) return -1
+        if (this.currentOrder === 1) return -1
         this.currentOrder--
-        document.querySelector('.current--slide').classList.replace('current--slide','next--slide')
-        document.querySelector('.prev--slide').classList.replace('prev--slide','current--slide')
+        document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
+        document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrev();
         this.clearSlides(3)
-        
+
     }
+
     generateNext() {
         const html = `
         <div class="modal-window__container next--slide" >
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
-            <button class="modal-window__close-button">
-                <svg class="modal-window__cross">
-                    <use xlink:href="../assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -104,34 +99,27 @@ class Slider {
 
     clearSlides(order) {
         let slides = this.getSlides();
-        if(slides[order]){
+        if (slides[order]) {
             slides[order].remove()
         }
     }
-
-
-
 
     generatePrev() {
         const html = `
         <div class="modal-window__container prev--slide" >
             <img src='${this.getSrc(this.PREV)}' alt = ''>
-            <button class="modal-window__close-button">
-                <svg class="modal-window__cross">
-                    <use xlink:href="../assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
     closeModalWindow() {
+        document.querySelector(".modal-window__wrapper").classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         body.classList.remove("stop-scrolling");
-        modalWindowWrapper.classList.remove("visible");
+        console.log(this.wrapper)
     }
 }
 
@@ -148,10 +136,7 @@ const elems = {
 galeryEventsInit();
 function galeryEventsInit() {
     window.addEventListener("photoDowloaded", () => {
-        elems.source.setAttribute(
-            "src",
-            "../assets/video/video_fullHD_clip.mp4"
-        );
+        elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
         elems.video.load();
         elems.video.play();
     });
@@ -165,13 +150,7 @@ function galeryEventsInit() {
         const currentPage = e.target.id.split("-")[0].split("_")[1];
         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
         // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
-        const openSlider = new Slider(
-            e.target.src,
-            dataAtr,
-            currentPage,
-            currentPos,
-            orderPhotos[dataAtr]
-        );
+        const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
     });
 }
 

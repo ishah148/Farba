@@ -889,7 +889,6 @@ body {
 }
 
 .modal-window__wrapper {
-  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -950,18 +949,6 @@ body {
   object-fit: contain;
   align-self: center;
 }
-.modal-window__wrapper .modal-window__container .modal-window__close-button {
-  top: -52px;
-  right: -43px;
-  position: absolute;
-  transition: 0.5s;
-}
-@media (max-width: 768px) {
-  .modal-window__wrapper .modal-window__container .modal-window__close-button {
-    top: -32px;
-    right: -32px;
-  }
-}
 .modal-window__wrapper .modal-window__right-button {
   right: 0;
   z-index: 101;
@@ -991,6 +978,19 @@ body {
   width: 30%;
   height: 30%;
   fill: var(--primary-extra-dark);
+}
+.modal-window__wrapper .modal-window__close-button {
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 102;
+}
+@media (max-width: 768px) {
+  .modal-window__wrapper .modal-window__close-button {
+    top: -32px;
+    right: -32px;
+  }
 }
 
 .yandex-map {
