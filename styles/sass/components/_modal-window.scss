@@ -72,44 +72,7 @@
             }
         }
 
-        .modal-window__right-button {
-            bottom: -60px;
-            right: 35%;
-            position: absolute;
-            transition: 0.5s;
-            @media (max-width:768px ){
 
-            }
-        }
-
-        .modal-window__left-button {
-            bottom: -60px;
-            left: 35%;
-            position: absolute;
-            transition: 0.5s;
-            @media (max-width:768px ){
-
-            }
-        }
-
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 1.5rem;
-            width: 1.5rem;
-            border-radius: 50%;
-            border: 0;
-            backdrop-filter: blur(10px);
-            background-color: var(--primary-extra-light);
-            .modal-window__cross,
-            .modal-window__arrow-left,
-            .modal-window__arrow-right {
-                width: 30%;
-                height: 30%;
-                fill: var(--primary-extra-dark)
-            }
-        }
     }
 
     // &:hover &__close-button {
@@ -118,4 +81,46 @@
     // & &__close-button:hover {
     //     background-color: var(--primary);
     // }
+    .modal-window__right-button {
+        // bottom: -60px;
+        // right: 35%;
+        right: 0;
+        z-index: 101;
+        position: absolute;
+        transition: 0.5s;
+        @media (max-width:768px ){
+
+        }
+    }
+
+    .modal-window__left-button {
+        // bottom: -60px;
+        // left: 35%;
+        left: 0;
+        z-index: 101;
+        position: absolute;
+        transition: 0.5s;
+        @media (max-width:768px ){
+
+        }
+    }
+
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        border: 0;
+        backdrop-filter: blur(10px);
+        background-color: var(--primary-extra-light);
+        .modal-window__cross,
+        .modal-window__arrow-left,
+        .modal-window__arrow-right {
+            width: 30%;
+            height: 30%;
+            fill: var(--primary-extra-dark)
+        }
+    }
 }

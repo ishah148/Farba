@@ -949,19 +949,19 @@ body {
     right: -32px;
   }
 }
-.modal-window__wrapper .modal-window__container .modal-window__right-button {
-  bottom: -60px;
-  right: 35%;
+.modal-window__wrapper .modal-window__right-button {
+  right: 0;
+  z-index: 101;
   position: absolute;
   transition: 0.5s;
 }
-.modal-window__wrapper .modal-window__container .modal-window__left-button {
-  bottom: -60px;
-  left: 35%;
+.modal-window__wrapper .modal-window__left-button {
+  left: 0;
+  z-index: 101;
   position: absolute;
   transition: 0.5s;
 }
-.modal-window__wrapper .modal-window__container button {
+.modal-window__wrapper button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -972,9 +972,9 @@ body {
   backdrop-filter: blur(10px);
   background-color: var(--primary-extra-light);
 }
-.modal-window__wrapper .modal-window__container button .modal-window__cross,
-.modal-window__wrapper .modal-window__container button .modal-window__arrow-left,
-.modal-window__wrapper .modal-window__container button .modal-window__arrow-right {
+.modal-window__wrapper button .modal-window__cross,
+.modal-window__wrapper button .modal-window__arrow-left,
+.modal-window__wrapper button .modal-window__arrow-right {
   width: 30%;
   height: 30%;
   fill: var(--primary-extra-dark);

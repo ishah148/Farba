@@ -23,26 +23,32 @@ class FullSize {
         this.currentOrder = currentOrder;
         this.orderPhotos = orderPhotos;
         this.wrapper = document.querySelector(".modal-window__wrapper");
-        this.init();
         this.NEXT = 1;
         this.PREV = -1;
+        this.init();
     }
     init() {
         console.log();
         this.createModalWindow(this.src);
+        console.log(this);
     }
     openFullSizePhoto() {
-        modalWindow = createModalWindow(newSrc);
-        modalWindowWrapper.append(modalWindow);
-        modalWindow.style.transition = "transform 0.5s ease 0s";
-        closeButton = modalWindow.querySelector(".modal-window__close-button");
-        rightButton = modalWindow.querySelector(".modal-window__right-button");
-        leftButton = modalWindow.querySelector(".modal-window__left-button");
+        // modalWindow = createModalWindow(newSrc);
+        // modalWindowWrapper.append(modalWindow);
+        // modalWindow.style.transition = "transform 0.5s ease 0s";
+        // closeButton = modalWindow.querySelector(".modal-window__close-button");
+        // rightButton = modalWindow.querySelector(".modal-window__right-button");
+        // leftButton = modalWindow.querySelector(".modal-window__left-button");
     }
     getArrayOrders() {}
     getDataAtr() {}
     getSrc(order = 0) {
-        return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${ this.orderPhotos[this.currentOrder + order]}.webp`;
+        return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${
+            this.orderPhotos[this.currentOrder + order]
+        }.webp`;
+    }
+    getSlides() {
+        return this.wrapper.querySelectorAll(".modal-window__container");
     }
     createModalWindow(src) {
         const modalWindowHTML = `
@@ -51,16 +57,6 @@ class FullSize {
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
                     <use xlink:href="../assets/svg/sprite.svg#cross"></use>
-                </svg>
-            </button>
-            <button class="modal-window__left-button">
-                <svg class="modal-window__arrow-left">
-                    <use xlink:href="../assets/svg/sprite.svg#arrow-left"></use>
-                </svg>
-            </button>
-            <button class="modal-window__right-button">
-                <svg class="modal-window__arrow-right">
-                        <use xlink:href="../assets/svg/sprite.svg#arrow-right"></use>
                 </svg>
             </button>
         </div>
@@ -81,23 +77,39 @@ class FullSize {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.previousPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
-        
+        console.log(leftButton);
     }
     nextPhoto() {
         console.log("next");
-        this.generatePrev()
-        this.generateNext()
+        this.currentOrder++;
+        this.clearOutsideSlides();
+        this.generatePrev();
+        this.generateNext();
     }
 
     previousPhoto() {
         console.log("prev");
-        this.generatePrev()
-        this.generateNext()
+        this.currentOrder--;
+        this.clearOutsideSlides();
+        this.generatePrev();
+        this.generateNext();
     }
+
+    clearOutsideSlides() {
+        let slides = this.getSlides();
+        if (slides.length === 3) {
+            slides[0].remove();
+            slides[2].remove();
+        }
+    }
+
+    show;
 
     generateNext() {
         const html = `
-        <div class="modal-window__container" style = "transform: translate3d(400px, 0px, 0px) scale(1);">
+        <div class="modal-window__container" style = "transform: translate3d(${
+            window.innerWidth
+        }, 0px, 0px) scale(1);">
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
@@ -111,7 +123,7 @@ class FullSize {
 
     generatePrev() {
         const html = `
-        <div class="modal-window__container" style = "transform: translate3d(-400px, 0px, 0px) scale(1);">
+        <div class="modal-window__container" style = "transform: translate3d(${-window.innerWidth}, 0px, 0px) scale(1);">
             <img src='${this.getSrc(this.PREV)}' alt = ''>
             <button class="modal-window__close-button">
                 <svg class="modal-window__cross">
@@ -124,7 +136,9 @@ class FullSize {
     }
 
     closeModalWindow() {
-        document.querySelectorAll(".modal-window__container").forEach(i => i.remove())
+        document
+            .querySelectorAll(".modal-window__container")
+            .forEach((i) => i.remove());
         body.classList.remove("stop-scrolling");
         modalWindowWrapper.classList.remove("visible");
     }
