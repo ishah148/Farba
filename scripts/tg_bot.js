@@ -43,8 +43,9 @@ export default class TelegramSendMessage {
 
     sumbit(...args) {
         const event = args[1]
+        const thisClass = args[0]
         event.preventDefault();
-        args[0].telegramSendMsg(this.userName.value, this.userNumber.value);
+        thisClass.telegramSendMsg(this.userName.value, this.userNumber.value);
     }
 
     createForm() {
