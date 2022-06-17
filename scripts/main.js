@@ -17,8 +17,9 @@ const msgSelectors = [
     ".contacts-window__wrapper",
 ];
 
-document.querySelector(".contacts-window__button").onclick = openMessageWindow;
+document.querySelector(".contacts-window__callback-bt").onclick = openMessageWindow;
 function openMessageWindow() {
+    this.classList.add('hidden')
     msgSelectors.forEach((selector) =>
         document.querySelector(selector).classList.toggle("open")
     );
@@ -28,6 +29,7 @@ function openMessageWindow() {
     })
 }
 function closeMessageWindow(){
+    document.querySelector(".contacts-window__callback-bt").classList.remove('hidden')
     msgSelectors.forEach((selector) =>
         document.querySelector(selector).classList.remove("open")
     );

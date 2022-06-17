@@ -25,16 +25,20 @@ class Slider {
         this.wrapper = document.querySelector(".modal-window__wrapper");
         this.NEXT = 1;
         this.PREV = -1;
+        this.buttons = [
+            document.querySelector('.modal-window__right-button'),
+            document.querySelector('.modal-window__left-button'),
+            document.querySelector('.modal-window__close-button'),
+        ]
         this.init();
     }
     init() {
         console.log(this.wrapper)
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
-        console.log(this);
+        console.log(this.buttons);
+        
     }
-    getArrayOrders() { }
-    getDataAtr() { }
     test(){
         console.log('test')
     }
@@ -47,9 +51,14 @@ class Slider {
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
-            <img src='${src}' alt = ''>
+            <img src='${this.getSrc()}' alt = ''>
         </div>
         `;
+        // const modalWindowHTML = `
+        // <div class="modal-window__container current--slide">
+        //     <img src='${src}' alt = ''>
+        // </div>
+        // `;
         this.generateNext()
         this.generatePrev()
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
@@ -264,3 +273,18 @@ function debugClipboard() {
 //         document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.webp')
 //     }
 // }
+
+
+// cls Rat extends Slider {
+//     constructor() {
+//         this.rat = 'red';
+//         this.init()
+//     }
+//     init(){
+//         console.log(this)
+//     }
+// }
+
+// let x = new Rat();
+
+// as
