@@ -4,10 +4,8 @@ let orderPhotos;
 let configGridStyles;
 (async function () {
     const module = await import("./photo_config.js");
-    // 
     window.addEventListener("load", () => {
-        // newCards("portfolio");
-        const gg = new GridGalery("portfolio")
+        const gg = new GridGalery("portfolio","getCountRows() return 'threeRows'")
     });
     configAtr = module.configAtr;
     orderPhotos = module.orderPhotos;
@@ -129,7 +127,7 @@ class Slider {
 class GridGalery {
     constructor(dataAtr) {
         this.i = 1;
-        this.dataAtr = dataAtr;
+        this.dataAtr = dataAtr;// dataAtr['threeRows']
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             portfolioContainer: document.querySelector(".portfolio__container"),
@@ -144,6 +142,7 @@ class GridGalery {
     init() {
         console.log(this.elems)
         this.newCards(this.dataAtr)
+        this.galeryEventsInit()
     }
 
     removeCards() {
@@ -157,15 +156,12 @@ class GridGalery {
             this.elems.video.play();
         });
         this.elems.buttons.forEach((button) => {
-            button.onclick = switchPhotos;
+            button.onclick = this.switchPhotos.bind(this);
         });
         this.elems.portfolioContainer.addEventListener("click", (e) => {
-            // TODO повесил на родителя
-            // 
             const dataAtr = e.target.id.split("_")[0];
             const currentPage = e.target.id.split("-")[0].split("_")[1];
             const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
-            // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
             const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
         });
     }
@@ -245,6 +241,21 @@ class GridGalery {
         document.execCommand("copy");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const gg = new GridGalery()
 
 
