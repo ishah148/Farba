@@ -6,7 +6,7 @@ export const burgerMenuListItems = document.querySelectorAll('.burger-menu__list
 
 const burgerMenu = document.querySelector('.burger-menu');
 const body = document.querySelector('body');
-
+let laptopMinWidth = window.matchMedia("(min-width: 768px)");
 
 export function addMenu() {
     hamburger.classList.add('open-menu');
@@ -23,6 +23,27 @@ export function closeMenu() {
 }
 
 
+laptopMinWidth.addEventListener("change", function (laptopMinScreenSize) {
+    if (laptopMinScreenSize.matches) {
+        closeMenu();
+    }
+});
 
+
+blackout.addEventListener("click", () => {
+    closeMenu();
+});
+
+hamburger.addEventListener("click", (event) => {
+    if (event.currentTarget.classList.contains("open-menu")) {
+        closeMenu();
+    } else {
+        addMenu();
+    }
+});
+alert()
+burgerMenuLinks.forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+});
 
 

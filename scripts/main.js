@@ -1,14 +1,11 @@
+
 import {
-    hamburger,
-    burgerMenuLinks,
-    blackout,
-    addMenu,
-    closeMenu,
-    burgerMenuListItems,
+    blackout,    //!REMOVE OR MOVE
 } from "./hamburger.js";
 import { switchLang, chooseLangButton } from "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 const tg = new TelegramSendMessage("contacts-window__form");
+
 
 //message window
 function messageWindowEvents(){}
@@ -40,8 +37,6 @@ function closeMessageWindow(){
 // price cards hover
 let priceCards = document.querySelectorAll(".prices__card-wrapper");
 
-//burger menu
-let laptopMinWidth = window.matchMedia("(min-width: 768px)");
 
 //price cards hover
 priceCards.forEach((card) => {
@@ -93,42 +88,17 @@ priceListButton.addEventListener("click", () => {
     }
 });
 
-//burger-menu
 
-laptopMinWidth.addEventListener("change", function (laptopMinScreenSize) {
-    if (laptopMinScreenSize.matches) {
-        closeMenu();
-    }
-});
+
+
+//TODO blackout.addEventListener in other file
 
 blackout.addEventListener("click", () => {
     closeMessageWindow();
-    closeMenu();
 });
 
-hamburger.addEventListener("click", (event) => {
-    if (event.currentTarget.classList.contains("open-menu")) {
-        closeMenu();
-    } else {
-        addMenu();
-    }
-});
 
-burgerMenuLinks.forEach((link) => {
-    link.addEventListener("click", () => closeMenu());
-});
 
-burgerMenuListItems.forEach((item) => {
-    item.addEventListener("mouseover", () => {
-        item.classList.add("list-item--active");
-    });
-});
-
-burgerMenuListItems.forEach((item) => {
-    item.addEventListener("mouseout", () => {
-        item.classList.remove("list-item--active");
-    });
-});
 
 //switch lang
 
