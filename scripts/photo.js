@@ -6,8 +6,8 @@ let configGridStyles;
     const module = await import("./photo_config.js");
     // 
     window.addEventListener("load", () => {
-        newCards("portfolio");
-        // const gg = new GridGalery("portfolio")
+        // newCards("portfolio");
+        const gg = new GridGalery("portfolio")
     });
     configAtr = module.configAtr;
     orderPhotos = module.orderPhotos;
@@ -36,11 +36,8 @@ class Slider {
 
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
-
-
     }
     test() {
-
     }
     getSrc(order = 0) {
         return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
@@ -73,11 +70,9 @@ class Slider {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
-
     }
 
     nextPhoto() {
-
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -208,31 +203,30 @@ class GridGalery {
     }
 
     createCard(dataAtr, page) {
-        // debugger
         let newCard = document.createElement("div");
         newCard.classList.add("portfolio__card");
         newCard.classList.add(`${dataAtr}_${page}`);
-        newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" 
-            id = "${dataAtr}_${page}-img" 
-            onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" 
-            alt="" ">`;
         let img = new Image()
+        img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
+        img.id = `${dataAtr}_${page}-img`;
+        img.onload = () => this.addGridStyleOnload(newCard, dataAtr, img)
+        img.onerror = function (e) {
+            console.log('error', e)
+        };
         this.elems.portfolioContainer.append(newCard);
+        newCard.append(img)
     }
 
-    addGridStyleOnload(id, dataAtr, page) {
-        console.log(this)
+    addGridStyleOnload(newCard, dataAtr, img) {
         this.i++;
         if (this.i === configAtr[dataAtr]) {
             window.dispatchEvent(new CustomEvent("photoDowloaded"));
         }
-        const card = document.getElementById(`${id}`);
-        card.removeAttribute("onload"); // avoid loop!
-        let imgH = card.naturalHeight;
-        let imgW = card.naturalWidth;
+        let imgH = img.naturalHeight;
+        let imgW = img.naturalWidth;
         configGridStyles.forEach((config) => {
             if (imgW === config.width && imgH === config.height) {
-                card.parentElement.classList.add(config.class);
+                newCard.classList.add(config.class);
             }
         });
     }
@@ -254,126 +248,119 @@ class GridGalery {
 // const gg = new GridGalery()
 
 
-const elems = {
-    buttons: document.querySelectorAll(".buttons-container__button"),
-    portfolioContainer: document.querySelector(".portfolio__container"),
-    video: document.querySelector("video"),
-    source: document.querySelector("source"),
-    getPortfolioCards: function () {
-        return document.querySelectorAll(".portfolio__card");
-    },
-};
+// const elems = {
+//     buttons: document.querySelectorAll(".buttons-container__button"),
+//     portfolioContainer: document.querySelector(".portfolio__container"),
+//     video: document.querySelector("video"),
+//     source: document.querySelector("source"),
+//     getPortfolioCards: function () {
+//         return document.querySelectorAll(".portfolio__card");
+//     },
+// };
 
-galeryEventsInit();
-function galeryEventsInit() {
-    window.addEventListener("photoDowloaded", () => {
-        elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
-        elems.video.load();
-        elems.video.play();
-    });
-    elems.buttons.forEach((button) => {
-        button.onclick = switchPhotos;
-    });
-    elems.portfolioContainer.addEventListener("click", (e) => {
-        // TODO повесил на родителя
-        // 
-        const dataAtr = e.target.id.split("_")[0];
-        const currentPage = e.target.id.split("-")[0].split("_")[1];
-        const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
-        // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
-        const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
-    });
-}
+// galeryEventsInit();
+// function galeryEventsInit() {
+//     window.addEventListener("photoDowloaded", () => {
+//         elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+//         elems.video.load();
+//         elems.video.play();
+//     });
+//     elems.buttons.forEach((button) => {
+//         button.onclick = switchPhotos;
+//     });
+//     elems.portfolioContainer.addEventListener("click", (e) => {
+//         // TODO повесил на родителя
+//         // 
+//         const dataAtr = e.target.id.split("_")[0];
+//         const currentPage = e.target.id.split("-")[0].split("_")[1];
+//         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
+//         // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
+//         const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
+//     });
+// }
 
-//elems.buttons[0].dataset.photo
+// //elems.buttons[0].dataset.photo
 
-function switchPhotos(event) {
-    removeCards();
-    newCards(event.currentTarget.dataset.photo);
-    // TODO remove !
-    debugClipboard();
-}
+// function switchPhotos(event) {
+//     removeCards();
+//     newCards(event.currentTarget.dataset.photo);
+//     // TODO remove !
+//     debugClipboard();
+// }
 
-function removeCards() {
-    elems.getPortfolioCards().forEach((card) => card.remove());
-}
+// function removeCards() {
+//     elems.getPortfolioCards().forEach((card) => card.remove());
+// }
 
-function newCards(dataAtr) {
-    let temp = getRange(configAtr[dataAtr]);
-    if (orderPhotos[dataAtr]) {
-        // adaptive to orderPhotos array
-        temp = orderPhotos[dataAtr].map((i) => +i);
+// function newCards(dataAtr) {
+//     let temp = getRange(configAtr[dataAtr]);
+//     if (orderPhotos[dataAtr]) {
+//         // adaptive to orderPhotos array
+//         temp = orderPhotos[dataAtr].map((i) => +i);
 
-    }
+//     }
 
-    for (let i = 1; i < configAtr[dataAtr]; i++) {
-        createCard(dataAtr, temp[i]);
-    }
-}
+//     for (let i = 1; i < configAtr[dataAtr]; i++) {
+//         createCard(dataAtr, temp[i]);
+//     }
+// }
 
-function getRange(max) {
-    let arr = [];
-    for (let i = 1; i <= max; i++) {
-        arr.push(i);
-    }
-    function shuffleArr(arr) {
-        return arr.sort(() => Math.random() - 0.5);
-    }
-    return shuffleArr(arr);
-}
+// function getRange(max) {
+//     let arr = [];
+//     for (let i = 1; i <= max; i++) {
+//         arr.push(i);
+//     }
+//     function shuffleArr(arr) {
+//         return arr.sort(() => Math.random() - 0.5);
+//     }
+//     return shuffleArr(arr);
+// }
 
-function createCard(dataAtr, page) {
-    let newCard = document.createElement("div");
-    newCard.classList.add("portfolio__card");
-    newCard.classList.add(`${dataAtr}_${page}`);
-    let img = new Image()
-    img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
-    img.id = `${dataAtr}_${page}-img`;
-    img.onload = function () {
-        // addGridStyleOnload(`${dataAtr}_${page}-img','${dataAtr}','${page}`)
-        addGridStyleOnload(newCard,dataAtr,img)
-    }
-    img.onerror = function (e) {
-        console.log('error',e)
-    };
-   
-    
-    elems.portfolioContainer.append(newCard);
-    newCard.append(img)
+// function createCard(dataAtr, page) {
+//     let newCard = document.createElement("div");
+//     newCard.classList.add("portfolio__card");
+//     newCard.classList.add(`${dataAtr}_${page}`);
+//     let img = new Image()
+//     img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
+//     img.id = `${dataAtr}_${page}-img`;
+//     img.onload = function () {
+//         addGridStyleOnload(newCard, dataAtr, img)
+//     }
+//     img.onerror = function (e) {
+//         console.log('error', e)
+//     };
+//     elems.portfolioContainer.append(newCard);
+//     newCard.append(img)
+// }
 
-}
+// let i = 1;
+// function addGridStyleOnload(newCard, dataAtr, img) {
+//     i++;
+//     if (i === configAtr[dataAtr]) {
+//         window.dispatchEvent(new CustomEvent("photoDowloaded"));
+//     }
+//     let imgH = img.naturalHeight;
+//     let imgW = img.naturalWidth;
+//     configGridStyles.forEach((config) => {
+//         if (imgW === config.width && imgH === config.height) {
+//             newCard.classList.add(config.class);
+//         }
+//     });
+// }
 
-let i = 1;
-function addGridStyleOnload(newCard, dataAtr, img) {
-    i++;
-    if (i === configAtr[dataAtr]) {
-        window.dispatchEvent(new CustomEvent("photoDowloaded"));
-    }
-    // const card = document.getElementById(`${id}`);
-    // console.log(card)
-    // card.removeAttribute("onload"); // avoid loop!
-    let imgH = img.naturalHeight;
-    let imgW = img.naturalWidth;
-    configGridStyles.forEach((config) => {
-        if (imgW === config.width && imgH === config.height) {
-            newCard.classList.add(config.class);
-        }
-    });
-}
-
-function debugClipboard() {
-    // TODO delete: debug!!!
-    let a = [];
-    document
-        .querySelectorAll(".portfolio__container img")
-        .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
-    let b = JSON.stringify(a);
-    // 
-    let input = document.querySelector(".contacts__textarea");
-    input.textContent = b;
-    input.select();
-    document.execCommand("copy");
-}
+// function debugClipboard() {
+//     // TODO delete: debug!!!
+//     let a = [];
+//     document
+//         .querySelectorAll(".portfolio__container img")
+//         .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
+//     let b = JSON.stringify(a);
+//     // 
+//     let input = document.querySelector(".contacts__textarea");
+//     input.textContent = b;
+//     input.select();
+//     document.execCommand("copy");
+// }
 
 // let img = new Image()
 
