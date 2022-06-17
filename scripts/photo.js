@@ -2,10 +2,8 @@ let configAtr;
 let orderPhotos;
 let configGridStyles;
 (async function () {
-    console.time();
-    const module = await import("./photo_config.js");
-    console.timeEnd();
-    // console.log('test',module.configAtr)
+    const module = await import("./photo_config.js"); 
+    // 
     window.addEventListener("load", () => {
         newCards("portfolio");
     });
@@ -33,14 +31,14 @@ class Slider {
         this.init();
     }
     init() {
-        console.log(this.wrapper)
+        
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
-        console.log(this.buttons);
+        
         
     }
     test(){
-        console.log('test')
+        
     }
     getSrc(order = 0) {
         return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
@@ -73,11 +71,11 @@ class Slider {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
-        console.log(leftButton);
+        
     }
 
     nextPhoto() {
-        console.log("next");
+        
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -87,7 +85,7 @@ class Slider {
     }
 
     prevPhoto() {
-        console.log("prev");
+        
         if (this.currentOrder === 1) return -1
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
@@ -128,9 +126,63 @@ class Slider {
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         body.classList.remove("stop-scrolling");
-        console.log(this.wrapper)
+        
     }
 }
+class GridGalery {
+    constructor(){
+        this.elems = {
+            buttons: document.querySelectorAll(".buttons-container__button"),
+            portfolioContainer: document.querySelector(".portfolio__container"),
+            video: document.querySelector("video"),
+            source: document.querySelector("source"),
+            getPortfolioCards: function () {
+                return document.querySelectorAll(".portfolio__card");
+            },
+        };
+        this.init()
+    }
+    init(){
+        console.log(this.elems)
+    }
+
+    removeCards() {
+        elems.getPortfolioCards().forEach((card) => card.remove());
+    }
+
+    galeryEventsInit() {
+        window.addEventListener("photoDowloaded", () => {
+            this.elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+            this.elems.video.load();
+            this.elems.video.play();
+        });
+        this.elems.buttons.forEach((button) => {
+            button.onclick = switchPhotos;
+        });
+        this.elems.portfolioContainer.addEventListener("click", (e) => {
+            // TODO повесил на родителя
+            // 
+            const dataAtr = e.target.id.split("_")[0];
+            const currentPage = e.target.id.split("-")[0].split("_")[1];
+            const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
+            // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
+            const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
+        });
+    }
+
+    switchPhotos(event) {
+        this.removeCards();
+        this.newCards(event.currentTarget.dataset.photo);
+        // TODO remove !
+        this.debugClipboard();
+    }
+
+    removeCards() {
+        this.elems.getPortfolioCards().forEach((card) => card.remove());
+    }
+}
+const gg = new GridGalery()
+
 
 const elems = {
     buttons: document.querySelectorAll(".buttons-container__button"),
@@ -154,7 +206,7 @@ function galeryEventsInit() {
     });
     elems.portfolioContainer.addEventListener("click", (e) => {
         // TODO повесил на родителя
-        // console.log(e.target.id.split())
+        // 
         const dataAtr = e.target.id.split("_")[0];
         const currentPage = e.target.id.split("-")[0].split("_")[1];
         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
@@ -181,9 +233,9 @@ function newCards(dataAtr) {
     if (orderPhotos[dataAtr]) {
         // adaptive to orderPhotos array
         temp = orderPhotos[dataAtr].map((i) => +i);
-        console.log("newTemp" + temp);
+        
     }
-    console.log(temp);
+    
     for (let i = 1; i < configAtr[dataAtr]; i++) {
         createCard(dataAtr, temp[i]);
     }
@@ -210,8 +262,8 @@ function createCard(dataAtr, page) {
         alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
     // newCard.addEventListener("click", (e) => {
     //     // TODO повесеить на родителя, а не добавлять каждому элементу
-    //     console.log('target',e.target.src)
-    //     console.log('=>',newCard.firstChild.getAttribute("src"))
+    //     
+    //     
     //     openSliderPhoto(newCard.firstChild.getAttribute("src"));
     // }); // TODO test!
     elems.portfolioContainer.append(newCard);
@@ -241,7 +293,7 @@ function debugClipboard() {
         .querySelectorAll(".portfolio__container img")
         .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
     let b = JSON.stringify(a);
-    // console.log(b)
+    // 
     let input = document.querySelector(".contacts__textarea");
     input.textContent = b;
     input.select();
@@ -254,7 +306,7 @@ function debugClipboard() {
 //     // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 // }
 // img.onerror = function () {
-//     console.log('error')
+//     
 // };
 // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 
@@ -281,7 +333,7 @@ function debugClipboard() {
 //         this.init()
 //     }
 //     init(){
-//         console.log(this)
+//         
 //     }
 // }
 
