@@ -1,11 +1,13 @@
+
 let configAtr;
 let orderPhotos;
 let configGridStyles;
 (async function () {
-    const module = await import("./photo_config.js"); 
+    const module = await import("./photo_config.js");
     // 
     window.addEventListener("load", () => {
         newCards("portfolio");
+        // const gg = new GridGalery("portfolio")
     });
     configAtr = module.configAtr;
     orderPhotos = module.orderPhotos;
@@ -31,14 +33,14 @@ class Slider {
         this.init();
     }
     init() {
-        
+
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
-        
-        
+
+
     }
-    test(){
-        
+    test() {
+
     }
     getSrc(order = 0) {
         return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
@@ -71,11 +73,11 @@ class Slider {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
-        
+
     }
 
     nextPhoto() {
-        
+
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -85,7 +87,7 @@ class Slider {
     }
 
     prevPhoto() {
-        
+
         if (this.currentOrder === 1) return -1
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
@@ -126,11 +128,13 @@ class Slider {
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         body.classList.remove("stop-scrolling");
-        
+
     }
 }
 class GridGalery {
-    constructor(){
+    constructor(dataAtr) {
+        this.i = 1;
+        this.dataAtr = dataAtr;
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             portfolioContainer: document.querySelector(".portfolio__container"),
@@ -142,8 +146,9 @@ class GridGalery {
         };
         this.init()
     }
-    init(){
+    init() {
         console.log(this.elems)
+        this.newCards(this.dataAtr)
     }
 
     removeCards() {
@@ -180,8 +185,73 @@ class GridGalery {
     removeCards() {
         this.elems.getPortfolioCards().forEach((card) => card.remove());
     }
+
+    newCards(dataAtr) {
+        let temp = this.getRange(configAtr[dataAtr]);
+        if (orderPhotos[dataAtr]) {
+            // adaptive to orderPhotos array
+            temp = orderPhotos[dataAtr].map((i) => +i);
+        }
+        for (let i = 1; i < configAtr[dataAtr]; i++) {
+            this.createCard(dataAtr, temp[i]);
+        }
+    }
+    getRange(max) {
+        let arr = [];
+        for (let i = 1; i <= max; i++) {
+            arr.push(i);
+        }
+        function shuffleArr(arr) {
+            return arr.sort(() => Math.random() - 0.5);
+        }
+        return shuffleArr(arr);
+    }
+
+    createCard(dataAtr, page) {
+        // debugger
+        let newCard = document.createElement("div");
+        newCard.classList.add("portfolio__card");
+        newCard.classList.add(`${dataAtr}_${page}`);
+        newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" 
+            id = "${dataAtr}_${page}-img" 
+            onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" 
+            alt="" ">`;
+        let img = new Image()
+        this.elems.portfolioContainer.append(newCard);
+    }
+
+    addGridStyleOnload(id, dataAtr, page) {
+        console.log(this)
+        this.i++;
+        if (this.i === configAtr[dataAtr]) {
+            window.dispatchEvent(new CustomEvent("photoDowloaded"));
+        }
+        const card = document.getElementById(`${id}`);
+        card.removeAttribute("onload"); // avoid loop!
+        let imgH = card.naturalHeight;
+        let imgW = card.naturalWidth;
+        configGridStyles.forEach((config) => {
+            if (imgW === config.width && imgH === config.height) {
+                card.parentElement.classList.add(config.class);
+            }
+        });
+    }
+
+    debugClipboard() {
+        // TODO delete: debug!!!
+        let a = [];
+        document
+            .querySelectorAll(".portfolio__container img")
+            .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
+        let b = JSON.stringify(a);
+        // 
+        let input = document.querySelector(".contacts__textarea");
+        input.textContent = b;
+        input.select();
+        document.execCommand("copy");
+    }
 }
-const gg = new GridGalery()
+// const gg = new GridGalery()
 
 
 const elems = {
@@ -233,9 +303,9 @@ function newCards(dataAtr) {
     if (orderPhotos[dataAtr]) {
         // adaptive to orderPhotos array
         temp = orderPhotos[dataAtr].map((i) => +i);
-        
+
     }
-    
+
     for (let i = 1; i < configAtr[dataAtr]; i++) {
         createCard(dataAtr, temp[i]);
     }
@@ -256,32 +326,37 @@ function createCard(dataAtr, page) {
     let newCard = document.createElement("div");
     newCard.classList.add("portfolio__card");
     newCard.classList.add(`${dataAtr}_${page}`);
-    newCard.innerHTML = `<img src="../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp" 
-        id = "${dataAtr}_${page}-img" 
-        onload="addGridStyleOnload('${dataAtr}_${page}-img','${dataAtr}','${page}')" 
-        alt="" ">`; //onload="addGridStyle('${dataAtr}_${page}-img')
-    // newCard.addEventListener("click", (e) => {
-    //     // TODO повесеить на родителя, а не добавлять каждому элементу
-    //     
-    //     
-    //     openSliderPhoto(newCard.firstChild.getAttribute("src"));
-    // }); // TODO test!
+    let img = new Image()
+    img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
+    img.id = `${dataAtr}_${page}-img`;
+    img.onload = function () {
+        // addGridStyleOnload(`${dataAtr}_${page}-img','${dataAtr}','${page}`)
+        addGridStyleOnload(newCard,dataAtr,img)
+    }
+    img.onerror = function (e) {
+        console.log('error',e)
+    };
+   
+    
     elems.portfolioContainer.append(newCard);
+    newCard.append(img)
+
 }
 
 let i = 1;
-async function addGridStyleOnload(id, dataAtr, page) {
+function addGridStyleOnload(newCard, dataAtr, img) {
     i++;
     if (i === configAtr[dataAtr]) {
         window.dispatchEvent(new CustomEvent("photoDowloaded"));
     }
-    const card = document.getElementById(`${id}`);
-    card.removeAttribute("onload"); // avoid loop!
-    let imgH = card.naturalHeight;
-    let imgW = card.naturalWidth;
+    // const card = document.getElementById(`${id}`);
+    // console.log(card)
+    // card.removeAttribute("onload"); // avoid loop!
+    let imgH = img.naturalHeight;
+    let imgW = img.naturalWidth;
     configGridStyles.forEach((config) => {
         if (imgW === config.width && imgH === config.height) {
-            card.parentElement.classList.add(config.class);
+            newCard.classList.add(config.class);
         }
     });
 }
@@ -303,10 +378,10 @@ function debugClipboard() {
 // let img = new Image()
 
 // img.onload = function () {
-//     // card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
+// card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 // }
 // img.onerror = function () {
-//     
+//
 // };
 // img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
 
@@ -333,7 +408,7 @@ function debugClipboard() {
 //         this.init()
 //     }
 //     init(){
-//         
+//
 //     }
 // }
 
