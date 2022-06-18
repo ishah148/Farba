@@ -49,17 +49,11 @@ class Slider {
             <img src='${this.getSrc()}' alt = ''>
         </div>
         `;
-        // const modalWindowHTML = `
-        // <div class="modal-window__container current--slide">
-        //     <img src='${src}' alt = ''>
-        // </div>
-        // `;
         this.generateNext()
         this.generatePrev()
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
         this.wrapper.classList.add("visible");
         this.addEvents();
-        // return newWindow;
     }
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
@@ -68,6 +62,58 @@ class Slider {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
+        if(this.isTouchDevice){
+            this.touchHandle()
+        }
+    }
+
+    isTouchDevice() {
+        try {
+            document.createEvent("TouchEvent");
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    touchHandle() {
+        document.addEventListener('touchstart', handleTouchStart, false);
+        document.addEventListener('touchmove', handleTouchMove, false);
+        let xStart = null;
+        let yStart = null;
+        function handleTouchStart(e) {
+            xStart = e.touches[0].clientX;
+            yStart = e.touches[0].clientY;
+    
+        };
+        function handleTouchMove(e) {
+            let xMove = e.touches[0].clientX;
+            let yMove = e.touches[0].clientY;
+            function left() {
+                return xStart > (xMove + 70)
+            }
+            function right() {
+                return (xStart + 70) < xMove
+            }
+            function down() {
+                return (yStart + 70) < yMove
+            }
+            function up() {
+                return yStart > (yMove + 70)
+            }
+            if (left()) {
+                console.log('left')
+            }
+            if (right()) {
+                console.log('right')
+            }
+            if (down() && !left() && !right()) {
+                console.log('DOWN')
+            }
+            if (up() && !left() && !right()) {
+                console.log('UP')
+            }
+        };
     }
 
     nextPhoto() {
