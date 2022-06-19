@@ -185,7 +185,7 @@ class Slider {
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
-        body.classList.remove("stop-scrolling");
+        document.querySelector('body').classList.remove("stop-scrolling");
 
     }
 }
