@@ -1,20 +1,21 @@
 
-export const hamburger = document.querySelector('.hamburger');
-export const burgerMenuLinks = document.querySelectorAll('.burger-menu__link')
-export const blackout = document.querySelector('.blackout');
+const hamburger = document.querySelector('.hamburger');
+const burgerMenuLinks = document.querySelectorAll('.burger-menu__link')
+const blackout = document.querySelector('.blackout');
+const burgerMenuListItems = document.querySelectorAll('.burger-menu__list-item'); // TODO add this to obj and use {}
+
 const burgerMenu = document.querySelector('.burger-menu');
 const body = document.querySelector('body');
-export const burgerMenuListItems = document.querySelectorAll('.burger-menu__list-item');
+let laptopMinWidth = window.matchMedia("(min-width: 768px)");
 
-
-export function addMenu() {
+function addMenu() {
     hamburger.classList.add('open-menu');
     body.classList.add('stop-scrolling');
     blackout.classList.add('visible');
     burgerMenu.classList.add('visible');
 }
 
-export function closeMenu() {
+function closeMenu() {
     hamburger.classList.remove('open-menu');
     body.classList.remove('stop-scrolling');
     blackout.classList.remove('visible');
@@ -22,6 +23,39 @@ export function closeMenu() {
 }
 
 
+laptopMinWidth.addEventListener("change", function (laptopMinScreenSize) {
+    if (laptopMinScreenSize.matches) {
+        closeMenu();
+    }
+});
 
+
+blackout.addEventListener("click", () => {
+    closeMenu();
+});
+
+hamburger.addEventListener("click", (event) => {
+    if (event.currentTarget.classList.contains("open-menu")) {
+        closeMenu();
+    } else {
+        addMenu();
+    }
+});
+
+burgerMenuLinks.forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+});
+
+burgerMenuListItems.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+        item.classList.add("list-item--active");
+    });
+});
+
+burgerMenuListItems.forEach((item) => {
+    item.addEventListener("mouseout", () => {
+        item.classList.remove("list-item--active");
+    });
+});
 
 
