@@ -190,6 +190,7 @@ class Slider {
 
     }
 }
+
 class GridGalery {
     constructor(dataAtr) {
         this.i = 1;
@@ -206,6 +207,7 @@ class GridGalery {
         this.init()
     }
     init() {
+        this.countRows = this.getCountRows()
         console.log(this.elems)
         this.newCards(this.dataAtr)
         this.galeryEventsInit()
@@ -225,10 +227,13 @@ class GridGalery {
             button.onclick = this.switchPhotos.bind(this);
         });
         this.elems.portfolioContainer.addEventListener("click", (e) => {
+            const countRows = this.getCountRows()
             const dataAtr = e.target.id.split("_")[0];
             const currentPage = e.target.id.split("-")[0].split("_")[1];
-            const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
-            const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
+            console.log(orderPhotos[dataAtr][this.getCountRows])
+            const currentPos = orderPhotos[dataAtr][countRows].indexOf(`${currentPage}`);
+    
+            const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr][countRows]);
 
         });
     }
@@ -245,15 +250,18 @@ class GridGalery {
     }
 
     newCards(dataAtr) {
+
         let temp = this.getRange(configAtr[dataAtr]);
         if (orderPhotos[dataAtr]) {
             // adaptive to orderPhotos array
-            temp = orderPhotos[dataAtr].map((i) => +i);
+            temp = orderPhotos[dataAtr][this.countRows].map((i) => +i);
         }
-        for (let i = 1; i < configAtr[dataAtr]; i++) {
+        for (let i = 0; i < orderPhotos[dataAtr][this.countRows].length; i++) {
+
             this.createCard(dataAtr, temp[i]);
         }
     }
+
     getRange(max) {
         let arr = [];
         for (let i = 1; i <= max; i++) {
@@ -275,6 +283,8 @@ class GridGalery {
         img.onload = () => this.addGridStyleOnload(newCard, dataAtr, img)
         img.onerror = function (e) {
             console.log('error', e)
+            console.log(page)
+            return
         };
         this.elems.portfolioContainer.append(newCard);
         newCard.append(img)
@@ -292,6 +302,15 @@ class GridGalery {
                 newCard.classList.add(config.class);
             }
         });
+    }
+
+    getCountRows() {
+        const mediaFour = window.matchMedia('(min-width: 1381px)')
+        const mediaThree = window.matchMedia('(max-width: 1380px)')
+        const mediaTwo = window.matchMedia('(max-width: 700px)')
+        if (mediaTwo.matches) { return 'twoRows' }
+        if (mediaThree.matches) { return 'threeRows' }
+        if (mediaFour.matches) { return 'fourRows' }
     }
 
     debugClipboard() {
