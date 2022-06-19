@@ -1,6 +1,6 @@
 import translateObj from './translate.js';
 
-export const switchLang = document.querySelector('.switch-lang');
+const switchLang = document.querySelector('.switch-lang');
 
 function translatePage(language) {
     let data = document.querySelectorAll('[data-translate]');
@@ -23,8 +23,11 @@ function translatePage(language) {
 
 }
 
-export function chooseLangButton(event) {
+function chooseLangButton(event) {
     if (event.target.dataset.switch)
         translatePage(event.target.dataset.switch);
 }
+
+
+switchLang.addEventListener("click", chooseLangButton);
 

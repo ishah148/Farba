@@ -2,6 +2,7 @@
 // @use "./buttons";
 
 .modal-window__wrapper {
+    // display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -17,6 +18,7 @@
     // &:hover .modal-window__close-button {
     //     background-color: var(--primary);
     // }
+    // transform: scale(0.1);
     &.visible .modal-window__container {
         display: flex;
         transform: scale(1);
@@ -29,11 +31,22 @@
         padding: 10%;
         background-color: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(10px);
+        .modal-window__right-button,
+        .modal-window__left-button,
+        .modal-window__close-button{
+            display: flex;
+           
+        }
     }
 
     .modal-window__container {
         justify-content: space-between;
-        // position: absolute; // тронул
+        position: absolute; // тронул
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
         // width: max-content; // тронул
         // width: 100%;
         // height: 100%;
@@ -46,67 +59,38 @@
         align-items: center;
         // background-color: var(--primary-light);
         border-radius: 1.2%;
+        transform: translate(0px, 0px);
         transform: scale(0);
-        transition: transform 0.5s ease 0s;
+        transition: transform 0.5s;
+        &.prev--slide {
+            transition: transform 0.5s;
+            transform: translate(-100vw, 0px);
+        }
+        &.next--slide {
+            transition: transform 0.5s;
+            transform: translate(100vw, 0px);
+        }
+        &.current--slide {
+            transition: transform 0.5s;
+            transform: translate(0px, 0px);
+        }
+        &.up{
+            transform: translate(0px,100vh);
+        }
+        &.down{
+            transform: translate(0px,-100vh);
+        }
         img {
             display: block;
             width: 100%;
-          //height: 100%;  //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+            height: 100%; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
             max-height: calc(100vh - 8.25rem);
             max-width: 100vw;
-          //object-fit: contain; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
-          //align-self: center; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+            object-fit: contain; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
+            align-self: center; //!ЗАКОМЕНТИРОВАНО ЧТОБЫ ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ БЕЗ ЭТОГО СВОЙСТВА
         }
 
-        .modal-window__close-button {
-            top: -52px;
-            right: -43px;
-            position: absolute;
-            transition: 0.5s;
-            @media (max-width:768px ){
-                top: -32px;
-                right: -32px;
-            }
-        }
 
-        .modal-window__right-button {
-            bottom: -60px;
-            right: 35%;
-            position: absolute;
-            transition: 0.5s;
-            @media (max-width:768px ){
-
-            }
-        }
-
-        .modal-window__left-button {
-            bottom: -60px;
-            left: 35%;
-            position: absolute;
-            transition: 0.5s;
-            @media (max-width:768px ){
-
-            }
-        }
-
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 1.5rem;
-            width: 1.5rem;
-            border-radius: 50%;
-            border: 0;
-            backdrop-filter: blur(10px);
-            background-color: var(--primary-extra-light);
-            .modal-window__cross,
-            .modal-window__arrow-left,
-            .modal-window__arrow-right {
-                width: 30%;
-                height: 30%;
-                fill: var(--primary-extra-dark)
-            }
-        }
     }
 
     // &:hover &__close-button {
@@ -115,4 +99,63 @@
     // & &__close-button:hover {
     //     background-color: var(--primary);
     // }
+    .modal-window__right-button,
+    .modal-window__left-button,
+    .modal-window__close-button{
+        display: none;
+        
+    }
+    .modal-window__right-button {
+        // bottom: -60px;
+        // right: 35%;
+        right: 0;
+        z-index: 101;
+        position: absolute;
+        transition: 0.5s;
+        @media (max-width: 768px) {
+        }
+    }
+
+    .modal-window__left-button {
+        // bottom: -60px;
+        // left: 35%;
+        left: 0;
+        z-index: 101;
+        position: absolute;
+        transition: 0.5s;
+        @media (max-width: 768px) {
+        }
+    }
+    .modal-window__close-button {
+        top: 15px;
+        right: 15px;
+        position: absolute;
+        transition: 0.5s;
+        z-index: 102;
+        @media (max-width: 768px) {
+            top: -32px;
+            right: -32px;
+        }
+    }
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        border: 0;
+        backdrop-filter: blur(10px);
+        background-color: var(--primary-extra-light);
+        .modal-window__cross,
+        .modal-window__arrow-left,
+        .modal-window__arrow-right {
+            width: 30%;
+            height: 30%;
+            fill: var(--primary-extra-dark);
+        }
+    }
+
 }
+
+
