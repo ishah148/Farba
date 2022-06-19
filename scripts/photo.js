@@ -31,7 +31,6 @@ class Slider {
         this.init();
     }
     init() {
-
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
     }
@@ -136,17 +135,18 @@ class Slider {
     }
 
     nextPhoto() {
+        if(this.currentOrder === this.orderPhotos.length -1 ) {return -1}
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNext();
         this.clearSlides(0)
-        this.clearSlides();
+        
     }
 
     prevPhoto() {
 
-        if (this.currentOrder === 1) return -1
+        if (this.currentOrder === 0) return -1
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
@@ -230,11 +230,8 @@ class GridGalery {
             const countRows = this.getCountRows()
             const dataAtr = e.target.id.split("_")[0];
             const currentPage = e.target.id.split("-")[0].split("_")[1];
-            console.log(orderPhotos[dataAtr][this.getCountRows])
             const currentPos = orderPhotos[dataAtr][countRows].indexOf(`${currentPage}`);
-    
             const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr][countRows]);
-
         });
     }
 
@@ -328,174 +325,3 @@ class GridGalery {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const gg = new GridGalery()
-
-
-// const elems = {
-//     buttons: document.querySelectorAll(".buttons-container__button"),
-//     portfolioContainer: document.querySelector(".portfolio__container"),
-//     video: document.querySelector("video"),
-//     source: document.querySelector("source"),
-//     getPortfolioCards: function () {
-//         return document.querySelectorAll(".portfolio__card");
-//     },
-// };
-
-// galeryEventsInit();
-// function galeryEventsInit() {
-//     window.addEventListener("photoDowloaded", () => {
-//         elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
-//         elems.video.load();
-//         elems.video.play();
-//     });
-//     elems.buttons.forEach((button) => {
-//         button.onclick = switchPhotos;
-//     });
-//     elems.portfolioContainer.addEventListener("click", (e) => {
-//         // TODO повесил на родителя
-//         //
-//         const dataAtr = e.target.id.split("_")[0];
-//         const currentPage = e.target.id.split("-")[0].split("_")[1];
-//         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
-//         // const currentPos = Array.from(elems.portfolioContainer.children).findIndex((i) =>i.classList.contains(dataAtr + '_' + currentPage))
-//         const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
-//     });
-// }
-
-// //elems.buttons[0].dataset.photo
-
-// function switchPhotos(event) {
-//     removeCards();
-//     newCards(event.currentTarget.dataset.photo);
-//     // TODO remove !
-//     debugClipboard();
-// }
-
-// function removeCards() {
-//     elems.getPortfolioCards().forEach((card) => card.remove());
-// }
-
-// function newCards(dataAtr) {
-//     let temp = getRange(configAtr[dataAtr]);
-//     if (orderPhotos[dataAtr]) {
-//         // adaptive to orderPhotos array
-//         temp = orderPhotos[dataAtr].map((i) => +i);
-
-//     }
-
-//     for (let i = 1; i < configAtr[dataAtr]; i++) {
-//         createCard(dataAtr, temp[i]);
-//     }
-// }
-
-// function getRange(max) {
-//     let arr = [];
-//     for (let i = 1; i <= max; i++) {
-//         arr.push(i);
-//     }
-//     function shuffleArr(arr) {
-//         return arr.sort(() => Math.random() - 0.5);
-//     }
-//     return shuffleArr(arr);
-// }
-
-// function createCard(dataAtr, page) {
-//     let newCard = document.createElement("div");
-//     newCard.classList.add("portfolio__card");
-//     newCard.classList.add(`${dataAtr}_${page}`);
-//     let img = new Image()
-//     img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
-//     img.id = `${dataAtr}_${page}-img`;
-//     img.onload = function () {
-//         addGridStyleOnload(newCard, dataAtr, img)
-//     }
-//     img.onerror = function (e) {
-//         console.log('error', e)
-//     };
-//     elems.portfolioContainer.append(newCard);
-//     newCard.append(img)
-// }
-
-// let i = 1;
-// function addGridStyleOnload(newCard, dataAtr, img) {
-//     i++;
-//     if (i === configAtr[dataAtr]) {
-//         window.dispatchEvent(new CustomEvent("photoDowloaded"));
-//     }
-//     let imgH = img.naturalHeight;
-//     let imgW = img.naturalWidth;
-//     configGridStyles.forEach((config) => {
-//         if (imgW === config.width && imgH === config.height) {
-//             newCard.classList.add(config.class);
-//         }
-//     });
-// }
-
-// function debugClipboard() {
-//     // TODO delete: debug!!!
-//     let a = [];
-//     document
-//         .querySelectorAll(".portfolio__container img")
-//         .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
-//     let b = JSON.stringify(a);
-//     //
-//     let input = document.querySelector(".contacts__textarea");
-//     input.textContent = b;
-//     input.select();
-//     document.execCommand("copy");
-// }
-
-// let img = new Image()
-
-// img.onload = function () {
-// card.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-// }
-// img.onerror = function () {
-//
-// };
-// img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.jpg`
-
-// TODO
-// document.getElementById('jpg').onclick = function (){
-//     let reg = /\.\w+$/m
-//     document.querySelectorAll('.portfolio__card img').forEach( img => img.src = img.src.replace(reg,'.jpg') )
-//     if(document.querySelector('.modal-window__container img')){
-//         document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.jpg')
-//     }
-// }
-// document.getElementById('webp').onclick = function (){
-//     let reg = /\.\w+$/m
-//     document.querySelectorAll('.portfolio__card img').forEach( img => img.src = img.src.replace(reg,'.webp') )
-//     if(document.querySelector('.modal-window__container img')){
-//         document.querySelector('.modal-window__container img').src = document.querySelector('.modal-window__container img').src.replace(reg,'.webp')
-//     }
-// }
-
-
-// cls Rat extends Slider {
-//     constructor() {
-//         this.rat = 'red';
-//         this.init()
-//     }
-//     init(){
-//
-//     }
-// }
-
-// let x = new Rat();
-
-// as
