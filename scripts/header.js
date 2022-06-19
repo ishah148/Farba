@@ -1,6 +1,6 @@
 // window.onload = updateHeader();
 
-export const windowScrollListener = window.addEventListener('scroll', function() {
+export const windowScrollListener = window.addEventListener('scroll', function() { //! addEventListener returns nothing, default export doesn't work, HOW TO IMPORT THIS SHIT CORRECTLY
     if(window.pageYOffset){
         document.querySelector('header').classList.add('header--transparent');
         // document.querySelector('.pseudo-header').classList.add('header--transparent');
@@ -17,3 +17,4 @@ export const windowScrollListener = window.addEventListener('scroll', function()
 // function updateHeader(){
 //     document.querySelector('header').style.width = document.querySelector('body').offsetWidth + 'px'
 // }
+
