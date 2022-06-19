@@ -2,6 +2,7 @@
 import {
     blackout,    //!REMOVE OR MOVE
 } from "./hamburger.js";
+import { windowScrollListener} from "./header.js";
 import { switchLang, chooseLangButton } from "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 const tg = new TelegramSendMessage("contacts-window__form");

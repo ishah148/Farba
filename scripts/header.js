@@ -1,6 +1,6 @@
 // window.onload = updateHeader();
 
-window.addEventListener('scroll', function() {
+export const windowScrollListener = window.addEventListener('scroll', function() {
     if(window.pageYOffset){
         document.querySelector('header').classList.add('header--transparent');
         // document.querySelector('.pseudo-header').classList.add('header--transparent');
