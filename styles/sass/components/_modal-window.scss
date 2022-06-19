@@ -74,7 +74,12 @@
             transition: transform 0.5s;
             transform: translate(0px, 0px);
         }
-
+        &.up{
+            transform: translate(0px,100vh);
+        }
+        &.down{
+            transform: translate(0px,-100vh);
+        }
         img {
             display: block;
             width: 100%;

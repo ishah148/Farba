@@ -945,6 +945,12 @@ body {
   transition: transform 0.5s;
   transform: translate(0px, 0px);
 }
+.modal-window__wrapper .modal-window__container.up {
+  transform: translate(0px, 100vh);
+}
+.modal-window__wrapper .modal-window__container.down {
+  transform: translate(0px, -100vh);
+}
 .modal-window__wrapper .modal-window__container img {
   display: block;
   width: 100%;
@@ -1205,6 +1211,10 @@ body {
   color: #5587c4;
   text-decoration: none;
 }
+.contacts-window__callback-bt:hover .contacts-window__text-call .text {
+  opacity: 1;
+  font-size: 11px;
+}
 .contacts-window__callback-bt:hover .fa.fa-phone {
   display: none;
 }
@@ -1212,10 +1222,6 @@ body {
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-}
-.contacts-window__callback-bt .contacts-window__text-call:hover .text {
-  opacity: 1;
-  font-size: 11px;
 }
 .contacts-window__callback-bt .contacts-window__text-call .fa {
   display: inline-block;

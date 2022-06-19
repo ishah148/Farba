@@ -5,7 +5,7 @@ let configGridStyles;
 (async function () {
     const module = await import("./photo_config.js");
     window.addEventListener("load", () => {
-        const gg = new GridGalery("portfolio","getCountRows() return 'threeRows'")
+        const gg = new GridGalery("portfolio", "getCountRows() return 'threeRows'")
     });
     configAtr = module.configAtr;
     orderPhotos = module.orderPhotos;
@@ -53,6 +53,7 @@ class Slider {
         this.generatePrev()
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
         this.wrapper.classList.add("visible");
+        body.classList.add('stop-scrolling');
         this.addEvents();
     }
     addEvents() {
@@ -62,7 +63,7 @@ class Slider {
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
-        if(this.isTouchDevice){
+        if (this.isTouchDevice) {
             this.touchHandle()
         }
     }
@@ -77,41 +78,59 @@ class Slider {
     }
 
     touchHandle() {
-        document.addEventListener('touchstart', handleTouchStart, false);
-        document.addEventListener('touchmove', handleTouchMove, false);
+        const wrapper = this.wrapper
+        wrapper.addEventListener('touchstart', handleTouchStart.bind(this), false);
+        wrapper.addEventListener('touchmove', handleTouchMove.bind(this), false);
         let xStart = null;
         let yStart = null;
+        let sensitivity = 100;
         function handleTouchStart(e) {
             xStart = e.touches[0].clientX;
             yStart = e.touches[0].clientY;
-    
+
         };
         function handleTouchMove(e) {
             let xMove = e.touches[0].clientX;
             let yMove = e.touches[0].clientY;
             function left() {
-                return xStart > (xMove + 70)
+                return xStart > (xMove + sensitivity)
             }
             function right() {
-                return (xStart + 70) < xMove
+                return (xStart + sensitivity) < xMove
             }
             function down() {
-                return (yStart + 70) < yMove
+                return (yStart + sensitivity) < yMove
             }
             function up() {
-                return yStart > (yMove + 70)
+                return yStart > (yMove + sensitivity)
+            }
+            const removeEvents = () => {
+                wrapper.replaceWith(wrapper.cloneNode(true));
             }
             if (left()) {
-                console.log('left')
+                this.nextPhoto()
+                xStart = xMove
+                console.log('next')
             }
             if (right()) {
-                console.log('right')
+                this.prevPhoto()
+                xStart = xMove
+                console.log('prev')
             }
             if (down() && !left() && !right()) {
-                console.log('DOWN')
+                document.querySelector('.current--slide').classList.add('up')
+                document.querySelector('.current--slide').addEventListener('transitionend', () => {
+                    this.closeModalWindow()
+                    removeEvents()
+                })
+
             }
             if (up() && !left() && !right()) {
-                console.log('UP')
+                document.querySelector('.current--slide').classList.add('down')
+                document.querySelector('.current--slide').addEventListener('transitionend', () => {
+                    this.closeModalWindow()
+                    removeEvents()
+                })
             }
         };
     }
@@ -162,6 +181,7 @@ class Slider {
     }
 
     closeModalWindow() {
+
         document.querySelector(".modal-window__wrapper").classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
@@ -209,6 +229,7 @@ class GridGalery {
             const currentPage = e.target.id.split("-")[0].split("_")[1];
             const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
             const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr]);
+
         });
     }
 
@@ -327,7 +348,7 @@ class GridGalery {
 //     });
 //     elems.portfolioContainer.addEventListener("click", (e) => {
 //         // TODO повесил на родителя
-//         // 
+//         //
 //         const dataAtr = e.target.id.split("_")[0];
 //         const currentPage = e.target.id.split("-")[0].split("_")[1];
 //         const currentPos = orderPhotos[dataAtr].indexOf(`${currentPage}`);
@@ -412,7 +433,7 @@ class GridGalery {
 //         .querySelectorAll(".portfolio__container img")
 //         .forEach((i) => a.push(...i.src.match(/\w+_\d+/)));
 //     let b = JSON.stringify(a);
-//     // 
+//     //
 //     let input = document.querySelector(".contacts__textarea");
 //     input.textContent = b;
 //     input.select();

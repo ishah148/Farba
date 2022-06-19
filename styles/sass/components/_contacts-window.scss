@@ -189,6 +189,10 @@ $border-color: #f5f5f6;
         text-decoration: none;
     }
     &:hover {
+        .contacts-window__text-call .text {
+            opacity: 1;
+            font-size: 11px;
+        }
         .fa {
             &.fa-phone {
                 display: none;
@@ -199,12 +203,12 @@ $border-color: #f5f5f6;
         border-radius: 50%;
         position: relative;
         overflow: hidden;
-        &:hover {
-            .text {
-                opacity: 1;
-                font-size: 11px;
-            }
-        }
+        // &:hover {
+        //     .text {
+        //         opacity: 1;
+        //         font-size: 11px;
+        //     }
+        // }
         .fa {
             display: inline-block;
             font: normal normal normal 14px/1 FontAwesome;
