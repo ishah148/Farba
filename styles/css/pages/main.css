@@ -791,7 +791,7 @@ body {
   width: 130px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: #00000080;
+  fill: rgba(0, 0, 0, 0.5019607843);
 }
 
 .switch-lang {
@@ -964,6 +964,12 @@ body {
 .modal-window__wrapper .modal-window__container.current--slide {
   transition: transform 0.5s;
   transform: translate(0px, 0px);
+}
+.modal-window__wrapper .modal-window__container.up {
+  transform: translate(0px, 100vh);
+}
+.modal-window__wrapper .modal-window__container.down {
+  transform: translate(0px, -100vh);
 }
 .modal-window__wrapper .modal-window__container img {
   display: block;
@@ -1225,6 +1231,10 @@ body {
   color: #5587c4;
   text-decoration: none;
 }
+.contacts-window__callback-bt:hover .contacts-window__text-call .text {
+  opacity: 1;
+  font-size: 11px;
+}
 .contacts-window__callback-bt:hover .fa.fa-phone {
   display: none;
 }
@@ -1232,10 +1242,6 @@ body {
   border-radius: 50%;
   position: relative;
   overflow: hidden;
-}
-.contacts-window__callback-bt .contacts-window__text-call:hover .text {
-  opacity: 1;
-  font-size: 11px;
 }
 .contacts-window__callback-bt .contacts-window__text-call .fa {
   display: inline-block;
