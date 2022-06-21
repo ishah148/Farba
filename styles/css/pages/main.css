@@ -1594,6 +1594,11 @@ body {
     width: 100%;
   }
 }
+.portfolio__show-all {
+  margin: auto;
+  margin-top: 25px;
+}
+
 .video {
   padding: 50px 0;
 }

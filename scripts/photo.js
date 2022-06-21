@@ -132,7 +132,6 @@ class Slider {
             }
         };
     }
-
     nextPhoto() {
         if(this.currentOrder === this.orderPhotos.length -1 ) {return -1}
         this.currentOrder++;
@@ -246,14 +245,13 @@ class GridGalery {
     }
 
     newCards(dataAtr) {
-
         let temp = this.getRange(configAtr[dataAtr]);
         if (orderPhotos[dataAtr]) {
             // adaptive to orderPhotos array
             temp = orderPhotos[dataAtr][this.countRows].map((i) => +i);
         }
         for (let i = 0; i < orderPhotos[dataAtr][this.countRows].length; i++) {
-
+            
             this.createCard(dataAtr, temp[i]);
         }
     }
