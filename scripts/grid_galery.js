@@ -2,7 +2,7 @@ import {configAtr,configGridStyles,orderPhotos} from "./photo_config.js"
 import {Slider} from "./slider.js"
 export class GridGalery {
     constructor(dataAtr) {
-        this.i = 1;
+        this.countLoadedFhoto = 0;
         this.dataAtr = dataAtr;// dataAtr['threeRows']
         this.isFirstPart = false;
         this.isSecondPart = false;
@@ -129,8 +129,8 @@ export class GridGalery {
     }
 
     addGridStyleOnload(newCard, dataAtr, img) {
-        this.i++;
-        if (this.i === configAtr[dataAtr]) {
+        this.countLoadedFhoto++;
+        if (this.countLoadedFhoto === 27) {
             window.dispatchEvent(new CustomEvent("photoDowloaded"));
         }
         let imgH = img.naturalHeight;
