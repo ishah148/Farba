@@ -178,10 +178,23 @@ export class Slider {
     }
 }
 
+class Slider3D extends Slider {
+    constructor() {
+        super()
+    }
+    //  TODO 3D handler for 3D photo
+    //is it normal?
+}
 
-class TouchSlider3D extends Slider{
-    constructor(){
+class TouchSlider3D extends Slider3D {
+    constructor() {
         super()
         // TODO add touch , for 3D photo from td.js
+    }
+}
+
+class Mouse3D extends Slider3D {
+    constructor() {
+        super()
     }
 }
