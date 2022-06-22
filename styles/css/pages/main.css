@@ -1157,8 +1157,16 @@ body {
   text-decoration: none;
   border: none;
   align-self: center;
-  width: 218px;
+  width: 247px;
   border-bottom: 1px solid white;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__button-send.sended {
+  color: #b2fab4;
+  border-bottom: 1px solid #b2fab4;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__button-send.error {
+  color: red;
+  border-bottom: 1px solid red;
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__text-me {
   display: flex;

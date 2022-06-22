@@ -86,7 +86,6 @@ export class GridGalery {
         }
         if (this.isFirstPart) { //show first part
             for (let i = 0; i < this.firstPartLength; i++) {
-                console.log(this.firstPartLength)
                 this.createCard(dataAtr, temp[i]);
             }
         }
@@ -97,14 +96,16 @@ export class GridGalery {
         }
     }
 
+    shuffleArr(arr) {
+        return arr.sort(() => Math.random() - 0.5);
+    }
+
     getRange(max) {
         let arr = [];
         for (let i = 1; i <= max; i++) {
             arr.push(i);
         }
-        function shuffleArr(arr) {
-            return arr.sort(() => Math.random() - 0.5);
-        }
+        
         return shuffleArr(arr);
     }
 

@@ -93,29 +93,29 @@ export class Slider {
                 wrapper.replaceWith(wrapper.cloneNode(true));
             }
             if (left()) {
-                this.nextPhoto()
-                xStart = xMove
-                console.log('next')
+                this.nextPhoto();
+                xStart = xMove;
+                console.log('next');
             }
             if (right()) {
-                this.prevPhoto()
-                xStart = xMove
-                console.log('prev')
+                this.prevPhoto();
+                xStart = xMove;
+                console.log('prev');
             }
             if (down() && !left() && !right()) {
-                document.querySelector('.current--slide').classList.add('up')
+                document.querySelector('.current--slide').classList.add('up');
                 document.querySelector('.current--slide').addEventListener('transitionend', () => {
-                    this.closeModalWindow()
-                    removeEvents()
+                    this.closeModalWindow();
+                    removeEvents();
                 })
 
             }
             if (up() && !left() && !right()) {
                 console.log('op')
-                document.querySelector('.current--slide').classList.add('down')
+                document.querySelector('.current--slide').classList.add('down');
                 document.querySelector('.current--slide').addEventListener('transitionend', () => {
-                    this.closeModalWindow()
-                    removeEvents()
+                    this.closeModalWindow();
+                    removeEvents();
                 })
             }
         };
@@ -175,6 +175,12 @@ export class Slider {
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
 
+    }
+}
+
+class TouchHandle extends Slider{
+    constructor(){
+        super()
     }
 }
 

@@ -102,8 +102,16 @@ $border-color: #f5f5f6;
                     text-decoration: none;
                     border: none;
                     align-self: center;
-                    width: 218px;
+                    width: 247px;
                     border-bottom: 1px solid white;
+                    &.sended{
+                        color: #b2fab4;
+                        border-bottom: 1px solid #b2fab4;
+                    }
+                    &.error{
+                        color: red;
+                        border-bottom: 1px solid red;
+                    }
                 }
             }
         }

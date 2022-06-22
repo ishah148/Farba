@@ -1,20 +1,18 @@
 export default class TelegramSendMessage {
     constructor(formID) {
-        // this.where = where;
         this.formID = formID;
-        this.thisClass  = this
-        // this.testForBtn = document.getElementById('testForBtn')
+        this.button = document.getElementById('contacts-window__button-send')
         this.init();
     }
     init() {
         // this.createForm();
-        this.addEvents()    
+        this.addEvents()
     }
     async telegramSendMsg(...msg) {
         const TOKEN = "5347090290:AAF09ki7fabNwlkyFFdPst8d-hDvXu1G4mI";
         const CHAT_ID = "-1001622903655";
         const URL = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-        const response = await fetch(URL, {
+        const query = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
@@ -23,19 +21,27 @@ export default class TelegramSendMessage {
                 chat_id: CHAT_ID,
                 text: ` Имя: ${msg[0]} \nНомер телефона : ${msg[1]} `,
             }),
-        });
-        const status1 = await response.json();
-        console.log(status1.ok);
+        }
+        const response = await fetch(URL, query);
+        try {
+        } catch (e) { }
+
+        const status = await response.json();
+        // console.log(status)
+        if (status.ok) {
+            this.sendDode()
+        }
+        if (!status.ok) {
+            this.sendErr()
+        }
     }
 
     addEvents() {
         // this.testForBtn.onclick = this.testOne.bind(this.testForBtn,this)
-        document.getElementById(this.formID).onsubmit = this.sumbit.bind(document.getElementById(this.formID),this);
-        // document.addEventListener('keyup.enter',function(){
-        // })
+        document.getElementById(this.formID).onsubmit = this.sumbit.bind(document.getElementById(this.formID), this);
     }
 
-    testOne(...args){
+    testOne(...args) {
         console.log(args)
         console.log(this.where)
         console.log(e)
@@ -45,8 +51,26 @@ export default class TelegramSendMessage {
         const event = args[1]
         const thisClass = args[0]
         event.preventDefault();
-        thisClass.telegramSendMsg(this.userName.value, this.userNumber.value);
+        thisClass.checkValidPhone(this.userNumber.value)
+        // thisClass.telegramSendMsg(this.userName.value, this.userNumber.value)
+
     }
+
+    //TODO
+    checkValidPhone(number) {
+        if(!number || number.toString().length > 25 || number.toString().length < 8){
+            // please input correct number
+        }
+     } // от 8 до 25 и не буквы ()-+ пробелы
+    sendDode() {
+        this.button.textContent = "ЗАЯВКА ОТПРАВЛЕНА"
+        this.button.classList.add('sended')
+    }
+    sendErr() {
+        this.button.textContent = "ОШИБКА ОТПРАВКИ"
+        this.button.classList.add('error')
+    }
+
 
     createForm() {
         const form = `  
