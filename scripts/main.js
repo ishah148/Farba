@@ -11,11 +11,6 @@ const tg = new TelegramSendMessage("contacts-window__form");
 
 window.addEventListener("load", () => {
     const galery = new GridGalery("portfolio");
-    // gg.init()
-    galery.showFirstPart();
-    document.getElementById('show-all').onclick = () => {
-        galery.showSecondPart();
-    }
 });
 
 
