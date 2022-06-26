@@ -1,9 +1,9 @@
-import {configAtr,configGridStyles,orderPhotos} from "./photo_config.js"
-import {Slider} from "./slider.js"
+import { configAtr, configGridStyles, orderPhotos } from "./photo_config.js"
+import { Slider } from "./slider.js"
 export class GridGalery {
-    constructor(dataAtr) {
+    constructor(photoCategory) {
         this.countLoadedFhoto = 0;
-        this.dataAtr = dataAtr;// dataAtr['threeRows']
+        this.photoCategory = photoCategory;// photoCategory['threeRows']
         this.isFirstPart = false;
         this.isSecondPart = false;
         this.firstPartLength = 43;
@@ -19,9 +19,9 @@ export class GridGalery {
         // this.init()
     }
     init() {
-        this.countRows = this.getCountRows();
+        this.rowsNumber = this.getCountRows();
         console.log(this.elems);
-        this.newCards(this.dataAtr);
+        this.newCards(this.photoCategory);
         this.galeryEventsInit();
     }
 
@@ -38,8 +38,8 @@ export class GridGalery {
     }
 
     removeCards() {
-        debugger
-        elems.getPortfolioCards().forEach((card) => card.remove());
+        // debugger
+        this.elems.getPortfolioCards().forEach((card) => card.remove());
     }
 
     galeryEventsInit() {
@@ -52,17 +52,19 @@ export class GridGalery {
             button.onclick = this.switchPhotos.bind(this);
         });
         this.elems.portfolioContainer.addEventListener("click", (e) => {
-            const countRows = this.getCountRows();
-            const dataAtr = e.target.id.split("_")[0];
-            const currentPage = e.target.id.split("-")[0].split("_")[1];
-            const currentPos = orderPhotos[dataAtr][countRows].indexOf(`${currentPage}`);
-            const openSlider = new Slider(e.target.src, dataAtr, currentPage, currentPos, orderPhotos[dataAtr][countRows]); //  !is it normal ?
-        });
+            if(e.target.nodeName !== 'IMG') return;
+            const rowsNumber = this.getCountRows();
+            const photoCategory = e.target.id.split("_")[0];
+            const photoNumber = e.target.id.split("-")[0].split("_")[1];
+            const currentPos = orderPhotos[photoCategory][rowsNumber].indexOf(`${photoNumber}`);
+            //! do we remove slider?
+            new Slider(e.target.src, photoCategory, photoNumber, currentPos, orderPhotos[photoCategory][rowsNumber]);
+    });
     }
 
     switchPhotos(event) {
         // debugger
-        this.dataAtr = event.currentTarget.dataset.photo;
+        this.photoCategory = event.currentTarget.dataset.photo;
         this.isSecondPart = false;
         this.removeCards();
         this.newCards(event.currentTarget.dataset.photo);
@@ -70,28 +72,24 @@ export class GridGalery {
         this.debugClipboard();
     }
 
-    removeCards() {
-        this.elems.getPortfolioCards().forEach((card) => card.remove());
-    }
 
-
-    newCards(dataAtr) {
-        const secondPartLength = orderPhotos[dataAtr][this.countRows].length;
-        this.firstPartLength  = secondPartLength > 43 ? 43 : secondPartLength
-        let temp = orderPhotos[dataAtr][this.countRows].map((i) => +i);
+    newCards(photoCategory) {
+        const secondPartLength = orderPhotos[photoCategory][this.rowsNumber].length;
+        this.firstPartLength = secondPartLength > 43 ? 43 : secondPartLength
+        let temp = orderPhotos[photoCategory][this.rowsNumber].map((i) => +i);
         if (!this.isFirstPart && !this.isSecondPart) {
-            for (let i = 0; i < orderPhotos[dataAtr][this.countRows].length; i++) {
-                this.createCard(dataAtr, temp[i]);
+            for (let i = 0; i < orderPhotos[photoCategory][this.rowsNumber].length; i++) {
+                this.createCard(photoCategory, temp[i]);
             }
         }
         if (this.isFirstPart) { //show first part
             for (let i = 0; i < this.firstPartLength; i++) {
-                this.createCard(dataAtr, temp[i]);
+                this.createCard(photoCategory, temp[i]);
             }
         }
         if (this.isSecondPart && secondPartLength > this.firstPartLength) { //after btn click "show-all"
             for (let i = this.firstPartLength; i < secondPartLength; i++) {
-                this.createCard(dataAtr, temp[i]);
+                this.createCard(photoCategory, temp[i]);
             }
         }
     }
@@ -105,19 +103,19 @@ export class GridGalery {
         for (let i = 1; i <= max; i++) {
             arr.push(i);
         }
-        
+
         return shuffleArr(arr);
     }
 
-    createCard(dataAtr, page) {
+    createCard(photoCategory, page) {
         let newCard = document.createElement("div");
         newCard.classList.add("portfolio__card");
-        newCard.classList.add(`${dataAtr}_${page}`);
+        newCard.classList.add(`${photoCategory}_${page}`);
         let img = new Image()
-        img.src = `../assets/portfolio/${dataAtr}/${dataAtr}_${page}.webp`;
-        img.id = `${dataAtr}_${page}-img`;
+        img.src = `../assets/portfolio/${photoCategory}/${photoCategory}_${page}.webp`;
+        img.id = `${photoCategory}_${page}-img`;
         img.onload = () => {
-            this.addGridStyleOnload(newCard, dataAtr, img)
+            this.addGridStyleOnload(newCard, photoCategory, img)
             this.elems.portfolioContainer.append(newCard);
             newCard.append(img)
         }
@@ -129,7 +127,7 @@ export class GridGalery {
 
     }
 
-    addGridStyleOnload(newCard, dataAtr, img) {
+    addGridStyleOnload(newCard, photoCategory, img) {
         this.countLoadedFhoto++;
         if (this.countLoadedFhoto === 27) {
             window.dispatchEvent(new CustomEvent("photoDowloaded"));
@@ -144,9 +142,9 @@ export class GridGalery {
     }
 
     getCountRows() {
-        const mediaFour = window.matchMedia('(min-width: 1381px)')
-        const mediaThree = window.matchMedia('(max-width: 1380px)')
-        const mediaTwo = window.matchMedia('(max-width: 1070px)')
+        const mediaFour = window.matchMedia('(min-width: 1381px)');
+        const mediaThree = window.matchMedia('(max-width: 1380px)');
+        const mediaTwo = window.matchMedia('(max-width: 1070px)');
         if (mediaTwo.matches) { return 'twoRows' }
         if (mediaThree.matches) { return 'threeRows' }
         if (mediaFour.matches) { return 'fourRows' }

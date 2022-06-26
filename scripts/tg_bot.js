@@ -52,7 +52,7 @@ export default class TelegramSendMessage {
         const thisClass = args[0]
         event.preventDefault();
         thisClass.checkValidPhone(this.userNumber.value)
-        // thisClass.telegramSendMsg(this.userName.value, this.userNumber.value)
+        thisClass.telegramSendMsg(this.userName.value, this.userNumber.value)
 
     }
 
