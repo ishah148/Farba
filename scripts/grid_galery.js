@@ -1,12 +1,12 @@
-import { configAtr, configGridStyles, orderPhotos } from "./photo_config.js"
+import { configAtr, configGridStyles, photoOrder } from "./photo_config.js"
 import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {
         this.countLoadedFhoto = 0;
         this.photoCategory = photoCategory;// photoCategory['threeRows']
-        this.isFirstPart = false;
-        this.isSecondPart = false;
-        this.firstPartLength = 43;
+        this.isFirstPartDownloaded = false;
+        this.isAllPhotosDownloaded = false;
+        this.firstPartLength = null;
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             portfolioContainer: document.querySelector(".portfolio__container"),
@@ -18,93 +18,58 @@ export class GridGalery {
         };
         // this.init()
     }
+
     init() {
-        this.rowsNumber = this.getCountRows();
-        console.log(this.elems);
+        this.numberOfColumns = this.getNumberOfColumns();
         this.newCards(this.photoCategory);
         this.galeryEventsInit();
-    }
-
-    showFirstPart() {
-        this.isFirstPart = true;
-        this.isSecondPart = false;
-        this.init();
-    }
-
-    showSecondPart() {
-        this.isFirstPart = false;
-        this.isSecondPart = true;
-        this.init()
-    }
-
-    removeCards() {
-        // debugger
-        this.elems.getPortfolioCards().forEach((card) => card.remove());
     }
 
     galeryEventsInit() {
         window.addEventListener("photoDowloaded", () => {
             this.elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+                                                    //TODO try to find another way maybe
+    //        this.removeCards();                     //it's for correct working of grid 
+    //        this.newCards(this.photoCategory);      //without these lines, order of photos will be different after every page reload
+                                                    //because of asynchronous image onload
             this.elems.video.load();
             this.elems.video.play();
         });
         this.elems.buttons.forEach((button) => {
             button.onclick = this.switchPhotos.bind(this);
         });
-        this.elems.portfolioContainer.addEventListener("click", (e) => {
-            if(e.target.nodeName !== 'IMG') return;
-            const rowsNumber = this.getCountRows();
-            const photoCategory = e.target.id.split("_")[0];
-            const photoNumber = e.target.id.split("-")[0].split("_")[1];
-            const currentPos = orderPhotos[photoCategory][rowsNumber].indexOf(`${photoNumber}`);
-            //! do we remove slider?
-            new Slider(e.target.src, photoCategory, photoNumber, currentPos, orderPhotos[photoCategory][rowsNumber]);
-    });
+        this.elems.portfolioContainer.addEventListener("click", this.openSlider.bind(this));
     }
 
-    switchPhotos(event) {
-        // debugger
-        this.photoCategory = event.currentTarget.dataset.photo;
-        this.isSecondPart = false;
-        this.removeCards();
-        this.newCards(event.currentTarget.dataset.photo);
-        // TODO remove !
-        this.debugClipboard();
+    openSlider(event) {
+        if (event.target.nodeName !== 'IMG') return;
+        const numberOfColumns = this.getNumberOfColumns();
+        const photoCategory = event.target.id.split("_")[0];
+        const photoNumber = event.target.id.split("-")[0].split("_")[1];
+        const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(`${photoNumber}`);
+        //TODO check do we remove slider?
+        new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
     }
-
 
     newCards(photoCategory) {
-        const secondPartLength = orderPhotos[photoCategory][this.rowsNumber].length;
-        this.firstPartLength = secondPartLength > 43 ? 43 : secondPartLength
-        let temp = orderPhotos[photoCategory][this.rowsNumber].map((i) => +i);
-        if (!this.isFirstPart && !this.isSecondPart) {
-            for (let i = 0; i < orderPhotos[photoCategory][this.rowsNumber].length; i++) {
+        const allPhotosArrLength = photoOrder[photoCategory][this.numberOfColumns].length;
+        this.firstPartLength = allPhotosArrLength > 43 ? 43 : allPhotosArrLength
+        let temp = photoOrder[photoCategory][this.numberOfColumns].map((i) => +i);
+        if (!this.isFirstPartDownloaded && !this.isAllPhotosDownloaded) {
+            for (let i = 0; i < photoOrder[photoCategory][this.numberOfColumns].length; i++) {
                 this.createCard(photoCategory, temp[i]);
             }
         }
-        if (this.isFirstPart) { //show first part
+        if (this.isFirstPartDownloaded) { //show first part
             for (let i = 0; i < this.firstPartLength; i++) {
                 this.createCard(photoCategory, temp[i]);
             }
         }
-        if (this.isSecondPart && secondPartLength > this.firstPartLength) { //after btn click "show-all"
-            for (let i = this.firstPartLength; i < secondPartLength; i++) {
+        if (this.isAllPhotosDownloaded && allPhotosArrLength > this.firstPartLength) { //after btn click "show-all"
+            for (let i = this.firstPartLength; i < allPhotosArrLength; i++) {
                 this.createCard(photoCategory, temp[i]);
             }
         }
-    }
-
-    shuffleArr(arr) {
-        return arr.sort(() => Math.random() - 0.5);
-    }
-
-    getRange(max) {
-        let arr = [];
-        for (let i = 1; i <= max; i++) {
-            arr.push(i);
-        }
-
-        return shuffleArr(arr);
     }
 
     createCard(photoCategory, page) {
@@ -124,12 +89,11 @@ export class GridGalery {
             console.log(page)
             return
         };
-
     }
 
     addGridStyleOnload(newCard, photoCategory, img) {
         this.countLoadedFhoto++;
-        if (this.countLoadedFhoto === 27) {
+        if (this.countLoadedFhoto === 27) {  //!wtf 27
             window.dispatchEvent(new CustomEvent("photoDowloaded"));
         }
         let imgH = img.naturalHeight;
@@ -141,13 +105,55 @@ export class GridGalery {
         });
     }
 
-    getCountRows() {
+
+    showFirstPart() {
+        this.isFirstPartDownloaded = true;
+        this.isAllPhotosDownloaded = false;
+        this.init();
+    }
+
+    showSecondPart() {
+        this.isFirstPartDownloaded = false;
+        this.isAllPhotosDownloaded = true;
+        this.init()
+    }
+
+    removeCards() {
+        // debugger
+        this.elems.getPortfolioCards().forEach((card) => card.remove());
+    }
+
+
+    switchPhotos(event) {
+        // debugger
+        this.photoCategory = event.currentTarget.dataset.photo;
+        this.isAllPhotosDownloaded = false;
+        this.removeCards();
+        this.newCards(event.currentTarget.dataset.photo);
+        // TODO remove !
+        this.debugClipboard();
+    }
+
+    shuffleArr(arr) {
+        return arr.sort(() => Math.random() - 0.5);
+    }
+
+    getRange(max) {
+        let arr = [];
+        for (let i = 1; i <= max; i++) {
+            arr.push(i);
+        }
+
+        return shuffleArr(arr);
+    }
+
+    getNumberOfColumns() {
         const mediaFour = window.matchMedia('(min-width: 1381px)');
         const mediaThree = window.matchMedia('(max-width: 1380px)');
         const mediaTwo = window.matchMedia('(max-width: 1070px)');
-        if (mediaTwo.matches) { return 'twoRows' }
-        if (mediaThree.matches) { return 'threeRows' }
-        if (mediaFour.matches) { return 'fourRows' }
+        if (mediaTwo.matches) { return 'twoColumns' }
+        if (mediaThree.matches) { return 'threeColumns' }
+        if (mediaFour.matches) { return 'fourColumns' }
     }
 
     debugClipboard() {
