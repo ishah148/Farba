@@ -3,11 +3,12 @@ import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {
         this.countOfLoadedPhoto = 0;
+        this.countOfAlignedPhotos = 0;
         this.numberOfPreShowedPhotos = 40;  //for all categories;
         // we can create array of specific values for each category
         this.photoCategory = photoCategory;// photoCategory['threeRows']
-        this.isPreshowPhotoDownloaded = false;
         this.isAllPhotosDownloaded = false;
+        this.isGridAligning = false;
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             showAllButton: document.getElementById('show-all'),
@@ -54,14 +55,12 @@ export class GridGalery {
         //it's for correct working of grid 
         //without these lines, order of photos will be different after every page reload
         //because of asynchronous image onload
+        this.isGridAligning = true;
         this.removeCards();
         if (!this.isAllPhotosDownloaded) {
             this.preShowCards();
         } else {
-            // let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
-            // for (let i = 0; i < photoConfig.length; i++) {
-            //     this.createCard(photoConfig[i]);
-            // }
+            this.showAllCards();
         }
     }
 
@@ -75,6 +74,13 @@ export class GridGalery {
     showRemainingCards() {
         let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
         for (let i = this.numberOfPreShowedPhotos; i < photoConfig.length; i++) {
+            this.createCard(photoConfig[i]);
+        }
+    }
+
+    showAllCards() {
+        let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
+        for (let i = 0; i < photoConfig.length; i++) {
             this.createCard(photoConfig[i]);
         }
     }
@@ -97,22 +103,29 @@ export class GridGalery {
         img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
         img.id = `${this.photoCategory}_${photoNumber}-img`;
         img.onload = () => {
-            if(!this.isPreshowPhotoDownloaded) {
+            if (!this.isGridAligning) {
                 this.countOfLoadedPhoto++;
-                console.log(this.countOfLoadedPhoto);
+                console.log(`loaded`, this.countOfLoadedPhoto);
+            } else {
+                this.countOfAlignedPhotos++;
+                console.log(`aligned`, this.countOfAlignedPhotos);
             }
+
             this.addGridStyleOnload(newCard, img)
             this.elems.portfolioContainer.append(newCard);
             newCard.append(img)
-            if (this.countOfLoadedPhoto === this.numberOfPreShowedPhotos && !this.isPreshowPhotoDownloaded) {
-                this.isPreshowPhotoDownloaded = true;
+
+            if (this.countOfLoadedPhoto === this.numberOfPreShowedPhotos && !this.isGridAligning) {
                 window.dispatchEvent(new CustomEvent("photoDowloaded"));
                 console.log('half-done')
             }
-            if (this.countOfLoadedPhoto === photoOrder[this.photoCategory][this.numberOfColumns].length && !this.isAllPhotosDownloaded) {
+            if (this.countOfLoadedPhoto === photoOrder[this.photoCategory][this.numberOfColumns].length && !this.isGridAligning) {
                 this.isAllPhotosDownloaded = true;
-                console.log('done')
                 window.dispatchEvent(new CustomEvent("photoDowloaded"));
+                console.log('done');
+            }
+            if(this.countOfAlignedPhotos === this.numberOfPreShowedPhotos || this.countOfAlignedPhotos === photoOrder[this.photoCategory][this.numberOfColumns].length) {
+                this.isGridAligning = false;
             }
         }
         img.onerror = function (e) {
@@ -142,8 +155,9 @@ export class GridGalery {
         // debugger
         this.photoCategory = event.currentTarget.dataset.photo;
         this.isAllPhotosDownloaded = false;
-        this.isPreshowPhotoDownloaded = false;
+        this.isGridAligning = false;
         this.countOfLoadedPhoto = 0;
+        this.countOfAlignedPhotos = 0;
         this.elems.showAllButton.classList.remove('invisible');
         this.removeCards();
         this.preShowCards();
