@@ -1,9 +1,9 @@
 export class Slider {
-    // openFullSize.openFullSizePhoto(e.target.src,dataAtr,currentPage,currentPos,orderPhotos[dataAtr]);
-    constructor(src, dataAtr, currentPage, currentOrder, orderPhotos) {
+    // openFullSize.openFullSizePhoto(e.target.src,photoCategory,photoNumber,currentPos,orderPhotos[photoCategory]);
+    constructor(src, photoCategory, photoNumber, currentOrder, orderPhotos) {
         this.src = src;
-        this.dataAtr = dataAtr;
-        this.currentPage = currentPage;
+        this.photoCategory = photoCategory;
+        this.photoNumber = photoNumber;  //!slider don't use it
         this.currentOrder = currentOrder;
         this.orderPhotos = orderPhotos;
         this.wrapper = document.querySelector(".modal-window__wrapper");
@@ -16,18 +16,23 @@ export class Slider {
         ]
         this.init();
     }
+
     init() {
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
     }
+
     test() {
     }
+
     getSrc(order = 0) {
-        return `../assets/portfolio/${this.dataAtr}_full/${this.dataAtr}_${this.orderPhotos[this.currentOrder + order]}.webp`;
+        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.orderPhotos[this.currentOrder + order]}.webp`;
     }
+    
     getSlides() {
         return this.wrapper.querySelectorAll(".modal-window__container");
     }
+
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
@@ -178,8 +183,8 @@ export class Slider {
     }
 }
 
-class TouchHandle extends Slider{
-    constructor(){
+class TouchHandle extends Slider {
+    constructor() {
         super()
     }
 }
