@@ -4,8 +4,7 @@ export class GridGalery {
     constructor(photoCategory) {
         this.countOfLoadedPhotos = 0;
         this.countOfAlignedPhotos = 0;
-        this.numberOfPreShowedPhotos = 40;  //for all categories;
-        // we can create array of specific values for each category
+        this.numberOfPreShowedPhotos = 25;  //for all categories; //* we can create array of specific values for each category
         this.photoCategory = photoCategory;// photoCategory['threeRows']
         this.isAllPhotosDownloaded = false;
         this.isGridAligning = false;  //flag is firing when photos are loaded and aligning works
