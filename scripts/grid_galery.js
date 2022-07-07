@@ -2,13 +2,14 @@ import { configAtr, configGridStyles, photoOrder } from "./photo_config.js"
 import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {
-        this.countOfLoadedPhoto = 0;
+        this.countOfLoadedPhotos = 0;
         this.countOfAlignedPhotos = 0;
         this.numberOfPreShowedPhotos = 40;  //for all categories;
         // we can create array of specific values for each category
         this.photoCategory = photoCategory;// photoCategory['threeRows']
         this.isAllPhotosDownloaded = false;
-        this.isGridAligning = false;
+        this.isGridAligning = false;  //flag is firing when photos are loaded and aligning works
+        // this.isGridAligning goes down when this.countOfAlignedPhotos == this.countOfLoadedPhotos
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             showAllButton: document.getElementById('show-all'),
@@ -55,6 +56,14 @@ export class GridGalery {
         //it's for correct working of grid 
         //without these lines, order of photos will be different after every page reload
         //because of asynchronous image onload
+        //* How aligning works:
+        //* first of all "preShow" is called in "init" function;
+        //* it creates Cards from config and adds "countLoadedAndAlignedImgs" function for each Card onload event;
+        //* Аfter loading, each image call "countLoadedAndAlignedImgs" function,
+        //* where the number of uploaded photos is counted in "this.countOfLoadedPhotos" variable;
+        //* when "this.countOfLoadedPhotos" === "this.numberOfPreShowedPhotos" , we dispatch an event "photoDowloaded",
+        //* that removes all cards and adds them again;
+        //*
         this.isGridAligning = true;
         this.removeCards();
         if (!this.isAllPhotosDownloaded) {
@@ -63,6 +72,16 @@ export class GridGalery {
             this.showAllCards();
         }
     }
+
+    //TODO
+    // showCards() {
+    //     let startPosition = 
+    //     let endPosition = 
+    //     let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
+    //     for (let i = startPosition; i < endPosition; i++) {
+    //         this.createCard(photoConfig[i]);
+    //     }
+    // }
 
     preShowCards() {
         let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
@@ -90,7 +109,7 @@ export class GridGalery {
         const numberOfColumns = this.getNumberOfColumns();
         const photoCategory = event.target.id.split("_")[0];
         const photoNumber = event.target.id.split("-")[0].split("_")[1];
-        const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(`${photoNumber}`);
+        const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(+photoNumber);
         //TODO check do we remove slider?
         new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
     }
@@ -102,37 +121,41 @@ export class GridGalery {
         let img = new Image()
         img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
         img.id = `${this.photoCategory}_${photoNumber}-img`;
-        img.onload = () => {
-            if (!this.isGridAligning) {
-                this.countOfLoadedPhoto++;
-                console.log(`loaded`, this.countOfLoadedPhoto);
-            } else {
-                this.countOfAlignedPhotos++;
-                console.log(`aligned`, this.countOfAlignedPhotos);
-            }
-
-            this.addGridStyleOnload(newCard, img)
-            this.elems.portfolioContainer.append(newCard);
-            newCard.append(img)
-
-            if (this.countOfLoadedPhoto === this.numberOfPreShowedPhotos && !this.isGridAligning) {
-                window.dispatchEvent(new CustomEvent("photoDowloaded"));
-                console.log('half-done')
-            }
-            if (this.countOfLoadedPhoto === photoOrder[this.photoCategory][this.numberOfColumns].length && !this.isGridAligning) {
-                this.isAllPhotosDownloaded = true;
-                window.dispatchEvent(new CustomEvent("photoDowloaded"));
-                console.log('done');
-            }
-            if(this.countOfAlignedPhotos === this.numberOfPreShowedPhotos || this.countOfAlignedPhotos === photoOrder[this.photoCategory][this.numberOfColumns].length) {
-                this.isGridAligning = false;
-            }
-        }
+        img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);
         img.onerror = function (e) {
-            console.log('error', e)
-            console.log(photoNumber)
-            return
+            console.log('error', e);
+            console.log(photoNumber);
+            return;
         };
+    }
+
+    countLoadedAndAlignedImgs(args) {
+        let [newCard, img] = args;
+        if (!this.isGridAligning) {
+            this.countOfLoadedPhotos++;
+            // console.log(`loaded`, this.countOfLoadedPhotos);
+        } else {
+            this.countOfAlignedPhotos++;
+            // console.log(`aligned`, this.countOfAlignedPhotos);
+        }
+
+        this.addGridStyleOnload(newCard, img)
+        this.elems.portfolioContainer.append(newCard);
+        newCard.append(img)             //! возможно дело в том, где апендим (нет)
+
+        if (!this.isGridAligning && this.countOfLoadedPhotos === this.numberOfPreShowedPhotos) {
+            window.dispatchEvent(new CustomEvent("photoDowloaded"));
+            // console.log('half-done')
+        }
+        if (!this.isGridAligning && this.countOfLoadedPhotos === photoOrder[this.photoCategory][this.numberOfColumns].length) {
+            this.isAllPhotosDownloaded = true;
+            window.dispatchEvent(new CustomEvent("photoDowloaded"));
+            // console.log('done');
+        }
+        if (this.countOfLoadedPhotos && this.countOfAlignedPhotos === this.countOfLoadedPhotos) {
+            this.isGridAligning = false;
+            this.countOfAlignedPhotos = 0;
+        }
     }
 
     addGridStyleOnload(newCard, img) {
@@ -156,7 +179,7 @@ export class GridGalery {
         this.photoCategory = event.currentTarget.dataset.photo;
         this.isAllPhotosDownloaded = false;
         this.isGridAligning = false;
-        this.countOfLoadedPhoto = 0;
+        this.countOfLoadedPhotos = 0;
         this.countOfAlignedPhotos = 0;
         this.elems.showAllButton.classList.remove('invisible');
         this.removeCards();
