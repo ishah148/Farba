@@ -1,4 +1,4 @@
-import { configAtr, configGridStyles, photoOrder, preShowConfig} from "./photo_config.js"
+import { configAtr, configGridStyles, photoOrder, preShowConfig, bastardsConfig } from "./photo_config.js"
 import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {
@@ -35,6 +35,7 @@ export class GridGalery {
                 this.elems.video.load();
                 this.elems.video.play();
             }
+            this.fixBastards();
             this.alignGrid();
         });
 
@@ -223,6 +224,24 @@ export class GridGalery {
         input.textContent = b;
         input.select();
         document.execCommand("copy");
+    }
+
+    fixBastards() {
+        const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
+        let style = document.createElement('style');
+        for (let bastardNumber in bastards) {
+            for (let styleRule in bastards[bastardNumber]) {
+                style.innerHTML += 
+                `
+                    .${this.photoCategory}_${bastardNumber} {
+                        ${styleRule} : ${bastards[bastardNumber][styleRule]};
+                    }
+                `;
+                // console.log(styleRule)
+                // console.log(bastards[bastardNumber][styleRule])
+            }
+        }
+        document.head.appendChild(style);
     }
 }
 

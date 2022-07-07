@@ -77,36 +77,43 @@ export const preShowConfig = {
     }
 }
 
-export const bastards = {
+export const bastardsConfig = {
     portfolio: {
-        fourColumns: [83], //
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {
+            "83": {
+                "background-color" : "red",
+            },
+            "82" : {
+
+            }
+        },
+        threeColumns: {},
+        twoColumns: {},
     },
     clothes: {
-        fourColumns: [],
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
     },
     furniture: {
-        fourColumns: [],
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
     },
     jewerly: {
-        fourColumns: [],
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
     },
     technics: {
-        fourColumns: [],
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
     },
     prams: {
-        fourColumns: [],
-        threeColumns: [],
-        twoColumns: [],
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
     },
 }
 
