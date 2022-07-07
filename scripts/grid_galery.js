@@ -1,10 +1,9 @@
-import { configAtr, configGridStyles, photoOrder } from "./photo_config.js"
+import { configAtr, configGridStyles, photoOrder, preShowConfig} from "./photo_config.js"
 import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {
         this.countOfLoadedPhotos = 0;
         this.countOfAlignedPhotos = 0;
-        this.numberOfPreShowedPhotos = 25;  //for all categories; //* we can create array of specific values for each category
         this.photoCategory = photoCategory;// photoCategory['threeRows']
         this.isAllPhotosDownloaded = false;
         this.isGridAligning = false;  //flag is firing when photos are loaded and aligning works
@@ -24,6 +23,7 @@ export class GridGalery {
 
     init() {
         this.numberOfColumns = this.getNumberOfColumns();
+        this.numberOfPreShowedPhotos = preShowConfig[this.photoCategory][this.numberOfColumns];
         this.preShowCards();
         this.galeryEventsInit();
     }
@@ -181,6 +181,8 @@ export class GridGalery {
         this.countOfLoadedPhotos = 0;
         this.countOfAlignedPhotos = 0;
         this.elems.showAllButton.classList.remove('invisible');
+        this.numberOfColumns = this.getNumberOfColumns();
+        this.numberOfPreShowedPhotos = preShowConfig[this.photoCategory][this.numberOfColumns];
         this.removeCards();
         this.preShowCards();
         // TODO remove !

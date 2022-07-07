@@ -1,5 +1,6 @@
 //ПЕРЕСМОТРЕТЬ ДЛИНУ МАССИВОВ
 //ПОУДАЛЯТЬ ШРИФТЫ
+//НА ИЗМЕНЕНИЕ ШИРИНЫ ЭКРАНА КАК МИНИМУМ МЕНЯТЬ preShowConfig (чекнуть производительность сего маневра)
 export const configAtr = { //amount photos in each folder
     // portfolio: 15,
     portfolio: 85,
@@ -42,6 +43,39 @@ export const photoOrder = {
         twoColumns: [9, 14, 27, 17, 1, 41, 23, 26, 29, 40, 37, 32, 34, 21, 10, 31, 5, 20, 25, 28, 39, 30, 15, 33, 24, 7, 16, 35, 2, 36, 3, 6, 12, 8, 19, 11, 22, 4, 42, 38, 13],
     }
 };
+
+export const preShowConfig = {
+    portfolio: {
+        fourColumns: 25,
+        threeColumns: 25,
+        twoColumns: 24,
+    },
+    clothes: {
+        fourColumns: 24,
+        threeColumns: 26,
+        twoColumns: 26,
+    },
+    furniture: {
+        fourColumns: 25,
+        threeColumns: 27,
+        twoColumns: 25,
+    },
+    jewerly: {
+        fourColumns: 24,
+        threeColumns: 24,
+        twoColumns: 24,
+    },
+    technics: {
+        fourColumns: 25,
+        threeColumns: 25,
+        twoColumns: 25,
+    },
+    prams: {
+        fourColumns: 26,
+        threeColumns: 24,
+        twoColumns: 26,
+    }
+}
 
 export const bastards = {
     portfolio: {
