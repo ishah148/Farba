@@ -44,6 +44,7 @@ export class GridGalery {
         });
 
         this.elems.showAllButton.addEventListener("click", () => {
+            document.querySelector("style").remove();
             this.showRemainingCards();
             this.elems.showAllButton.classList.add('invisible');  //TODO change for "скрыть"
         });
@@ -184,6 +185,7 @@ export class GridGalery {
         this.elems.showAllButton.classList.remove('invisible');
         this.numberOfColumns = this.getNumberOfColumns();
         this.numberOfPreShowedPhotos = preShowConfig[this.photoCategory][this.numberOfColumns];
+        document.querySelector("style").remove();
         this.removeCards();
         this.preShowCards();
         // TODO remove !
