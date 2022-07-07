@@ -8,9 +8,8 @@ import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 const tg = new TelegramSendMessage("contacts-window__form");
 
-
 window.addEventListener("load", () => {
-    const galery = new GridGalery("portfolio");
+    new GridGalery("portfolio");
 });
 
 

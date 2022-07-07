@@ -4,15 +4,16 @@ export class GridGalery {
     constructor(photoCategory) {
         this.countOfLoadedPhoto = 0;
         this.numberOfPreShowedPhotos = 40;  //for all categories;
-                                            // we can create array of specific values for each category
+        // we can create array of specific values for each category
         this.photoCategory = photoCategory;// photoCategory['threeRows']
+        this.isPreshowPhotoDownloaded = false;
         this.isAllPhotosDownloaded = false;
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             showAllButton: document.getElementById('show-all'),
             portfolioContainer: document.querySelector(".portfolio__container"),
-            video: document.querySelector("video"),
-            source: document.querySelector("source"),
+            video: document.querySelector(".start-screen__background-video"),
+            source: document.querySelector(".start-screen__video-source"),
             getPortfolioCards: function () {
                 return document.querySelectorAll(".portfolio__card");
             },
@@ -28,13 +29,12 @@ export class GridGalery {
 
     galeryEventsInit() {
         window.addEventListener("photoDowloaded", () => {
-            this.elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
-            //TODO try to find another way maybe
-            //        this.removeCards();                     //it's for correct working of grid 
-            //        this.preShowCards();      //without these lines, order of photos will be different after every page reload
-            //because of asynchronous image onload
-            this.elems.video.load();
-            this.elems.video.play();
+            if (!this.isAllPhotosDownloaded) {
+                this.elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+                this.elems.video.load();
+                this.elems.video.play();
+            }
+            this.alignGrid();
         });
 
         this.elems.buttons.forEach((button) => {
@@ -42,10 +42,41 @@ export class GridGalery {
         });
 
         this.elems.showAllButton.addEventListener("click", () => {
-            this.showAll();
+            this.showRemainingCards();
+            this.elems.showAllButton.classList.add('invisible');  //TODO change for "скрыть"
         });
 
         this.elems.portfolioContainer.addEventListener("click", this.openSlider.bind(this));
+    }
+
+    alignGrid() {
+        //TODO try to find another way maybe
+        //it's for correct working of grid 
+        //without these lines, order of photos will be different after every page reload
+        //because of asynchronous image onload
+        this.removeCards();
+        if (!this.isAllPhotosDownloaded) {
+            this.preShowCards();
+        } else {
+            // let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
+            // for (let i = 0; i < photoConfig.length; i++) {
+            //     this.createCard(photoConfig[i]);
+            // }
+        }
+    }
+
+    preShowCards() {
+        let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
+        for (let i = 0; i < this.numberOfPreShowedPhotos; i++) {
+            this.createCard(photoConfig[i]);
+        }
+    }
+
+    showRemainingCards() {
+        let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
+        for (let i = this.numberOfPreShowedPhotos; i < photoConfig.length; i++) {
+            this.createCard(photoConfig[i]);
+        }
     }
 
     openSlider(event) {
@@ -58,21 +89,6 @@ export class GridGalery {
         new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
     }
 
-    preShowCards() {
-        let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
-        for (let i = 0; i < this.numberOfPreShowedPhotos; i++) {
-            this.createCard(photoConfig[i]);
-        }
-    }
-
-    showAll() {
-        let photoConfig = photoOrder[this.photoCategory][this.numberOfColumns];
-        for (let i = this.numberOfPreShowedPhotos; i < photoConfig.length; i++) {
-            this.createCard(photoConfig[i]);
-        }
-        this.isAllPhotosDownloaded = true;
-    }
-
     createCard(photoNumber) {
         let newCard = document.createElement("div");
         newCard.classList.add("portfolio__card");
@@ -81,9 +97,23 @@ export class GridGalery {
         img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
         img.id = `${this.photoCategory}_${photoNumber}-img`;
         img.onload = () => {
+            if(!this.isPreshowPhotoDownloaded) {
+                this.countOfLoadedPhoto++;
+                console.log(this.countOfLoadedPhoto);
+            }
             this.addGridStyleOnload(newCard, img)
             this.elems.portfolioContainer.append(newCard);
             newCard.append(img)
+            if (this.countOfLoadedPhoto === this.numberOfPreShowedPhotos && !this.isPreshowPhotoDownloaded) {
+                this.isPreshowPhotoDownloaded = true;
+                window.dispatchEvent(new CustomEvent("photoDowloaded"));
+                console.log('half-done')
+            }
+            if (this.countOfLoadedPhoto === photoOrder[this.photoCategory][this.numberOfColumns].length && !this.isAllPhotosDownloaded) {
+                this.isAllPhotosDownloaded = true;
+                console.log('done')
+                window.dispatchEvent(new CustomEvent("photoDowloaded"));
+            }
         }
         img.onerror = function (e) {
             console.log('error', e)
@@ -93,16 +123,6 @@ export class GridGalery {
     }
 
     addGridStyleOnload(newCard, img) {
-        this.countOfLoadedPhoto++;
-        console.log(this.countOfLoadedPhoto)
-        if (this.countOfLoadedPhoto === this.numberOfPreShowedPhotos) { 
-            window.dispatchEvent(new CustomEvent("photoDowloaded"));
-            console.log('half-done')
-        }
-        if (this.countOfLoadedPhoto === photoOrder[this.photoCategory][this.numberOfColumns].length) { 
-            console.log('done')
-            window.dispatchEvent(new CustomEvent("photoDowloaded"));
-        }
         let imgH = img.naturalHeight;
         let imgW = img.naturalWidth;
         configGridStyles.forEach((config) => {
@@ -122,11 +142,13 @@ export class GridGalery {
         // debugger
         this.photoCategory = event.currentTarget.dataset.photo;
         this.isAllPhotosDownloaded = false;
+        this.isPreshowPhotoDownloaded = false;
         this.countOfLoadedPhoto = 0;
+        this.elems.showAllButton.classList.remove('invisible');
         this.removeCards();
         this.preShowCards();
         // TODO remove !
-        this.debugClipboard();
+        // this.debugClipboard();
     }
 
     shuffleArr(arr) {

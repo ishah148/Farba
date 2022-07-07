@@ -520,7 +520,7 @@ body {
   padding: 55% var(--padding-primary) 0;
   overflow: hidden;
 }
-.start-screen__wrapper .background-video {
+.start-screen__background-video {
   position: absolute;
   top: 0;
   left: 0;
@@ -791,7 +791,7 @@ body {
   width: 130px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: rgba(0, 0, 0, 0.5019607843);
+  fill: #00000080;
 }
 
 .switch-lang {
@@ -1605,6 +1605,9 @@ body {
 .portfolio__show-all {
   margin: auto;
   margin-top: 25px;
+}
+.portfolio__show-all.invisible {
+  display: none;
 }
 
 .video {
