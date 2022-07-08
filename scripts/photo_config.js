@@ -80,60 +80,47 @@ export const preShowConfig = {
 export const bastardsConfig = {
     portfolio: {
         fourColumns: {
-            "83": {
-                "cardRules" :{
-                    "background-color" : "red",
-                },
-                "imgRules": {
-                    "background-color" : "green",
-                }
-            },
-            "82" : {
-                "cardRules" :{
+            "83": `
+                .portfolio_83 {
                     
-                },
-                "imgRules": {
-
                 }
-            }
+
+                .portfolio_83-img {
+                    
+                }
+            `,
+            "82": ``
         },
         threeColumns: {
-            "83": {
-                "cardRules" :{
-                    
-                },
-                "imgRules": {
-
-                }
-            },
+            "83": ``
         },
-        // twoColumns: {},
+        twoColumns: {},
     },
-    // clothes: {
-    //     fourColumns: {},
-    //     threeColumns: {},
-    //     twoColumns: {},
-    // },
-    // furniture: {
-    //     fourColumns: {},
-    //     threeColumns: {},
-    //     twoColumns: {},
-    // },
-    // jewerly: {
-    //     fourColumns: {},
-    //     threeColumns: {},
-    //     twoColumns: {},
-    // },
-    // technics: {
-    //     fourColumns: {},
-    //     threeColumns: {},
-    //     twoColumns: {},
-    // },
-    // prams: {
-    //     fourColumns: {},
-    //     threeColumns: {},
-    //     twoColumns: {},
-    // },
+    clothes: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    furniture: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    jewerly: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    technics: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    prams: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
 }
 
 

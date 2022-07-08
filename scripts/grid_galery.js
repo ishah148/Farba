@@ -232,22 +232,7 @@ export class GridGalery {
         const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
         let style = document.createElement('style');
         for (let bastardNumber in bastards) {
-            for (let cardRule in bastards[bastardNumber]["cardRules"]) {
-                style.innerHTML += `
-                .${this.photoCategory}_${bastardNumber} {
-                    ${cardRule} : ${bastards[bastardNumber]["cardRules"][cardRule]};
-                }`;
-
-            }
-
-            for (let imgRule in bastards[bastardNumber]["imgRules"]) {
-                style.innerHTML += `
-                .${this.photoCategory}_${bastardNumber}-img {
-                    ${imgRule} : ${bastards[bastardNumber]["imgRules"][imgRule]};
-                }`;
-            }
-                // console.log(bastardRules)
-                // console.log(bastards[bastardNumber][bastardRules])
+            style.innerHTML += bastards[bastardNumber];
         }
         document.head.appendChild(style);
     }
