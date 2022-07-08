@@ -121,7 +121,7 @@ export class GridGalery {
         newCard.classList.add(`${this.photoCategory}_${photoNumber}`);
         let img = new Image()
         img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
-        img.id = `${this.photoCategory}_${photoNumber}-img`;
+        img.classList.add(`${this.photoCategory}_${photoNumber}-img`);
         img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);
         img.onerror = function (e) {
             console.log('error', e);
@@ -232,16 +232,22 @@ export class GridGalery {
         const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
         let style = document.createElement('style');
         for (let bastardNumber in bastards) {
-            for (let styleRule in bastards[bastardNumber]) {
-                style.innerHTML += 
-                `
-                    .${this.photoCategory}_${bastardNumber} {
-                        ${styleRule} : ${bastards[bastardNumber][styleRule]};
-                    }
-                `;
-                // console.log(styleRule)
-                // console.log(bastards[bastardNumber][styleRule])
+            for (let cardRule in bastards[bastardNumber]["cardRules"]) {
+                style.innerHTML += `
+                .${this.photoCategory}_${bastardNumber} {
+                    ${cardRule} : ${bastards[bastardNumber]["cardRules"][cardRule]};
+                }`;
+
             }
+
+            for (let imgRule in bastards[bastardNumber]["imgRules"]) {
+                style.innerHTML += `
+                .${this.photoCategory}_${bastardNumber}-img {
+                    ${imgRule} : ${bastards[bastardNumber]["imgRules"][imgRule]};
+                }`;
+            }
+                // console.log(bastardRules)
+                // console.log(bastards[bastardNumber][bastardRules])
         }
         document.head.appendChild(style);
     }

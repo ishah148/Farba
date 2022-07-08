@@ -81,40 +81,59 @@ export const bastardsConfig = {
     portfolio: {
         fourColumns: {
             "83": {
-                "background-color" : "red",
+                "cardRules" :{
+                    "background-color" : "red",
+                },
+                "imgRules": {
+                    "background-color" : "green",
+                }
             },
             "82" : {
+                "cardRules" :{
+                    
+                },
+                "imgRules": {
 
+                }
             }
         },
-        threeColumns: {},
-        twoColumns: {},
+        threeColumns: {
+            "83": {
+                "cardRules" :{
+                    
+                },
+                "imgRules": {
+
+                }
+            },
+        },
+        // twoColumns: {},
     },
-    clothes: {
-        fourColumns: {},
-        threeColumns: {},
-        twoColumns: {},
-    },
-    furniture: {
-        fourColumns: {},
-        threeColumns: {},
-        twoColumns: {},
-    },
-    jewerly: {
-        fourColumns: {},
-        threeColumns: {},
-        twoColumns: {},
-    },
-    technics: {
-        fourColumns: {},
-        threeColumns: {},
-        twoColumns: {},
-    },
-    prams: {
-        fourColumns: {},
-        threeColumns: {},
-        twoColumns: {},
-    },
+    // clothes: {
+    //     fourColumns: {},
+    //     threeColumns: {},
+    //     twoColumns: {},
+    // },
+    // furniture: {
+    //     fourColumns: {},
+    //     threeColumns: {},
+    //     twoColumns: {},
+    // },
+    // jewerly: {
+    //     fourColumns: {},
+    //     threeColumns: {},
+    //     twoColumns: {},
+    // },
+    // technics: {
+    //     fourColumns: {},
+    //     threeColumns: {},
+    //     twoColumns: {},
+    // },
+    // prams: {
+    //     fourColumns: {},
+    //     threeColumns: {},
+    //     twoColumns: {},
+    // },
 }
 
 
