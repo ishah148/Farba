@@ -223,22 +223,22 @@
             </div>
             <div class="video-player">
                 <video class="video-player__video" src="../assets/video/video_section/video.mp4" poster="../assets/images/video_posters/video-player.jpg"></video>
-                <button class="start-button-wrapper">
-                    <svg class="icon start-button">
+                <button class="video-player__start-button">
+                    <svg class="video-player__start-button-svg">
                         <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
                     </svg>
                 </button>
                 <div class="video-controls disappearance">
                     <button class="play-video">
-                        <svg class="icon stop-button-svg disappearance">
+                        <svg class="stop-button-svg disappearance">
                             <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
                         </svg>
-                        <svg class="icon play-button-svg">
+                        <svg class="play-button-svg">
                             <use xlink:href="../assets/svg/player-sprite.svg#playbutton"></use>
                         </svg>
                     </button>
                     <button class="backward-button">
-                        <svg class="icon">
+                        <svg class="backward-button__svg">
                             <use xlink:href="../assets/svg/player-sprite.svg#fast-backward"></use>
                         </svg>
                     </button>
@@ -246,7 +246,7 @@
                         <input type="range" min="0" max="59" step="0.01" class="progress-bar-range">
                     </div>
                     <button class="forward-button">
-                        <svg class="icon">
+                        <svg class="forward-button__svg">
                             <use xlink:href="../assets/svg/player-sprite.svg#fast-forward"></use>
                         </svg>
                     </button>
@@ -257,10 +257,10 @@
                     </div>
                     <div class="volume-settings">
                         <button class="volume-button">
-                            <svg class="icon volume-svg">
+                            <svg class="volume-svg">
                                 <use xlink:href="../assets/svg/player-sprite.svg#volume"></use>
                             </svg>
-                            <svg class="icon mute-svg disappearance">
+                            <svg class="mute-svg disappearance">
                                 <use xlink:href="../assets/svg/player-sprite.svg#mute"></use>
                             </svg>
                         </button>
@@ -269,7 +269,7 @@
                         </div>
                     </div>
                     <button class="common-settings">
-                        <svg class="icon">
+                        <svg class="common-settings__svg">
                             <use xlink:href="../assets/svg/player-sprite.svg#settings-button"></use>
                         </svg>
                     </button>
@@ -291,10 +291,10 @@
                         <span class="video-skip" data-skip="20">20s</span>
                     </div>
                     <button class="fullscreen">
-                        <svg class="icon fullscreen-svg">
+                        <svg class="fullscreen-svg">
                             <use xlink:href="../assets/svg/player-sprite.svg#fullscreen"></use>
                         </svg>
-                        <svg class="icon exit-fullscreen-svg disappearance">
+                        <svg class="exit-fullscreen-svg disappearance">
                             <use xlink:href="../assets/svg/player-sprite.svg#exit-full-screen"></use>
                         </svg>
                     </button>
@@ -602,7 +602,6 @@
     </footer>
     <!-- <script src="../scripts/photo.js"></script> -->
     <script type="module" src="../scripts/main.js"></script>
-    <script src="./index.js"></script>
 </body>
 
 </html>
