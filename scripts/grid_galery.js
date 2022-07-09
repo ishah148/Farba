@@ -108,8 +108,8 @@ export class GridGalery {
     openSlider(event) {
         if (event.target.nodeName !== 'IMG') return;
         const numberOfColumns = this.getNumberOfColumns();
-        const photoCategory = event.target.id.split("_")[0];
-        const photoNumber = event.target.id.split("-")[0].split("_")[1];
+        const photoCategory = event.target.classList[0].split("_")[0];
+        const photoNumber = event.target.classList[0].split("-")[0].split("_")[1];
         const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(+photoNumber);
         //TODO check do we remove slider?
         new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
