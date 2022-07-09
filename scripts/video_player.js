@@ -4,43 +4,43 @@ export class VideoPlayer {
         /*start&pause video*/
         this.videoWrapper = document.querySelector('.video-player');
         this.video = document.querySelector('.video-player__video');
-        this.controls = document.querySelector('.video-controls');
-        this.playButton = document.querySelector('.play-video');
-        this.stopButtonSVG = document.querySelector('.stop-button-svg');
-        this.playButtonSVG = document.querySelector('.play-button-svg');
+        this.controls = document.querySelector('.video-player__controls');
+        this.playButton = document.querySelector('.video-player__play');
+        this.stopButtonSVG = document.querySelector('.video-player__stop-svg');
+        this.playButtonSVG = document.querySelector('.video-player__play-svg');
         this.startButtonSVG = document.querySelector('.video-player__start-button-svg');
         this.startButton = document.querySelector('.video-player__start-button');
-        this.fullScreenSVG = document.querySelector('.fullscreen-svg');
-        this.exitFullScreenSVG = document.querySelector('.exit-fullscreen-svg');
-        this.volumeSVG = document.querySelector('.volume-svg');
-        this.muteSVG = document.querySelector('.mute-svg');
-        this.volumeButton = document.querySelector('.volume-button');
+        this.volumeSVG = document.querySelector('.video-player__volume-svg');
+        this.muteSVG = document.querySelector('.video-player__mute-svg');
+        this.volumeButton = document.querySelector('.video-player__volume-button');
         /*full screen*/
-        this.fullScreen = document.querySelector('.fullscreen');
+        this.fullScreen = document.querySelector('.video-player__fullscreen');
+        this.fullScreenSVG = document.querySelector('.video-player__fullscreen-svg');
+        this.exitFullScreenSVG = document.querySelector('.video-player__exit-fullscreen-svg');
         this.isFullscreen = false;
         this.timer = 0;
         /* volume*/
-        this.volumeRange = document.querySelector('.volume-range');
+        this.volumeRange = document.querySelector('.video-player__volume-range');
         /*time*/
-        this.currentTime = document.querySelector('.current-time');
-        this.durationTime = document.querySelector('.duration-time');
+        this.currentTime = document.querySelector('.video-player__current-time');
+        this.durationTime = document.querySelector('.video-player__duration-time');
         /*backward&forward*/
-        this.backwardButton = document.querySelector('.backward-button');
-        this.forwardButton = document.querySelector('.forward-button');
+        this.backwardButton = document.querySelector('.video-player__backward');
+        this.forwardButton = document.querySelector('.video-player__forward');
         /* progress bar*/
-        this.progressBar = document.querySelector('.progress-bar-range');
+        this.progressBar = document.querySelector('.video-player__progress-bar');
         this.gap = 0;
         /*speed and skip settings */
-        this.settingsButton = document.querySelector('.common-settings');
+        this.settingsButton = document.querySelector('.video-player__settings');
         this.settingsMenu = document.querySelector('.settings-menu');
-        this.settingsClose = document.querySelector('.settings-close');
-        this.speedArray = document.querySelectorAll('.video-speed');
-        this.skipArray = document.querySelectorAll('.video-skip');
+        this.settingsClose = document.querySelector('.settings-menu__close');
+        this.speedArray = document.querySelectorAll('.settings-menu__video-speed');
+        this.skipArray = document.querySelectorAll('.settings-menu__video-skip');
         this.skipSize = 5;
         this.videoSpeed = 1;
         /****************************************************************/
     }
-    
+
     init() {
         this.addEventListeners()
     }
@@ -73,19 +73,21 @@ export class VideoPlayer {
 
 
         this.backwardButton.addEventListener('click', () => {
-            ((this.video.currentTime - this.skipSize /*skip */) !== 0) ? this.video.currentTime -= this.skipSize : this.video.currentTime = 0;
+            ((this.video.currentTime - this.skipSize) !== 0) ? this.video.currentTime -= this.skipSize : this.video.currentTime = 0;
+            // this.progressBar.dispatchEvent(new Event('input'));
         })
 
         this.forwardButton.addEventListener('click', () => {
-            ((this.video.currentTime + this.skipSize /*skip*/) < this.video.duration) ? this.video.currentTime = this.video.currentTime + this.skipSize : this.video.currentTime = this.video.duration;
+            ((this.video.currentTime + this.skipSize) < this.video.duration) ? this.video.currentTime = this.video.currentTime + this.skipSize : this.video.currentTime = this.video.duration;
+            // this.progressBar.dispatchEvent(new Event('input'));
         })
 
         this.progressBar.addEventListener('input', (e) => {
             this.video.currentTime = e.target.value;
         });
 
-        this.skipArray.forEach((item) => item.addEventListener('click', this.setSkipSize.bind(this)));
-        this.speedArray.forEach((item) => item.addEventListener('click', this.setSpeed.bind(this)));
+        this.skipArray.forEach((item) => item.addEventListener('click', (e) => this.setSkipSize(e)));
+        this.speedArray.forEach((item) => item.addEventListener('click', (e) => this.setSpeed(e)));
 
         this.settingsButton.addEventListener('click', () => {
             this.settingsMenu.classList.toggle('disappearance');
@@ -100,7 +102,7 @@ export class VideoPlayer {
         arr.forEach(item => { item.classList.remove(className) })
         target.classList.add(className);
     }
-    
+
     startVideo() {
         this.controls.classList.remove('disappearance');
         this.toggleVideo();
