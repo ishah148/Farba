@@ -25,7 +25,7 @@
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 15px 15px;
+    gap: 25px 25px;
     grid-template-areas:
         ". ."
         ". .";
@@ -76,7 +76,7 @@
         top: 0;
         margin: auto;
         z-index: -1;
-        &.show {
+        &.hidden {
             display: none;
         }
         svg {

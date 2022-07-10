@@ -1977,7 +1977,7 @@ body {
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 15px 15px;
+  gap: 25px 25px;
   grid-template-areas: ". ." ". .";
 }
 @media (max-width: 768px) {
@@ -2018,7 +2018,7 @@ body {
   margin: auto;
   z-index: -1;
 }
-.threeD__content .threeD__svg-container.show {
+.threeD__content .threeD__svg-container.hidden {
   display: none;
 }
 .threeD__content .threeD__svg-container svg {

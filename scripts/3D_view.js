@@ -33,7 +33,8 @@ class FullSizeViewer {
 
 class ThreeDViewerMouse {
     constructor(location, folder) { // For 3D!
-        this.location = document.getElementById(location);
+        this.location = location;
+        this.folder = folder;
         this.currentPhoto = this.location.querySelector('img')
         this.startPhoto = 1;
         this.lastPhoto = 85;
@@ -43,7 +44,7 @@ class ThreeDViewerMouse {
         this.yStart = null;
         this.isMouseUp = true;
         this.isMouseDown = false;
-        this.step = 1; // !FOR 3D PHOTO
+        this.step = 0; // !FOR 3D PHOTO
         this.addListeners()
     }
     addListeners() {
@@ -53,42 +54,44 @@ class ThreeDViewerMouse {
         this.location.addEventListener('mousedown', this.handleMouseDown.bind(this));
     }
     handleMouseDown(e) {
-        this.isMouseDown = !this.isMouseDown;
+        this.isMouseDown = true;
         this.xStart = e.offsetX;
         this.yStart = e.offsetY;
-        console.log("DOWN")
     }
 
     handleTouchStart(e) {
-        this.isMouseDown = !this.isMouseDown;
-        console.log('UPPED')
+        this.isMouseDown = false;
     };
+
+    correctBugs(e) {
+        const locationWidth = e.target.offsetWidth;
+        const locationHeight = e.target.offsetHeight
+        const colision = 10
+        if ((e.offsetX < colision) || (e.offsetX > locationWidth - colision) || (e.offsetY < colision) || (e.offsetY > (locationHeight - colision))) {
+            console.log('Bug!')
+            this.isMouseDown = !this.isMouseDown;
+        }
+
+    }
 
     handleTouchMove(e) {
         if (!this.isMouseDown) { return }
         let xMove = e.offsetX;
+        this.correctBugs(e)
+        // console.log(xMove)
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!
-            console.log('-')
             this.photoNumber === this.startPhoto ? this.photoNumber = this.lastPhoto : this.photoNumber--;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
+
         }
         if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
-            console.log('+')
             this.photoNumber === this.lastPhoto ? this.photoNumber = this.startPhoto : this.photoNumber++;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }
-        // setInterval(() => {
-        //     photoNumber === lastPhoto ? photoNumber = startPhoto : photoNumber++;
-        //     console.log(photoNumber)
-        //     document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
-        // }, 200);
     };
 }
-
-
-// a = new ThreeDViewerMouse('threeD__one')
 
 
 class ThreeDViewer {
@@ -96,47 +99,62 @@ class ThreeDViewer {
         this.container = document.querySelector('.threeD__container')
         this.init()
         this.countOfLoadedPhotos = 1;
+        // this.folderTarget = null;
+        // this.target = null;
+        this.preparedList = []
     }
     init() {
-        // new ThreeDViewerMouse('threeD__one')
-        // this.dowloadPhotos()
         this.addListeners();
         console.time();
     }
     addListeners() {
-        this.container.addEventListener('click', (e) => this.openThreeDViewer(e))
+        this.container.addEventListener('click', (e) => this.prepareThreeDViewer(e))
     }
-    openThreeDViewer(e){
-        console.log(e.target.dataset.folder)
-        this.toggleSpinner(e.target)
+
+    prepareThreeDViewer(e) {
+        const folderTarget = e.target.dataset.folder;
+        const target = e.target
+        if (!this.preparedList.includes(folderTarget)) {
+            this.toggleSpinner(e.target);
+        }
+        this.dowloadPhotos(target, folderTarget);
+        this.preparedList.push(e.target.dataset.folder)
     }
-    dowloadPhotos(folder) {
+
+    startThreeDHandler(folderTarget, folder) {
+        // const [e, target, folderTarget] = args;
+        // console.log([e, target, folderTarget])
+        const handler = new ThreeDViewerMouse(folderTarget, folder)
+        folderTarget.classList.add('show')
+        folderTarget.querySelector('.spinner').classList.remove('show');
+        folderTarget.querySelector('.threeD__svg-container').classList.add('hidden');
+    }
+
+    dowloadPhotos(folderTarget, folder) {
         for (let i = 1; i < 86; i++) {
             const img = new Image()
             img.src = `../assets/3D/${folder}-${i}.webp`
             img.onload = () => {
-                this.checkCountDownloadedPhotos()
+                this.checkCountDownloadedPhotos(folderTarget, folder)
             }
         }
     }
 
-    checkCountDownloadedPhotos() {
+    checkCountDownloadedPhotos(folderTarget, folder) {
         this.countOfLoadedPhotos++
         if (this.countOfLoadedPhotos === 85) {
+            this.countOfLoadedPhotos = 0;
             console.log('done!')
-            console.timeEnd()
+            // this.container.dispatchEvent(new CustomEvent("threeDphotoDowloaded"));
+            this.startThreeDHandler(folderTarget, folder)
         }
     }
-    toggleSpinner(target){
-        console.log(target)
-        console.log(target.classList.contains('threeD__content'))
-        console.log(target.querySelector('.spinner'))
-        console.log(target.querySelector('.spinner').classList)
+
+
+
+    toggleSpinner(target) {
         target.querySelector('.spinner').classList.toggle('show');
         target.querySelector('.threeD__svg-container').classList.toggle('show');
-        target.classList.toggle('show')
-        // target.classList.toggle('show')
-        debugger
     }
 }
 
