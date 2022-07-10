@@ -27,18 +27,26 @@
     }
     z-index: 500;
 }
+
 .td-wrapper{
     width: 600px;
     height: 600px; 
     border: 1px solid black;
     margin: 0 auto;
     margin-top: 60px;
+    user-select: none;
     cursor: pointer;
     .block{
-        width: 150px;
-        height: 150px;
+        width: 600px;
+        height: 600px;
         border: 1px solid green;
         margin:0 auto;
+        #img{
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+            z-index: -1;
+        }
     }
 }
 //sass --watch ./styles/sass:./styles/css
