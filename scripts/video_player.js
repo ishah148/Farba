@@ -1,15 +1,14 @@
 export class VideoPlayer {
     constructor() {
-        /*videoplayer*/
+        this.videoWrapper = document.querySelector('.video-player_1');
+        this.video = document.querySelector('.video-player__video_1');
+        this.startButton = document.querySelector('.video-player__start-button_1');
+        this.startButtonSVG = document.querySelector('.video-player__start-button-svg_1');
         /*start&pause video*/
-        this.videoWrapper = document.querySelector('.video-player');
-        this.video = document.querySelector('.video-player__video');
-        this.controls = document.querySelector('.video-player__controls');
-        this.playButton = document.querySelector('.video-player__play');
-        this.stopButtonSVG = document.querySelector('.video-player__stop-svg');
-        this.playButtonSVG = document.querySelector('.video-player__play-svg');
-        this.startButtonSVG = document.querySelector('.video-player__start-button-svg');
-        this.startButton = document.querySelector('.video-player__start-button');
+        
+
+        
+
         this.volumeSVG = document.querySelector('.video-player__volume-svg');
         this.muteSVG = document.querySelector('.video-player__mute-svg');
         this.volumeButton = document.querySelector('.video-player__volume-button');
@@ -25,10 +24,8 @@ export class VideoPlayer {
         this.currentTime = document.querySelector('.video-player__current-time');
         this.durationTime = document.querySelector('.video-player__duration-time');
         /*backward&forward*/
-        this.backwardButton = document.querySelector('.video-player__backward');
         this.forwardButton = document.querySelector('.video-player__forward');
         /* progress bar*/
-        this.progressBar = document.querySelector('.video-player__progress-bar');
         this.gap = 0;
         /*speed and skip settings */
         this.settingsButton = document.querySelector('.video-player__settings');
@@ -42,11 +39,72 @@ export class VideoPlayer {
     }
 
     init() {
-        this.addEventListeners()
+        this.createControlPanel();
+        this.addEventListeners();
+    }
+
+    createControlPanel() {
+        this.controls = document.createElement("div");
+        this.controls.classList.add("video-player__controls", "disappearance");  //* remove disappearance?
+
+        this.playButton = document.createElement("button");
+        this.playButton.classList.add("video-player__play");
+
+        this.stopButtonSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        this.stopButtonSVG.classList.add("video-player__stop-svg", "disappearance");
+        const useStopSVG = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        useStopSVG.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', "../assets/svg/player-sprite.svg#pausebutton");
+
+        this.playButtonSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        this.playButtonSVG.classList.add("video-player__play-svg");
+        const usePlaySVG = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        usePlaySVG.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', "../assets/svg/player-sprite.svg#playbutton");
+
+        this.backwardButton = document.createElement("button");
+        this.backwardButton.classList.add("video-player__backward");
+
+        const backwardButtonSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        backwardButtonSVG.classList.add("video-player__backward-svg");
+        const useBackwardSVG = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        useBackwardSVG.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', "../assets/svg/player-sprite.svg#fast-backward");
+
+        const progressBarContainer =  document.createElement("div");
+        progressBarContainer.classList.add("video-player__progress-bar-container");
+        this.progressBar = document.createElement("input");
+        this.progressBar.classList.add("video-player__progress-bar");
+        this.progressBar.type = "range";
+        this.progressBar.min = "0";
+        this.progressBar.max = "59";
+        this.progressBar.step = "0.01"
+
+        this.forwardButton = document.createElement("button");
+        this.forwardButton.classList.add("video-player__forward");
+
+        const forwardButtonSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        forwardButtonSVG.classList.add("video-player__forward-svg");
+        const useForwardSVG = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        useForwardSVG.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', "../assets/svg/player-sprite.svg#fast-forward");
+
+        this.stopButtonSVG.append(useStopSVG);
+        this.playButtonSVG.append(usePlaySVG);
+        backwardButtonSVG.append(useBackwardSVG)
+        forwardButtonSVG.append(useForwardSVG)
+
+        this.playButton.append(this.stopButtonSVG);
+        this.playButton.append(this.playButtonSVG);
+        this.backwardButton.append(backwardButtonSVG);
+        progressBarContainer.append(this.progressBar);
+        this.forwardButton.append(forwardButtonSVG);
+        
+        this.controls.append(this.playButton);
+        this.controls.append(this.backwardButton);
+        this.controls.append(progressBarContainer);
+        this.controls.append(this.forwardButton);
+
+        this.videoWrapper.append(this.controls);
     }
 
     addEventListeners() {
-
         this.video.addEventListener('ended', (event) => {
             this.video.pause();
             this.stopButtonSVG.classList.add('disappearance');
