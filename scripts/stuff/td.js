@@ -161,7 +161,7 @@ function mouseHandle3D() { // For 3D!
     document.addEventListener('mousemove', handleTouchMove);
     document.addEventListener('mousedown', handleMouseDown);
     const startPhoto = 1;
-    const lastPhoto = 55;
+    const lastPhoto = 85;
     let photoNumber = 43;
     const magicNumber = 0;
     let xStart = null;
@@ -198,11 +198,11 @@ function mouseHandle3D() { // For 3D!
             document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
             xStart = xMove
         }
-        // setInterval(() => {
-        //     photoNumber === lastPhoto ? photoNumber = startPhoto : photoNumber++;
-        //     console.log(photoNumber)
-        //     document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
-        // }, 200);
+        setInterval(() => {
+            photoNumber === lastPhoto ? photoNumber = startPhoto : photoNumber++;
+            console.log(photoNumber)
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+        }, 200);
     };
 }
 mouseHandle3D()

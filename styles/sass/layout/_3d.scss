@@ -17,6 +17,7 @@
 }
 
 .threeD__container {
+    user-select: none;
     width: 100%;
     padding: var(--padding-primary);
     display: grid;
@@ -42,8 +43,13 @@
     // flex: 1;
     // width: 100px;
     position: relative;
+    user-select: none;
+    &.show {
+        .threeD__preview {
+            opacity: 1;
+        }
+    }
     &:hover {
-        transition: all 0.3s;
         -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
         -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
         box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
@@ -52,11 +58,15 @@
                 fill: var(--primary-light);
             }
         }
-        .threeD__preview {
-            opacity: 0.89;
+        .threeD__svg-container {
+            // opacity: 0.89;
+            svg {
+                fill: black;
+            }
         }
     }
     .threeD__svg-container {
+        display: block;
         width: 50px;
         height: 50px;
         position: absolute;
@@ -65,6 +75,10 @@
         bottom: 0;
         top: 0;
         margin: auto;
+        z-index: -1;
+        &.show {
+            display: none;
+        }
         svg {
             fill: var(--primary-color);
         }
@@ -72,6 +86,9 @@
     .threeD__preview {
         display: block;
         width: 100%;
+        position: relative;
+        cursor: pointer;
+        z-index: -1;
         opacity: 0.7;
     }
 }
