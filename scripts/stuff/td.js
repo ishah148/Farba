@@ -178,7 +178,8 @@ function mouseHandle() {
     let yStart = null;
     let isMouseUp = true;
     let isMouseDown = false;
-    // let step = 15; // !FOR 3D PHOTO
+    let step = 15; // !FOR 3D PHOTO
+    console.log('here')
     function handleMouseDown(e){
         isMouseDown = !isMouseDown;
         console.log("DOWN")
@@ -193,11 +194,15 @@ function mouseHandle() {
 
     function handleTouchMove(e) {
         // console.log(1)
-        if(isMouseUp) {console.log(1)}
-        if(isMouseDown) {console.log(2)}
+        // if(isMouseUp) {return}
+        if(!isMouseDown) {return}
         // console.log('123')
         xMove = e.offsetX;
         yMove = e.offsetY;
+        // console.group()
+        // console.log(xStart)
+        // console.log(xMove)
+        // console.groupEnd()
         function left() {
             return xStart > (xMove + 70)
         }
@@ -211,20 +216,24 @@ function mouseHandle() {
             return yStart > (yMove + 70)
         }
         if (left()) {
-            console.log('left')
+            // console.log('left')
         }
-        // if(xStart > (xMove + step)){ // !FOR 3D photo!
-        //     console.log(1)
-        //     xStart = xMove
-        // }
-        if (right()) {
-            console.log('right')
+        if(xStart > (xMove + step)){ // !FOR 3D photo!
+            console.log('-')
+            xStart = xMove
+        }
+        if((xStart + step) < xMove){ // !FOR 3D photo!
+            console.log('+')
+            xStart = xMove
+        }
+        if (right() && isMouseDown) {
+            // console.log('right')
         }
         if (down() && !left() && !right()) {
-            console.log('DOWN')
+            // console.log('DOWN')
         }
         if (up() && !left() && !right()) {
-            console.log('UP')
+            // console.log('UP')
         }
     };
 }
