@@ -1,0 +1,344 @@
+/*start Video section*/
+#video-section {
+    height: 945px;
+    padding-top: 100px;
+}
+
+.video-player {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* height: 705px; */
+    overflow: hidden;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    svg {
+        display: block;
+        fill: white;
+        transition: 0.4s;
+        cursor: pointer;
+        &:hover {
+            fill: #bdae82;
+        }
+    }
+
+    & button svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__backward,
+    &__forward,
+    &__volume-button,
+    &__settings,
+    &__fullscreen {
+        width: 45px;
+        height: 45px;
+    }
+
+    &__start-button-svg.disappearance,
+    &__stop-svg.disappearance,
+    &__play-svg.disappearance,
+    &__fullscreen-svg.disappearance,
+    &__exit-fullscreen-svg.disappearance,
+    &__volume-svg.disappearance,
+    &__mute-svg.disappearance,
+    &__start-button.disappearance {
+        display: none;
+    }
+
+    &__video {
+        width: 97.22%;
+    }
+
+    &__start-button {
+        position: absolute;
+        cursor: pointer;
+        width: 130px;
+        height: 130px;
+    }
+
+    &__controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        bottom: -50px;
+        transition: 1s;
+    }
+
+    &:hover &__controls {
+        bottom: 10px;
+    }
+
+    &__controls.disappearance,  //!wtf
+    &:hover &__controls.disappearance {
+        bottom: -50px;
+    }
+
+    &__play {
+        margin-left: 1.64%;
+        width: 45px;
+        height: 45px;
+    }
+
+    &__progress-bar-container {
+        width: 50%;
+        -webkit-appearance: none;
+    }
+
+    &__progress-bar {
+        width: 100%;
+    }
+
+    &__timer {
+        display: flex;
+        span {
+            display: block;
+            color: white;
+        }
+    }
+
+    &__volume-settings {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 13%;
+    }
+
+    &__fullscreen {
+        margin-right: 1.428%;
+    }
+
+    /* .video-player input[type=range] {
+
+  } */
+}
+
+
+//*
+//*
+//*
+//*
+//*
+//*
+//*
+//*
+
+.settings-menu {
+    background-color: black;
+    color: white;
+    bottom: 55px;
+    right: 35px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 640px;
+    padding: 10px;
+    border-radius: 10px;
+
+    &.disappearance {
+        display: none;
+    }
+
+    &__video-speed,
+    &__video-skip {
+        display: block;
+        text-align: center;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            color: #bdae82;
+        }
+
+        &.active{
+            background-color: #bdae82;
+            &:hover {
+                color: black;
+            }
+        }
+    }
+
+    &__header,
+    &__close {
+        display: block;
+        transition: 0.5s;
+    }
+
+    &__header {   // Should be without & for correct selector specificity
+        text-align: center;
+        cursor: default;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        &:hover {
+            color: white;
+        }
+    }
+
+    &__close {    // Should be without & for correct selector specificity
+        text-align: right;
+        cursor: pointer;
+        color: white;
+        &:hover {
+            color: #bdae82;
+        }
+    }
+}
+
+
+
+
+
+@media (max-width: 1279px) {
+    .video-player svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .video-player:hover .video-player__controls {
+        bottom: 0px;
+    }
+
+    .video-player__progress-bar-container {
+        width: 40%;
+        -webkit-appearance: none;
+    }
+
+    .video-player__timer span {
+        font-size: 16px;
+    }
+
+    .video-player__volume-range {
+        width: 10vh;
+    }
+
+    .settings-menu {
+        height: 280px;
+    }
+    .settings-menu span {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    #video-section {
+        height: 628px;
+        padding-top: 80px;
+    }
+
+    #video-section .title-wrapper {
+        margin-bottom: 50px;
+    }
+
+    .video-player {
+        width: 100%;
+        height: auto;
+        background-size: auto 100%;
+        background-position: -10px;
+    }
+
+    .video-player__start-button-svg {
+        width: 64.62px;
+        height: 62.69px;
+    }
+
+    .settings-menu {
+        height: 250px;
+    }
+    .settings-menu span {
+        font-size: 11px;
+    }
+
+    .video-player__volume-range {
+        width: 51px;
+    }
+
+    .video-player__volume-settings {
+        width: 20%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 766px) {
+    .video-player svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .video-player__progress-bar-container {
+        width: 35%;
+    }
+
+    .video-player__timer span {
+        font-size: 11px;
+    }
+
+    .settings-menu {
+        height: 240px;
+        bottom: 35px;
+    }
+    .settings-menu span {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 620px) {
+    #video-section {
+        height: 450px;
+    }
+
+    .video-player {
+        background-size: 100%;
+        background-position: 0px 10px;
+    }
+
+    .video-player:hover .video-player__controls {
+        bottom: 5px;
+    }
+
+    .video-player button {
+        width: 20px;
+        height: 20px;
+    }
+
+    .video-player svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .video-player__progress-bar-container {
+        width: 20%;
+    }
+
+    .video-player__timer span {
+        font-size: 9px;
+    }
+
+    .settings-menu span {
+        font-size: 11px;
+    }
+
+    .settings-menu {
+        bottom: 25px;
+    }
+}
+
+@media (max-width: 467px) {
+    #video-section {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #video-section {
+        height: 350px;
+    }
+}

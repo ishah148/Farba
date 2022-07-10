@@ -80,14 +80,20 @@ export const preShowConfig = {
 export const bastardsConfig = {
     portfolio: {
         fourColumns: {
-            "83": {
-                "background-color" : "red",
-            },
-            "82" : {
+            "83": `
+                .portfolio_83 {
+                    
+                }
 
-            }
+                .portfolio_83-img {
+                    
+                }
+            `,
+            "82": ``
         },
-        threeColumns: {},
+        threeColumns: {
+            "83": ``
+        },
         twoColumns: {},
     },
     clothes: {

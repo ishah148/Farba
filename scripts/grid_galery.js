@@ -108,8 +108,8 @@ export class GridGalery {
     openSlider(event) {
         if (event.target.nodeName !== 'IMG') return;
         const numberOfColumns = this.getNumberOfColumns();
-        const photoCategory = event.target.id.split("_")[0];
-        const photoNumber = event.target.id.split("-")[0].split("_")[1];
+        const photoCategory = event.target.classList[0].split("_")[0];
+        const photoNumber = event.target.classList[0].split("-")[0].split("_")[1];
         const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(+photoNumber);
         //TODO check do we remove slider?
         new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
@@ -121,7 +121,7 @@ export class GridGalery {
         newCard.classList.add(`${this.photoCategory}_${photoNumber}`);
         let img = new Image()
         img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
-        img.id = `${this.photoCategory}_${photoNumber}-img`;
+        img.classList.add(`${this.photoCategory}_${photoNumber}-img`);
         img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);
         img.onerror = function (e) {
             console.log('error', e);
@@ -232,16 +232,7 @@ export class GridGalery {
         const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
         let style = document.createElement('style');
         for (let bastardNumber in bastards) {
-            for (let styleRule in bastards[bastardNumber]) {
-                style.innerHTML += 
-                `
-                    .${this.photoCategory}_${bastardNumber} {
-                        ${styleRule} : ${bastards[bastardNumber][styleRule]};
-                    }
-                `;
-                // console.log(styleRule)
-                // console.log(bastards[bastardNumber][styleRule])
-            }
+            style.innerHTML += bastards[bastardNumber];
         }
         document.head.appendChild(style);
     }
