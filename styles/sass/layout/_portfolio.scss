@@ -5,11 +5,11 @@
 .portfolio {
     &__wrapper {
         max-width: var(--max-width);
-        padding: 40px var(--padding-primary) 0;
+        padding: 40px var(--padding-primary) 40px;
         margin: 0 auto;
         // overflow: hidden; // TODO: remove this
         @media (max-width: var.$mobile-m) {
-            padding: 40px 10px 0;
+            padding: 40px 10px 40px;
         }
     }
     .buttons-container {

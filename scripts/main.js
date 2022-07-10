@@ -7,6 +7,7 @@ import "./show_price_table.js"
 import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 import { VideoPlayer } from "./video_player.js";
+// import {FullSizeViewer} from "./3D_view.js"
 const tg = new TelegramSendMessage("contacts-window__form");
 const videoPlayer = new VideoPlayer();
 

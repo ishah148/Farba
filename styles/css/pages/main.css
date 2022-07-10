@@ -1054,7 +1054,6 @@ body {
 
 /*start Video section*/
 #video-section {
-  height: 945px;
   padding-top: 100px;
 }
 
@@ -1763,12 +1762,12 @@ body {
 }
 .portfolio__wrapper {
   max-width: var(--max-width);
-  padding: 40px var(--padding-primary) 0;
+  padding: 40px var(--padding-primary) 40px;
   margin: 0 auto;
 }
 @media (max-width: 576px) {
   .portfolio__wrapper {
-    padding: 40px 10px 0;
+    padding: 40px 10px 40px;
   }
 }
 .portfolio .buttons-container {
@@ -1899,6 +1898,74 @@ body {
 }
 .portfolio__show-all.invisible {
   display: none;
+}
+
+.threeD__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: var(--max-width);
+  padding: 40px var(--padding-primary) 40px;
+  margin: 0 auto;
+}
+@media (max-width: 576px) {
+  .threeD__wrapper {
+    padding: 40px 10px 40px;
+  }
+}
+
+.threeD__container {
+  width: 100%;
+  padding: var(--padding-primary);
+  display: grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px 15px;
+  grid-template-areas: ". ." ". .";
+}
+@media (max-width: 768px) {
+  .threeD__container {
+    grid-template-areas: "." "." "." ".";
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+}
+
+.threeD__content {
+  position: relative;
+}
+.threeD__content:hover {
+  transition: all 0.3s;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.8);
+}
+.threeD__content:hover .threeD__svg-container svg {
+  fill: var(--primary-light);
+}
+.threeD__content:hover .threeD__preview {
+  opacity: 0.89;
+}
+.threeD__content .threeD__svg-container {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+.threeD__content .threeD__svg-container svg {
+  fill: var(--primary-color);
+}
+.threeD__content .threeD__preview {
+  display: block;
+  width: 100%;
+  opacity: 0.7;
 }
 
 .prices__wrapper {
