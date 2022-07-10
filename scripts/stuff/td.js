@@ -120,13 +120,14 @@ function isTouchDevice() {
         return false;
     }
 }
-function touchHandle() {
+function touchHandle3D() {
     document.addEventListener('touchstart', handleTouchStart, false);
     document.addEventListener('touchmove', handleTouchMove, false);
-
+    let photoNumber = 43;
+    let step = 1; // !FOR 3D PHOTO
     let xStart = null;
     let yStart = null;
-    // let step = 15; // !FOR 3D PHOTO
+
     function handleTouchStart(e) {
         xStart = e.touches[0].clientX;
         yStart = e.touches[0].clientY;
@@ -136,40 +137,24 @@ function touchHandle() {
     function handleTouchMove(e) {
         xMove = e.touches[0].clientX;
         yMove = e.touches[0].clientY;
-        function left() {
-            return xStart > (xMove + 70)
+        if (xStart > (xMove + step)) { // !FOR 3D photo!
+            // console.log(1)            
+            photoNumber === 1 ? photoNumber = 85 : photoNumber--;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
         }
-        function right() {
-            return (xStart + 70) < xMove
-        }
-        function down() {
-            return (yStart + 70) < yMove
-        }
-        function up() {
-            return yStart > (yMove + 70)
-        }
-        if (left()) {
-            console.log('left')
-        }
-        // if(xStart > (xMove + step)){ // !FOR 3D photo!
-        //     console.log(1)
-        //     xStart = xMove
-        // }
-        if (right()) {
-            console.log('right')
-        }
-        if (down() && !left() && !right()) {
-            console.log('DOWN')
-        }
-        if (up() && !left() && !right()) {
-            console.log('UP')
+        if ((xStart + step) < xMove ) { // !FOR 3D photo!
+            // console.log(1)            
+            photoNumber === 85 ? photoNumber = 1 : photoNumber++;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
         }
     };
 }
-touchHandle()
+touchHandle3D()
 
 
-function mouseHandle() { // For 3D!
+function mouseHandle3D() { // For 3D!
     document.addEventListener('mouseup', handleTouchStart);
     document.addEventListener('mousemove', handleTouchMove);
     document.addEventListener('mousedown', handleMouseDown);
@@ -209,13 +194,13 @@ function mouseHandle() { // For 3D!
             document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
             xStart = xMove
         }
-        // setInterval(() => {
-        //     photoNumber === 85 ? photoNumber = 1 : photoNumber++;
-        //     document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
-        // }, 250);
+        setInterval(() => {
+            photoNumber === 85 ? photoNumber = 1 : photoNumber++;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+        }, 550);
     };
 }
-mouseHandle()
+// mouseHandle3D()
 
 
 
