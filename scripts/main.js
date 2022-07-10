@@ -8,9 +8,9 @@ import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 import { VideoPlayer } from "./video_player.js";
 const tg = new TelegramSendMessage("contacts-window__form");
-const videoPlayer = new VideoPlayer();
+const videoPlayer1 = new VideoPlayer();
 
-videoPlayer.init();
+videoPlayer1.init();
 
 window.addEventListener("load", () => {
     new GridGalery("portfolio");
