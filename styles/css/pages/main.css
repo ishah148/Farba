@@ -1217,28 +1217,6 @@ body {
 .video-player__progress-bar {
   width: 100%;
 }
-.video-player__timer {
-  display: flex;
-}
-.video-player__timer span {
-  display: block;
-  color: white;
-}
-@media (max-width: 1280px) {
-  .video-player__timer span {
-    font-size: 16px;
-  }
-}
-@media (max-width: 768px) {
-  .video-player__timer span {
-    font-size: 11px;
-  }
-}
-@media (max-width: 620px) {
-  .video-player__timer span {
-    font-size: 9px;
-  }
-}
 .video-player__volume-settings {
   display: flex;
   align-items: center;
@@ -1269,22 +1247,20 @@ body {
   background-color: black;
   color: white;
   bottom: 55px;
-  right: 35px;
+  right: 100px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 640px;
+  height: 220px;
+  width: 125px;
   padding: 10px;
   border-radius: 10px;
 }
-@media (max-width: 1280px) {
-  .settings-menu {
-    height: 280px;
-  }
+.settings-menu.disappearance {
+  display: none;
 }
 @media (max-width: 768px) {
   .settings-menu {
-    height: 240px;
     bottom: 35px;
   }
 }
@@ -1293,59 +1269,40 @@ body {
     bottom: 25px;
   }
 }
-.settings-menu.disappearance {
-  display: none;
-}
-@media (max-width: 1280px) {
-  .settings-menu span {
-    font-size: 13px;
-  }
-}
-@media (max-width: 768px) {
-  .settings-menu span {
-    font-size: 11px;
-  }
-}
-@media (max-width: 620px) {
-  .settings-menu span {
-    font-size: 11px;
-  }
-}
-.settings-menu__video-speed, .settings-menu__video-skip {
-  display: block;
+.settings-menu__video-quality {
   text-align: center;
   transition: 0.5s;
   cursor: pointer;
+  user-select: none;
 }
-.settings-menu__video-speed:hover, .settings-menu__video-skip:hover {
+.settings-menu__video-quality:hover {
   color: #bdae82;
 }
-.settings-menu__video-speed.active, .settings-menu__video-skip.active {
+.settings-menu__video-quality.active {
   background-color: #bdae82;
 }
-.settings-menu__video-speed.active:hover, .settings-menu__video-skip.active:hover {
+.settings-menu__video-quality.active:hover {
   color: black;
 }
-.settings-menu__header, .settings-menu__close {
-  display: block;
-  transition: 0.5s;
-}
-.settings-menu__header {
-  text-align: center;
-  cursor: default;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-.settings-menu__header:hover {
-  color: white;
+@media (max-width: 1280px) {
+  .settings-menu__video-quality {
+    font-size: 20px;
+  }
 }
 .settings-menu__close {
+  transition: 0.5s;
   text-align: right;
   cursor: pointer;
+  user-select: none;
   color: white;
 }
 .settings-menu__close:hover {
   color: #bdae82;
+}
+@media (max-width: 1280px) {
+  .settings-menu__close {
+    font-size: 20px;
+  }
 }
 
 :root {

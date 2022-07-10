@@ -169,26 +169,6 @@
         width: 100%;
     }
 
-    &__timer {
-        display: flex;
-        span {
-            display: block;
-            color: white;
-
-            @media (max-width: var.$laptop-m) {
-                font-size: 16px;
-            }
-
-            @media (max-width: var.$tablet) {
-                font-size: 11px;
-            }
-
-            @media (max-width: 620px) {
-                font-size: 9px;
-            }
-        }
-    }
-
     &__volume-settings {
         display: flex;
         align-items: center;
@@ -230,20 +210,25 @@
     background-color: black;
     color: white;
     bottom: 55px;
-    right: 35px;
+    right: 100px;
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: 640px;
+    height: 220px;
+    width: 125px;
     padding: 10px;
     border-radius: 10px;
 
+    &.disappearance {
+        display: none;
+    }
+
     @media (max-width: var.$laptop-m) {
-        height: 280px;
+        // height: 280px;
     }
 
     @media (max-width: var.$tablet) {
-        height: 240px;
+        // height: 240px;
         bottom: 35px;
     }
 
@@ -251,31 +236,11 @@
         bottom: 25px;
     }
 
-    &.disappearance {
-        display: none;
-    }
-
-    span {
-        @media (max-width: var.$laptop-m) {
-            font-size: 13px;
-        }
-
-        @media (max-width: var.$tablet) {
-            font-size: 11px;
-        }
-
-        @media (max-width: 620px) {
-            font-size: 11px;
-        }
-    }
-
-    &__video-speed,
-    &__video-skip {
-        display: block;
+    &__video-quality {
         text-align: center;
         transition: 0.5s;
         cursor: pointer;
-
+        user-select: none;
         &:hover {
             color: #bdae82;
         }
@@ -286,30 +251,24 @@
                 color: black;
             }
         }
-    }
 
-    &__header,
-    &__close {
-        display: block;
-        transition: 0.5s;
-    }
-
-    &__header {
-        text-align: center;
-        cursor: default;
-        padding-bottom: 10px;
-        padding-top: 10px;
-        &:hover {
-            color: white;
+        @media (max-width: var.$laptop-m) {
+            font-size: 20px;
         }
     }
 
+
     &__close {
+        transition: 0.5s;
         text-align: right;
         cursor: pointer;
+        user-select: none;
         color: white;
         &:hover {
             color: #bdae82;
+        }
+        @media (max-width: var.$laptop-m) {
+            font-size: 20px;
         }
     }
 }

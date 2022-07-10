@@ -223,15 +223,15 @@
                     Видео
                 </h2>
             </div>
-            <div class="video-player video-player_1">
-                <video class="video-player__video_1" src="../assets/video/video_section/video_1.mp4"
+            <div class="video-player">
+                <video class="video-player__video" src="../assets/video/video_section/video_1.mp4"
                     poster="../assets/images/video_posters/video-player.jpg"></video>
-                <button class="video-player__start-button_1">
-                    <svg class="video-player__start-button-svg_1">
+                <button class="video-player__start-button">
+                    <svg class="video-player__start-button-svg">
                         <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
                     </svg>
                 </button>
-                <!-- <div class="video-player__controls disappearance">
+                <div class="video-player__controls disappearance">
                     <button class="video-player__play">
                         <svg class="video-player__stop-svg disappearance">
                             <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
@@ -253,11 +253,6 @@
                             <use xlink:href="../assets/svg/player-sprite.svg#fast-forward"></use>
                         </svg>
                     </button>
-                    <div class="video-player__timer">
-                        <span class="video-player__current-time">00:00</span>
-                        <span>/</span>
-                        <span class="video-player__duration-time">00:00</span>
-                    </div>
                     <div class="video-player__volume-settings">
                         <button class="video-player__volume-button">
                             <svg class="video-player__volume-svg">
@@ -279,20 +274,10 @@
                     </button>
                     <div class="settings-menu disappearance">
                         <span class="settings-menu__close">X</span>
-                        <span class="settings-menu__header" data-translate="speed">Playback Speed</span>
-                        <span class="settings-menu__video-speed" data-speed="0.25">0.25x</span>
-                        <span class="settings-menu__video-speed" data-speed="0.5">0.5x</span>
-                        <span class="settings-menu__video-speed" data-speed="0.75">0.75x</span>
-                        <span class="settings-menu__video-speed active" data-speed="1">1x</span>
-                        <span class="settings-menu__video-speed" data-speed="1.25">1.25x</span>
-                        <span class="settings-menu__video-speed" data-speed="1.5">1.5x</span>
-                        <span class="settings-menu__video-speed" data-speed="1.75">1.75x</span>
-                        <span class="settings-menu__video-speed" data-speed="2">2x</span>
-                        <span class="settings-menu__header" data-translate="skip">Skip Interval</span>
-                        <span class="settings-menu__video-skip" data-skip="3">3s</span>
-                        <span class="settings-menu__video-skip active" data-skip="5">5s</span>
-                        <span class="settings-menu__video-skip" data-skip="10">10s</span>
-                        <span class="settings-menu__video-skip" data-skip="20">20s</span>
+                        <span class="settings-menu__video-quality">1080p</span>
+                        <span class="settings-menu__video-quality">720p</span>
+                        <span class="settings-menu__video-quality">480p</span>
+                        <span class="settings-menu__video-quality">360p</span>
                     </div>
                     <button class="video-player__fullscreen">
                         <svg class="video-player__fullscreen-svg">
@@ -302,7 +287,7 @@
                             <use xlink:href="../assets/svg/player-sprite.svg#exit-full-screen"></use>
                         </svg>
                     </button>
-                </div> -->
+                </div>
             </div>
             <!--
             <div class="video__container" style="display: none;">
