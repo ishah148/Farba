@@ -161,3 +161,51 @@ export const configGridStyles = [
         class: "g2-1_5",
     },
 ];
+
+
+
+export const bastardsConfigShah = {
+    portfolio: {
+        fourColumns: {
+            div: `.portfolio_62{
+                grid-row: span 9;
+                background: white;
+            }`
+        },
+        threeColumns: [
+        `.portfolio__container .portfolio_62{
+            grid-row: span 9;
+            background: white;
+        }\n`,
+        `.portfolio__container .portfolio_62 img{
+            object-fit: contain;
+        }\n`
+        ],
+        twoColumns: {},
+    },
+    clothes: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    furniture: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    jewerly: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    technics: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+    prams: {
+        fourColumns: {},
+        threeColumns: {},
+        twoColumns: {},
+    },
+}
