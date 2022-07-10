@@ -2,8 +2,6 @@ export class VideoPlayer {
     constructor() {
         this.videoWrapper = document.querySelector('.video-player');
         this.video = document.querySelector('.video-player__video');
-        this.startButton = document.querySelector('.video-player__start-button');
-        this.startButtonSVG = document.querySelector('.video-player__start-button-svg');
         this.timer = 0;  
         this.gap = 0;  //progress bar
         this.skipSize = 10;
@@ -13,11 +11,12 @@ export class VideoPlayer {
         this.createControlPanel();
         this.init();
         this.addEventListeners();
+        this.startVideo();
     }
 
     createControlPanel() {
         const controlPanel = `
-        <div class="video-player__controls disappearance">
+    <div class="video-player__controls disappearance">
         <button class="video-player__play">
             <svg class="video-player__stop-svg disappearance">
                 <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
@@ -108,12 +107,10 @@ export class VideoPlayer {
             this.video.pause();
             this.stopButtonSVG.classList.add('disappearance');
             this.playButtonSVG.classList.remove('disappearance');
-            this.startButtonSVG.classList.remove('disappearance');
-            this.startButton.classList.remove('disappearance');
             this.controls.classList.add('disappearance');
+            window.dispatchEvent(new CustomEvent("videoEnded"));
         });
 
-        this.startButtonSVG.addEventListener('click', () => this.startVideo());
         this.video.addEventListener('click', () => this.toggleVideo());
         this.playButton.addEventListener('click', () => this.toggleVideo());
 
@@ -165,16 +162,12 @@ export class VideoPlayer {
             this.video.play();
             this.stopButtonSVG.classList.remove('disappearance');
             this.playButtonSVG.classList.add('disappearance');
-            this.startButtonSVG.classList.add('disappearance');
-            this.startButton.classList.add('disappearance');
             this.gap = setInterval(() => this.checkProgress(), 10);
 
         } else {
             this.video.pause();
             this.stopButtonSVG.classList.add('disappearance');
             this.playButtonSVG.classList.remove('disappearance');
-            this.startButtonSVG.classList.remove('disappearance');
-            this.startButton.classList.remove('disappearance');
             clearInterval(this.gap)
         };
     }
