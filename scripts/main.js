@@ -10,7 +10,7 @@ import { VideoPlayer } from "./video_player.js";
 const tg = new TelegramSendMessage("contacts-window__form");
 const videoPlayer1 = new VideoPlayer();
 
-videoPlayer1.init();
+videoPlayer1.start();
 
 window.addEventListener("load", () => {
     new GridGalery("portfolio");

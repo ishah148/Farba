@@ -57,7 +57,7 @@
         transition: 0.4s;
         cursor: pointer;
         &:hover {
-            fill: #bdae82;
+            fill: var(--primary-light);
         }
 
         @media (max-width: var.$tablet) {
@@ -242,11 +242,11 @@
         cursor: pointer;
         user-select: none;
         &:hover {
-            color: #bdae82;
+            color: var(--primary-light);
         }
 
         &.active {
-            background-color: #bdae82;
+            background-color: var(--primary-light);
             &:hover {
                 color: black;
             }
@@ -265,7 +265,7 @@
         user-select: none;
         color: white;
         &:hover {
-            color: #bdae82;
+            color: var(--primary-light);
         }
         @media (max-width: var.$laptop-m) {
             font-size: 20px;

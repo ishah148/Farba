@@ -1119,7 +1119,7 @@ body {
   cursor: pointer;
 }
 .video-player svg:hover {
-  fill: #bdae82;
+  fill: var(--primary-light);
 }
 @media (max-width: 768px) {
   .video-player svg {
@@ -1276,10 +1276,10 @@ body {
   user-select: none;
 }
 .settings-menu__video-quality:hover {
-  color: #bdae82;
+  color: var(--primary-light);
 }
 .settings-menu__video-quality.active {
-  background-color: #bdae82;
+  background-color: var(--primary-light);
 }
 .settings-menu__video-quality.active:hover {
   color: black;
@@ -1297,7 +1297,7 @@ body {
   color: white;
 }
 .settings-menu__close:hover {
-  color: #bdae82;
+  color: var(--primary-light);
 }
 @media (max-width: 1280px) {
   .settings-menu__close {

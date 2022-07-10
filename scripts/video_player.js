@@ -1,15 +1,87 @@
 export class VideoPlayer {
     constructor() {
-        /*videoplayer*/
-        /*start&pause video*/
         this.videoWrapper = document.querySelector('.video-player');
         this.video = document.querySelector('.video-player__video');
+        this.startButton = document.querySelector('.video-player__start-button');
+        this.startButtonSVG = document.querySelector('.video-player__start-button-svg');
+        this.timer = 0;  
+        this.gap = 0;  //progress bar
+        this.skipSize = 10;
+    }
+
+    start() {
+        this.createControlPanel();
+        this.init();
+        this.addEventListeners();
+    }
+
+    createControlPanel() {
+        const controlPanel = `
+        <div class="video-player__controls disappearance">
+        <button class="video-player__play">
+            <svg class="video-player__stop-svg disappearance">
+                <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
+            </svg>
+            <svg class="video-player__play-svg">
+                <use xlink:href="../assets/svg/player-sprite.svg#playbutton"></use>
+            </svg>
+        </button>
+        <button class="video-player__backward">
+            <svg class="video-player__backward-svg">
+                <use xlink:href="../assets/svg/player-sprite.svg#fast-backward"></use>
+            </svg>
+        </button>
+        <div class="video-player__progress-bar-container">
+            <input class="video-player__progress-bar" type="range" min="0" max="59" step="0.01">
+        </div>
+        <button class="video-player__forward">
+            <svg class="video-player__forward-svg">
+                <use xlink:href="../assets/svg/player-sprite.svg#fast-forward"></use>
+            </svg>
+        </button>
+        <div class="video-player__volume-settings">
+            <button class="video-player__volume-button">
+                <svg class="video-player__volume-svg">
+                    <use xlink:href="../assets/svg/player-sprite.svg#volume"></use>
+                </svg>
+                <svg class="video-player__mute-svg disappearance">
+                    <use xlink:href="../assets/svg/player-sprite.svg#mute"></use>
+                </svg>
+            </button>
+            <div class="video-player__volume-range-wrapper">
+                <input class="video-player__volume-range" type="range" min="0" max="1" step="0.01"
+                    value="0.5">
+            </div>
+        </div>
+        <button class="video-player__settings">
+            <svg class="video-player__settings-svg">
+                <use xlink:href="../assets/svg/player-sprite.svg#settings-button"></use>
+            </svg>
+        </button>
+        <div class="settings-menu disappearance">
+            <span class="settings-menu__close">X</span>
+            <span class="settings-menu__video-quality">1080p</span>
+            <span class="settings-menu__video-quality">720p</span>
+            <span class="settings-menu__video-quality">480p</span>
+            <span class="settings-menu__video-quality">360p</span>
+        </div>
+        <button class="video-player__fullscreen">
+            <svg class="video-player__fullscreen-svg">
+                <use xlink:href="../assets/svg/player-sprite.svg#fullscreen"></use>
+            </svg>
+            <svg class="video-player__exit-fullscreen-svg disappearance">
+                <use xlink:href="../assets/svg/player-sprite.svg#exit-full-screen"></use>
+            </svg>
+        </button>
+    </div>`
+        this.videoWrapper.insertAdjacentHTML('beforeend', controlPanel);
+    }
+
+    init() {    
         this.controls = document.querySelector('.video-player__controls');
         this.playButton = document.querySelector('.video-player__play');
         this.stopButtonSVG = document.querySelector('.video-player__stop-svg');
         this.playButtonSVG = document.querySelector('.video-player__play-svg');
-        this.startButtonSVG = document.querySelector('.video-player__start-button-svg');
-        this.startButton = document.querySelector('.video-player__start-button');
         this.volumeSVG = document.querySelector('.video-player__volume-svg');
         this.muteSVG = document.querySelector('.video-player__mute-svg');
         this.volumeButton = document.querySelector('.video-player__volume-button');
@@ -18,7 +90,6 @@ export class VideoPlayer {
         this.fullScreenSVG = document.querySelector('.video-player__fullscreen-svg');
         this.exitFullScreenSVG = document.querySelector('.video-player__exit-fullscreen-svg');
         this.isFullscreen = false;
-        this.timer = 0;
         /* volume*/
         this.volumeRange = document.querySelector('.video-player__volume-range');
         /*backward&forward*/
@@ -26,21 +97,10 @@ export class VideoPlayer {
         this.forwardButton = document.querySelector('.video-player__forward');
         /* progress bar*/
         this.progressBar = document.querySelector('.video-player__progress-bar');
-        this.gap = 0;
         /*speed and skip settings */
         this.settingsButton = document.querySelector('.video-player__settings');
         this.settingsMenu = document.querySelector('.settings-menu');
         this.settingsClose = document.querySelector('.settings-menu__close');
-        this.skipSize = 10;
-    }
-
-    init() {
-        this.createControlPanel();
-        this.addEventListeners();
-    }
-
-    createControlPanel() {
-      
     }
 
     addEventListeners() {
