@@ -10,7 +10,8 @@ class FullSizeViewer {
 
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
-        closeButton.onclick = this.closeModalWindow;
+        // closeButton.onclick = this.closeModalWindow.bind(this);
+        closeButton.onclick = () => this.closeModalWindow();
     }
     createModalWindow(src) {
         const modalWindowHTML = `
@@ -34,8 +35,8 @@ class FullSizeViewer {
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
-
     }
+
     hiddenExtraButtons(){
         this.wrapper.querySelector('.modal-window__left-button').style.display = 'none';
         this.wrapper.querySelector('.modal-window__right-button').style.display = 'none';
@@ -146,13 +147,13 @@ class ThreeDViewerMouse {
         this.correctBugs(e)
         // console.log(xMove)
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!
-            this.photoNumber <= this.startPhoto ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
+            this.photoNumber <= this.startPhoto + this.speed ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
             this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
 
         }
         if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
-            this.photoNumber >= this.lastPhoto ? this.photoNumber = this.startPhoto : this.photoNumber += this.speed;
+            this.photoNumber >= this.lastPhoto - this.speed ? this.photoNumber = this.startPhoto : this.photoNumber += this.speed;
             this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }

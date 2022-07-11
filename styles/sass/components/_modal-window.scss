@@ -35,6 +35,9 @@
         .modal-window__left-button,
         .modal-window__close-button {
             display: flex;
+            @media (max-width: 768px) {
+                display: none;
+            }
         }
     }
 
@@ -120,6 +123,7 @@
         position: absolute;
         transition: 0.5s;
         @media (max-width: 768px) {
+            display: none;
         }
     }
     .modal-window__close-button {

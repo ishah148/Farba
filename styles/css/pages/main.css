@@ -938,6 +938,13 @@ body {
 .modal-window__wrapper.visible .modal-window__close-button {
   display: flex;
 }
+@media (max-width: 768px) {
+  .modal-window__wrapper.visible .modal-window__right-button,
+.modal-window__wrapper.visible .modal-window__left-button,
+.modal-window__wrapper.visible .modal-window__close-button {
+    display: none;
+  }
+}
 .modal-window__wrapper .modal-window__container {
   justify-content: space-between;
   position: absolute;
@@ -997,6 +1004,11 @@ body {
   position: absolute;
   transition: 0.5s;
 }
+@media (max-width: 768px) {
+  .modal-window__wrapper .modal-window__left-button {
+    display: none;
+  }
+}
 .modal-window__wrapper .modal-window__close-button {
   top: 15px;
   right: 15px;
@@ -1027,6 +1039,14 @@ body {
   width: 30%;
   height: 30%;
   fill: var(--primary-extra-dark);
+}
+
+.modal-window__wrapper.visible .modal-window__container {
+  align-content: center;
+}
+
+.modal-window__wrapper.visible {
+  align-content: center;
 }
 
 .yandex-map {
