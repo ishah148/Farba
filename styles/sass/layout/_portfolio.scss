@@ -137,24 +137,44 @@
         }
     }
 
-    &__show-all{
+    &__show-all {
         margin: auto;
         margin-top: 25px;
         // color: black;
-        &.invisible{
+        &.invisible {
             display: none;
         }
     }
 }
 
-
-.portfolio{
-    .portfolio__container{
-        .portfolio__card {
-            .portfolio_{
-
+.portfolio__container {
+    .portfolio__card {
+        background: white;
+        @media (min-width: 1381px) {
+            &.portfolio_83 {
+                grid-row: span 5;
+                height: 100%;
+                align-self: center;
+            }
+            &.portfolio_36 {
+                img {
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_42{
+                grid-row: span 10;
+                img{
+                    object-fit: contain;
+                }
+            }
+        }
+        @media (max-width: 1380px) {
+            &.portfolio_62{
+                grid-row: span 9;
+                img{
+                    object-fit: cover;
+                }
             }
         }
     }
-        
-} 
+}
