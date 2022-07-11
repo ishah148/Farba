@@ -1072,9 +1072,26 @@ body {
   aspect-ratio: 3/2;
 }
 
-/*start Video section*/
 #video-section {
   padding-top: 100px;
+}
+@media (max-width: 768px) {
+  #video-section {
+    height: 628px;
+    padding-top: 80px;
+  }
+}
+@media (max-width: 620px) {
+  #video-section {
+    height: 450px;
+  }
+}
+@media (max-width: 467px) {
+  #video-section {
+    height: 350px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .video-player {
@@ -1090,9 +1107,29 @@ body {
 
   } */
 }
+@media (max-width: 768px) {
+  .video-player {
+    width: 100%;
+    height: auto;
+    background-size: auto 100%;
+    background-position: -10px;
+  }
+}
+@media (max-width: 620px) {
+  .video-player {
+    background-size: 100%;
+    background-position: 0px 10px;
+  }
+}
 .video-player button {
   background-color: transparent;
   border: none;
+}
+@media (max-width: 620px) {
+  .video-player button {
+    width: 20px;
+    height: 20px;
+  }
 }
 .video-player svg {
   display: block;
@@ -1101,7 +1138,19 @@ body {
   cursor: pointer;
 }
 .video-player svg:hover {
-  fill: #bdae82;
+  fill: var(--primary-light);
+}
+@media (max-width: 768px) {
+  .video-player svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media (max-width: 620px) {
+  .video-player svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 .video-player button svg {
   width: 100%;
@@ -1111,7 +1160,13 @@ body {
   width: 45px;
   height: 45px;
 }
-.video-player__start-button-svg.disappearance, .video-player__stop-svg.disappearance, .video-player__play-svg.disappearance, .video-player__fullscreen-svg.disappearance, .video-player__exit-fullscreen-svg.disappearance, .video-player__volume-svg.disappearance, .video-player__mute-svg.disappearance, .video-player__start-button.disappearance {
+@media (max-width: 1280px) {
+  .video-player__backward, .video-player__forward, .video-player__volume-button, .video-player__settings, .video-player__fullscreen {
+    width: 35px;
+    height: 35px;
+  }
+}
+.video-player__stop-svg.disappearance, .video-player__play-svg.disappearance, .video-player__fullscreen-svg.disappearance, .video-player__exit-fullscreen-svg.disappearance, .video-player__volume-svg.disappearance, .video-player__mute-svg.disappearance, .video-player__start-button.disappearance {
   display: none;
 }
 .video-player__video {
@@ -1122,6 +1177,12 @@ body {
   cursor: pointer;
   width: 130px;
   height: 130px;
+}
+@media (max-width: 768px) {
+  .video-player__start-button {
+    width: 65px;
+    height: 65px;
+  }
 }
 .video-player__controls {
   width: 100%;
@@ -1135,6 +1196,16 @@ body {
 .video-player:hover .video-player__controls {
   bottom: 10px;
 }
+@media (max-width: 1280px) {
+  .video-player:hover .video-player__controls {
+    bottom: 0px;
+  }
+}
+@media (max-width: 620px) {
+  .video-player:hover .video-player__controls {
+    bottom: 5px;
+  }
+}
 .video-player__controls.disappearance, .video-player:hover .video-player__controls.disappearance {
   bottom: -50px;
 }
@@ -1147,21 +1218,45 @@ body {
   width: 50%;
   -webkit-appearance: none;
 }
+@media (max-width: 1280px) {
+  .video-player__progress-bar-container {
+    width: 40%;
+  }
+}
+@media (max-width: 768px) {
+  .video-player__progress-bar-container {
+    width: 35%;
+  }
+}
+@media (max-width: 620px) {
+  .video-player__progress-bar-container {
+    width: 20%;
+  }
+}
 .video-player__progress-bar {
   width: 100%;
-}
-.video-player__timer {
-  display: flex;
-}
-.video-player__timer span {
-  display: block;
-  color: white;
 }
 .video-player__volume-settings {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 13%;
+}
+@media (max-width: 768px) {
+  .video-player__volume-settings {
+    width: 20%;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 1280px) {
+  .video-player__volume-range {
+    width: 10vh;
+  }
+}
+@media (max-width: 768px) {
+  .video-player__volume-range {
+    width: 51px;
+  }
 }
 .video-player__fullscreen {
   margin-right: 1.428%;
@@ -1171,197 +1266,64 @@ body {
   background-color: black;
   color: white;
   bottom: 55px;
-  right: 35px;
+  right: 100px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 640px;
+  height: 220px;
+  width: 125px;
   padding: 10px;
   border-radius: 10px;
 }
 .settings-menu.disappearance {
   display: none;
 }
-.settings-menu__video-speed, .settings-menu__video-skip {
-  display: block;
-  text-align: center;
-  transition: 0.5s;
-  cursor: pointer;
-}
-.settings-menu__video-speed:hover, .settings-menu__video-skip:hover {
-  color: #bdae82;
-}
-.settings-menu__video-speed.active, .settings-menu__video-skip.active {
-  background-color: #bdae82;
-}
-.settings-menu__video-speed.active:hover, .settings-menu__video-skip.active:hover {
-  color: black;
-}
-.settings-menu__header, .settings-menu__close {
-  display: block;
-  transition: 0.5s;
-}
-.settings-menu__header {
-  text-align: center;
-  cursor: default;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-.settings-menu__header:hover {
-  color: white;
-}
-.settings-menu__close {
-  text-align: right;
-  cursor: pointer;
-  color: white;
-}
-.settings-menu__close:hover {
-  color: #bdae82;
-}
-
-@media (max-width: 1279px) {
-  .video-player svg {
-    width: 25px;
-    height: 25px;
-  }
-
-  .video-player:hover .video-player__controls {
-    bottom: 0px;
-  }
-
-  .video-player__progress-bar-container {
-    width: 40%;
-    -webkit-appearance: none;
-  }
-
-  .video-player__timer span {
-    font-size: 16px;
-  }
-
-  .video-player__volume-range {
-    width: 10vh;
-  }
-
-  .settings-menu {
-    height: 280px;
-  }
-
-  .settings-menu span {
-    font-size: 13px;
-  }
-}
 @media (max-width: 768px) {
-  #video-section {
-    height: 628px;
-    padding-top: 80px;
-  }
-
-  #video-section .title-wrapper {
-    margin-bottom: 50px;
-  }
-
-  .video-player {
-    width: 100%;
-    height: auto;
-    background-size: auto 100%;
-    background-position: -10px;
-  }
-
-  .video-player__start-button-svg {
-    width: 64.62px;
-    height: 62.69px;
-  }
-
   .settings-menu {
-    height: 250px;
-  }
-
-  .settings-menu span {
-    font-size: 11px;
-  }
-
-  .video-player__volume-range {
-    width: 51px;
-  }
-
-  .video-player__volume-settings {
-    width: 20%;
-    justify-content: space-between;
-  }
-}
-@media (max-width: 766px) {
-  .video-player svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  .video-player__progress-bar-container {
-    width: 35%;
-  }
-
-  .video-player__timer span {
-    font-size: 11px;
-  }
-
-  .settings-menu {
-    height: 240px;
     bottom: 35px;
-  }
-
-  .settings-menu span {
-    font-size: 11px;
   }
 }
 @media (max-width: 620px) {
-  #video-section {
-    height: 450px;
-  }
-
-  .video-player {
-    background-size: 100%;
-    background-position: 0px 10px;
-  }
-
-  .video-player:hover .video-player__controls {
-    bottom: 5px;
-  }
-
-  .video-player button {
-    width: 20px;
-    height: 20px;
-  }
-
-  .video-player svg {
-    width: 15px;
-    height: 15px;
-  }
-
-  .video-player__progress-bar-container {
-    width: 20%;
-  }
-
-  .video-player__timer span {
-    font-size: 9px;
-  }
-
-  .settings-menu span {
-    font-size: 11px;
-  }
-
   .settings-menu {
     bottom: 25px;
   }
 }
-@media (max-width: 467px) {
-  #video-section {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  #video-section {
-    height: 350px;
+.settings-menu__video-quality {
+  text-align: center;
+  transition: 0.5s;
+  cursor: pointer;
+  user-select: none;
+}
+.settings-menu__video-quality:hover {
+  color: var(--primary-light);
+}
+.settings-menu__video-quality.active {
+  background-color: var(--primary-light);
+}
+.settings-menu__video-quality.active:hover {
+  color: black;
+}
+@media (max-width: 1280px) {
+  .settings-menu__video-quality {
+    font-size: 20px;
   }
 }
+.settings-menu__close {
+  transition: 0.5s;
+  text-align: right;
+  cursor: pointer;
+  user-select: none;
+  color: white;
+}
+.settings-menu__close:hover {
+  color: var(--primary-light);
+}
+@media (max-width: 1280px) {
+  .settings-menu__close {
+    font-size: 20px;
+  }
+}
+
 :root {
   --msg-window-width: 340px;
   --right-msg-window: 40px;
