@@ -1,7 +1,8 @@
 export class VideoPlayer {
-    constructor() {
-        this.videoWrapper = document.querySelector('.video-player');
-        this.video = document.querySelector('.video-player__video');
+    constructor(number) {
+        this.videoNumber = number;
+        this.videoWrapper = document.getElementById(`video-player_${this.videoNumber}`);
+        this.video = document.getElementById(`video-player__video_${this.videoNumber}`);
         this.timer = 0;  
         this.gap = 0;  //progress bar
         this.skipSize = 10;
@@ -16,59 +17,59 @@ export class VideoPlayer {
 
     createControlPanel() {
         const controlPanel = `
-    <div class="video-player__controls disappearance">
-        <button class="video-player__play">
-            <svg class="video-player__stop-svg disappearance">
+    <div class="video-player__controls disappearance" id="video-player__controls_${this.videoNumber}">
+        <button class="video-player__play" id="video-player__play_${this.videoNumber}">
+            <svg class="video-player__stop-svg disappearance" id="video-player__stop-svg_${this.videoNumber}">
                 <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
             </svg>
-            <svg class="video-player__play-svg">
+            <svg class="video-player__play-svg" id="video-player__play-svg_${this.videoNumber}">
                 <use xlink:href="../assets/svg/player-sprite.svg#playbutton"></use>
             </svg>
         </button>
-        <button class="video-player__backward">
+        <button class="video-player__backward" id="video-player__backward_${this.videoNumber}">
             <svg class="video-player__backward-svg">
                 <use xlink:href="../assets/svg/player-sprite.svg#fast-backward"></use>
             </svg>
         </button>
         <div class="video-player__progress-bar-container">
-            <input class="video-player__progress-bar" type="range" min="0" max="59" step="0.01">
+            <input class="video-player__progress-bar" id="video-player__progress-bar_${this.videoNumber}" type="range" min="0" max="59" step="0.01">
         </div>
-        <button class="video-player__forward">
+        <button class="video-player__forward" id="video-player__forward_${this.videoNumber}">
             <svg class="video-player__forward-svg">
                 <use xlink:href="../assets/svg/player-sprite.svg#fast-forward"></use>
             </svg>
         </button>
         <div class="video-player__volume-settings">
-            <button class="video-player__volume-button">
-                <svg class="video-player__volume-svg">
+            <button class="video-player__volume-button" id="video-player__volume-button_${this.videoNumber}">
+                <svg class="video-player__volume-svg" id="video-player__volume-svg_${this.videoNumber}">
                     <use xlink:href="../assets/svg/player-sprite.svg#volume"></use>
                 </svg>
-                <svg class="video-player__mute-svg disappearance">
+                <svg class="video-player__mute-svg disappearance" id="video-player__mute-svg_${this.videoNumber}">
                     <use xlink:href="../assets/svg/player-sprite.svg#mute"></use>
                 </svg>
             </button>
             <div class="video-player__volume-range-wrapper">
-                <input class="video-player__volume-range" type="range" min="0" max="1" step="0.01"
+                <input class="video-player__volume-range" id="video-player__volume-range_${this.videoNumber}" type="range" min="0" max="1" step="0.01"
                     value="0.5">
             </div>
         </div>
-        <button class="video-player__settings">
+        <button class="video-player__settings" id="video-player__settings_${this.videoNumber}">
             <svg class="video-player__settings-svg">
                 <use xlink:href="../assets/svg/player-sprite.svg#settings-button"></use>
             </svg>
         </button>
-        <div class="settings-menu disappearance">
-            <span class="settings-menu__close">X</span>
+        <div class="settings-menu disappearance" id="settings-menu_${this.videoNumber}">
+            <span class="settings-menu__close" id="settings-menu__close_${this.videoNumber}">X</span>
             <span class="settings-menu__video-quality">1080p</span>
             <span class="settings-menu__video-quality">720p</span>
             <span class="settings-menu__video-quality">480p</span>
             <span class="settings-menu__video-quality">360p</span>
         </div>
-        <button class="video-player__fullscreen">
-            <svg class="video-player__fullscreen-svg">
+        <button class="video-player__fullscreen" id="video-player__fullscreen_${this.videoNumber}">
+            <svg class="video-player__fullscreen-svg" id="video-player__fullscreen-svg_${this.videoNumber}">
                 <use xlink:href="../assets/svg/player-sprite.svg#fullscreen"></use>
             </svg>
-            <svg class="video-player__exit-fullscreen-svg disappearance">
+            <svg class="video-player__exit-fullscreen-svg disappearance" id="video-player__exit-fullscreen-svg_${this.videoNumber}">
                 <use xlink:href="../assets/svg/player-sprite.svg#exit-full-screen"></use>
             </svg>
         </button>
@@ -77,29 +78,29 @@ export class VideoPlayer {
     }
 
     init() {    
-        this.controls = document.querySelector('.video-player__controls');
-        this.playButton = document.querySelector('.video-player__play');
-        this.stopButtonSVG = document.querySelector('.video-player__stop-svg');
-        this.playButtonSVG = document.querySelector('.video-player__play-svg');
-        this.volumeSVG = document.querySelector('.video-player__volume-svg');
-        this.muteSVG = document.querySelector('.video-player__mute-svg');
-        this.volumeButton = document.querySelector('.video-player__volume-button');
+        this.controls = document.getElementById(`video-player__controls_${this.videoNumber}`);
+        this.playButton = document.getElementById(`video-player__play_${this.videoNumber}`);
+        this.stopButtonSVG = document.getElementById(`video-player__stop-svg_${this.videoNumber}`);
+        this.playButtonSVG = document.getElementById(`video-player__play-svg_${this.videoNumber}`);
+        this.volumeSVG = document.getElementById(`video-player__volume-svg_${this.videoNumber}`);
+        this.muteSVG = document.getElementById(`video-player__mute-svg_${this.videoNumber}`);
+        this.volumeButton = document.getElementById(`video-player__volume-button_${this.videoNumber}`);
         /*full screen*/
-        this.fullScreen = document.querySelector('.video-player__fullscreen');
-        this.fullScreenSVG = document.querySelector('.video-player__fullscreen-svg');
-        this.exitFullScreenSVG = document.querySelector('.video-player__exit-fullscreen-svg');
+        this.fullScreen = document.getElementById(`video-player__fullscreen_${this.videoNumber}`);
+        this.fullScreenSVG = document.getElementById(`video-player__fullscreen-svg_${this.videoNumber}`);
+        this.exitFullScreenSVG = document.getElementById(`video-player__exit-fullscreen-svg_${this.videoNumber}`);
         this.isFullscreen = false;
         /* volume*/
-        this.volumeRange = document.querySelector('.video-player__volume-range');
+        this.volumeRange = document.getElementById(`video-player__volume-range_${this.videoNumber}`);
         /*backward&forward*/
-        this.backwardButton = document.querySelector('.video-player__backward');
-        this.forwardButton = document.querySelector('.video-player__forward');
+        this.backwardButton = document.getElementById(`video-player__backward_${this.videoNumber}`);
+        this.forwardButton = document.getElementById(`video-player__forward_${this.videoNumber}`);
         /* progress bar*/
-        this.progressBar = document.querySelector('.video-player__progress-bar');
+        this.progressBar = document.getElementById(`video-player__progress-bar_${this.videoNumber}`);
         /*speed and skip settings */
-        this.settingsButton = document.querySelector('.video-player__settings');
-        this.settingsMenu = document.querySelector('.settings-menu');
-        this.settingsClose = document.querySelector('.settings-menu__close');
+        this.settingsButton = document.getElementById(`video-player__settings_${this.videoNumber}`);
+        this.settingsMenu = document.getElementById(`settings-menu_${this.videoNumber}`);
+        this.settingsClose = document.getElementById(`settings-menu__close_${this.videoNumber}`);
     }
 
     addEventListeners() {
