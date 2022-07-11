@@ -1420,6 +1420,25 @@ body {
   border: none;
   -moz-appearance: textfield;
 }
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number:checked {
+  background: yellow;
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.good {
+  outline: none;
+  border: 3px solid rgba(76, 175, 80, 0.8);
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.good:focus {
+  outline: none;
+  border: 3px solid rgba(76, 175, 80, 0.8);
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.error {
+  outline: none;
+  border: 3px solid rgba(244, 67, 54, 0.8);
+}
+.contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.error:focus {
+  outline: none;
+  border: 3px solid rgba(244, 67, 54, 0.8);
+}
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
