@@ -229,12 +229,12 @@ export class GridGalery {
     }
 
     fixBastards() {
-        const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
-        let style = document.createElement('style');
-        for (let bastardNumber in bastards) {
-            style.innerHTML += bastards[bastardNumber];
-        }
-        document.head.appendChild(style);
+        // const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
+        // let style = document.createElement('style');
+        // for (let bastardNumber in bastards) {
+        //     style.innerHTML += bastards[bastardNumber];
+        // }
+        // document.head.appendChild(style);
     }
 }
 

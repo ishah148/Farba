@@ -3,7 +3,7 @@ const el = {
     isMouseUp: true,
     isMouseDown: false,
     direction: '',
-    step:15,
+    step: 15,
     lastX: -2,
     lastY: -2,
 }
@@ -13,10 +13,10 @@ const el = {
 // })
 // oldMouseHandle()
 
-function oldMouseHandle(){
+function oldMouseHandle() {
     document.addEventListener('onmousedown', (e) => {
         console.log(e)
-    
+
     })
     el.wrapper.addEventListener('onmouseup', (e) => {
         // console.log(e)
@@ -24,7 +24,7 @@ function oldMouseHandle(){
     el.wrapper.addEventListener('onmouseup', (e) => {
         // console.log(e)
     })
-    
+
     el.wrapper.onmousedown = function (e) {
         el.isMouseDown = !el.isMouseDown;
     }
@@ -34,7 +34,7 @@ function oldMouseHandle(){
         el.lastX = -2;
         console.log('UPPED')
     }
-    
+
     el.wrapper.onmousemove = function (e) {
         if (el.isMouseDown) {
             if (el.lastX === -2 || el.lastY === -2) {
@@ -44,7 +44,7 @@ function oldMouseHandle(){
             if (el.lastX < e.offsetX) {
                 console.log('right')
             }
-    
+
             if (el.lastX > (e.offsetX)) {
                 console.log('left')
             }
@@ -62,11 +62,11 @@ function oldMouseHandle(){
             console.log('UP!')
         }
     }
-    
-    
+
+
     document.addEventListener('onmousedown', (e) => {
         console.log(e)
-    
+
     })
     el.wrapper.addEventListener('onmouseup', (e) => {
         // console.log(e)
@@ -74,7 +74,7 @@ function oldMouseHandle(){
     el.wrapper.addEventListener('onmouseup', (e) => {
         // console.log(e)
     })
-    
+
     el.wrapper.onmousedown = function (e) {
         el.isMouseDown = !el.isMouseDown;
     }
@@ -84,7 +84,7 @@ function oldMouseHandle(){
         el.lastX = -2;
         console.log('UPPED')
     }
-    
+
     el.wrapper.ontouchmove = function (e) {
         if (el.isMouseDown) {
             if (el.lastX === -2 || el.lastY === -2) {
@@ -94,7 +94,7 @@ function oldMouseHandle(){
             if (el.lastX < e.offsetX) {
                 console.log('right')
             }
-    
+
             if (el.lastX > e.offsetX) {
                 console.log('left')
             }
@@ -120,6 +120,96 @@ function isTouchDevice() {
         return false;
     }
 }
+function touchHandle3D() {
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+    let photoNumber = 43;
+    const startPhoto = 1;
+    const lastPhoto = 85;
+    let step = 1; // !FOR 3D PHOTO
+    let xStart = null;
+    let yStart = null;
+
+    function handleTouchStart(e) {
+        xStart = e.touches[0].clientX;
+        yStart = e.touches[0].clientY;
+
+    };
+
+    function handleTouchMove(e) {
+        xMove = e.touches[0].clientX;
+        yMove = e.touches[0].clientY;
+        if (xStart > (xMove + step)) { // !FOR 3D photo!
+            // console.log(1)            
+            photoNumber === startPhoto ? photoNumber = lastPhoto : photoNumber--;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
+        }
+        if ((xStart + step) < xMove ) { // !FOR 3D photo!
+            // console.log(1)            
+            photoNumber === lastPhoto ? photoNumber = 1 : photoNumber++;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
+        }
+    };
+}
+touchHandle3D()
+
+
+function mouseHandle3D() { // For 3D!
+    document.addEventListener('mouseup', handleTouchStart);
+    document.addEventListener('mousemove', handleTouchMove);
+    document.addEventListener('mousedown', handleMouseDown);
+    const startPhoto = 1;
+    const lastPhoto = 85;
+    let photoNumber = 43;
+    const magicNumber = 0;
+    let xStart = null;
+    let yStart = null;
+    let isMouseUp = true;
+    let isMouseDown = false;
+    let step = 1; // !FOR 3D PHOTO
+    console.log('here')
+    function handleMouseDown(e) {
+        isMouseDown = !isMouseDown;
+        xStart = e.offsetX;
+        yStart = e.offsetY;
+        console.log("DOWN")
+    }
+
+    function handleTouchStart(e) {
+        isMouseDown = !isMouseDown;
+        console.log('UPPED')
+    };
+
+    function handleTouchMove(e) {
+        if (!isMouseDown) { return }
+        xMove = e.offsetX;
+        yMove = e.offsetY;
+        if (xStart > (xMove + step)) { // !FOR 3D photo!
+            console.log('-')
+            photoNumber === startPhoto ? photoNumber = lastPhoto : photoNumber--;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
+        }
+        if ((xStart + step) < xMove) { // !FOR 3D photo!
+            console.log('+')
+            photoNumber === lastPhoto ? photoNumber = startPhoto : photoNumber++;
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+            xStart = xMove
+        }
+        setInterval(() => {
+            photoNumber === lastPhoto ? photoNumber = startPhoto : photoNumber++;
+            console.log(photoNumber)
+            document.getElementById('img').src = `../assets/3D/canon-${photoNumber}.webp`
+        }, 200);
+    };
+}
+mouseHandle3D()
+
+
+
+
 function touchHandle() {
     document.addEventListener('touchstart', handleTouchStart, false);
     document.addEventListener('touchmove', handleTouchMove, false);
@@ -166,7 +256,7 @@ function touchHandle() {
         }
     };
 }
-touchHandle()
+// touchHandle()
 
 
 function mouseHandle() {
@@ -228,7 +318,9 @@ function mouseHandle() {
         }
     };
 }
-mouseHandle()
+// mouseHandle()
+
+
 
 
 
