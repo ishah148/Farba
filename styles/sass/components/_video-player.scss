@@ -1,34 +1,7 @@
 @use "../base/variables" as var;
 
-#video-section {
-    height: 945px;
-    padding-top: 100px;
-
-    @media (max-width: var.$tablet) {
-        height: 628px;
-        padding-top: 80px;
-    }
-
-    @media (max-width: 620px) {
-        height: 450px;
-    }
-
-    @media (max-width: 467px) {
-        height: 350px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-}
-
 .video-player {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    /* height: 705px; */
-    overflow: hidden;
+
 
     @media (max-width: var.$tablet) {
         width: 100%;
