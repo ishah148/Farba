@@ -111,7 +111,7 @@ class ThreeDViewerMouse {
         this.isMouseUp = true;
         this.isMouseDown = false;
         this.step = 10; // !FOR 3D PHOTO
-        this.addListeners()
+        this.addListeners();
     }
     addListeners() {
         console.log(this.location)
@@ -210,6 +210,8 @@ class ThreeDViewer {
     }
 
     checkCountDownloadedPhotos(folderTarget, folder) {
+        let persent = Math.ceil(this.countOfLoadedPhotos / 85 * 100)
+        folderTarget.querySelector('.spinner__persent').textContent = ` ${persent}%`;
         this.countOfLoadedPhotos++
         if (this.countOfLoadedPhotos === 85) {
             this.countOfLoadedPhotos = 0;
