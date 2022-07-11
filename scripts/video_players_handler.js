@@ -14,25 +14,28 @@ export class VideoPlayersHandler {
         this.startButtons.forEach((startButton) => {
             startButton.addEventListener("click", (event) => this.createVideoPlayer(event))
         });
-        window.addEventListener("videoEnded", () => this.removeVideoPlayer());
     }
 
     createVideoPlayer(event) {
         const startButton = event.currentTarget;
-        const videoNumber = (startButton.id.match(/\d$/m)||[])[0];
+        const videoNumber = (startButton.id.match(/\d$/m) || [])[0];
         const videoPlayer = new VideoPlayer(videoNumber);
         this.videoPlayers[`${videoNumber}`] = videoPlayer;
+        document.getElementById(`video-player__video_${videoNumber}`).addEventListener("videoEnded", (event) =>
+            this.removeVideoPlayer(event));
         videoPlayer.start();
         startButton.classList.add('disappearance');
     }
 
-    removeVideoPlayer() {
-        delete this.videoPlayer1;
-        this.startButton.classList.remove('disappearance');
-        document.querySelector(".video-player__controls").remove();
+    removeVideoPlayer(event) {
+        const video = event.target;
+        const videoNumber = (video.id.match(/\d$/m) || [])[0];
+        delete this.videoPlayers[`${videoNumber}`];
+        document.getElementById(`video-player__start-button_${videoNumber}`).classList.remove('disappearance');
+        document.getElementById(`video-player__controls_${videoNumber}`).remove();
 
-        let video = document.querySelector('.video-player__video'); //remove event listeners from video
-        let videoClone = video.cloneNode(true);
+
+        let videoClone = video.cloneNode(true);  //remove event listeners from video
         video.parentNode.replaceChild(videoClone, video);
     }
 }

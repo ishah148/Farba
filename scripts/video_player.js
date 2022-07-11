@@ -109,7 +109,7 @@ export class VideoPlayer {
             this.stopButtonSVG.classList.add('disappearance');
             this.playButtonSVG.classList.remove('disappearance');
             this.controls.classList.add('disappearance');
-            window.dispatchEvent(new CustomEvent("videoEnded"));
+            this.video.dispatchEvent(new CustomEvent("videoEnded"));
         });
 
         this.video.addEventListener('click', () => this.toggleVideo());
@@ -180,7 +180,7 @@ export class VideoPlayer {
             this.fullScreenSVG.classList.remove('disappearance');
             this.exitFullScreenSVG.classList.add('disappearance');
         } else {
-            document.querySelector(".video-player").requestFullscreen();
+            this.video.requestFullscreen();
             this.isFullscreen = true;
             this.fullScreenSVG.classList.add('disappearance');
             this.exitFullScreenSVG.classList.remove('disappearance');
