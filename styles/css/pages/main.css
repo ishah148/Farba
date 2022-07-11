@@ -2024,6 +2024,21 @@ body {
 .threeD__content .threeD__svg-container svg {
   fill: var(--primary-color);
 }
+.threeD__content .threeD__svg-zoom {
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+.threeD__content .threeD__svg-zoom.hidden {
+  display: none;
+}
+.threeD__content .threeD__svg-zoom svg {
+  fill: var(--primary-color);
+}
 .threeD__content .threeD__preview {
   display: block;
   width: 100%;
