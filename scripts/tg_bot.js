@@ -1,6 +1,8 @@
 export default class TelegramSendMessage {
     constructor(formID) {
         this.formID = formID;
+        this.form = document.getElementById(this.formID);
+        this.input = document.getElementById('contacts-window__user-number')
         this.button = document.getElementById('contacts-window__button-send')
         this.init();
     }
@@ -27,7 +29,7 @@ export default class TelegramSendMessage {
         } catch (e) { }
 
         const status = await response.json();
-        // console.log(status)
+        // 
         if (status.ok) {
             this.sendDode()
         }
@@ -38,40 +40,58 @@ export default class TelegramSendMessage {
 
     addEvents() {
         // this.testForBtn.onclick = this.testOne.bind(this.testForBtn,this)
-        document.getElementById(this.formID).onsubmit = this.sumbit.bind(document.getElementById(this.formID), this);
-    }
-
-    testOne(...args) {
-        console.log(args)
-        console.log(this.where)
-        console.log(e)
+        this.form.onsubmit = this.sumbit.bind(document.getElementById(this.formID), this);
+        this.input.oninput = (e) => { this.checkValidPhone(e) }
     }
 
     sumbit(...args) {
         const event = args[1]
         const thisClass = args[0]
         event.preventDefault();
-        thisClass.checkValidPhone(this.userNumber.value)
-        thisClass.telegramSendMsg(this.userName.value, this.userNumber.value)
-
+        if (thisClass.checkValidSubmit(this.userNumber.value)) {
+            thisClass.telegramSendMsg(this.userName.value, this.userNumber.value)
+        }
     }
 
     //TODO
-    checkValidPhone(number) {
-        if(!number || number.toString().length > 25 || number.toString().length < 8){
+    checkValidPhone(e) {
+        let number = e.target.value;
+        
+        this.checkValidSubmit(number)
+    }
+    checkValidSubmit(number) {
+        if (!number || number.toString().length > 25 || number.toString().length < 8) {
             // please input correct number
+            this.incorrectInput();
+            return false;
         }
-     } // от 8 до 25 и не буквы ()-+ пробелы
+        this.correctInput();
+        return true
+    } // от 8 до 25 и не буквы ()-+ пробелы
     sendDode() {
         this.button.textContent = "ЗАЯВКА ОТПРАВЛЕНА"
         this.button.classList.add('sended')
+        setTimeout(() => {
+            this.button.classList.remove('sended')
+            this.button.textContent = "ЗАКАЗАТЬ ЗВОНОК"
+        }, 1500);
     }
     sendErr() {
         this.button.textContent = "ОШИБКА ОТПРАВКИ"
         this.button.classList.add('error')
+        setTimeout(() => {
+            this.button.classList.remove('error')
+            this.button.textContent = "ЗАКАЗАТЬ ЗВОНОК"
+        }, 1500);
     }
-
-
+    
+    incorrectInput() {
+        this.input.classList.add('error')
+    }
+    correctInput(){
+        this.input.classList.remove('error')
+        this.input.classList.add('good')
+    }
     createForm() {
         const form = `  
         <form method="post" id="${this.formID}">

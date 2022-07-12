@@ -59,7 +59,7 @@
                 <form method="post" id="contacts-window__form" class="contacts-window__form">
 
                     <input type="text" name="userName" placeholder="Имя" />
-                    <input type="tel" name="userNumber" placeholder="Номер" min="8" max="25" />
+                    <input id="contacts-window__user-number" class="contacts-window__user-number" type="tel" name="userNumber" placeholder="Номер" min="8" max="25" />
                     <button id="contacts-window__button-send" class="contacts-window__button-send">ЗАКАЗАТЬ
                         ЗВОНОК</button>
                 </form>
@@ -247,6 +247,7 @@
                             <div class="spinner-border" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
+                            <p class="spinner__persent"></p>
                         </div>
                     </div>
                     <div class="threeD__content" id="threeD__one" data-folder="canon">
