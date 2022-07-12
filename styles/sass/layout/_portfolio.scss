@@ -176,5 +176,19 @@
                 }
             }
         }
+        @media (max-width: 1070px) {
+            &.portfolio_75{
+                grid-row: span 5;
+                img{
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_17{
+                grid-row: span 7;
+                img{
+                    object-fit: cover;
+                }
+            }
+        }
     }
 }

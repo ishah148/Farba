@@ -791,7 +791,7 @@ body {
   width: 130px;
 }
 .burger-menu .burger-menu__svg:hover {
-  fill: #00000080;
+  fill: rgba(0, 0, 0, 0.5019607843);
 }
 
 .switch-lang {
@@ -1412,19 +1412,19 @@ body {
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.good {
   outline: none;
-  border: 3px solid #4caf50cc;
+  border: 3px solid rgba(76, 175, 80, 0.8);
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.good:focus {
   outline: none;
-  border: 3px solid #4caf50cc;
+  border: 3px solid rgba(76, 175, 80, 0.8);
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.error {
   outline: none;
-  border: 3px solid #f44336cc;
+  border: 3px solid rgba(244, 67, 54, 0.8);
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form .contacts-window__user-number.error:focus {
   outline: none;
-  border: 3px solid #f44336cc;
+  border: 3px solid rgba(244, 67, 54, 0.8);
 }
 .contacts-window__wrapper .contacts-window__container .contacts-window__order-call .contacts-window__form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -1965,6 +1965,20 @@ body {
     grid-row: span 9;
   }
   .portfolio__container .portfolio__card.portfolio_62 img {
+    object-fit: cover;
+  }
+}
+@media (max-width: 1070px) {
+  .portfolio__container .portfolio__card.portfolio_75 {
+    grid-row: span 5;
+  }
+  .portfolio__container .portfolio__card.portfolio_75 img {
+    object-fit: contain;
+  }
+  .portfolio__container .portfolio__card.portfolio_17 {
+    grid-row: span 7;
+  }
+  .portfolio__container .portfolio__card.portfolio_17 img {
     object-fit: cover;
   }
 }
