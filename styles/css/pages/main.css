@@ -1134,18 +1134,15 @@ body {
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  bottom: -55px;
-  transition: 0.5s;
-}
-.video-player:hover .video-player__controls {
   bottom: 5px;
+  transition: 0.7s;
 }
 @media (max-width: 320px) {
-  .video-player:hover .video-player__controls {
+  .video-player__controls {
     bottom: 0px;
   }
 }
-.video-player__controls.disappearance, .video-player:hover .video-player__controls.disappearance {
+.video-player__controls.disappearance {
   bottom: -55px;
 }
 .video-player__progress-bar-container {

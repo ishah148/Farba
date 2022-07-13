@@ -3,7 +3,7 @@ export class VideoPlayer {
         this.videoNumber = number;
         this.videoWrapper = document.getElementById(`video-player__video-wrapper_${this.videoNumber}`);
         this.video = document.getElementById(`video-player__video_${this.videoNumber}`);
-        this.timer = 0;  
+        this.timer = 0;
         this.gap = 0;  //progress bar
         this.skipSize = 10;
     }
@@ -77,7 +77,7 @@ export class VideoPlayer {
         this.videoWrapper.insertAdjacentHTML('beforeend', controlPanel);
     }
 
-    init() {    
+    init() {
         this.controls = document.getElementById(`video-player__controls_${this.videoNumber}`);
         this.playButton = document.getElementById(`video-player__play_${this.videoNumber}`);
         this.stopButtonSVG = document.getElementById(`video-player__stop-svg_${this.videoNumber}`);
@@ -180,7 +180,7 @@ export class VideoPlayer {
             this.fullScreenSVG.classList.remove('disappearance');
             this.exitFullScreenSVG.classList.add('disappearance');
         } else {
-            this.video.requestFullscreen();
+            this.videoWrapper.requestFullscreen();
             this.isFullscreen = true;
             this.fullScreenSVG.classList.add('disappearance');
             this.exitFullScreenSVG.classList.remove('disappearance');
@@ -195,7 +195,7 @@ export class VideoPlayer {
             this.timer = setTimeout(() => {
                 this.controls.classList.add('disappearance');
                 this.settingsMenu.classList.add('disappearance');
-            }, 3000)
+            }, 2000)
         }
     }
 

@@ -81,19 +81,14 @@
         justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: -55px;
-        transition: 0.5s;
-    }
-
-    &:hover &__controls {
         bottom: 5px;
+        transition: 0.7s;
         @media (max-width: var.$mobile-s) {
             bottom: 0px;
         }
     }
 
-    &__controls.disappearance,  //!wtf
-    &:hover &__controls.disappearance {
+    &__controls.disappearance {
         bottom: -55px;
     }
 
