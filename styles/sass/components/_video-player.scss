@@ -3,11 +3,10 @@
 .video-player {
     position: relative;
     &__video-wrapper {
-        // height: 230px;
         position: relative;
-        margin-bottom: 15px;
         aspect-ratio: 16/9; // РАБОТАЕТ ТОЛЬКО В ХРОМЕ!!!!!!
         // padding-bottom: 56%; //АЛЬТЕРНАТИВА для кроссбраузерности
+        overflow: hidden;
     }
 
     &__video-wrapper video {
@@ -19,22 +18,17 @@
         height: 100%;
     }
 
-    @media (max-width: var.$tablet) {
-        width: 100%;
-        height: auto;
-        background-size: auto 100%;
-        background-position: -10px; //*****
-    }
-
-    @media (max-width: 620px) {
-        background-size: 100%;
-        background-position: 0px 10px; //*****
-    }
-
     button {
         background-color: transparent;
         border: none;
-        @media (max-width: 620px) {
+        width: 25px;
+        height: 25px;
+        @media (max-width: var.$laptop) {
+            width: 30px;
+            height: 30px;
+        }
+
+        @media (max-width: var.$mobile-m) {
             width: 20px;
             height: 20px;
         }
@@ -48,34 +42,6 @@
         &:hover {
             fill: var(--primary-light);
         }
-
-        @media (max-width: var.$tablet) {
-            width: 20px;
-            height: 20px;
-        }
-
-        @media (max-width: 620px) {
-            width: 15px;
-            height: 15px;
-        }
-    }
-
-    & button svg {
-        width: 100%;
-        height: 100%;
-    }
-
-    &__backward,
-    &__forward,
-    &__volume-button,
-    &__settings,
-    &__fullscreen {
-        width: 45px;
-        height: 45px;
-        @media (max-width: var.$laptop-m) {
-            width: 35px;
-            height: 35px;
-        }
     }
 
     &__stop-svg.disappearance,
@@ -88,11 +54,13 @@
         display: none;
     }
 
-    &__video {
-        width: 97.22%;
+    & button svg {
+        width: 100%;
+        height: 100%;
     }
 
-    &__start-button {
+
+    .video-player__start-button {
         width: 130px;
         height: 130px;
         position: absolute;
@@ -100,7 +68,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         cursor: pointer;
-        
+
         @media (max-width: var.$tablet) {
             width: 65px;
             height: 65px;
@@ -113,39 +81,20 @@
         justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: -50px;
-        transition: 1s;
-    }
-
-    &:hover &__controls {
-        bottom: 10px;
-        @media (max-width: var.$laptop-m) {
+        bottom: 5px;
+        transition: 0.7s;
+        @media (max-width: var.$mobile-s) {
             bottom: 0px;
         }
-
-        @media (max-width: 620px) {
-            bottom: 5px;
-        }
     }
 
-    &__controls.disappearance,  //!wtf
-    &:hover &__controls.disappearance {
-        bottom: -50px;
-    }
-
-    &__play {
-        margin-left: 1.64%;
-        width: 45px;
-        height: 45px;
+    &__controls.disappearance {
+        bottom: -55px;
     }
 
     &__progress-bar-container {
-        width: 50%;
+        width: 40%;
         -webkit-appearance: none;
-
-        @media (max-width: var.$laptop-m) {
-            width: 40%;
-        }
 
         @media (max-width: var.$tablet) {
             width: 35%;
@@ -163,32 +112,23 @@
     &__volume-settings {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        width: 13%;
+        justify-content: space-between;
+        width: 20%;
+    }
 
-        @media (max-width: var.$tablet) {
-            width: 20%;
-            justify-content: space-between;
-        }
+    .video-player__volume-button {
+        width: 30%;
+    }
+
+    &__volume-range-wrapper {
+        width: 60%;
+        height: 25px;   //the same as volume button
     }
 
     &__volume-range {
-        @media (max-width: var.$laptop-m) {
-            width: 10vh;
-        }
-
-        @media (max-width: var.$tablet) {
-            width: 51px;
-        }
+        width: 100%;
+        height: 100%;
     }
-
-    &__fullscreen {
-        margin-right: 1.428%;
-    }
-
-    /* .video-player input[type=range] {
-
-  } */
 }
 
 //*
@@ -200,32 +140,54 @@
 .settings-menu {
     background-color: black;
     color: white;
-    bottom: 55px;
-    right: 100px;
+    bottom: 35px;
+    right: 30px;
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: 220px;
-    width: 125px;
+    height: 175px;
+    width: 110px;
     padding: 10px;
     border-radius: 10px;
+    
+    @media (max-width: var.$tablet) {
+        height: 150px;
+    }
+
+    @media (max-width: var.$mobile-m) {
+        height: 120px;
+        width: 80px;
+        bottom: 30px;
+        right: 10px;
+    }
+
+    @media (max-width: var.$mobile-s) {
+        height: 93px;
+        width: 63px;
+        bottom: 27px;
+        right: 10px;
+    }
+
+    span {
+        font-size: 22px;
+
+        @media (max-width: var.$tablet) {
+            font-size: 20px;
+        }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 17px;
+        }
+
+        @media (max-width: var.$mobile-s) {
+            font-size: 13px;
+        }
+    }
 
     &.disappearance {
         display: none;
     }
 
-    @media (max-width: var.$laptop-m) {
-        // height: 280px;
-    }
-
-    @media (max-width: var.$tablet) {
-        // height: 240px;
-        bottom: 35px;
-    }
-
-    @media (max-width: 620px) {
-        bottom: 25px;
-    }
 
     &__video-quality {
         text-align: center;
@@ -241,10 +203,6 @@
             &:hover {
                 color: black;
             }
-        }
-
-        @media (max-width: var.$laptop-m) {
-            font-size: 20px;
         }
     }
 
