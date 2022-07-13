@@ -1094,10 +1094,16 @@ body {
   width: 25px;
   height: 25px;
 }
-@media (max-width: 1068px) {
+@media (max-width: 1024px) {
   .video-player button {
     width: 30px;
     height: 30px;
+  }
+}
+@media (max-width: 576px) {
+  .video-player button {
+    width: 20px;
+    height: 20px;
   }
 }
 .video-player svg {
@@ -1137,24 +1143,19 @@ body {
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  bottom: -50px;
+  bottom: -55px;
   transition: 0.5s;
 }
 .video-player:hover .video-player__controls {
-  bottom: 10px;
+  bottom: 5px;
 }
-@media (max-width: 1280px) {
+@media (max-width: 320px) {
   .video-player:hover .video-player__controls {
     bottom: 0px;
   }
 }
-@media (max-width: 620px) {
-  .video-player:hover .video-player__controls {
-    bottom: 5px;
-  }
-}
 .video-player__controls.disappearance, .video-player:hover .video-player__controls.disappearance {
-  bottom: -50px;
+  bottom: -55px;
 }
 .video-player__progress-bar-container {
   width: 40%;
@@ -1184,36 +1185,67 @@ body {
 }
 .video-player__volume-range-wrapper {
   width: 60%;
+  height: 25px;
 }
 .video-player__volume-range {
   width: 100%;
+  height: 100%;
 }
 
 .settings-menu {
   background-color: black;
   color: white;
-  bottom: 55px;
-  right: 100px;
+  bottom: 35px;
+  right: 30px;
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 220px;
-  width: 125px;
+  height: 175px;
+  width: 110px;
   padding: 10px;
   border-radius: 10px;
 }
-.settings-menu.disappearance {
-  display: none;
-}
 @media (max-width: 768px) {
   .settings-menu {
-    bottom: 35px;
+    height: 150px;
   }
 }
-@media (max-width: 620px) {
+@media (max-width: 576px) {
   .settings-menu {
-    bottom: 25px;
+    height: 120px;
+    width: 80px;
+    bottom: 30px;
+    right: 10px;
   }
+}
+@media (max-width: 320px) {
+  .settings-menu {
+    height: 93px;
+    width: 63px;
+    bottom: 27px;
+    right: 10px;
+  }
+}
+.settings-menu span {
+  font-size: 22px;
+}
+@media (max-width: 768px) {
+  .settings-menu span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .settings-menu span {
+    font-size: 17px;
+  }
+}
+@media (max-width: 320px) {
+  .settings-menu span {
+    font-size: 13px;
+  }
+}
+.settings-menu.disappearance {
+  display: none;
 }
 .settings-menu__video-quality {
   text-align: center;
@@ -1229,11 +1261,6 @@ body {
 }
 .settings-menu__video-quality.active:hover {
   color: black;
-}
-@media (max-width: 1280px) {
-  .settings-menu__video-quality {
-    font-size: 20px;
-  }
 }
 .settings-menu__close {
   transition: 0.5s;
@@ -2034,7 +2061,7 @@ body {
   display: grid;
   column-gap: 15px;
   row-gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
 }
 @media (max-width: 576px) {
   .video-section__content {

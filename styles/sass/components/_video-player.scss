@@ -23,9 +23,14 @@
         border: none;
         width: 25px;
         height: 25px;
-        @media (max-width: 1068px) {
+        @media (max-width: var.$laptop) {
             width: 30px;
             height: 30px;
+        }
+
+        @media (max-width: var.$mobile-m) {
+            width: 20px;
+            height: 20px;
         }
     }
 
@@ -76,24 +81,20 @@
         justify-content: space-around;
         align-items: center;
         position: absolute;
-        bottom: -50px;
+        bottom: -55px;
         transition: 0.5s;
     }
 
     &:hover &__controls {
-        bottom: 10px;
-        @media (max-width: var.$laptop-m) {
+        bottom: 5px;
+        @media (max-width: var.$mobile-s) {
             bottom: 0px;
-        }
-
-        @media (max-width: 620px) {
-            bottom: 5px;
         }
     }
 
     &__controls.disappearance,  //!wtf
     &:hover &__controls.disappearance {
-        bottom: -50px;
+        bottom: -55px;
     }
 
     &__progress-bar-container {
@@ -126,10 +127,12 @@
 
     &__volume-range-wrapper {
         width: 60%;
+        height: 25px;   //the same as volume button
     }
 
     &__volume-range {
         width: 100%;
+        height: 100%;
     }
 }
 
@@ -142,32 +145,54 @@
 .settings-menu {
     background-color: black;
     color: white;
-    bottom: 55px;
-    right: 100px;
+    bottom: 35px;
+    right: 30px;
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: 220px;
-    width: 125px;
+    height: 175px;
+    width: 110px;
     padding: 10px;
     border-radius: 10px;
+    
+    @media (max-width: var.$tablet) {
+        height: 150px;
+    }
+
+    @media (max-width: var.$mobile-m) {
+        height: 120px;
+        width: 80px;
+        bottom: 30px;
+        right: 10px;
+    }
+
+    @media (max-width: var.$mobile-s) {
+        height: 93px;
+        width: 63px;
+        bottom: 27px;
+        right: 10px;
+    }
+
+    span {
+        font-size: 22px;
+
+        @media (max-width: var.$tablet) {
+            font-size: 20px;
+        }
+
+        @media (max-width: var.$mobile-m) {
+            font-size: 17px;
+        }
+
+        @media (max-width: var.$mobile-s) {
+            font-size: 13px;
+        }
+    }
 
     &.disappearance {
         display: none;
     }
 
-    @media (max-width: var.$laptop-m) {
-        // height: 280px;
-    }
-
-    @media (max-width: var.$tablet) {
-        // height: 240px;
-        bottom: 35px;
-    }
-
-    @media (max-width: 620px) {
-        bottom: 25px;
-    }
 
     &__video-quality {
         text-align: center;
@@ -183,10 +208,6 @@
             &:hover {
                 color: black;
             }
-        }
-
-        @media (max-width: var.$laptop-m) {
-            font-size: 20px;
         }
     }
 

@@ -16,7 +16,7 @@
         display: grid;
         column-gap: 15px;
         row-gap: 40px;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
         @media (max-width: var.$mobile-m) {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
