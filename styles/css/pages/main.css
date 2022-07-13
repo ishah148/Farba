@@ -1041,26 +1041,21 @@ body {
 }
 
 .yandex-map {
-  width: 50%;
+  width: 44%;
 }
 @media (max-width: 1024px) {
   .yandex-map {
-    width: 100%;
+    margin-top: 30px;
+    width: 60%;
   }
 }
-.yandex-map iframe {
+@media (max-width: 768px) {
+  .yandex-map {
+    width: 80%;
+  }
+}
+.yandex-map ymaps {
   border-radius: 8px;
-  width: 100%;
-  aspect-ratio: 3/2;
-}
-@media (max-width: 1024px) {
-  .yandex-map iframe {
-    margin-top: 40px;
-  }
-}
-.yandex-map #ymaps1651786334678464887 {
-  width: 100%;
-  aspect-ratio: 3/2;
 }
 
 .video-player {
