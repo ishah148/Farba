@@ -1,7 +1,7 @@
 export class VideoPlayer {
     constructor(number) {
         this.videoNumber = number;
-        this.videoWrapper = document.getElementById(`video-player_${this.videoNumber}`);
+        this.videoWrapper = document.getElementById(`video-player__video-wrapper_${this.videoNumber}`);
         this.video = document.getElementById(`video-player__video_${this.videoNumber}`);
         this.timer = 0;  
         this.gap = 0;  //progress bar
