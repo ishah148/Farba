@@ -9,16 +9,16 @@
         display: flex;
         padding: 55% var(--padding-primary) 0;
         overflow: hidden;
+    }
 
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -100;
-            width: 100%;
-            // max-height: 1200px;
-            aspect-ratio: 16/9; // can i delete it?
-        }
+    &__background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -100;
+        width: 100%;
+        // max-height: 1200px;
+        aspect-ratio: 16/9; // can i delete it?
     }
 
     &__container {

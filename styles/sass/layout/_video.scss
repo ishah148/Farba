@@ -1,43 +1,27 @@
 @use "../base/variables" as var;
 
-.video {
-    padding: 50px 0;
+.video-section {
+    padding: 20px 15px;
+
+    @media (max-width: var.$mobile-m) {
+        padding: 10px 5px;
+    }
+
     &__container {
         max-width: 1200px;
         margin: 0px auto;
-        padding: 0px 15px;
-        @media (max-width: var.$mobile-m) {
-            padding: 0px 5px;
-        }
     }
 
     &__content {
         display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+        column-gap: 15px;
+        row-gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
         @media (max-width: var.$mobile-m) {
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
         @media (max-width: var.$mobile-s) {
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         }
-    }
-}
-
-.item {
-    &__video {
-        position: relative;
-        margin-bottom: 15px;
-        aspect-ratio: 16/9; // РАБОТАЕТ ТОЛЬКО В ХРОМЕ!!!!!!
-        // padding-bottom: 56%; //АЛЬТЕРНАТИВА для кроссбраузерности
-    }
-
-    &__video iframe {
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
     }
 }
