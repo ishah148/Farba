@@ -441,15 +441,6 @@ body {
   line-height: 50px;
   color: var(--primary-extra-light);
 }
-.footer__about-link {
-  font-size: 0.7rem;
-  line-height: 50px;
-  color: var(--primary-extra-light);
-}
-.footer__about-link:hover {
-  transition: 0.4s;
-  color: var(--primary-light);
-}
 
 .header {
   position: fixed;
@@ -2437,22 +2428,12 @@ body {
     padding: 0 15px;
   }
 }
-.footer__copyright, .footer__about-link {
+.footer__copyright {
   display: block;
 }
 @media (max-width: 768px) {
-  .footer__copyright, .footer__about-link {
+  .footer__copyright {
     width: 20%;
-  }
-}
-.footer__about-us {
-  margin-right: 25%;
-  margin-left: 25%;
-}
-@media (max-width: 768px) {
-  .footer__about-us {
-    margin-right: 7%;
-    margin-left: 7%;
   }
 }
 .footer__links-list {
