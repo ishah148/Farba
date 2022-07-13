@@ -60,10 +60,10 @@ export class VideoPlayer {
         </button>
         <div class="settings-menu disappearance" id="settings-menu_${this.videoNumber}">
             <span class="settings-menu__close" id="settings-menu__close_${this.videoNumber}">X</span>
-            <span class="settings-menu__video-quality">1080p</span>
-            <span class="settings-menu__video-quality">720p</span>
-            <span class="settings-menu__video-quality">480p</span>
-            <span class="settings-menu__video-quality">360p</span>
+            <span class="settings-menu__video-quality" id="settings-menu__HD-quality_${this.videoNumber}" data-quality="HD-quality" >1080p</span>
+            <span class="settings-menu__video-quality active" id="settings-menu__high-quality_${this.videoNumber}" data-quality="high-quality">720p</span>
+            <span class="settings-menu__video-quality" id="settings-menu__medium-quality_${this.videoNumber}" data-quality="medium-quality">540p</span>
+            <span class="settings-menu__video-quality" id="settings-menu__low-quality_${this.videoNumber}" data-quality="low-quality">360p</span>
         </div>
         <button class="video-player__fullscreen" id="video-player__fullscreen_${this.videoNumber}">
             <svg class="video-player__fullscreen-svg" id="video-player__fullscreen-svg_${this.videoNumber}">
@@ -101,6 +101,13 @@ export class VideoPlayer {
         this.settingsButton = document.getElementById(`video-player__settings_${this.videoNumber}`);
         this.settingsMenu = document.getElementById(`settings-menu_${this.videoNumber}`);
         this.settingsClose = document.getElementById(`settings-menu__close_${this.videoNumber}`);
+        /*change video quality */
+        this.videoQualities = [
+            document.getElementById(`settings-menu__low-quality_${this.videoNumber}`),
+            document.getElementById(`settings-menu__medium-quality_${this.videoNumber}`),
+            document.getElementById(`settings-menu__high-quality_${this.videoNumber}`),
+            document.getElementById(`settings-menu__HD-quality_${this.videoNumber}`),
+        ];
     }
 
     addEventListeners() {
@@ -145,6 +152,12 @@ export class VideoPlayer {
 
         this.settingsClose.addEventListener('click', () => {
             this.settingsMenu.classList.add('disappearance');
+        });
+
+        this.videoQualities.forEach((videoQuality) => {
+            videoQuality.addEventListener('click', (e) => {
+                this.changeVideoQuality(e);
+            });
         });
     }
 
@@ -210,6 +223,25 @@ export class VideoPlayer {
                 this.muteSVG.classList.add('disappearance');
             }
         }
+    }
+
+    changeVideoQuality(event) {
+        const targetElement = event.currentTarget;
+        const isVideoPaused = this.video.paused;
+        if(!targetElement.classList.contains('active')) {
+            this.videoQualities.forEach((videoQuality)=>{
+                videoQuality.classList.remove('active');
+            });
+            targetElement.classList.add('active');
+            const videoSource = document.getElementById(`source__${targetElement.dataset.quality}_${this.videoNumber}`);
+            const curTime = this.video.currentTime;
+            this.video.prepend(videoSource);
+            this.video.load();
+            this.video.currentTime = curTime;
+            if(this.video.currentTime && !isVideoPaused && !this.video.ended)
+                this.video.play();
+        }
+
     }
 
     toggleMute() {
