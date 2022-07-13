@@ -5,11 +5,11 @@
 .portfolio {
     &__wrapper {
         max-width: var(--max-width);
-        padding: 40px var(--padding-primary) 0;
+        padding: 40px var(--padding-primary) 40px;
         margin: 0 auto;
         // overflow: hidden; // TODO: remove this
         @media (max-width: var.$mobile-m) {
-            padding: 40px 10px 0;
+            padding: 40px 10px 40px;
         }
     }
     .buttons-container {
@@ -136,10 +136,59 @@
             }
         }
     }
+
+    &__show-all {
+        margin: auto;
+        margin-top: 25px;
+        // color: black;
+        &.invisible {
+            display: none;
+        }
+    }
 }
 
-.portfolio__show-all{
-    margin: auto;
-    margin-top: 25px;
-    // color: black;
+.portfolio__container {
+    .portfolio__card {
+        background: white;
+        @media (min-width: 1381px) {
+            &.portfolio_83 {
+                grid-row: span 5;
+                height: 100%;
+                align-self: center;
+            }
+            &.portfolio_36 {
+                img {
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_42{
+                grid-row: span 10;
+                img{
+                    object-fit: contain;
+                }
+            }
+        }
+        @media (max-width: 1380px) {
+            &.portfolio_62{
+                grid-row: span 9;
+                img{
+                    object-fit: cover;
+                }
+            }
+        }
+        @media (max-width: 1070px) {
+            &.portfolio_75{
+                grid-row: span 5;
+                img{
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_17{
+                grid-row: span 7;
+                img{
+                    object-fit: cover;
+                }
+            }
+        }
+    }
 }

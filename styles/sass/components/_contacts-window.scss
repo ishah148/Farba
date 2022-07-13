@@ -92,6 +92,29 @@ $border-color: #f5f5f6;
                     color: #000000;
                     border: none;
                     -moz-appearance: textfield;
+                    // outline: none;
+                }
+                .contacts-window__user-number{
+                    &:checked{
+                        background: yellow;
+                    }
+
+                    &.good{
+                        outline: none;
+                        border: 3px solid #4caf50cc;
+                        &:focus{
+                            outline: none;
+                            border: 3px solid #4caf50cc;
+                        }
+                    }
+                    &.error{
+                        outline: none;
+                        border: 3px solid #f44336cc;
+                        &:focus{
+                            outline: none;
+                            border: 3px solid #f44336cc;
+                        }
+                    }
                 }
                 input::-webkit-inner-spin-button {
                     -webkit-appearance: none;
@@ -102,8 +125,16 @@ $border-color: #f5f5f6;
                     text-decoration: none;
                     border: none;
                     align-self: center;
-                    width: 218px;
+                    width: 247px;
                     border-bottom: 1px solid white;
+                    &.sended{
+                        color: #b2fab4;
+                        border-bottom: 1px solid #b2fab4;
+                    }
+                    &.error{
+                        color: red;
+                        border-bottom: 1px solid red;
+                    }
                 }
             }
         }
