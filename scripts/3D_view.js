@@ -161,7 +161,7 @@ class ThreeDViewerMouse {
 }
 
 
-class ThreeDViewer {
+export class ThreeDViewer {
     constructor() {
         this.container = document.querySelector('.threeD__container')
         this.init()
@@ -278,7 +278,7 @@ class ThreeDViewerTouch extends ThreeDViewerMouse {
     };
 }
 
-b = new ThreeDViewer()
+// b = new ThreeDViewer()
 
 
 
