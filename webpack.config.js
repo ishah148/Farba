@@ -27,7 +27,21 @@ const baseConfig = {
                     // компилирует Sass в CSS
                     loader: 'sass-loader'
                 }]
-            }
+            },
+            {
+                test: /\.(svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                use: 'file-loader' 
+            },
+            {
+                test: /\.(png)$/i,
+                type: 'asset/resource',
+                use: 'url-loader' 
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot)$/i,
+                use: 'file-loader' 
+            },
         ],
     },
     resolve: {
@@ -43,18 +57,18 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets'),
-        //             to: path.resolve(__dirname, '../dist/assets'),
-        //         },
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets/svg'),
-        //             to: path.resolve(__dirname, '/dist/assets/svg'),
-        //         },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './assets'),
+                    to: path.resolve(__dirname, '../dist/assets'),
+                },
+                // {
+                //     from: path.resolve(__dirname, './assets/svg'),
+                //     to: path.resolve(__dirname, '../dist/assets/svg'),
+                // },
+            ],
+        }),
     ],
     devServer: {
         inline: true,
