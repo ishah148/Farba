@@ -156,13 +156,31 @@ class ThreeDViewerMouse {
     };
 }
 
+const tdCount = {
+    canon: 85,
+    gillette: 18,
+    some:36,
+    t:75
+}
+const tdSensibility = {
+    canon:4,
+    gillette:1,
+    some:2,
+    t:4,
+}
 
 export class ThreeDViewer {
     constructor() {
-        this.container = document.querySelector('.threeD__container')
-        this.init()
+        this.container = document.querySelector('.threeD__container');
+        this.init();
         this.countOfLoadedPhotos = 1;
-        this.preparedList = []
+        this.preparedList = [];
+        // this.countOfLoadedPhotos = {
+        //     canon:0,
+        //     gillette:0,
+        //     some:0,
+        //     t:75
+        // };
     }
     init() {
         this.addListeners();
