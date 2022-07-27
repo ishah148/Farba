@@ -1,5 +1,4 @@
 export class Slider {
-    // openFullSize.openFullSizePhoto(e.target.src,photoCategory,photoNumber,currentPos,orderPhotos[photoCategory]);
     constructor(src, photoCategory, photoNumber, currentOrder, orderPhotos) {
         this.src = src;
         this.photoCategory = photoCategory;
@@ -10,8 +9,8 @@ export class Slider {
         this.NEXT = 1;
         this.PREV = -1;
         this.buttons = [
-            document.querySelector('.modal-window__right-button'),
-            document.querySelector('.modal-window__left-button'),
+            document.querySelector('.modal-window__mouse.area-right'),
+            document.querySelector('.modal-window__mouse.area-left'),
             document.querySelector('.modal-window__close-button'),
         ]
         this.init();
@@ -48,8 +47,8 @@ export class Slider {
     }
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
-        const rightButton = document.querySelector(".modal-window__right-button");
-        const leftButton = document.querySelector(".modal-window__left-button");
+        const rightButton = document.querySelector(".modal-window__mouse.area-right");
+        const leftButton = document.querySelector(".modal-window__mouse.area-left");
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
@@ -100,12 +99,10 @@ export class Slider {
             if (left()) {
                 this.nextPhoto();
                 xStart = xMove;
-                console.log('next');
             }
             if (right()) {
                 this.prevPhoto();
                 xStart = xMove;
-                console.log('prev');
             }
             if (down() && !left() && !right()) {
                 document.querySelector('.current--slide').classList.add('up');
@@ -180,32 +177,5 @@ export class Slider {
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
 
-    }
-}
-
-class TouchHandle extends Slider {
-    constructor() {
-        super()
-    }
-}
-
-class Slider3D extends Slider {
-    constructor() {
-        super()
-    }
-    //  TODO 3D handler for 3D photo
-    //is it normal?
-}
-
-class TouchSlider3D extends Slider3D {
-    constructor() {
-        super()
-        // TODO add touch , for 3D photo from td.js
-    }
-}
-
-class Mouse3D extends Slider3D {
-    constructor() {
-        super()
     }
 }
