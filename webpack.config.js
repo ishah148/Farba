@@ -29,15 +29,19 @@ const baseConfig = {
                 }]
             },
             {
-                test: /\.(svg|jpg|jpeg|gif)$/i,
+                test: /\.(svg|jpg|jpeg|gif|png)$/i,
                 type: 'asset/resource',
-                use: 'file-loader' 
             },
-            {
-                test: /\.(png)$/i,
-                type: 'asset/resource',
-                use: 'url-loader' 
-            },
+            // {
+            //     test: /\.(svg|jpg|jpeg|gif)$/i,
+            //     type: 'asset/resource',
+            //     use: 'file-loader' 
+            // },
+            // {
+            //     test: /\.(png)$/i,
+            //     type: 'asset/resource',
+            //     use: 'url-loader' 
+            // },
             {
                 test: /\.(woff|woff2|ttf|eot)$/i,
                 use: 'file-loader' 
