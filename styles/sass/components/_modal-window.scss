@@ -105,7 +105,7 @@
             right: 3px;
             &:hover{
                 .modal-window__right-button{
-                    border: 1px solid black;
+                    background: var(--primary-color);
                 }
             }
         }
@@ -113,9 +113,15 @@
             left: 3px;
             &:hover{
                 .modal-window__left-button{
-                    border: 1px solid black;
+                    background: var(--primary-color);
                 }
             }
+        }
+        .modal-window__right-button{
+            transition: all 0.05;
+        }
+        .modal-window__left-button{
+            transition: all 0.05;
         }
     }
     
@@ -137,7 +143,7 @@
         right: 0;
         z-index: 101;
         position: absolute;
-        transition: 0.5s;
+        transition: 0.2s;
         @media (max-width: 768px) {
         }
     }
@@ -146,7 +152,7 @@
         left: 0;
         z-index: 101;
         position: absolute;
-        transition: 0.5s;
+        transition: 0.2s;
         @media (max-width: 768px) {
             display: none;
         }
@@ -172,19 +178,14 @@
         cursor: pointer;
         &.area-up{
             top: 0;
-            &:hover{
-                .modal-window__close-button{ // TODO add neighboring selector
-                    display: none;
-                    border: 1px solid red;
-                }
+            &:hover ~ .modal-window__close-button{
+                background: var(--primary-color);
             }
         }
         &.area-down{
             top: calc(100vh - 150px);
-            &:hover{
-                .modal-window__close-button{
-                    border: 1px solid black;
-                }
+            &:hover ~ .modal-window__close-button{
+                background: var(--primary-color);
             }
         }
     }
