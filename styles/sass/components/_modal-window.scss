@@ -32,6 +32,7 @@
         background-color: rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(10px);
         .modal-window__mouse,
+        .modal-window__mouse-close,
         .modal-window__right-button,
         .modal-window__left-button,
         .modal-window__close-button {
@@ -96,15 +97,25 @@
         display: none;
         position: absolute;
         height: 50vh;
-        width: 80px;
+        width: 150px;
         cursor: pointer;
         z-index: 102;
         border: 1px solid red;
         &.area-right {
             right: 3px;
+            &:hover{
+                .modal-window__right-button{
+                    border: 1px solid black;
+                }
+            }
         }
         &.area-left {
             left: 3px;
+            &:hover{
+                .modal-window__left-button{
+                    border: 1px solid black;
+                }
+            }
         }
     }
     
@@ -123,8 +134,6 @@
         position: absolute;
     }
     .modal-window__right-button {
-        // bottom: -60px;
-        // right: 35%;
         right: 0;
         z-index: 101;
         position: absolute;
@@ -134,8 +143,6 @@
     }
 
     .modal-window__left-button {
-        // bottom: -60px;
-        // left: 35%;
         left: 0;
         z-index: 101;
         position: absolute;
@@ -157,16 +164,28 @@
     }
     .modal-window__mouse-close{
         position: absolute;
-        // z-index: 102;
+        display: none;
+        z-index: 102;
         width: 100vw;
         height: 150px;
         border: 1px solid red;
         cursor: pointer;
         &.area-up{
             top: 0;
+            &:hover{
+                .modal-window__close-button{ // TODO add neighboring selector
+                    display: none;
+                    border: 1px solid red;
+                }
+            }
         }
         &.area-down{
             top: calc(100vh - 150px);
+            &:hover{
+                .modal-window__close-button{
+                    border: 1px solid black;
+                }
+            }
         }
     }
     button {

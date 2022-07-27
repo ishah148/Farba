@@ -47,11 +47,16 @@ export class Slider {
     }
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
+        const closeAreaUp = document.querySelector('.modal-window__mouse-close.area-up');
+        const closeAreaDown = document.querySelector('.modal-window__mouse-close.area-down');
         const rightButton = document.querySelector(".modal-window__mouse.area-right");
         const leftButton = document.querySelector(".modal-window__mouse.area-left");
+
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
         closeButton.onclick = this.closeModalWindow;
+        closeAreaUp.onclick = this.closeModalWindow;
+        closeAreaDown.onclick = this.closeModalWindow;
         if (this.isTouchDevice) {
             this.touchHandle()
         }

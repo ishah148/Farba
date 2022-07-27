@@ -19,7 +19,7 @@ $border-color: #f5f5f6;
     transition: z-index 0.3s;
     overflow: hidden;
     &.open {
-        z-index: 20; //TODO check!
+        z-index: 110; //TODO check!
         transition: z-index 0.3s;
         width: 100vw;
         height: 555px;
@@ -206,7 +206,7 @@ $border-color: #f5f5f6;
     position: fixed;
     right: 15px;
     bottom: 15px;
-    z-index: 110;
+    z-index: 1110;
     transition: 0.3s;
     -webkit-animation: hoverWave linear 1s infinite;
     animation: hoverWave linear 1s infinite;
@@ -298,7 +298,6 @@ $border-color: #f5f5f6;
 }
 
 .contacts-window__callback-bt:hover {
-    z-index: 1;
     background: #fff;
     color: transparent;
     transition: 0.3s;
