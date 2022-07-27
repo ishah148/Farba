@@ -27,7 +27,7 @@ export class Slider {
     getSrc(order = 0) {
         return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.orderPhotos[this.currentOrder + order]}.webp`;
     }
-    
+
     getSlides() {
         return this.wrapper.querySelectorAll(".modal-window__container");
     }
@@ -45,6 +45,7 @@ export class Slider {
         document.querySelector('body').classList.add('stop-scrolling');
         this.addEvents();
     }
+
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
         const closeAreaUp = document.querySelector('.modal-window__mouse-close.area-up');
@@ -60,6 +61,13 @@ export class Slider {
         if (this.isTouchDevice) {
             this.touchHandle()
         }
+        // document.addEventListener('keyup', this.keyHandler);
+        document.addEventListener('keyup', (e) => this.keyHandler(e));
+    }
+
+    keyHandler(e) {
+        if(e.code === 'ArrowRight') this.nextPhoto();
+        if(e.code === 'ArrowLeft') this.prevPhoto();
     }
 
     isTouchDevice() {
@@ -139,7 +147,6 @@ export class Slider {
     }
 
     prevPhoto() {
-
         if (this.currentOrder === 0) return -1
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
@@ -158,13 +165,6 @@ export class Slider {
         this.wrapper.insertAdjacentHTML("beforeend", html);
     }
 
-    clearSlides(order) {
-        let slides = this.getSlides();
-        if (slides[order]) {
-            slides[order].remove()
-        }
-    }
-
     generatePrev() {
         const html = `
         <div class="modal-window__container prev--slide" >
@@ -174,13 +174,22 @@ export class Slider {
         this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
-    closeModalWindow() {
+    clearSlides(order) {
+        let slides = this.getSlides();
+        if (slides[order]) {
+            slides[order].remove()
+        }
+    }
 
+
+
+    closeModalWindow() {
         document.querySelector(".modal-window__wrapper").classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
-
+        document.removeEventListener('keyup',() => this.keyHandler);
+        this.wrapper.replaceWith(wrapper.cloneNode(true));
     }
 }
