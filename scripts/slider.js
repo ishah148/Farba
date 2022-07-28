@@ -15,10 +15,11 @@ export class Slider {
         ]
         this.init();
     }
-
     init() {
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
+        this.wrapper.setAttribute('tabindex', 1);
+        this.wrapper.focus();
     }
 
     test() {
@@ -55,19 +56,18 @@ export class Slider {
 
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
-        closeButton.onclick = this.closeModalWindow;
-        closeAreaUp.onclick = this.closeModalWindow;
-        closeAreaDown.onclick = this.closeModalWindow;
+        closeButton.onclick = () => this.closeModalWindow();
+        closeAreaUp.onclick = () => this.closeModalWindow();
+        closeAreaDown.onclick = () => this.closeModalWindow();
         if (this.isTouchDevice) {
             this.touchHandle()
         }
-        // document.addEventListener('keyup', this.keyHandler);
-        document.addEventListener('keyup', (e) => this.keyHandler(e));
+        this.wrapper.addEventListener('keyup', this.keyHandler.bind(this));
     }
 
     keyHandler(e) {
-        if(e.code === 'ArrowRight') this.nextPhoto();
-        if(e.code === 'ArrowLeft') this.prevPhoto();
+        if (e.code === 'ArrowRight') this.nextPhoto();
+        if (e.code === 'ArrowLeft') this.prevPhoto();
     }
 
     isTouchDevice() {
@@ -137,7 +137,7 @@ export class Slider {
     }
 
     nextPhoto() {
-        if (this.currentOrder === this.orderPhotos.length - 1) { return -1 }
+        if (this.currentOrder === this.orderPhotos.length - 1) return -1
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -153,7 +153,6 @@ export class Slider {
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrev();
         this.clearSlides(3)
-
     }
 
     generateNext() {
@@ -181,15 +180,12 @@ export class Slider {
         }
     }
 
-
-
     closeModalWindow() {
-        document.querySelector(".modal-window__wrapper").classList.remove("visible");
+        this.wrapper.classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
-        document.removeEventListener('keyup',() => this.keyHandler);
-        this.wrapper.replaceWith(wrapper.cloneNode(true));
+        this.wrapper.replaceWith(this.wrapper.cloneNode(true));
     }
 }
