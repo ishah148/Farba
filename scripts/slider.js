@@ -26,7 +26,15 @@ export class Slider {
     }
 
     getSrc(order = 0) {
-        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.orderPhotos[this.currentOrder + order]}.webp`;
+        console.log('order',order)
+        console.log('this.currentOrder',this.currentOrder)
+        let number = this.orderPhotos[this.currentOrder + order];
+        console.log('number',number)
+        if ((this.currentOrder === 0 && order === -1) || this.currentOrder === this.orderPhotos.length -1 && order === 1) {
+            number = this.orderPhotos[this.orderPhotos.length]
+        }
+        console.log('',`../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`)
+        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
     }
 
     getSlides() {
@@ -138,6 +146,7 @@ export class Slider {
 
     nextPhoto() {
         if (this.currentOrder === this.orderPhotos.length - 1) return -1
+        console.log('next', this.currentOrder)
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -147,7 +156,8 @@ export class Slider {
     }
 
     prevPhoto() {
-        if (this.currentOrder === 0) return -1
+        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length
+        console.log('prev', this.currentOrder)
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
