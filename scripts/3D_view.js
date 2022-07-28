@@ -101,7 +101,7 @@ class ThreeDViewerMouse {
         this.lastPhoto = 85;
         this.photoNumber = 43;
         this.magicNumber = 0;
-        this.speed = 4;
+        this.speed = 2;
         this.xStart = null;
         this.yStart = null;
         this.isMouseUp = true;
