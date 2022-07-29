@@ -20,10 +20,11 @@ export class Slider {
         this.createModalWindow(this.src);
         this.wrapper.setAttribute('tabindex', 1);
         this.wrapper.focus();
-        
+
     }
 
     test() {
+        alert(111)
     }
 
     getSrc(order = 0) {
@@ -44,14 +45,9 @@ export class Slider {
     }
 
     createModalWindow(src) {
-        const modalWindowHTML = `
-        <div class="modal-window__container current--slide">
-            <img src='${this.getSrc()}' alt = ''>
-        </div>
-        `;
         this.generateNext()
         this.generatePrev()
-        this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
+        this.wrapper.insertAdjacentHTML("beforeend", this.getModalWindowHTML(this.getSrc()));
         this.wrapper.classList.add("visible");
         document.querySelector('body').classList.add('stop-scrolling');
         this.addEvents();
@@ -136,7 +132,6 @@ export class Slider {
 
             }
             if (up() && !left() && !right()) {
-                
                 document.querySelector('.current--slide').classList.add('down');
                 document.querySelector('.current--slide').addEventListener('transitionend', () => {
                     this.closeModalWindow();
@@ -148,17 +143,15 @@ export class Slider {
 
     nextPhoto() {
         if (this.currentOrder === this.orderPhotos.length - 1) this.currentOrder = 0;
-        
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNext();
         this.clearSlides(0)
-
     }
 
     prevPhoto() {
-        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length   
+        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
@@ -169,6 +162,7 @@ export class Slider {
     generateNext() {
         const html = `
         <div class="modal-window__container next--slide" >
+        ${this.spinnerHTML}
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
         </div>    
         `;
@@ -178,6 +172,7 @@ export class Slider {
     generatePrev() {
         const html = `
         <div class="modal-window__container prev--slide" >
+        ${this.spinnerHTML}
             <img src='${this.getSrc(this.PREV)}' alt = ''>
         </div>    
         `;
@@ -198,5 +193,29 @@ export class Slider {
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
         this.wrapper.replaceWith(this.wrapper.cloneNode(true));
+    }
+    get spinnerHTML() {
+        return `
+        <div class="spinner show">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="spinner__persent"></p>
+        </div>
+        `
+    }
+
+    getModalWindowHTML(src){
+        return `
+            <div class="modal-window__container current--slide">
+                <div class="spinner show">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="spinner__persent"></p>
+                </div>
+                <img src='${src}' alt = ''>
+            </div>
+        `;
     }
 }
