@@ -30,7 +30,7 @@
         display: flex;
         padding: 10%;
         background-color: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(10px);
+        // backdrop-filter: blur(10px); //! Off for perfomanse!
         .modal-window__mouse,
         .modal-window__mouse-close,
         .modal-window__right-button,
@@ -55,26 +55,26 @@
         align-items: center;
         // background-color: var(--primary-light);
         border-radius: 1.2%;
-        transform: translate(0px, 0px);
+        transform: translate3d(0px, 0px,0);
         transform: scale(0);
         transition: transform 0.5s;
         &.prev--slide {
             transition: transform 0.5s;
-            transform: translate(-100vw, 0px);
+            transform: translate3d(-100vw, 0px,0);
         }
         &.next--slide {
             transition: transform 0.5s;
-            transform: translate(100vw, 0px);
+            transform: translate3d(100vw, 0px,0);
         }
         &.current--slide {
             transition: transform 0.5s;
-            transform: translate(0px, 0px);
+            transform: translate3d(0px, 0px,0);
         }
         &.up {
-            transform: translate(0px, 100vh);
+            transform: translate3d(0px, 100vh,0);
         }
         &.down {
-            transform: translate(0px, -100vh);
+            transform: translate3d(0px, -100vh,0);
         }
         img {
             display: block;
@@ -100,7 +100,7 @@
         width: 150px;
         cursor: pointer;
         z-index: 102;
-        border: 1px solid red;
+        // border: 1px solid red;
         &.area-right {
             right: 3px;
             &:hover{
@@ -174,7 +174,7 @@
         z-index: 102;
         width: 100vw;
         height: 150px;
-        border: 1px solid red;
+        // border: 1px solid red; //! debug
         cursor: pointer;
         &.area-up{
             top: 0;
