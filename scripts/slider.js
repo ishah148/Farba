@@ -20,20 +20,22 @@ export class Slider {
         this.createModalWindow(this.src);
         this.wrapper.setAttribute('tabindex', 1);
         this.wrapper.focus();
+        
     }
 
     test() {
     }
 
     getSrc(order = 0) {
-        console.log('order',order)
-        console.log('this.currentOrder',this.currentOrder)
         let number = this.orderPhotos[this.currentOrder + order];
-        console.log('number',number)
-        if ((this.currentOrder === 0 && order === -1) || this.currentOrder === this.orderPhotos.length -1 && order === 1) {
-            number = this.orderPhotos[this.orderPhotos.length]
+        if ((this.currentOrder === 0 && order === -1)) {
+            number = this.orderPhotos[this.orderPhotos.length - 1]
+            if (!number) debugger;
         }
-        console.log('',`../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`)
+        if (this.currentOrder === this.orderPhotos.length - 1 && order === 1) {
+            number = this.orderPhotos[0];
+            if (!number) debugger;
+        }
         return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
     }
 
@@ -134,7 +136,7 @@ export class Slider {
 
             }
             if (up() && !left() && !right()) {
-                console.log('op')
+                
                 document.querySelector('.current--slide').classList.add('down');
                 document.querySelector('.current--slide').addEventListener('transitionend', () => {
                     this.closeModalWindow();
@@ -145,8 +147,8 @@ export class Slider {
     }
 
     nextPhoto() {
-        if (this.currentOrder === this.orderPhotos.length - 1) return -1
-        console.log('next', this.currentOrder)
+        if (this.currentOrder === this.orderPhotos.length - 1) this.currentOrder = 0;
+        
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
@@ -156,8 +158,7 @@ export class Slider {
     }
 
     prevPhoto() {
-        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length
-        console.log('prev', this.currentOrder)
+        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length   
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
