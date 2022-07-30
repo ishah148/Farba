@@ -3,13 +3,12 @@ $border-color: #f5f5f6;
     --msg-window-width: 340px;
     --right-msg-window: 40px;
 }
-@media (max-width: 500px ) {
-    :root{
+@media (max-width: 500px) {
+    :root {
         --msg-window-width: 320px;
         --right-msg-window: calc((100vw - var(--msg-window-width)) / 2);
     }
-    
-  }
+}
 .contacts-window__wrapper {
     z-index: -1;
     position: fixed;
@@ -20,7 +19,7 @@ $border-color: #f5f5f6;
     transition: z-index 0.3s;
     overflow: hidden;
     &.open {
-        z-index: 20; //TODO check!
+        z-index: 110; //TODO check!
         transition: z-index 0.3s;
         width: 100vw;
         height: 555px;
@@ -49,7 +48,7 @@ $border-color: #f5f5f6;
             height: 494px;
             transform: scale(1);
         }
-        @media (max-width:500px){
+        @media (max-width: 500px) {
             padding: 30px 5px 0 5px;
         }
         .contacts-window__h2 {
@@ -94,23 +93,23 @@ $border-color: #f5f5f6;
                     -moz-appearance: textfield;
                     // outline: none;
                 }
-                .contacts-window__user-number{
-                    &:checked{
+                .contacts-window__user-number {
+                    &:checked {
                         background: yellow;
                     }
 
-                    &.good{
+                    &.good {
                         outline: none;
                         border: 3px solid #4caf50cc;
-                        &:focus{
+                        &:focus {
                             outline: none;
                             border: 3px solid #4caf50cc;
                         }
                     }
-                    &.error{
+                    &.error {
                         outline: none;
                         border: 3px solid #f44336cc;
-                        &:focus{
+                        &:focus {
                             outline: none;
                             border: 3px solid #f44336cc;
                         }
@@ -127,11 +126,11 @@ $border-color: #f5f5f6;
                     align-self: center;
                     width: 247px;
                     border-bottom: 1px solid white;
-                    &.sended{
+                    &.sended {
                         color: #b2fab4;
                         border-bottom: 1px solid #b2fab4;
                     }
-                    &.error{
+                    &.error {
                         color: red;
                         border-bottom: 1px solid red;
                     }
@@ -144,7 +143,8 @@ $border-color: #f5f5f6;
             flex-direction: column;
             gap: 20px;
             position: relative;
-            .contacts-window__h2{}
+            .contacts-window__h2 {
+            }
             .contacts-window__border-main {
                 overflow: hidden;
                 width: 305px;
@@ -206,12 +206,12 @@ $border-color: #f5f5f6;
     position: fixed;
     right: 15px;
     bottom: 15px;
-    z-index: 110;
+    z-index: 1110;
     transition: 0.3s;
     -webkit-animation: hoverWave linear 1s infinite;
     animation: hoverWave linear 1s infinite;
     transform: scale(1);
-    &.hidden{
+    &.hidden {
         transform: scale(0.001);
         z-index: -1;
     }
@@ -298,7 +298,6 @@ $border-color: #f5f5f6;
 }
 
 .contacts-window__callback-bt:hover {
-    z-index: 1;
     background: #fff;
     color: transparent;
     transition: 0.3s;
