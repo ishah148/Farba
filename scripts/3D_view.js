@@ -17,10 +17,6 @@ class FullSizeViewer {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
             <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
-            <div class="modal-window__cross-svg">
-            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-            </svg>
         </div>
         `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
@@ -105,7 +101,7 @@ class ThreeDViewerMouse {
         this.lastPhoto = 85;
         this.photoNumber = 43;
         this.magicNumber = 0;
-        this.speed = 4;
+        this.speed = 2;
         this.xStart = null;
         this.yStart = null;
         this.isMouseUp = true;
@@ -160,13 +156,31 @@ class ThreeDViewerMouse {
     };
 }
 
+const tdCount = {
+    canon: 85,
+    gillette: 18,
+    some:36,
+    t:75
+}
+const tdSensibility = {
+    canon:4,
+    gillette:1,
+    some:2,
+    t:4,
+}
 
 export class ThreeDViewer {
     constructor() {
-        this.container = document.querySelector('.threeD__container')
-        this.init()
+        this.container = document.querySelector('.threeD__container');
+        this.init();
         this.countOfLoadedPhotos = 1;
-        this.preparedList = []
+        this.preparedList = [];
+        // this.countOfLoadedPhotos = {
+        //     canon:0,
+        //     gillette:0,
+        //     some:0,
+        //     t:75
+        // };
     }
     init() {
         this.addListeners();

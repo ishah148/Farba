@@ -8,7 +8,11 @@ import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 import {ThreeDViewer} from "./3D_view.js"
 import { VideoPlayersHandler } from "./video_players_handler.js";
-
+{/* <link rel="stylesheet" href="../styles/css/normalize.css"> */}
+{/* <link rel="stylesheet" href="../styles/css/pages/main.css"> */}
+import '../styles/css/normalize.css'
+import '../styles/sass/pages/main.scss'
+import '../assets/images/favicon.jpg'
 // import {FullSizeViewer} from "./3D_view.js"
 
 const tg = new TelegramSendMessage("contacts-window__form");

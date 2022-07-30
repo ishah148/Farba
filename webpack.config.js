@@ -12,7 +12,21 @@ const baseConfig = {
         rules: [
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader',{
+                    loader: "postcss-loader",
+                        options: {
+                        postcssOptions: {
+                            plugins: [
+                                [
+                                    "autoprefixer",
+                                    {
+                                        // Options
+                                    },
+                                ],
+                            ],
+                      },
+                    }
+                }],
             },
             {
                 test: /\.(scss)$/,
@@ -27,7 +41,15 @@ const baseConfig = {
                     // компилирует Sass в CSS
                     loader: 'sass-loader'
                 }]
-            }
+            },
+            {
+                test: /\.(svg|jpg|jpeg|gif|png)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot)$/i,
+                use: 'file-loader' 
+            },
         ],
     },
     resolve: {
@@ -43,18 +65,18 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets'),
-        //             to: path.resolve(__dirname, '../dist/assets'),
-        //         },
-        //         {
-        //             from: path.resolve(__dirname, 'src/assets/svg'),
-        //             to: path.resolve(__dirname, '/dist/assets/svg'),
-        //         },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './assets'),
+                    to: path.resolve(__dirname, '../dist/assets'),
+                },
+                // {
+                //     from: path.resolve(__dirname, './assets/svg'),
+                //     to: path.resolve(__dirname, '../dist/assets/svg'),
+                // },
+            ],
+        }),
     ],
     devServer: {
         inline: true,

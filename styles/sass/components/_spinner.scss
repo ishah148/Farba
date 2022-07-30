@@ -12,12 +12,12 @@
     top: 0;
     margin: auto;
     z-index: -1;
-    .spinner-border,
-    span{
-        color: var(--primary-color);
-    }
     &.show {
         display: block;
+    }
+    .spinner-border,
+    span {
+        color: var(--primary-color);
     }
     .spinner::after {
         display: block;

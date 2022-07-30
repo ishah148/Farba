@@ -1,5 +1,4 @@
 export class Slider {
-    // openFullSize.openFullSizePhoto(e.target.src,photoCategory,photoNumber,currentPos,orderPhotos[photoCategory]);
     constructor(src, photoCategory, photoNumber, currentOrder, orderPhotos) {
         this.src = src;
         this.photoCategory = photoCategory;
@@ -10,52 +9,71 @@ export class Slider {
         this.NEXT = 1;
         this.PREV = -1;
         this.buttons = [
-            document.querySelector('.modal-window__right-button'),
-            document.querySelector('.modal-window__left-button'),
+            document.querySelector('.modal-window__mouse.area-right'),
+            document.querySelector('.modal-window__mouse.area-left'),
             document.querySelector('.modal-window__close-button'),
         ]
         this.init();
     }
-
     init() {
         document.querySelector('.modal-window__close-button.main').onclick = this.test
         this.createModalWindow(this.src);
+        this.wrapper.setAttribute('tabindex', 1);
+        this.wrapper.focus();
+
     }
 
     test() {
+        alert(111)
     }
 
     getSrc(order = 0) {
-        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.orderPhotos[this.currentOrder + order]}.webp`;
+        let number = this.orderPhotos[this.currentOrder + order];
+        if ((this.currentOrder === 0 && order === -1)) {
+            number = this.orderPhotos[this.orderPhotos.length - 1]
+            if (!number) debugger;
+        }
+        if (this.currentOrder === this.orderPhotos.length - 1 && order === 1) {
+            number = this.orderPhotos[0];
+            if (!number) debugger;
+        }
+        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
     }
-    
+
     getSlides() {
         return this.wrapper.querySelectorAll(".modal-window__container");
     }
 
     createModalWindow(src) {
-        const modalWindowHTML = `
-        <div class="modal-window__container current--slide">
-            <img src='${this.getSrc()}' alt = ''>
-        </div>
-        `;
         this.generateNext()
         this.generatePrev()
-        this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
+        this.wrapper.insertAdjacentHTML("beforeend", this.getModalWindowHTML(this.getSrc()));
         this.wrapper.classList.add("visible");
         document.querySelector('body').classList.add('stop-scrolling');
         this.addEvents();
     }
+
     addEvents() {
         const closeButton = document.querySelector(".modal-window__close-button");
-        const rightButton = document.querySelector(".modal-window__right-button");
-        const leftButton = document.querySelector(".modal-window__left-button");
+        const closeAreaUp = document.querySelector('.modal-window__mouse-close.area-up');
+        const closeAreaDown = document.querySelector('.modal-window__mouse-close.area-down');
+        const rightButton = document.querySelector(".modal-window__mouse.area-right");
+        const leftButton = document.querySelector(".modal-window__mouse.area-left");
+
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
-        closeButton.onclick = this.closeModalWindow;
+        closeButton.onclick = () => this.closeModalWindow();
+        closeAreaUp.onclick = () => this.closeModalWindow();
+        closeAreaDown.onclick = () => this.closeModalWindow();
         if (this.isTouchDevice) {
             this.touchHandle()
         }
+        this.wrapper.addEventListener('keyup', this.keyHandler.bind(this));
+    }
+
+    keyHandler(e) {
+        if (e.code === 'ArrowRight') this.nextPhoto();
+        if (e.code === 'ArrowLeft') this.prevPhoto();
     }
 
     isTouchDevice() {
@@ -100,12 +118,10 @@ export class Slider {
             if (left()) {
                 this.nextPhoto();
                 xStart = xMove;
-                console.log('next');
             }
             if (right()) {
                 this.prevPhoto();
                 xStart = xMove;
-                console.log('prev');
             }
             if (down() && !left() && !right()) {
                 document.querySelector('.current--slide').classList.add('up');
@@ -116,7 +132,6 @@ export class Slider {
 
             }
             if (up() && !left() && !right()) {
-                console.log('op')
                 document.querySelector('.current--slide').classList.add('down');
                 document.querySelector('.current--slide').addEventListener('transitionend', () => {
                     this.closeModalWindow();
@@ -127,33 +142,41 @@ export class Slider {
     }
 
     nextPhoto() {
-        if (this.currentOrder === this.orderPhotos.length - 1) { return -1 }
+        if (this.currentOrder === this.orderPhotos.length - 1) this.currentOrder = 0;
         this.currentOrder++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNext();
         this.clearSlides(0)
-
     }
 
     prevPhoto() {
-
-        if (this.currentOrder === 0) return -1
+        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length
         this.currentOrder--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrev();
         this.clearSlides(3)
-
     }
 
     generateNext() {
         const html = `
         <div class="modal-window__container next--slide" >
+        ${this.spinnerHTML}
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
+    }
+
+    generatePrev() {
+        const html = `
+        <div class="modal-window__container prev--slide" >
+        ${this.spinnerHTML}
+            <img src='${this.getSrc(this.PREV)}' alt = ''>
+        </div>    
+        `;
+        this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
     clearSlides(order) {
@@ -163,49 +186,36 @@ export class Slider {
         }
     }
 
-    generatePrev() {
-        const html = `
-        <div class="modal-window__container prev--slide" >
-            <img src='${this.getSrc(this.PREV)}' alt = ''>
-        </div>    
-        `;
-        this.wrapper.insertAdjacentHTML("afterbegin", html);
-    }
-
     closeModalWindow() {
-
-        document.querySelector(".modal-window__wrapper").classList.remove("visible");
+        this.wrapper.classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
         document.querySelector('body').classList.remove("stop-scrolling");
-
+        this.wrapper.replaceWith(this.wrapper.cloneNode(true));
     }
-}
-
-class TouchHandle extends Slider {
-    constructor() {
-        super()
+    get spinnerHTML() {
+        return `
+        <div class="spinner show">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <p class="spinner__persent"></p>
+        </div>
+        `
     }
-}
 
-class Slider3D extends Slider {
-    constructor() {
-        super()
-    }
-    //  TODO 3D handler for 3D photo
-    //is it normal?
-}
-
-class TouchSlider3D extends Slider3D {
-    constructor() {
-        super()
-        // TODO add touch , for 3D photo from td.js
-    }
-}
-
-class Mouse3D extends Slider3D {
-    constructor() {
-        super()
+    getModalWindowHTML(src){
+        return `
+            <div class="modal-window__container current--slide">
+                <div class="spinner show">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="spinner__persent"></p>
+                </div>
+                <img src='${src}' alt = ''>
+            </div>
+        `;
     }
 }
