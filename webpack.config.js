@@ -6,41 +6,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const baseConfig = {
     entry: path.resolve(__dirname, './scripts/main.js'),
-    mode: 'development',
-
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader',{
-                    loader: "postcss-loader",
-                        options: {
-                        postcssOptions: {
-                            plugins: [
-                                [
-                                    "autoprefixer",
-                                    {
-                                        // Options
-                                    },
-                                ],
-                            ],
-                      },
-                    }
-                }],
-            },
-            {
-                test: /\.(scss)$/,
-                use: [{
-                    // вставить CSS на страницу
-                    loader: 'style-loader'
-                }, {
-                    // переводит CSS в модули CommonJS
-                    loader: 'css-loader'
-                },
-                {
-                    // компилирует Sass в CSS
-                    loader: 'sass-loader'
-                }]
+                test: /\.(s[ac]|c)ss$/i,
+                use: ['style-loader', 'css-loader','postcss-loader','sass-loader'],
             },
             {
                 test: /\.(svg|jpg|jpeg|gif|png)$/i,
@@ -57,7 +27,7 @@ const baseConfig = {
     },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, './dist'),
     },
     plugins: [
         new HtmlWebpackPlugin({
