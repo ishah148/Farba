@@ -1,3 +1,4 @@
+import { currentLang } from "./switch_lang";
 const priceListButton = document.querySelector('.prices__price-list-button');
 const priceListButtonText = document.querySelector('.prices__button-text');
 const priceListButtonSvg = document.querySelector('.prices__button-svg');
@@ -15,7 +16,8 @@ priceListButton.addEventListener('click', () => {
             priceListButton.classList.remove('window-closed');
             priceListButton.classList.add('inverted');
             priceListButtonSvg.classList.add('rotate');
-            priceListButtonText.innerHTML = 'Cкрыть прайс';
+            priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Cкрыть прайс' : 'Hide price';
+            priceListButtonText.dataset.translate = 'hide-price';
             setTimeout(() => {
                 const yOffset = -100;
                 const yPosition = priceList.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -26,7 +28,8 @@ priceListButton.addEventListener('click', () => {
             priceListButton.classList.add('window-closed');
             priceListButton.classList.remove('inverted');
             priceListButtonSvg.classList.remove('rotate');
-            priceListButtonText.innerHTML = 'Показать прайс';
+            priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Показать прайс' : 'Show price';
+            priceListButtonText.dataset.translate = 'show-price';
             setTimeout(() => {
                 const yOffset = -100;
                 const yPosition = priceList.getBoundingClientRect().top + window.pageYOffset + yOffset;

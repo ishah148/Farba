@@ -1,5 +1,7 @@
 import translateObj from './translate.js';
-
+export const currentLang = {
+    lang: 'ru',
+}
 const switchLang = document.querySelector('.switch-lang');
 
 function translatePage(language) {
@@ -24,8 +26,10 @@ function translatePage(language) {
 }
 
 function chooseLangButton(event) {
-    if (event.target.dataset.switch)
+    if (event.target.dataset.switch) {
         translatePage(event.target.dataset.switch);
+        currentLang.lang = event.target.dataset.switch;
+    }
 }
 
 

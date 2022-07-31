@@ -1,0 +1,5 @@
+//! addEventListener returns nothing, default export doesn't work, HOW TO IMPORT THIS SHIT CORRECTLY
+
+//! возможно дело в том, где апендим (нет)
+
+//!slider don't use it
