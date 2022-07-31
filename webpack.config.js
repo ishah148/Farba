@@ -6,8 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const baseConfig = {
     entry: path.resolve(__dirname, './scripts/main.js'),
-    mode: 'development',
-
     module: {
         rules: [
             {
@@ -29,7 +27,7 @@ const baseConfig = {
     },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, './dist'),
     },
     plugins: [
         new HtmlWebpackPlugin({
