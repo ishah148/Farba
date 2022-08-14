@@ -16,7 +16,7 @@ class FullSizeViewer {
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
-            <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
+            <img src='../assets/3D-webp/${this.folder}-${this.photoNumber}.webp' alt = ''>
         </div>
         `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
@@ -98,8 +98,8 @@ class ThreeDViewerMouse {
         this.folder = folder;
         this.currentPhoto = this.location.querySelector('img')
         this.startPhoto = 1;
-        this.lastPhoto = 85;
-        this.photoNumber = 43;
+        this.lastPhoto = tdTotalAmount[folder];
+        this.photoNumber = Math.floor(this.lastPhoto /2 );
         this.magicNumber = 0;
         this.speed = 2;
         this.xStart = null;
@@ -144,13 +144,13 @@ class ThreeDViewerMouse {
         // console.log(xMove)
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!
             this.photoNumber <= this.startPhoto + this.speed ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
-            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
 
         }
         if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
             this.photoNumber >= this.lastPhoto - this.speed ? this.photoNumber = this.startPhoto : this.photoNumber += this.speed;
-            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }
     };
@@ -159,7 +159,7 @@ class ThreeDViewerMouse {
 const tdTotalAmount = {
     canon:85,
     gillette:72,
-    babycar:19,
+    babycar:18,
     lg:36
 }
 const tdSensibility = {
@@ -218,7 +218,7 @@ export class ThreeDViewer {
     dowloadPhotos(tagret, folder) {
         console.log('folder',folder)
         console.log('tdTotalAmount.folderTarget',tdTotalAmount[folder]) 
-        for (let i = 1; i < tdTotalAmount[folder]; i++) {
+        for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
             const img = new Image()
             img.src = `../assets/3D-webp/${folder}-${i}.webp`
             img.onload = () => {
@@ -231,6 +231,8 @@ export class ThreeDViewer {
         let persent = Math.ceil(this.countOfLoadedPhotos[folder] / 85 * 100)
         target.querySelector('.spinner__persent').textContent = ` ${persent}%`;
         this.countOfLoadedPhotos[folder]++
+        console.log('this.countOfLoadedPhotos[folder]',this.countOfLoadedPhotos[folder])
+        console.log('tdTotalAmount[folder]',tdTotalAmount[folder])
         if (this.countOfLoadedPhotos[folder] === tdTotalAmount[folder]) {
             this.countOfLoadedPhotos[folder] = 0;
             this.startThreeDHandler(target, folder)
