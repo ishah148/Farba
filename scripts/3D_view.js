@@ -156,31 +156,31 @@ class ThreeDViewerMouse {
     };
 }
 
-const tdCount = {
-    canon: 85,
-    gillette: 18,
-    some:36,
-    t:75
+const tdTotalAmount = {
+    canon:85,
+    gillette:72,
+    babycar:19,
+    lg:36
 }
 const tdSensibility = {
     canon:4,
     gillette:1,
-    some:2,
-    t:4,
+    babycar:2,
+    lg:4,
 }
 
 export class ThreeDViewer {
     constructor() {
         this.container = document.querySelector('.threeD__container');
         this.init();
-        this.countOfLoadedPhotos = 1;
+        // this.countOfLoadedPhotos = 1;
         this.preparedList = [];
-        // this.countOfLoadedPhotos = {
-        //     canon:0,
-        //     gillette:0,
-        //     some:0,
-        //     t:75
-        // };
+        this.countOfLoadedPhotos = {
+            canon:0,
+            gillette:0,
+            babycar:0,
+            lg:0
+        };
     }
     init() {
         this.addListeners();
@@ -196,11 +196,13 @@ export class ThreeDViewer {
         if (!this.preparedList.includes(folderTarget) && folderTarget) {
             this.showSpinner(e.target);
             this.dowloadPhotos(target, folderTarget); //! must be HERE /
+            console.log('target,folderTarget',target,folderTarget)
             // TODO return this <-------------------------------------------
         }
         // this.dowloadPhotos(target, folderTarget);
         if (folderTarget) {
             this.preparedList.push(e.target.dataset.folder)
+            console.log('this.preparedList',this.preparedList);
         }
     }
 
@@ -213,24 +215,27 @@ export class ThreeDViewer {
         this.hiddenSpinner(folderTarget)
     }
 
-    dowloadPhotos(folderTarget, folder) {
-        for (let i = 1; i < 86; i++) {
+    dowloadPhotos(tagret, folder) {
+        console.log('folder',folder)
+        console.log('tdTotalAmount.folderTarget',tdTotalAmount[folder]) 
+        for (let i = 1; i < tdTotalAmount[folder]; i++) {
             const img = new Image()
-            img.src = `../assets/3D/${folder}-${i}.webp`
+            img.src = `../assets/3D-webp/${folder}-${i}.webp`
             img.onload = () => {
-                this.checkCountDownloadedPhotos(folderTarget, folder)
+                this.checkCountDownloadedPhotos(tagret, folder)
             }
         }
     }
 
-    checkCountDownloadedPhotos(folderTarget, folder) {
-        let persent = Math.ceil(this.countOfLoadedPhotos / 85 * 100)
-        folderTarget.querySelector('.spinner__persent').textContent = ` ${persent}%`;
-        this.countOfLoadedPhotos++
-        if (this.countOfLoadedPhotos === 85) {
-            this.countOfLoadedPhotos = 0;
-            this.startThreeDHandler(folderTarget, folder)
+    checkCountDownloadedPhotos(target, folder) {
+        let persent = Math.ceil(this.countOfLoadedPhotos[folder] / 85 * 100)
+        target.querySelector('.spinner__persent').textContent = ` ${persent}%`;
+        this.countOfLoadedPhotos[folder]++
+        if (this.countOfLoadedPhotos[folder] === tdTotalAmount[folder]) {
+            this.countOfLoadedPhotos[folder] = 0;
+            this.startThreeDHandler(target, folder)
         }
+        
     }
     // styles
     showSpinner(target) {
@@ -281,12 +286,12 @@ class ThreeDViewerTouch extends ThreeDViewerMouse {
         let xMove = e.touches[0].clientX;
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!       
             this.photoNumber <= this.startPhoto ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/canon-${this.photoNumber}.webp`
             this.xStart = xMove
         }
-        if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
+        if ((this.xStart + this.step) < xMove) { // !FOR 3D-webp photo!
             this.photoNumber >= this.lastPhoto ? this.photoNumber = 1 : this.photoNumber += this.speed;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/canon-${this.photoNumber}.webp`
             this.xStart = xMove
         }
     };
