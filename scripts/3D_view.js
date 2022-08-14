@@ -16,7 +16,7 @@ class FullSizeViewer {
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
-            <img src='../assets/3D-webp/${this.folder}-${this.photoNumber}.webp' alt = ''>
+            <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
         </div>
         `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
