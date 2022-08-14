@@ -16,6 +16,12 @@ class FullSizeViewer {
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
+            <div class="spinner show">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="spinner__persent"></p>
+            </div>
             <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
         </div>
         `;
@@ -33,11 +39,11 @@ class FullSizeViewer {
         document.querySelector('body').classList.remove("stop-scrolling");
     }
 
-    hiddenExtraButtons(){
+    hiddenExtraButtons() {
         this.wrapper.querySelector('.modal-window__left-button').style.display = 'none';
         this.wrapper.querySelector('.modal-window__right-button').style.display = 'none';
     }
-    showExtraButtons(){
+    showExtraButtons() {
         this.wrapper.querySelector('.modal-window__left-button').style.display = '';
         this.wrapper.querySelector('.modal-window__right-button').style.display = '';
     }
@@ -99,10 +105,10 @@ class ThreeDViewerMouse {
         this.currentPhoto = this.location.querySelector('img')
         this.startPhoto = 1;
         this.lastPhoto = tdTotalAmount[folder];
-        this.photoNumber = Math.floor(this.lastPhoto /2 );
+        this.photoNumber = Math.floor(this.lastPhoto / 2);
         this.magicNumber = 0;
         this.speed = tdSensibility[folder];
-        console.log('speed',this.speed)
+        console.log('speed', this.speed)
         this.xStart = null;
         this.yStart = null;
         this.isMouseUp = true;
@@ -158,22 +164,22 @@ class ThreeDViewerMouse {
 }
 
 const tdTotalAmount = {
-    canon:85,
-    gillette:72,
-    babycar:18,
-    lg:36
+    canon: 85,
+    gillette: 72,
+    babycar: 18,
+    lg: 36
 }
 const tdSensibility = {
-    canon:3,
-    gillette:3,
-    babycar:1,
-    lg:1,
+    canon: 3,
+    gillette: 3,
+    babycar: 1,
+    lg: 1,
 }
 const tdSensibilityTouch = {
-    canon:2,
-    gillette:2,
-    babycar:1,
-    lg:1,
+    canon: 2,
+    gillette: 2,
+    babycar: 1,
+    lg: 1,
 }
 
 export class ThreeDViewer {
@@ -183,10 +189,10 @@ export class ThreeDViewer {
         // this.countOfLoadedPhotos = 1;
         this.preparedList = [];
         this.countOfLoadedPhotos = {
-            canon:0,
-            gillette:0,
-            babycar:0,
-            lg:0
+            canon: 0,
+            gillette: 0,
+            babycar: 0,
+            lg: 0
         };
     }
     init() {
@@ -234,12 +240,12 @@ export class ThreeDViewer {
         let persent = Math.ceil(this.countOfLoadedPhotos[folder] / 85 * 100)
         target.querySelector('.spinner__persent').textContent = ` ${persent}%`;
         this.countOfLoadedPhotos[folder]++
-        
+
         if (this.countOfLoadedPhotos[folder] === tdTotalAmount[folder]) {
             this.countOfLoadedPhotos[folder] = 0;
             this.startThreeDHandler(target, folder)
         }
-        
+
     }
     // styles
     showSpinner(target) {
