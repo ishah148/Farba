@@ -16,6 +16,12 @@ class FullSizeViewer {
     createModalWindow(src) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
+            <div class="spinner show">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="spinner__persent"></p>
+            </div>
             <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
         </div>
         `;
@@ -33,11 +39,11 @@ class FullSizeViewer {
         document.querySelector('body').classList.remove("stop-scrolling");
     }
 
-    hiddenExtraButtons(){
+    hiddenExtraButtons() {
         this.wrapper.querySelector('.modal-window__left-button').style.display = 'none';
         this.wrapper.querySelector('.modal-window__right-button').style.display = 'none';
     }
-    showExtraButtons(){
+    showExtraButtons() {
         this.wrapper.querySelector('.modal-window__left-button').style.display = '';
         this.wrapper.querySelector('.modal-window__right-button').style.display = '';
     }
@@ -98,10 +104,11 @@ class ThreeDViewerMouse {
         this.folder = folder;
         this.currentPhoto = this.location.querySelector('img')
         this.startPhoto = 1;
-        this.lastPhoto = 85;
-        this.photoNumber = 43;
+        this.lastPhoto = tdTotalAmount[folder];
+        this.photoNumber = Math.floor(this.lastPhoto / 2);
         this.magicNumber = 0;
-        this.speed = 2;
+        this.speed = tdSensibility[folder];
+        console.log('speed', this.speed)
         this.xStart = null;
         this.yStart = null;
         this.isMouseUp = true;
@@ -144,43 +151,49 @@ class ThreeDViewerMouse {
         // console.log(xMove)
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!
             this.photoNumber <= this.startPhoto + this.speed ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
-            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
 
         }
         if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
             this.photoNumber >= this.lastPhoto - this.speed ? this.photoNumber = this.startPhoto : this.photoNumber += this.speed;
-            this.currentPhoto.src = `../assets/3D/${this.folder}-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }
     };
 }
 
-const tdCount = {
+const tdTotalAmount = {
     canon: 85,
-    gillette: 18,
-    some:36,
-    t:75
+    gillette: 72,
+    babycar: 18,
+    lg: 36
 }
 const tdSensibility = {
-    canon:4,
-    gillette:1,
-    some:2,
-    t:4,
+    canon: 3,
+    gillette: 3,
+    babycar: 1,
+    lg: 1,
+}
+const tdSensibilityTouch = {
+    canon: 2,
+    gillette: 2,
+    babycar: 1,
+    lg: 1,
 }
 
 export class ThreeDViewer {
     constructor() {
         this.container = document.querySelector('.threeD__container');
         this.init();
-        this.countOfLoadedPhotos = 1;
+        // this.countOfLoadedPhotos = 1;
         this.preparedList = [];
-        // this.countOfLoadedPhotos = {
-        //     canon:0,
-        //     gillette:0,
-        //     some:0,
-        //     t:75
-        // };
+        this.countOfLoadedPhotos = {
+            canon: 0,
+            gillette: 0,
+            babycar: 0,
+            lg: 0
+        };
     }
     init() {
         this.addListeners();
@@ -213,24 +226,26 @@ export class ThreeDViewer {
         this.hiddenSpinner(folderTarget)
     }
 
-    dowloadPhotos(folderTarget, folder) {
-        for (let i = 1; i < 86; i++) {
+    dowloadPhotos(tagret, folder) {
+        for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
             const img = new Image()
-            img.src = `../assets/3D/${folder}-${i}.webp`
+            img.src = `../assets/3D-webp/${folder}-${i}.webp`
             img.onload = () => {
-                this.checkCountDownloadedPhotos(folderTarget, folder)
+                this.checkCountDownloadedPhotos(tagret, folder)
             }
         }
     }
 
-    checkCountDownloadedPhotos(folderTarget, folder) {
-        let persent = Math.ceil(this.countOfLoadedPhotos / 85 * 100)
-        folderTarget.querySelector('.spinner__persent').textContent = ` ${persent}%`;
-        this.countOfLoadedPhotos++
-        if (this.countOfLoadedPhotos === 85) {
-            this.countOfLoadedPhotos = 0;
-            this.startThreeDHandler(folderTarget, folder)
+    checkCountDownloadedPhotos(target, folder) {
+        let persent = Math.ceil(this.countOfLoadedPhotos[folder] / 85 * 100)
+        target.querySelector('.spinner__persent').textContent = ` ${persent}%`;
+        this.countOfLoadedPhotos[folder]++
+
+        if (this.countOfLoadedPhotos[folder] === tdTotalAmount[folder]) {
+            this.countOfLoadedPhotos[folder] = 0;
+            this.startThreeDHandler(target, folder)
         }
+
     }
     // styles
     showSpinner(target) {
@@ -261,6 +276,7 @@ class ThreeDViewerTouch extends ThreeDViewerMouse {
         this.init()
         this.test()
         this.step = 0;
+        this.speed = tdSensibilityTouch[folder];
     }
     test() {
         console.log('---')
@@ -281,12 +297,12 @@ class ThreeDViewerTouch extends ThreeDViewerMouse {
         let xMove = e.touches[0].clientX;
         if (this.xStart > (xMove + this.step)) { // !FOR 3D photo!       
             this.photoNumber <= this.startPhoto ? this.photoNumber = this.lastPhoto : this.photoNumber -= this.speed;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }
-        if ((this.xStart + this.step) < xMove) { // !FOR 3D photo!
+        if ((this.xStart + this.step) < xMove) { // !FOR 3D-webp photo!
             this.photoNumber >= this.lastPhoto ? this.photoNumber = 1 : this.photoNumber += this.speed;
-            this.currentPhoto.src = `../assets/3D/canon-${this.photoNumber}.webp`
+            this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`
             this.xStart = xMove
         }
     };
