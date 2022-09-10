@@ -1,9 +1,9 @@
 export default class TelegramSendMessage {
-    constructor(formID) {
+    constructor(formID,inputId,buttonId) {
         this.formID = formID;
         this.form = document.getElementById(this.formID);
-        this.input = document.getElementById('contacts-window__user-number')
-        this.button = document.getElementById('contacts-window__button-send')
+        this.input = document.getElementById(inputId)
+        this.button = document.getElementById(buttonId)
         this.init();
     }
     init() {
