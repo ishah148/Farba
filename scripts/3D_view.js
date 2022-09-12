@@ -182,7 +182,7 @@ const tdSensibilityTouch = {
     lg: 1,
 }
 
-export class ThreeDViewer {
+export class ThreeDManager {
     constructor() {
         this.container = document.querySelector('.threeD__container');
         this.init();
