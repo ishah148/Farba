@@ -21,7 +21,7 @@ export class VideoPlayersHandler {
                 <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.number}">
                     <!--item__video-->
                     <video class="video-player__video" id="video-player__video_${videoInfo.number}"
-                        poster="../assets/images/video_posters/video-player.jpg" preload="metadata">
+                        poster="../assets/images/video_posters/poster${videoInfo.number}.jpg" preload="metadata">
                         <source id="source__HD-quality_${videoInfo.number}" src="../assets/video/content/video_${videoInfo.number}_1080.mp4"
                             type="video/mp4">
                         <source id="source__high-quality_${videoInfo.number}" src="../assets/video/content/video_${videoInfo.number}_720.mp4"

@@ -32,7 +32,7 @@ export class VideoPlayer {
             </svg>
         </button>
         <div class="video-player__progress-bar-container">
-            <input class="video-player__progress-bar" id="video-player__progress-bar_${this.videoNumber}" type="range" min="0" max="59" step="0.01">
+            <input class="video-player__progress-bar" id="video-player__progress-bar_${this.videoNumber}" type="range" min="0" max="${this.video.duration}" step="0.01">
         </div>
         <button class="video-player__forward" id="video-player__forward_${this.videoNumber}">
             <svg class="video-player__forward-svg">
