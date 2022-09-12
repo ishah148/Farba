@@ -18,7 +18,7 @@ export class VideoPlayersHandler {
 
     createVideoPlayer(event) {
         const startButton = event.currentTarget;
-        const videoNumber = (startButton.id.match(/\d$/m) || [])[0];
+        const videoNumber = (startButton.id.match(/\d+$/m) || [])[0];
         const videoPlayer = new VideoPlayer(videoNumber);
         this.videoPlayers[`${videoNumber}`] = videoPlayer;
         document.getElementById(`video-player__video_${videoNumber}`).addEventListener("videoEnded", (event) =>
@@ -29,7 +29,7 @@ export class VideoPlayersHandler {
 
     removeVideoPlayer(event) {
         const video = event.target;
-        const videoNumber = (video.id.match(/\d$/m) || [])[0];
+        const videoNumber = (video.id.match(/\d+$/m) || [])[0];
         delete this.videoPlayers[`${videoNumber}`];
         document.getElementById(`video-player__start-button_${videoNumber}`).classList.remove('disappearance');
         document.getElementById(`video-player__controls_${videoNumber}`).remove();
