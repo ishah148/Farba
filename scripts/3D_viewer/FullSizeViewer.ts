@@ -6,17 +6,19 @@ class FullSizeViewer {
         this.photoNumber = photoNumber;
         this.folder = folder;
         this.wrapper = document.querySelector(".modal-window__wrapper");
-        this.createModalWindow()
-        this.addEvents()
-        this.touchHandle()
+        this.createModalWindow();
+        this.addEvents();
+        this.touchHandle();
     }
 
     addEvents() {
-        const closeButton = document.querySelector(".modal-window__close-button") as HTMLButtonElement ;
+        const closeButton = document.querySelector(
+            ".modal-window__close-button"
+        ) as HTMLButtonElement;
         // closeButton.onclick = this.closeModalWindow.bind(this);
         closeButton.onclick = () => this.closeModalWindow();
     }
-    createModalWindow(src?:string) {
+    createModalWindow(src?: string) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
             <div class="spinner show">
@@ -30,76 +32,96 @@ class FullSizeViewer {
         `;
         // const a = new ThreeDViewerMouse(this.wrapper,'lg')
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
-        this.hiddenExtraButtons()
+        this.hiddenExtraButtons();
         this.wrapper.classList.add("visible");
-        document.querySelector('body')?.classList.add('stop-scrolling');
+        document.querySelector("body")?.classList.add("stop-scrolling");
     }
     closeModalWindow() {
-        this.showExtraButtons()
-        document.querySelector(".modal-window__wrapper")?.classList.remove("visible");
+        this.showExtraButtons();
+        document
+            .querySelector(".modal-window__wrapper")
+            ?.classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
-        document.querySelector('body')?.classList.remove("stop-scrolling");
+        document.querySelector("body")?.classList.remove("stop-scrolling");
     }
 
     hiddenExtraButtons() {
-        this.wrapper.querySelector('.modal-window__left-button').style.display = 'none';
-        this.wrapper.querySelector('.modal-window__right-button').style.display = 'none';
+        this.wrapper.querySelector(".modal-window__left-button").style.display =
+            "none";
+        this.wrapper.querySelector(
+            ".modal-window__right-button"
+        ).style.display = "none";
     }
     showExtraButtons() {
-        this.wrapper.querySelector('.modal-window__left-button').style.display = '';
-        this.wrapper.querySelector('.modal-window__right-button').style.display = '';
+        this.wrapper.querySelector(".modal-window__left-button").style.display =
+            "";
+        this.wrapper.querySelector(
+            ".modal-window__right-button"
+        ).style.display = "";
     }
     touchHandle() {
-        const wrapper = this.wrapper
-        wrapper.addEventListener('touchstart', handleTouchStart.bind(this), false);
-        wrapper.addEventListener('touchmove', handleTouchMove.bind(this), false);
+        const wrapper = this.wrapper;
+        wrapper.addEventListener(
+            "touchstart",
+            handleTouchStart.bind(this),
+            false
+        );
+        wrapper.addEventListener(
+            "touchmove",
+            handleTouchMove.bind(this),
+            false
+        );
         let xStart = null;
         let yStart = null;
         let sensitivity = 100;
         function handleTouchStart(e) {
             xStart = e.touches[0].clientX;
             yStart = e.touches[0].clientY;
-        };
+        }
 
         function handleTouchMove(e) {
             let xMove = e.touches[0].clientX;
             let yMove = e.touches[0].clientY;
             function left() {
-                return xStart || 0 > (xMove + sensitivity)
+                return xStart || 0 > xMove + sensitivity;
             }
             function right() {
-                return (xStart|| 0 + sensitivity) < xMove
+                return (xStart || 0 + sensitivity) < xMove;
             }
             function down() {
-                return (yStart || 0+ sensitivity) < yMove
+                return (yStart || 0 + sensitivity) < yMove;
             }
             function up() {
-                return yStart || 0> (yMove + sensitivity)
+                return yStart || 0 > yMove + sensitivity;
             }
             const removeEvents = () => {
                 wrapper.replaceWith(wrapper.cloneNode(true));
-            }
+            };
 
             if (down() && !left() && !right()) {
-                document.querySelector('.current--slide')?.classList.add('up');
-                document.querySelector('.current--slide')?.addEventListener('transitionend', () => {
-                    this.closeModalWindow();
-                    removeEvents();
-                })
-
+                document.querySelector(".current--slide")?.classList.add("up");
+                document
+                    .querySelector(".current--slide")
+                    ?.addEventListener("transitionend", () => {
+                        this.closeModalWindow();
+                        removeEvents();
+                    });
             }
             if (up() && !left() && !right()) {
-                document.querySelector('.current--slide')?.classList.add('down');
-                document.querySelector('.current--slide')?.addEventListener('transitionend', () => {
-                    this.closeModalWindow();
-                    removeEvents();
-                })
+                document
+                    .querySelector(".current--slide")
+                    ?.classList.add("down");
+                document
+                    .querySelector(".current--slide")
+                    ?.addEventListener("transitionend", () => {
+                        this.closeModalWindow();
+                        removeEvents();
+                    });
             }
-        };
+        }
     }
-
 }
 
 export default FullSizeViewer;
