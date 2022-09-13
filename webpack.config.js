@@ -10,20 +10,33 @@ const baseConfig = {
         rules: [
             {
                 test: /\.(s[ac]|c)ss$/i,
-                use: ['style-loader', 'css-loader','postcss-loader','sass-loader'],
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(svg|jpg|jpeg|gif|png)$/i,
                 type: 'asset/resource',
             },
             {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', { targets: "defaults" }]
+                        ]
+                    }
+                }
+            },
+            { test: /\.tsx?$/, loader: 'ts-loader' },
+            {
                 test: /\.(woff|woff2|ttf|eot)$/i,
-                use: 'file-loader' 
+                use: 'file-loader'
             },
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
     output: {
         filename: 'index.js',
