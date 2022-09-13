@@ -17,10 +17,40 @@ import '../assets/images/favicon.jpg'
 
 const tg = new TelegramSendMessage("contacts-window__form","contacts-window__user-number","contacts-window__button-send");
 const tgFooter = new TelegramSendMessage("contacts-window__form-footer","contacts-window__user-number-footer","contacts-window__button-send-footer");
-
-const videoPlayersHandler = new VideoPlayersHandler();
-videoPlayersHandler.init();
 const b = new ThreeDManager();
+const videoPlayersHandler = new VideoPlayersHandler([
+    {
+        number: 1,
+        dataTranslate: 'loft-furniture',
+        caption: 'Рекламный видеоролик - Лофт Мебель',
+    },
+    {
+        number: 2,
+        dataTranslate: 'shelf-installing',
+        caption: 'Видеоролик - Распаковка и установка полки',
+    },
+    {
+        number: 3,
+        dataTranslate: 'stroller-review',
+        caption: 'Рекламный видеоролик - Обзор детской коляски',
+    },
+    {
+        number: 4,
+        dataTranslate: 'dishwasher-review',
+        caption: 'Рекламный видеоролик - Обзор посудомоечной машины',
+    },
+    {
+        number: 5,
+        dataTranslate: 'hob-review',
+        caption: 'Рекламный видеоролик 3D - Обзор варочной панели',
+    },
+    {
+        number: 6,
+        dataTranslate: 'oven-review',
+        caption: 'Рекламный видеоролик - Обзор духового шкафа',
+    },
+]);
+const b = new ThreeDViewer();
 
 window.addEventListener("load", () => {
     new GridGalery("portfolio");
