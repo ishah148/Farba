@@ -1,6 +1,5 @@
-import "./FullSizeViewer.js";
-import { ThreeDViewerMouse, ThreeDViewerTouch } from "./TouchMouseHandlers.js";
-
+// import "./FullSizeViewer.js";
+import {ThreeDViewerMouse,ThreeDViewerTouch} from './TouchMouseHandlers'
 export const tdTotalAmount = {
     canon: 85,
     gillette: 72,
