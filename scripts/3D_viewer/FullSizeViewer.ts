@@ -1,4 +1,7 @@
 class FullSizeViewer {
+    photoNumber: any;
+    folder: any;
+    wrapper: any;
     constructor(photoNumber, folder) {
         this.photoNumber = photoNumber;
         this.folder = folder;
@@ -9,11 +12,11 @@ class FullSizeViewer {
     }
 
     addEvents() {
-        const closeButton = document.querySelector(".modal-window__close-button");
+        const closeButton = document.querySelector(".modal-window__close-button") as HTMLButtonElement ;
         // closeButton.onclick = this.closeModalWindow.bind(this);
         closeButton.onclick = () => this.closeModalWindow();
     }
-    createModalWindow(src) {
+    createModalWindow(src?:string) {
         const modalWindowHTML = `
         <div class="modal-window__container current--slide">
             <div class="spinner show">
@@ -29,15 +32,15 @@ class FullSizeViewer {
         this.wrapper.insertAdjacentHTML("beforeend", modalWindowHTML);
         this.hiddenExtraButtons()
         this.wrapper.classList.add("visible");
-        document.querySelector('body').classList.add('stop-scrolling');
+        document.querySelector('body')?.classList.add('stop-scrolling');
     }
     closeModalWindow() {
         this.showExtraButtons()
-        document.querySelector(".modal-window__wrapper").classList.remove("visible");
+        document.querySelector(".modal-window__wrapper")?.classList.remove("visible");
         document
             .querySelectorAll(".modal-window__container")
             .forEach((i) => i.remove());
-        document.querySelector('body').classList.remove("stop-scrolling");
+        document.querySelector('body')?.classList.remove("stop-scrolling");
     }
 
     hiddenExtraButtons() {
@@ -64,32 +67,32 @@ class FullSizeViewer {
             let xMove = e.touches[0].clientX;
             let yMove = e.touches[0].clientY;
             function left() {
-                return xStart > (xMove + sensitivity)
+                return xStart || 0 > (xMove + sensitivity)
             }
             function right() {
-                return (xStart + sensitivity) < xMove
+                return (xStart|| 0 + sensitivity) < xMove
             }
             function down() {
-                return (yStart + sensitivity) < yMove
+                return (yStart || 0+ sensitivity) < yMove
             }
             function up() {
-                return yStart > (yMove + sensitivity)
+                return yStart || 0> (yMove + sensitivity)
             }
             const removeEvents = () => {
                 wrapper.replaceWith(wrapper.cloneNode(true));
             }
 
             if (down() && !left() && !right()) {
-                document.querySelector('.current--slide').classList.add('up');
-                document.querySelector('.current--slide').addEventListener('transitionend', () => {
+                document.querySelector('.current--slide')?.classList.add('up');
+                document.querySelector('.current--slide')?.addEventListener('transitionend', () => {
                     this.closeModalWindow();
                     removeEvents();
                 })
 
             }
             if (up() && !left() && !right()) {
-                document.querySelector('.current--slide').classList.add('down');
-                document.querySelector('.current--slide').addEventListener('transitionend', () => {
+                document.querySelector('.current--slide')?.classList.add('down');
+                document.querySelector('.current--slide')?.addEventListener('transitionend', () => {
                     this.closeModalWindow();
                     removeEvents();
                 })

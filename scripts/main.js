@@ -6,7 +6,7 @@ import "./price_cards_hover.js";
 import "./show_price_table.js"
 import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
-import {ThreeDManager} from "./3D_viewer/3D_Manager.js"
+import {ThreeDManager} from "./3D_viewer/3D_Manager"
 import { VideoPlayersHandler } from "./video_players_handler.js";
 {/* <link rel="stylesheet" href="../styles/css/normalize.css"> */}
 {/* <link rel="stylesheet" href="../styles/css/pages/main.css"> */}
@@ -50,7 +50,7 @@ const videoPlayersHandler = new VideoPlayersHandler([
         caption: 'Рекламный видеоролик - Обзор духового шкафа',
     },
 ]);
-const b = new ThreeDViewer();
+// const b = new ThreeDViewer();
 
 window.addEventListener("load", () => {
     new GridGalery("portfolio");
