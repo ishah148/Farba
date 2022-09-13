@@ -4,8 +4,14 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
+
+
 const baseConfig = {
-    entry: path.resolve(__dirname, './scripts/main.js'),
+    entry: {
+        index: path.resolve(__dirname, './scripts/main.js'),
+        video: path.resolve(__dirname, './scripts/second_page.ts'),
+    },
     module: {
         rules: [
             {
@@ -39,13 +45,20 @@ const baseConfig = {
         extensions: ['.js', '.ts'],
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, './dist'),
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './pages/index.html'),
             filename: 'index.html',
+            chunks: ['index'],
+            chunkFilename: '[id].[chunkhash].js',
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, `./pages/video.html`),
+            filename: `video.html`,
+            chunks: [`video`]
         }),
         new CleanWebpackPlugin(),
         new CopyPlugin({
