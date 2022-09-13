@@ -47,13 +47,13 @@ const baseConfig = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, './dist'),
+        chunkFilename: '[id].[chunkhash].js',
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './pages/index.html'),
             filename: 'index.html',
             chunks: ['index'],
-            chunkFilename: '[id].[chunkhash].js',
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, `./pages/video.html`),
