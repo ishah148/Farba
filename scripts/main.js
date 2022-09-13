@@ -6,7 +6,7 @@ import "./price_cards_hover.js";
 import "./show_price_table.js"
 import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
-import {ThreeDManager} from "./3D_view.js"
+import {ThreeDManager} from "./3D_viewer/3D_Manager.js"
 import { VideoPlayersHandler } from "./video_players_handler.js";
 {/* <link rel="stylesheet" href="../styles/css/normalize.css"> */}
 {/* <link rel="stylesheet" href="../styles/css/pages/main.css"> */}
