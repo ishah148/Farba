@@ -33,6 +33,6 @@ export const tdSensibilityTouchStep = {
 export const autoRotateSpeed = {
     canon: 0.2,
     gillette: 0.2,
-    babycar: 0.15,
-    lg: 0.1,
+    babycar: 0.25,
+    lg: 0.20,
 }
