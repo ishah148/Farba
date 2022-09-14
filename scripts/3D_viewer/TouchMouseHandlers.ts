@@ -22,6 +22,8 @@ export class ThreeDViewerMouse {
   step: number;
   yStart: any;
   tdSensibilityStep: any;
+  isFullScreen: boolean;
+  isRotate: boolean;
   constructor(location: HTMLElement, folder: string) {
     // For 3D!
     this.location = location;
@@ -32,22 +34,24 @@ export class ThreeDViewerMouse {
     this.photoNumber = Math.floor(this.lastPhoto / 2);
     this.magicNumber = 0;
     this.speed = tdSensibility[folder];
-    
+    this.isFullScreen = false
     this.xStart = null;
     this.xStart = null;
     this.isMouseUp = true;
     this.isMouseDown = false;
     this.step = tdSensibilityStep[folder]; // !FOR 3D PHOTO
+    this.isRotate = true
     this.addListeners();
+    this.autoRotate();
     console.log("viewerThis", this);
   }
   addListeners() {
-    
-    // if(this.location){
-    //     this.location.querySelector(".threeD__svg-zoom")?.addEventListener("click", (e) => {
-    //     this.location.classList.toggle('full-size')
-    //     });
-    // }
+    if(this.location){
+        this.location.querySelector(".threeD__svg-zoom")?.addEventListener("click", (e) => {
+        this.location.classList.toggle('full-size')
+        this.isFullScreen = !this.isFullScreen
+        });
+    }
     this.location.addEventListener("mouseup", this.handleTouchStart.bind(this));
     this.location.addEventListener(
       "mousemove",
@@ -96,7 +100,7 @@ export class ThreeDViewerMouse {
       this.photoNumber <= this.startPhoto + this.speed
         ? (this.photoNumber = this.lastPhoto)
         : (this.photoNumber -= this.speed);
-      this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`;
+      this.currentPhoto.src = `../assets/3D${this.isFullScreen?'':'-webp'}/${this.folder}-${this.photoNumber}.webp`;
       this.xStart = xMove;
     }
     if ((this.xStart || 0) + this.step < xMove) {
@@ -105,25 +109,12 @@ export class ThreeDViewerMouse {
       this.photoNumber >= this.lastPhoto - this.speed
         ? (this.photoNumber = this.startPhoto)
         : (this.photoNumber += this.speed);
-      this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`;
+      this.currentPhoto.src = `../assets/3D${this.isFullScreen?'':'-webp'}/${this.folder}-${+(this.photoNumber.toFixed())}.webp`;
       this.xStart = xMove;
     }
   }
-}
 
-export class ThreeDViewerTouch extends ThreeDViewerMouse {
-  constructor(location: HTMLElement, folder: string) {
-    // debugger
-    super(location, folder);
-    this.location = location;
-    this.folder = folder;
-    this.init();
-    this.test();
-    this.step = tdSensibilityTouchStep[folder];
-    this.speed = tdSensibilityTouch[folder];
-    this.test();
-  }
-  test() {
+  autoRotate() {
     const a = this;
     animate();
     function update() {
@@ -143,6 +134,20 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
       update();
     }
   }
+}
+
+export class ThreeDViewerTouch extends ThreeDViewerMouse {
+  constructor(location: HTMLElement, folder: string) {
+    // debugger
+    super(location, folder);
+    this.location = location;
+    this.folder = folder;
+    this.init();
+    this.step = tdSensibilityTouchStep[folder];
+    this.speed = tdSensibilityTouch[folder];
+    // this.autoRotate();
+  }
+
   init() {
     this.location.addEventListener(
       "touchstart",
@@ -169,7 +174,7 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
       this.photoNumber <= this.startPhoto
         ? (this.photoNumber = this.lastPhoto)
         : (this.photoNumber -= this.speed);
-      this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`;
+      this.currentPhoto.src = `../assets/3D${this.isFullScreen?'':'-webp'}/${this.folder}-${this.photoNumber}.webp`;
       this.xStart = xMove;
     }
     if ((this.xStart || 0) + this.step < xMove) {
@@ -178,7 +183,7 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
       this.photoNumber >= this.lastPhoto
         ? (this.photoNumber = 1)
         : (this.photoNumber += this.speed);
-      this.currentPhoto.src = `../assets/3D-webp/${this.folder}-${this.photoNumber}.webp`;
+      this.currentPhoto.src = `../assets/3D${this.isFullScreen?'':'-webp'}/${this.folder}-${this.photoNumber}.webp`;
       this.xStart = xMove;
     }
   }
