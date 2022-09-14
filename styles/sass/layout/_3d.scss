@@ -17,6 +17,7 @@
 }
 
 .threeD__container {
+    position: relative;
     user-select: none;
     width: 100%;
     padding: var(--padding-primary);
@@ -47,6 +48,20 @@
     &.show {
         .threeD__preview {
             opacity: 1;
+        }
+    }
+    &.full-size {
+        position: absolute;
+        width: 80vh;
+        // height: fit-content;
+        z-index: 2755;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        img {
+            pointer-events: none;
         }
     }
     &:hover {
@@ -81,9 +96,10 @@
         }
         svg {
             fill: var(--primary-color);
+            
         }
     }
-    .threeD__svg-zoom{
+    .threeD__svg-zoom {
         display: block;
         width: 50px;
         height: 50px;
@@ -95,6 +111,7 @@
             display: none;
         }
         svg {
+            pointer-events: none;
             fill: var(--primary-color);
         }
     }

@@ -6,7 +6,7 @@ module.exports = {
     target: 'web',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
-        host: '192.168.100.18',//your ip address
-        port: 8009,
+        // host: '192.168.100.18',//your ip address
+        // port: 8009,
     },
 };
