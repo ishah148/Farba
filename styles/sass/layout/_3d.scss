@@ -17,6 +17,7 @@
 }
 
 .threeD__container {
+    position: relative;
     user-select: none;
     width: 100%;
     padding: var(--padding-primary);
@@ -47,6 +48,28 @@
     &.show {
         .threeD__preview {
             opacity: 1;
+        }
+    }
+    &.full-size {
+        position: fixed;
+        max-width: 50vw;
+        height: min-content;
+        width: 100%;
+        max-height: 100%;
+        z-index: 10;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        @media (max-width:1000px ){
+            max-width: 80vw;
+        }
+        @media (max-width:500px ){
+            max-width: 90vw;
+        }
+        img {
+            pointer-events: none;
         }
     }
     &:hover {
@@ -83,7 +106,7 @@
             fill: var(--primary-color);
         }
     }
-    .threeD__svg-zoom{
+    .threeD__svg-zoom {
         display: block;
         width: 50px;
         height: 50px;
@@ -95,6 +118,7 @@
             display: none;
         }
         svg {
+            pointer-events: none;
             fill: var(--primary-color);
         }
     }

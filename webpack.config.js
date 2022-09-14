@@ -4,35 +4,61 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+
+
+
 const baseConfig = {
-    entry: path.resolve(__dirname, './scripts/main.js'),
+    entry: {
+        index: path.resolve(__dirname, './scripts/main.js'),
+        video: path.resolve(__dirname, './scripts/second_page.ts'),
+    },
     module: {
         rules: [
             {
                 test: /\.(s[ac]|c)ss$/i,
-                use: ['style-loader', 'css-loader','postcss-loader','sass-loader'],
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(svg|jpg|jpeg|gif|png)$/i,
                 type: 'asset/resource',
             },
             {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', { targets: "defaults" }]
+                        ]
+                    }
+                }
+            },
+            { test: /\.tsx?$/, loader: 'ts-loader' },
+            {
                 test: /\.(woff|woff2|ttf|eot)$/i,
-                use: 'file-loader' 
+                use: 'file-loader'
             },
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, './dist'),
+        chunkFilename: '[id].[chunkhash].js',
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './pages/index.html'),
             filename: 'index.html',
+            chunks: ['index'],
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, `./pages/video.html`),
+            filename: `video.html`,
+            chunks: [`video`]
         }),
         new CleanWebpackPlugin(),
         new CopyPlugin({
