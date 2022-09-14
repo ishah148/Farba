@@ -134,10 +134,12 @@ export class ThreeDViewerMouse {
         animate();
         function update() {
             const speed = autoRotateSpeed[a.folder];
-            a.photoNumber >= a.lastPhoto
-                ? (a.photoNumber = 1)
-                : (a.photoNumber += speed);
-            a.photoNumber = +a.photoNumber.toFixed(2);
+            if (a.allowRotate) {
+                a.photoNumber >= a.lastPhoto
+                    ? (a.photoNumber = 1)
+                    : (a.photoNumber += speed);
+                a.photoNumber = +a.photoNumber.toFixed(2);
+            }
             //
             if (Number.isInteger(+a.photoNumber.toFixed(2)) && a.allowRotate) {
                 a.currentPhoto.src = `../assets/3D${
