@@ -31,13 +31,14 @@ export class ThreeDManager {
     this.container.addEventListener("click", (e: Event) =>
       this.prepareThreeDViewer(e)
     );
-    this.container
-      ?.addEventListener("click", (e:Event) => {
-        // console.log('',e)
-        const parent = (e.target as HTMLElement).parentElement
-        // this.prepareFullSize(parent as HTMLElement)
-        // (e.target as HTMLElement).parentElement?.classList.add('full-size')
-      });
+    this.container?.addEventListener("click", (e: Event) => {
+      console.log("", e);
+      const target = e.target as HTMLElement;
+      const parent = (e.target as HTMLElement).parentElement;
+    //   if (target.classList.contains("threeD__svg-zoom"))
+        
+      // (e.target as HTMLElement).parentElement?.classList.add('full-size')
+    });
   }
 
   prepareThreeDViewer(e: Event) {
@@ -45,10 +46,8 @@ export class ThreeDManager {
     const target = e.target as HTMLElement;
     if (!this.preparedList.includes(folderTarget) && folderTarget) {
       this.showSpinner(e.target);
-      this.dowloadPhotos(target, folderTarget); //! must be HERE /
-      // TODO return this <-------------------------------------------
+      this.dowloadPhotos(target, folderTarget);
     }
-    // this.dowloadPhotos(target, folderTarget);
     if (folderTarget) {
       this.preparedList.push(target.dataset.folder);
     }
@@ -63,12 +62,12 @@ export class ThreeDManager {
     this.hiddenSpinner(folderTarget);
   }
 
-  dowloadPhotos(tagret, folder) {
+  dowloadPhotos(target, folder) {
     for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
       const img = new Image();
       img.src = `../assets/3D-webp/${folder}-${i}.webp`;
       img.onload = () => {
-        this.checkCountDownloadedPhotos(tagret, folder);
+        this.checkCountDownloadedPhotos(target, folder);
       };
     }
   }
@@ -81,6 +80,7 @@ export class ThreeDManager {
     if (this.countOfLoadedPhotos[folder] === tdTotalAmount[folder]) {
       this.countOfLoadedPhotos[folder] = 0;
       this.startThreeDHandler(target, folder);
+      this.prepareFullSize(target as HTMLElement);
     }
   }
   // styles
@@ -93,9 +93,16 @@ export class ThreeDManager {
     target.querySelector(".spinner").classList.remove("show");
     target.querySelector(".threeD__svg-container").classList.add("hidden");
   }
-  
-  prepareFullSize(target:HTMLElement){
-    this.showSpinner(target)
+
+  prepareFullSize(target: HTMLElement) {
+    // this.showSpinner(target)
+    const folder = target.dataset.folder;
+    if (folder) {
+      for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
+        const img = new Image();
+        img.src = `../assets/3D/${folder}-${i}.webp`;
+      }
+    }
   }
 
   isTouchDevice() {
