@@ -46,7 +46,6 @@ export class ThreeDViewerMouse {
         this.allowRotate = true;
         this.addListeners();
         this.autoRotate();
-        console.log("viewerThis", this);
     }
     addListeners() {
         if (this.location) {
@@ -179,8 +178,14 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
             this.handleTouchMove.bind(this),
             false
         );
+        this.location.addEventListener(
+            "touchend",
+            () => (this.allowRotate = true),
+            false
+        );
     }
     handleTouchStart(e) {
+        this.allowRotate = false;
         if (!e?.touches?.[0]?.clientX) return; // correct bug
         this.xStart = e.touches[0].clientX;
         this.yStart = e.touches[0].clientY;
@@ -196,7 +201,7 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
                 : (this.photoNumber -= this.speed);
             this.currentPhoto.src = `../assets/3D${
                 this.isFullScreen ? "" : "-webp"
-            }/${this.folder}-${this.photoNumber}.webp`;
+            }/${this.folder}-${this.photoNumber.toFixed()}.webp`;
             this.xStart = xMove;
         }
         if ((this.xStart || 0) + this.step < xMove) {
@@ -207,7 +212,7 @@ export class ThreeDViewerTouch extends ThreeDViewerMouse {
                 : (this.photoNumber += this.speed);
             this.currentPhoto.src = `../assets/3D${
                 this.isFullScreen ? "" : "-webp"
-            }/${this.folder}-${this.photoNumber}.webp`;
+            }/${this.folder}-${this.photoNumber.toFixed()}.webp`;
             this.xStart = xMove;
         }
     }
