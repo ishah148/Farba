@@ -23,18 +23,18 @@ const baseConfig = {
                 type: 'asset/resource',
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
                         presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
-                        ]
-                    }
-                }
+                            "@babel/preset-env",
+                            "@babel/preset-typescript",
+                        ],
+                    },
+                },
             },
-            { test: /\.tsx?$/, loader: 'ts-loader' },
             {
                 test: /\.(woff|woff2|ttf|eot)$/i,
                 use: 'file-loader'
@@ -45,20 +45,20 @@ const baseConfig = {
         extensions: ['.js', '.ts'],
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
-        chunkFilename: '[id].[chunkhash].js',
+        chunkFilename: '[id].[chunkhash].js', //!  ????
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './pages/index.html'),
             filename: 'index.html',
-            chunks: ['index'],
+            chunks: ['index'], //!  ????
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, `./pages/video.html`),
             filename: `video.html`,
-            chunks: [`video`]
+            chunks: [`video`] //!  ????
         }),
         new CleanWebpackPlugin(),
         new CopyPlugin({

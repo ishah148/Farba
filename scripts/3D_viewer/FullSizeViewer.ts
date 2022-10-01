@@ -1,3 +1,4 @@
+// @ts-nocheck
 class FullSizeViewer {
     photoNumber: any;
     folder: any;

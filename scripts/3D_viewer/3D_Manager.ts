@@ -1,3 +1,4 @@
+// @ts-nocheck  //! delete
 // import "./FullSizeViewer.js";
 import { tdSensibility, tdSensibilityTouch, tdTotalAmount } from "./configs";
 import { ThreeDViewerMouse, ThreeDViewerTouch } from "./TouchMouseHandlers";

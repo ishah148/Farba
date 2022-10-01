@@ -15,10 +15,10 @@ import '../styles/sass/pages/main.scss'
 import '../assets/images/favicon.jpg'
 // import {FullSizeViewer} from "./3D_view.js"
 
-const tg = new TelegramSendMessage("contacts-window__form","contacts-window__user-number","contacts-window__button-send");
-const tgFooter = new TelegramSendMessage("contacts-window__form-footer","contacts-window__user-number-footer","contacts-window__button-send-footer");
-const b = new ThreeDManager();
-const videoPlayersHandler = new VideoPlayersHandler([
+new TelegramSendMessage("contacts-window__form","contacts-window__user-number","contacts-window__button-send");
+new TelegramSendMessage("contacts-window__form-footer","contacts-window__user-number-footer","contacts-window__button-send-footer");
+new ThreeDManager();
+new VideoPlayersHandler([
     {
         number: 1,
         dataTranslate: 'loft-furniture',
@@ -50,7 +50,6 @@ const videoPlayersHandler = new VideoPlayersHandler([
         caption: 'Рекламный видеоролик - Обзор духового шкафа',
     },
 ]);
-// const b = new ThreeDViewer();
 
 window.addEventListener("load", () => {
     document.querySelector(".start-screen__video-source").setAttribute("src", "../assets/video/video_360_clip.mp4");
