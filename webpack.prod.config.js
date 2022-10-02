@@ -1,3 +1,5 @@
 module.exports = {
-    mode: 'development',
+    mode: 'production',
+    target: ['web', 'es6'],
+ // target: 'browserslist',
 };

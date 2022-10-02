@@ -19,7 +19,7 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
-                test: /\.(svg|jpg|jpeg|gif|png)$/i,
+                test: /\.(svg|jpg|jpeg|gif|png|woff|woff2|ttf|eot)$/i,
                 type: 'asset/resource',
             },
             {
@@ -34,11 +34,7 @@ const baseConfig = {
                         ],
                     },
                 },
-            },
-            {
-                test: /\.(woff|woff2|ttf|eot)$/i,
-                use: 'file-loader'
-            },
+            }
         ],
     },
     resolve: {
