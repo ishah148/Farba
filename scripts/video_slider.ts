@@ -23,11 +23,8 @@ export class VideoSlider {
     createModalWindow(src) {
         this.generatePrevSlide()
         this.generateCurrentSlide();
-        this.generateNextSlide()
-        this.wrapper.classList.add("visible");
+        this.generateNextSlide();
         document.querySelector('body').classList.add('stop-scrolling');
-        this.wrapper.setAttribute('tabindex', 1);
-        this.wrapper.focus();
     }
 
     addEvents() {
@@ -124,8 +121,8 @@ export class VideoSlider {
     generateNextSlide() {
         const html = `
         <div class="video-galery__container next--slide" >
-        ${this.spinnerHTML}
-            <img src='${this.getSrc(this.NEXT)}' alt = ''>
+            ${this.spinnerHTML}
+            ${this.getVideoPlayerElement(this.NEXT)}
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -134,13 +131,8 @@ export class VideoSlider {
     generateCurrentSlide() {
         const modalWindow = `
                 <div class="video-galery__container current--slide">
-                    <div class="spinner show">
-                        <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <p class="spinner__persent"></p>
-                    </div>
-                    <img src='${this.getSrc()}' alt = ''>
+                    ${this.spinnerHTML};
+                    ${this.getVideoPlayerElement(0)}
                 </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindow);
@@ -149,13 +141,46 @@ export class VideoSlider {
     generatePrevSlide() {
         const html = `
         <div class="video-galery__container prev--slide" >
-        ${this.spinnerHTML}
-            <img src='${this.getSrc(this.PREV)}' alt = ''>
+            ${this.spinnerHTML}
+            ${this.getVideoPlayerElement(this.PREV)}
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
+    getVideoPlayerElement(x) {
+        const src = this.getSrc(x);
+        const videoInfo = {
+            number: this.currentPos,
+            dataTranslate: 'loft-furniture',
+            caption: 'Рекламный видеоролик - Лофт Мебель',
+        };
+        return `
+        <div class="video-player">
+            <!--item-->
+            <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.number}">
+                <!--item__video-->
+                <video class="video-player__video" id="video-player__video_${videoInfo.number}"
+                    poster="../assets/images/video_posters/poster${videoInfo.number}.jpg" preload="metadata">
+                    <source id="source__HD-quality_${videoInfo.number}" src="../assets/video/content/video_${videoInfo.number}_1080.mp4"
+                        type="video/mp4">
+                    <source id="source__high-quality_${videoInfo.number}" src="../assets/video/content/video_${videoInfo.number}_720.mp4"
+                        type="video/mp4">
+                    <source id="source__medium-quality_${videoInfo.number}"
+                        src="../assets/video/content/video_${videoInfo.number}_540.mp4" type="video/mp4">
+                    <source id="source__low-quality_${videoInfo.number}" src="../assets/video/content/video_${videoInfo.number}_360.mp4"
+                        type="video/mp4">
+                </video>
+                <button class="video-player__start-button" id="video-player__start-button_${videoInfo.number}">
+                    <svg class="video-player__start-button-svg">
+                        <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
+                    </svg>
+                </button>
+            </div>
+            <p class="video-player__caption" data-translate="${videoInfo.dataTranslate}">${videoInfo.caption}</p>
+        </div>`
+    }
+    
     getSrc(order = 0) {
         let number = this.videoArray[this.currentPos + order];
         if ((this.currentPos === 0 && order === -1)) {
@@ -166,7 +191,7 @@ export class VideoSlider {
             number = this.videoArray[0];
             if (!number) debugger;
         }
-        return `../assets/portfolio/${this.videoCategory}_full/${this.videoCategory}_${number}.webp`;
+        return `../assets/video-galery/${this.videoCategory}/video_${number}_720`;
     }
 
     get spinnerHTML() {

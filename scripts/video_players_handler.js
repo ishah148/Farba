@@ -68,7 +68,6 @@ export class VideoPlayersHandler {
         document.getElementById(`video-player__start-button_${videoNumber}`).classList.remove('disappearance');
         document.getElementById(`video-player__controls_${videoNumber}`).remove();
 
-
         let videoClone = video.cloneNode(true);  //remove event listeners from video
         video.parentNode.replaceChild(videoClone, video);
     }
