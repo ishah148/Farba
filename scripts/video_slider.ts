@@ -1,17 +1,16 @@
 // @ts-nocheck
-export class Slider {
+export class VideoSlider {
     constructor(src, videoCategory, currentPos, videoArray) {
         this.src = src;
         this.videoCategory = videoCategory;
         this.currentPos = currentPos;
         this.videoArray = videoArray;
-        this.wrapper = document.querySelector(".modal-window__wrapper");
+        this.wrapper = document.querySelector(".video-galery__wrapper");
         this.NEXT = 1;
         this.PREV = -1;
         this.buttons = [
-            document.querySelector('.modal-window__mouse.area-right'),
-            document.querySelector('.modal-window__mouse.area-left'),
-            document.querySelector('.modal-window__close-button'),
+            document.querySelector('.video-galery__mouse.area-right'),
+            document.querySelector('.video-galery__mouse.area-left'),
         ]
         this.init();
     }
@@ -32,20 +31,11 @@ export class Slider {
     }
 
     addEvents() {
-        const closeButton = document.querySelector(".modal-window__close-button");
-        const closeAreaUp = document.querySelector('.modal-window__mouse-close.area-up');
-        const closeAreaDown = document.querySelector('.modal-window__mouse-close.area-down');
-        const rightButton = document.querySelector(".modal-window__mouse.area-right");
-        const leftButton = document.querySelector(".modal-window__mouse.area-left");
+        const rightButton = document.querySelector(".video-galery__mouse.area-right");
+        const leftButton = document.querySelector(".video-galery__mouse.area-left");
 
         rightButton.onclick = this.nextPhoto.bind(this);
         leftButton.onclick = this.prevPhoto.bind(this);
-        closeButton.onclick = () => this.closeModalWindow();
-        closeAreaUp.onclick = () => this.closeModalWindow();
-        closeAreaDown.onclick = () => this.closeModalWindow();
-        if (this.isTouchDevice) {
-            this.touchHandle()
-        }
         this.keyHandler = this.keyHandler.bind(this);
         document.addEventListener('keyup', this.keyHandler);
     }
@@ -90,14 +80,6 @@ export class Slider {
                 return (xStart + sensitivity) < xMove
             }
 
-            function down() {
-                return (yStart + sensitivity) < yMove
-            }
-
-            function up() {
-                return yStart > (yMove + sensitivity)
-            }
-
             const removeEvents = () => {
                 wrapper.replaceWith(wrapper.cloneNode(true));
             }
@@ -110,22 +92,6 @@ export class Slider {
             if (right()) {
                 this.prevPhoto();
                 xStart = xMove;
-            }
-
-            if (down() && !left() && !right()) {
-                document.querySelector('.current--slide').classList.add('up');
-                document.querySelector('.current--slide').addEventListener('transitionend', () => {
-                    this.closeModalWindow();
-                    removeEvents();
-                })
-            }
-
-            if (up() && !left() && !right()) {
-                document.querySelector('.current--slide').classList.add('down');
-                document.querySelector('.current--slide').addEventListener('transitionend', () => {
-                    this.closeModalWindow();
-                    removeEvents();
-                })
             }
         };
     }
@@ -149,7 +115,7 @@ export class Slider {
     }
 
     clearSlides(order) {
-        let slides = this.wrapper.querySelectorAll(".modal-window__container");
+        let slides = this.wrapper.querySelectorAll(".video-galery__container");
         if (slides[order]) {
             slides[order].remove()
         }
@@ -157,7 +123,7 @@ export class Slider {
 
     generateNextSlide() {
         const html = `
-        <div class="modal-window__container next--slide" >
+        <div class="video-galery__container next--slide" >
         ${this.spinnerHTML}
             <img src='${this.getSrc(this.NEXT)}' alt = ''>
         </div>    
@@ -167,7 +133,7 @@ export class Slider {
 
     generateCurrentSlide() {
         const modalWindow = `
-                <div class="modal-window__container current--slide">
+                <div class="video-galery__container current--slide">
                     <div class="spinner show">
                         <div class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
@@ -182,7 +148,7 @@ export class Slider {
 
     generatePrevSlide() {
         const html = `
-        <div class="modal-window__container prev--slide" >
+        <div class="video-galery__container prev--slide" >
         ${this.spinnerHTML}
             <img src='${this.getSrc(this.PREV)}' alt = ''>
         </div>    
@@ -201,16 +167,6 @@ export class Slider {
             if (!number) debugger;
         }
         return `../assets/portfolio/${this.videoCategory}_full/${this.videoCategory}_${number}.webp`;
-    }
-
-    closeModalWindow() {
-        this.wrapper.classList.remove("visible");
-        document
-            .querySelectorAll(".modal-window__container")
-            .forEach((i) => i.remove());
-        document.querySelector('body').classList.remove("stop-scrolling");
-        this.wrapper.replaceWith(this.wrapper.cloneNode(true));
-        document.removeEventListener('keyup', this.keyHandler);
     }
 
     get spinnerHTML() {

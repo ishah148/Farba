@@ -4,10 +4,10 @@
     position: fixed;
     z-index: 10;
     width: 100%;
-    background-color:  var( --primary-dark);
+    background-color: var(--primary-dark);
     transition: all 0.5s;
-    &--transparent{
-        background: rgba(111,111,111, 0.9);
+    &--transparent {
+        background: rgba(111, 111, 111, 0.9);
     }
 
     &__container {
@@ -36,14 +36,14 @@
         }
     }
 
-    &__contacts{
+    &__contacts {
         @media (max-width: var.$tablet) {
             display: none;
         }
     }
+
     .menu {
-        width: 40%;
-        @media (max-width:var.$tablet ) {
+        @media (max-width: var.$tablet) {
             display: none;
         }
         &__list {
@@ -51,5 +51,19 @@
             justify-content: space-around;
         }
     }
-}
 
+    .main-page-menu {
+        width: 40%;
+    }
+
+    .video-page-menu {
+        width: 20%;
+    }
+
+    &__buttons-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 25%;
+    }
+}

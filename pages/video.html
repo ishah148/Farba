@@ -12,29 +12,6 @@
 <body>
 
   <div class="blackout"></div>
-  <div class="modal-window__wrapper">
-    <div class="modal-window__mouse area-left">
-      <button class="modal-window__left-button">
-        <svg class="modal-window__arrow-left">
-          <use xlink:href="../assets/svg/sprite.svg#arrow-left"></use>
-        </svg>
-      </button>
-    </div>
-    <div class="modal-window__mouse area-right">
-      <button class="modal-window__right-button">
-        <svg class="modal-window__arrow-right">
-          <use xlink:href="../assets/svg/sprite.svg#arrow-right"></use>
-        </svg>
-      </button>
-    </div>
-    <div class="modal-window__mouse-close area-up"></div>
-    <div class="modal-window__mouse-close area-down"></div>
-    <button class="modal-window__close-button main">
-      <svg class="modal-window__cross">
-        <use xlink:href="../assets/svg/sprite.svg#cross"></use>
-      </svg>
-    </button>
-  </div>
   <div class="contacts-window__wrapper">
     <div class="contacts-window__container">
       <div class="contacts-window__connect">
@@ -96,16 +73,17 @@
       <div class="header__logo">
         <img class="header__logo-img" src="../assets/images/Farba_logo_svg.svg" alt="logo">
       </div>
-      <nav class="menu">
+      <nav class="video-page-menu">
         <ul class="menu__list">
           <li class="menu__list-item">
-            <a class="menu__link" href="./index.html">First Page</a>
-          </li>
-          <li class="menu__list-item">
-            <a class="menu__link" href="#video-section" data-translate="video">Видео</a>
+            <a class="menu__link" href="./index.html">Main Page</a>
           </li>
         </ul>
       </nav>
+      <div class="header__buttons-container">
+        <button class="header__button default-button default-button--dark" data-photo="clothes">Ролики1</button>
+        <button class="header__button default-button default-button--light" data-photo="clothes">Ролики2</button>
+      </div>
       <div class="header__contacts">+375 (29) 777-40-59</div>
       <!--!switch-lang-->
       <div class="switch-lang switch-lang--header">
@@ -139,15 +117,30 @@
       </nav>
     </div>
 
-    <section class="start-screen">
-      <div class="start-screen__wrapper">
-        <!-- !burger  -->
-        <div class="hamburger">
-          <div class="hamburger__line"></div>
-          <div class="hamburger__line"></div>
-          <div class="hamburger__line"></div>
-        </div>
+    <section class="video-galery__wrapper">
+
+      <div class="hamburger">
+        <div class="hamburger__line"></div>
+        <div class="hamburger__line"></div>
+        <div class="hamburger__line"></div>
       </div>
+
+      <div class="video-galery__mouse area-left">
+        <button class="video-galery__left-button">
+          <svg class="video-galery__arrow-left">
+            <use xlink:href="../assets/svg/sprite.svg#arrow-left"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="video-galery__mouse area-right">
+        <button class="video-galery__right-button">
+          <svg class="video-galery__arrow-right">
+            <use xlink:href="../assets/svg/sprite.svg#arrow-right"></use>
+          </svg>
+        </button>
+      </div>
+
     </section>
 
   </main>
