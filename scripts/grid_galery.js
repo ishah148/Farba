@@ -110,9 +110,9 @@ export class GridGalery {
         const numberOfColumns = this.getNumberOfColumns();
         const photoCategory = event.target.classList[0].split("_")[0];
         const photoNumber = event.target.classList[0].split("-")[0].split("_")[1];
-        const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(+photoNumber);
+        const currentPos = photoOrder[photoCategory][numberOfColumns].indexOf(+photoNumber); //! проверить, не можем ли мы случайно открыть не существующую фотку
         //TODO check do we remove slider?
-        new Slider(event.target.src, photoCategory, photoNumber, currentPos, photoOrder[photoCategory][numberOfColumns]);
+        new Slider(event.target.src, photoCategory, currentPos, photoOrder[photoCategory][numberOfColumns]);
     }
 
     createCard(photoNumber) {

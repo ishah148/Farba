@@ -1,10 +1,9 @@
 export class Slider {
-    constructor(src, photoCategory, photoNumber, currentOrder, orderPhotos) {
+    constructor(src, photoCategory, currentPos, photoArray) {
         this.src = src;
         this.photoCategory = photoCategory;
-        this.photoNumber = photoNumber;  //!slider don't use it
-        this.currentOrder = currentOrder;
-        this.orderPhotos = orderPhotos;
+        this.currentPos = currentPos;
+        this.photoArray = photoArray;
         this.wrapper = document.querySelector(".modal-window__wrapper");
         this.NEXT = 1;
         this.PREV = -1;
@@ -28,13 +27,13 @@ export class Slider {
     }
 
     getSrc(order = 0) {
-        let number = this.orderPhotos[this.currentOrder + order];
-        if ((this.currentOrder === 0 && order === -1)) {
-            number = this.orderPhotos[this.orderPhotos.length - 1]
+        let number = this.photoArray[this.currentPos + order];
+        if ((this.currentPos === 0 && order === -1)) {
+            number = this.photoArray[this.photoArray.length - 1]
             if (!number) debugger;
         }
-        if (this.currentOrder === this.orderPhotos.length - 1 && order === 1) {
-            number = this.orderPhotos[0];
+        if (this.currentPos === this.photoArray.length - 1 && order === 1) {
+            number = this.photoArray[0];
             if (!number) debugger;
         }
         return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
@@ -142,8 +141,8 @@ export class Slider {
     }
 
     nextPhoto() {
-        if (this.currentOrder === this.orderPhotos.length - 1) this.currentOrder = 0;
-        this.currentOrder++;
+        if (this.currentPos === this.photoArray.length - 1) this.currentPos = 0;
+        this.currentPos++;
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNext();
@@ -151,8 +150,8 @@ export class Slider {
     }
 
     prevPhoto() {
-        if (this.currentOrder === 0) this.currentOrder = this.orderPhotos.length
-        this.currentOrder--
+        if (this.currentPos === 0) this.currentPos = this.photoArray.length
+        this.currentPos--
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrev();
