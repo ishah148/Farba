@@ -7,8 +7,9 @@ import "./header.js";
 import "./switch_lang.js";
 import TelegramSendMessage from "./tg_bot.js";
 import { VideoSlider } from './video_slider';
+import { videoGaleryConfig } from './configs/video-configs';
 
 
 new TelegramSendMessage("contacts-window__form","contacts-window__user-number","contacts-window__button-send");
 //new VideoSlider('http://localhost:8009/assets/portfolio/portfolio/portfolio_31.webp', 'portfolio', 1, [1, 2, 3, 4, 5, 6]);
-new VideoSlider('http://localhost:8009/assets/video-galery/first/video_1_720.webp', 'first', 1, [1, 2, 3, 4, 5, 6]); //! вместо 1 должен быть 0!
+new VideoSlider('http://localhost:8009/assets/video-galery/promotional/video_1_720.webp', 'promotional', 0 , videoGaleryConfig.promotional);

@@ -163,7 +163,7 @@ export class Slider {
         const html = `
             <div class="modal-window__container next--slide" >
                 ${this.spinnerHTML}
-                <img src='${this.getSrc(this.slideCodes.next)}' alt = ''>
+                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.next)}.webp' alt = ''>
             </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -173,7 +173,7 @@ export class Slider {
         const modalWindow = `
             <div class="modal-window__container current--slide">
                 ${this.spinnerHTML}
-                <img src='${this.getSrc(this.slideCodes.current)}' alt = ''>
+                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.current)}.webp' alt = ''>
             </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindow);
@@ -183,21 +183,21 @@ export class Slider {
         const html = `
             <div class="modal-window__container prev--slide" >
                 ${this.spinnerHTML}
-                <img src='${this.getSrc(this.slideCodes.prev)}' alt = ''>
+                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.prev)}.webp' alt = ''>
             </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
 
-    getSrc(order = 0) {
-        let number = this.photoNumbersArray[this.currentPos + order];
+    getIndexOfPhotoNumbersArray(order) {
+        let index = this.photoNumbersArray[this.currentPos + order];
         if ((this.currentPos === 0 && order === -1)) {
-            number = this.photoNumbersArray[this.photoNumbersArray.length - 1];
+            index = this.photoNumbersArray[this.photoNumbersArray.length - 1];
         }
         if (this.currentPos === this.photoNumbersArray.length - 1 && order === 1) {
-            number = this.photoNumbersArray[0];
+            index = this.photoNumbersArray[0];
         }
-        return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
+        return index;
     }
 
     closeModalWindow() {
