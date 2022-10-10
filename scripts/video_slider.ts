@@ -94,8 +94,11 @@ export class VideoSlider {
     }
 
     nextPhoto() {
-        if (this.currentPos === this.videoArray.length - 1) this.currentPos = 0;
-        this.currentPos++;
+        if (this.currentPos === this.videoArray.length - 1) {
+            this.currentPos = 0;
+        } else {
+            this.currentPos++;
+        }
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNextSlide();
@@ -103,8 +106,11 @@ export class VideoSlider {
     }
 
     prevPhoto() {
-        if (this.currentPos === 0) this.currentPos = this.videoArray.length
-        this.currentPos--
+        if (this.currentPos === 0) {
+            this.currentPos = this.videoArray.length - 1;
+        } else {
+            this.currentPos--;
+        }
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrevSlide();

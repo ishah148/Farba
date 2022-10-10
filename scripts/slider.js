@@ -5,8 +5,6 @@ export class Slider {
         this.currentPos = currentPos;
         this.photoArray = photoArray;
         this.wrapper = document.querySelector(".modal-window__wrapper");
-        this.NEXT = 1;
-        this.PREV = -1;
         this.buttons = [
             document.querySelector('.modal-window__mouse.area-right'),
             document.querySelector('.modal-window__mouse.area-left'),
@@ -130,8 +128,11 @@ export class Slider {
     }
 
     nextPhoto() {
-        if (this.currentPos === this.photoArray.length - 1) this.currentPos = 0;
-        this.currentPos++;
+        if (this.currentPos === this.photoArray.length - 1) {
+            this.currentPos = 0;
+        } else {
+            this.currentPos++;
+        }
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNextSlide();
@@ -139,8 +140,11 @@ export class Slider {
     }
 
     prevPhoto() {
-        if (this.currentPos === 0) this.currentPos = this.photoArray.length
-        this.currentPos--
+        if (this.currentPos === 0) {
+            this.currentPos = this.photoArray.length - 1;
+        } else {
+            this.currentPos--;
+        }
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrevSlide();
@@ -156,35 +160,30 @@ export class Slider {
 
     generateNextSlide() {
         const html = `
-        <div class="modal-window__container next--slide" >
-        ${this.spinnerHTML}
-            <img src='${this.getSrc(this.NEXT)}' alt = ''>
-        </div>    
+            <div class="modal-window__container next--slide" >
+                ${this.spinnerHTML}
+                <img src='${this.getSrc(1)}' alt = ''>
+            </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
     }
 
     generateCurrentSlide() {
         const modalWindow = `
-                <div class="modal-window__container current--slide">
-                    <div class="spinner show">
-                        <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <p class="spinner__persent"></p>
-                    </div>
-                    <img src='${this.getSrc()}' alt = ''>
-                </div>
+            <div class="modal-window__container current--slide">
+                ${this.spinnerHTML}
+                <img src='${this.getSrc(0)}' alt = ''>
+            </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindow);
     }
 
     generatePrevSlide() {
         const html = `
-        <div class="modal-window__container prev--slide" >
-        ${this.spinnerHTML}
-            <img src='${this.getSrc(this.PREV)}' alt = ''>
-        </div>    
+            <div class="modal-window__container prev--slide" >
+                ${this.spinnerHTML}
+                <img src='${this.getSrc(-1)}' alt = ''>
+            </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
     }
@@ -192,12 +191,10 @@ export class Slider {
     getSrc(order = 0) {
         let number = this.photoArray[this.currentPos + order];
         if ((this.currentPos === 0 && order === -1)) {
-            number = this.photoArray[this.photoArray.length - 1]
-            if (!number) debugger;
+            number = this.photoArray[this.photoArray.length - 1];
         }
         if (this.currentPos === this.photoArray.length - 1 && order === 1) {
             number = this.photoArray[0];
-            if (!number) debugger;
         }
         return `../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${number}.webp`;
     }
