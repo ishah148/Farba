@@ -28,7 +28,7 @@ priceListButton.addEventListener('click', () => {
             priceListButton.classList.add('window-closed');
             priceListButton.classList.remove('inverted');
             priceListButtonSvg.classList.remove('rotate');
-            priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Показать прайс' : 'Show price';
+            priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Показать весь прайс' : 'Show all price';
             priceListButtonText.dataset.translate = 'show-price';
             setTimeout(() => {
                 const yOffset = -100;

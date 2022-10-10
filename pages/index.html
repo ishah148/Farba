@@ -101,13 +101,10 @@
                         <a class="menu__link" href="#portfolio-section" data-translate="photo">Фото</a>
                     </li>
                     <li class="menu__list-item">
-                        <a class="menu__link" href="./video.html">NEXT</a>
-                    </li>
-                    <li class="menu__list-item">
                         <a class="menu__link" href="#threeD-section">360°</a>
                     </li>
                     <li class="menu__list-item">
-                        <a class="menu__link" href="#video-section" data-translate="video">Видео</a>
+                        <a class="menu__link" href="./video.html" data-translate="video" target="_blank">Видео</a>
                     </li>
                     <li class="menu__list-item">
                         <a class="menu__link" href="#price-section" data-translate="prices">Цены</a>
@@ -187,8 +184,7 @@
 
                 <!-- <video autoplay muted loop class="background-video"> -->
                 <video class="start-screen__background-video" muted autoplay loop>
-                    <source class="start-screen__video-source" src=" "
-                        type="video/mp4">
+                    <source class="start-screen__video-source" src=" " type="video/mp4">
                 </video>
             </div>
         </section>
@@ -221,8 +217,7 @@
 
                 </div>
                 <button id="show-all" class="default-button default-button--light portfolio__show-all"
-                    data-translate="show-all">Показать
-                    всё</button>
+                    data-translate="show-all">Показать больше фотографий</button>
 
             </div>
         </section>
@@ -367,6 +362,9 @@
 
                 </div>
             </div>
+            <button class="default-button default-button--light video-section__show-all" onclick="window.open('./video.html','_blank');" type="button" data-translate="show-all">
+                Показать все видеопроекты
+            </button>
         </section>
         <!-- !prices -->
         <section class="prices" id="price-section">
@@ -545,8 +543,8 @@
                         </li>
                     </ul>
                     <div class="prices__button-wrapper">
-                        <button class="prices__price-list-button window-closed">
-                            <span class="prices__button-text" data-translate="show-price">Показать прайс</span>
+                        <button class="prices__price-list-button default-button--gold window-closed">
+                            <span class="prices__button-text" data-translate="show-price">Показать весь прайс</span>
                         </button>
                         <svg class="prices__button-svg">
                             <use xlink:href="../assets/svg/sprite.svg#arrow-down"></use>
@@ -564,14 +562,14 @@
                     </h2>
                 </div>
                 <div class="contacts__inner">
-                    
+
                     <div class="contacts-window-footer__wrapper">
-                        
-                            
+
+
                         <div class="contacts-window__connect">
                             <h2 class="contacts-window__h2">МЫ НА СВЯЗИ</h2>
                             <div class="contacts-window__icons-container">
-            
+
                                 <a href="viber://chat?number=%2B375259041736" target="_blank">
                                     <img class="contacts-window__icon" src="../assets/png_icons/viber.png" alt="">
                                 </a>
@@ -584,36 +582,38 @@
                                 <a href="tel:+375259041736">
                                     <img class="contacts-window__icon" src="../assets/png_icons/phone.png" alt="">
                                 </a>
-            
+
                             </div>
                             <div class="contacts-window__phone-container">
-                                <img class="contacts-window__vibration-icon" src="../assets/png_icons/vibration.png" alt="">
+                                <img class="contacts-window__vibration-icon" src="../assets/png_icons/vibration.png"
+                                    alt="">
                                 <h2 class="contacts-window__h2">+375 29 777 40 59</h2>
                             </div>
                         </div>
-                            
-                            <div class="contacts-window__order-call">
-                                <form method="post" id="contacts-window__form-footer" class="contacts-window__form">
-                
-                                    <input type="text" name="userName" placeholder="Имя" />
-                                    <input id="contacts-window__user-number-footer" class="contacts-window__user-number" type="tel"
-                                        name="userNumber" placeholder="Номер" min="8" max="25" />
-                                    <button id="contacts-window__button-send-footer" class="contacts-window__button-send">ЗАКАЗАТЬ
-                                        ЗВОНОК</button>
-                                </form>
-                            </div>
-                            <div class="contacts-window__text-me">
-                                <h2 class="contacts-window__h2">НАПИСАТЬ</h2>
-                                <a href="mailto:ishah.1996@gmail.com" target="_blank">
-                                    <div class="contacts-window__decorate-border-container"></div>
-                                    <div class="contacts-window__border-test decore--up"></div>
-                                    <div class="contacts-window__border-test decore--down"></div>
-                                    <div class="contacts-window__border-main">stfarba@gmail.com
-                                    </div>
-                                    <!-- <div class="contacts-window__border"></div>  -->
-                                </a>
-                            </div>
-                        
+
+                        <div class="contacts-window__order-call">
+                            <form method="post" id="contacts-window__form-footer" class="contacts-window__form">
+
+                                <input type="text" name="userName" placeholder="Имя" />
+                                <input id="contacts-window__user-number-footer" class="contacts-window__user-number"
+                                    type="tel" name="userNumber" placeholder="Номер" min="8" max="25" />
+                                <button id="contacts-window__button-send-footer"
+                                    class="contacts-window__button-send">ЗАКАЗАТЬ
+                                    ЗВОНОК</button>
+                            </form>
+                        </div>
+                        <div class="contacts-window__text-me">
+                            <h2 class="contacts-window__h2">НАПИСАТЬ</h2>
+                            <a href="mailto:ishah.1996@gmail.com" target="_blank">
+                                <div class="contacts-window__decorate-border-container"></div>
+                                <div class="contacts-window__border-test decore--up"></div>
+                                <div class="contacts-window__border-test decore--down"></div>
+                                <div class="contacts-window__border-main">stfarba@gmail.com
+                                </div>
+                                <!-- <div class="contacts-window__border"></div>  -->
+                            </a>
+                        </div>
+
                     </div>
 
                     <div class="yandex-map">
