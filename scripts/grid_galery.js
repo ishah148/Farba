@@ -1,4 +1,4 @@
-import { configAtr, configGridStyles, photoOrder, preShowConfig, bastardsConfig } from "./photo_config.js"
+import { configAtr, configGridStyles, photoOrder, preShowConfig, bastardsConfig } from "./configs/photo_config"
 import { Slider } from "./slider.js"
 export class GridGalery {
     constructor(photoCategory) {

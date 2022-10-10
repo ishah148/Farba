@@ -1,17 +1,20 @@
 // @ts-nocheck
 export class VideoSlider {
-    constructor(src, videoCategory, currentPos, videoArray) {
+    constructor(src, videoCategory, currentPos, videoNumbersArray) {
         this.src = src;
         this.videoCategory = videoCategory;
         this.currentPos = currentPos;
-        this.videoArray = videoArray;
+        this.videoNumbersArray = videoNumbersArray;
         this.wrapper = document.querySelector(".video-galery__wrapper");
-        this.NEXT = 1;
-        this.PREV = -1;
-        this.buttons = [
-            document.querySelector('.video-galery__mouse.area-right'),
-            document.querySelector('.video-galery__mouse.area-left'),
-        ]
+        this.buttons = {
+            rightButton: document.querySelector(".video-galery__mouse.area-right"),
+            leftButton: document.querySelector(".video-galery__mouse.area-left"),
+        };
+        this.slideCodes = {
+            prev: -1,
+            current: 0,
+            next: 1
+        }
         this.init();
     }
 
@@ -21,25 +24,22 @@ export class VideoSlider {
     }
 
     createModalWindow(src) {
-        this.generatePrevSlide()
+        this.generatePrevSlide();
         this.generateCurrentSlide();
         this.generateNextSlide();
         document.querySelector('body').classList.add('stop-scrolling');
     }
 
     addEvents() {
-        const rightButton = document.querySelector(".video-galery__mouse.area-right");
-        const leftButton = document.querySelector(".video-galery__mouse.area-left");
-
-        rightButton.onclick = this.nextPhoto.bind(this);
-        leftButton.onclick = this.prevPhoto.bind(this);
+        this.buttons.rightButton.onclick = this.openNextSlide.bind(this);
+        this.buttons.leftButton.onclick = this.openPrevSlide.bind(this);
         this.keyHandler = this.keyHandler.bind(this);
         document.addEventListener('keyup', this.keyHandler);
     }
 
     keyHandler(e) {
-        if (e.code === 'ArrowRight') this.nextPhoto();
-        if (e.code === 'ArrowLeft') this.prevPhoto();
+        if (e.code === 'ArrowRight') this.openNextSlide();
+        if (e.code === 'ArrowLeft') this.openPrevSlide();
     }
 
     isTouchDevice() {
@@ -82,19 +82,19 @@ export class VideoSlider {
             }
 
             if (left()) {
-                this.nextPhoto();
+                this.openNextSlide();
                 xStart = xMove;
             }
 
             if (right()) {
-                this.prevPhoto();
+                this.openPrevSlide();
                 xStart = xMove;
             }
         };
     }
 
-    nextPhoto() {
-        if (this.currentPos === this.videoArray.length - 1) {
+    openNextSlide() {
+        if (this.currentPos === this.videoNumbersArray.length - 1) {
             this.currentPos = 0;
         } else {
             this.currentPos++;
@@ -102,22 +102,22 @@ export class VideoSlider {
         document.querySelector('.current--slide').classList.replace('current--slide', 'prev--slide')
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide')
         this.generateNextSlide();
-        this.clearSlides(0)
+        this.clearSlide(0)
     }
 
-    prevPhoto() {
+    openPrevSlide() {
         if (this.currentPos === 0) {
-            this.currentPos = this.videoArray.length - 1;
+            this.currentPos = this.videoNumbersArray.length - 1;
         } else {
             this.currentPos--;
         }
         document.querySelector('.current--slide').classList.replace('current--slide', 'next--slide')
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide')
         this.generatePrevSlide();
-        this.clearSlides(3)
+        this.clearSlide(3)
     }
 
-    clearSlides(order) {
+    clearSlide(order) {
         let slides = this.wrapper.querySelectorAll(".video-galery__container");
         if (slides[order]) {
             slides[order].remove()
@@ -128,7 +128,7 @@ export class VideoSlider {
         const html = `
         <div class="video-galery__container next--slide" >
             ${this.spinnerHTML}
-            ${this.getVideoPlayerElement(this.NEXT)}
+            ${this.getVideoPlayerElement(this.slideCodes.next)}
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -138,7 +138,7 @@ export class VideoSlider {
         const modalWindow = `
                 <div class="video-galery__container current--slide">
                     ${this.spinnerHTML};
-                    ${this.getVideoPlayerElement(0)}
+                    ${this.getVideoPlayerElement(this.slideCodes.current)}
                 </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindow);
@@ -148,7 +148,7 @@ export class VideoSlider {
         const html = `
         <div class="video-galery__container prev--slide" >
             ${this.spinnerHTML}
-            ${this.getVideoPlayerElement(this.PREV)}
+            ${this.getVideoPlayerElement(this.slideCodes.prev)}
         </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
@@ -188,14 +188,12 @@ export class VideoSlider {
     }
     
     getSrc(order = 0) {
-        let number = this.videoArray[this.currentPos + order];
+        let number = this.videoNumbersArray[this.currentPos + order];
         if ((this.currentPos === 0 && order === -1)) {
-            number = this.videoArray[this.videoArray.length - 1]
-            if (!number) debugger;
+            number = this.videoNumbersArray[this.videoNumbersArray.length - 1]
         }
-        if (this.currentPos === this.videoArray.length - 1 && order === 1) {
-            number = this.videoArray[0];
-            if (!number) debugger;
+        if (this.currentPos === this.videoNumbersArray.length - 1 && order === 1) {
+            number = this.videoNumbersArray[0];
         }
         return `../assets/video-galery/${this.videoCategory}/video_${number}_720`;
     }
