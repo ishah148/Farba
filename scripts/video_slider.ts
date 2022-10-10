@@ -129,7 +129,6 @@ export class VideoSlider {
         const videoInfo = this.videoInfoArray[index];
         const html = `
         <div class="video-galery__container next--slide" >
-            ${this.spinnerHTML}
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
@@ -141,8 +140,8 @@ export class VideoSlider {
         const videoInfo = this.videoInfoArray[index];
         const html = `
                 <div class="video-galery__container current--slide">
-                    ${this.spinnerHTML};
                     ${this.getVideoPlayerElement(videoInfo)}
+                    ${this.getDescription()}
                 </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -153,7 +152,6 @@ export class VideoSlider {
         const videoInfo = this.videoInfoArray[index];
         const html = `
         <div class="video-galery__container prev--slide" >
-            ${this.spinnerHTML}
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
@@ -174,9 +172,8 @@ export class VideoSlider {
     getVideoPlayerElement(videoInfo) {
         return `
         <div class="video-player">
-            <!--item-->
+            <p class="video-player__caption" data-translate="${videoInfo.dataTranslate}">${videoInfo.caption}</p>
             <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
-                <!--item__video-->
                 <video class="video-player__video" id="video-player__video_${videoInfo.id}"
                     poster="../assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
                     <source id="source__HD-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_1080.mp4"
@@ -194,18 +191,27 @@ export class VideoSlider {
                     </svg>
                 </button>
             </div>
-            <p class="video-player__caption" data-translate="${videoInfo.dataTranslate}">${videoInfo.caption}</p>
+            <div class="video-contacts">
+                stfarba@gmail.com // +375 29 777 40 59
+                <a>VK</a> // <a>Instagram</a> // <a>Vimeo</a>
+            </div>
         </div>`
     }
 
-    get spinnerHTML() {
+    getDescription() {
         return `
-        <div class="spinner show">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+            <div class="video-description">
+                Обычно, когда бренду нужен ролик на 5 секунд, получается один пэк-шот. Но не в этот раз. 
+                Три слова и три ролика о наших любимых консервах Доброфлот. По традиции, в стоп-моушн анимации.
             </div>
-            <p class="spinner__persent"></p>
-        </div>
         `
     }
+
+    // getContacts() {
+    //     return `
+    //     <div class="video-contacts">
+    //         stfarba@gmail.com // +375 29 777 40 59
+    //         <a>VK</a> // <a>Instagram</a> // <a>Vimeo</a>
+    //     </div>`
+    // }
 }

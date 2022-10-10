@@ -1,7 +1,7 @@
 @use "../base/variables" as var;
 
 .video-player {
-    position: relative;
+    position: relative; //TODO мб удалить - ни на что не влияет
     &__video-wrapper {
         position: relative;
         aspect-ratio: 16/9; // РАБОТАЕТ ТОЛЬКО В ХРОМЕ!!!!!!
