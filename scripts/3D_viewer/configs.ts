@@ -1,5 +1,5 @@
 export const tdTotalAmount = {
-    canon: 85,
+    canon: 84, //85 in folder
     gillette: 72,
     babycar: 18,
     lg: 36,
@@ -31,8 +31,8 @@ export const tdSensibilityTouchStep = {
 
 
 export const autoRotateSpeed = {
-    canon: 0.2,
+    canon: 0.1,
     gillette: 0.2,
-    babycar: 0.25,
-    lg: 0.20,
+    babycar: 0.05,
+    lg: 0.05,
 }
