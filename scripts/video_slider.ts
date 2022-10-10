@@ -141,7 +141,6 @@ export class VideoSlider {
         const html = `
                 <div class="video-galery__container current--slide">
                     ${this.getVideoPlayerElement(videoInfo)}
-                    ${this.getDescription()}
                 </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -171,39 +170,51 @@ export class VideoSlider {
 
     getVideoPlayerElement(videoInfo) {
         return `
-        <div class="video-player">
-            <p class="video-player__caption" data-translate="${videoInfo.dataTranslate}">${videoInfo.caption}</p>
-            <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
-                <video class="video-player__video" id="video-player__video_${videoInfo.id}"
-                    poster="../assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
-                    <source id="source__HD-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_1080.mp4"
-                        type="video/mp4">
-                    <source id="source__high-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_720.mp4"
-                        type="video/mp4">
-                    <source id="source__medium-quality_${videoInfo.id}"
-                        src="../assets/video/content/video_${videoInfo.id}_540.mp4" type="video/mp4">
-                    <source id="source__low-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_360.mp4"
-                        type="video/mp4">
-                </video>
-                <button class="video-player__start-button" id="video-player__start-button_${videoInfo.id}">
-                    <svg class="video-player__start-button-svg">
-                        <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
-                    </svg>
-                </button>
+        <h1 class="slide-menu">
+            <a>РЕКЛАМНЫЕ ВИДЕОРОЛИКИ</a> | <a>ВИДЕООБЗОРЫ ТОВАРОВ</a>
+        </h1>
+        <div class="slide-content">
+            <div class="video-player">
+                <div class="video-player__caption" data-translate="${videoInfo.dataTranslate}">
+                    <p class="video-player__caption-header">${videoInfo['caption-header']}</p>
+                    <p class="video-player__caption-subheader">${videoInfo['caption-subheader']}</p>
+                </div>
+                <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
+                    <video class="video-player__video" id="video-player__video_${videoInfo.id}"
+                        poster="../assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
+                        <source id="source__HD-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_1080.mp4"
+                            type="video/mp4">
+                        <source id="source__high-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_720.mp4"
+                            type="video/mp4">
+                        <source id="source__medium-quality_${videoInfo.id}"
+                            src="../assets/video/content/video_${videoInfo.id}_540.mp4" type="video/mp4">
+                        <source id="source__low-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_360.mp4"
+                            type="video/mp4">
+                    </video>
+                    <button class="video-player__start-button" id="video-player__start-button_${videoInfo.id}">
+                        <svg class="video-player__start-button-svg">
+                            <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="video-contacts">
+                    <p>stfarba@gmail.com<span>&nbsp;&nbsp;//&nbsp;&nbsp;</span>+375 29 777 40 59</p>
+                    <a>Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Viber</a>
+                </div>
             </div>
-            <div class="video-contacts">
-                stfarba@gmail.com // +375 29 777 40 59
-                <a>VK</a> // <a>Instagram</a> // <a>Vimeo</a>
+            <div class="video-description-wrapper">
+                <div class="video-description">
+                    Обычно, когда бренду нужен ролик на 5 секунд, получается один пэк-шот. Но не в этот раз. 
+                    Три слова и три ролика о наших любимых консервах Доброфлот. По традиции, в стоп-моушн анимации.
+                </div>
             </div>
-        </div>`
+        </div>
+        `
     }
 
     getDescription() {
         return `
-            <div class="video-description">
-                Обычно, когда бренду нужен ролик на 5 секунд, получается один пэк-шот. Но не в этот раз. 
-                Три слова и три ролика о наших любимых консервах Доброфлот. По традиции, в стоп-моушн анимации.
-            </div>
+            
         `
     }
 

@@ -18,17 +18,17 @@
   transition: background-color 0.5s ease;
 
   .video-galery__container {
-    display: flex;
-    gap: 20px; //? добавлено к фалу modal-window, откуда скопирован код файла
-    justify-content: space-between;
     position: absolute;
+    display: flex;
+    flex-direction: column; //? добавлено к фалу modal-window, откуда скопирован код файла
+    justify-content: flex-start; //? добавлено к фалу modal-window, откуда скопирован код файла
+    gap: 40px; //? добавлено к фалу modal-window, откуда скопирован код файла
+    // padding-bottom: 11vh; //? добавлено к фалу modal-window, откуда скопирован код файла
+    margin: auto;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
     border-radius: 1.2%;
 
     &.prev--slide {
