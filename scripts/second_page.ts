@@ -4,7 +4,7 @@ import '../assets/images/favicon.jpg'
 import "./contacts-window.js"
 import "./hamburger.js";
 import "./header.js";
-import "./switch_lang.js";
+import "./switch_lang.js";  //почему не включает в commonModules при сборке?
 import TelegramSendMessage from "./tg_bot.js";
 import { VideoSlider } from './video_slider';
 import { videoGaleryConfig } from './configs/video-configs';
