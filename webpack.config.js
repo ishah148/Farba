@@ -3,7 +3,6 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
@@ -13,10 +12,6 @@ const baseConfig = {
     },
     module: {
         rules: [
-            {
-                test: /\.(s[ac]|c)ss$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-            },
             {
                 test: /\.(jpg|png)$/i,
                 type: 'asset/resource',
@@ -76,11 +71,6 @@ const baseConfig = {
                     to: path.resolve(__dirname, './dist/assets/'),
                 },
             ],
-        }),
-        new MiniCssExtractPlugin({
-            filename: './styles/[name].[hash:4].css',
-            chunkFilename: '[id].css',    //?
-            ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         new CleanWebpackPlugin(),
     ],
