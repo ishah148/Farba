@@ -3,9 +3,8 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: {
@@ -19,8 +18,19 @@ const baseConfig = {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
-                test: /\.(svg|jpg|jpeg|gif|png|woff|woff2|ttf|eot)$/i,
+                test: /\.(jpg|png)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: './assetsResource/icons/[name][ext]',
+                },
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot)$/,
+                include: [path.resolve(__dirname, './assets/fonts/')],
+                type: 'asset/resource',
+                generator: {
+                    filename: './assetsResource/fonts/[name][ext]',
+                },
             },
             {
                 test: /\.(ts|js)x?$/,
@@ -43,9 +53,8 @@ const baseConfig = {
     output: {
         path: path.resolve(__dirname, './dist/'),
         filename: './scripts/[name].[contenthash:4].js',
-        assetModuleFilename: './assetsResource/[name][ext]',
         //chunkFilename: '[id].[chunkhash:4].js', //TODO Похоже понадобится для асинхронных модулей
-                                                // https://webpack.js.org/configuration/output/#outputchunkfilename
+        // https://webpack.js.org/configuration/output/#outputchunkfilename
     },                                          // https://dev.to/yadhus/what-is-output-webpack-5-cho
     plugins: [
         new HtmlWebpackPlugin({
@@ -59,12 +68,20 @@ const baseConfig = {
             // filename: `video.[hash:4].html`,
             filename: `video.html`,
             chunks: [`video`]            //?
-        }), 
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './assets'),
+                    to: path.resolve(__dirname, './dist/assets/'),
+                },
+            ],
+        }),
         new MiniCssExtractPlugin({
             filename: './styles/[name].[hash:4].css',
             chunkFilename: '[id].css',    //?
             ignoreOrder: false, // Enable to remove warnings about conflicting order
-          }),
+        }),
         new CleanWebpackPlugin(),
     ],
     devServer: {
