@@ -8,13 +8,32 @@ module.exports = {
         rules: [
             {
                 test: /\.(s[ac]|c)ss$/i,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             }
         ]
     },
     devServer: {
-        contentBase: path.resolve(__dirname, '../dist'),
+        // static: {
+        //     directory: path.join(__dirname, './devfolder'),
+        // },
+        // devMiddleware: {
+        //     writeToDisk: true,
+        // },
+
+        // client: {
+        //     overlay: {
+        //         errors: true,
+        //         warnings: false,
+        //       },
+        // },
+        // inline: true, //?
+        hot: true,
+        //compress: true, //?
+        port: 8009,
+        open: true,
         // host: '192.168.100.18',//your ip address
-        // port: 8009,
+    },
+    optimization: {
+        runtimeChunk: 'single', //?
     },
 };

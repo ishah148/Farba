@@ -26,7 +26,7 @@ window.addEventListener("load", () => {
     new GridGalery("portfolio");
 });
 
-
+console.log('fuck')
 
 
 

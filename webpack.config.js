@@ -2,8 +2,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: {
@@ -64,7 +63,7 @@ const baseConfig = {
             filename: `video.html`,
             chunks: [`video`]            //?
         }),
-        new CopyPlugin({
+        new CopyWebpackPlugin({
             patterns: [
                 {
                     from: path.resolve(__dirname, './assets'),
@@ -72,13 +71,7 @@ const baseConfig = {
                 },
             ],
         }),
-        new CleanWebpackPlugin(),
     ],
-    devServer: {
-        overlay: true,
-        inline: true,
-        port: 8009,
-    },
 };
 
 module.exports = ({ mode }) => {
