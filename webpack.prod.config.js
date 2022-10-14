@@ -4,18 +4,41 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 
 module.exports = {
-    // mode: 'production',
-    mode: 'development',
-    target: ['web', 'es6'], // for babel (i think); comment if we need support for older browsers
-    // target: 'browserslist', // for babel (i think); uncomment if we need support for older browsers
+    mode: 'production',
+    // mode: 'development',
+    target: ['web', 'es6'], //? по идее, влияет только на код, который генерирует сам вебпак
+                            //? но почему-то вары всё равно есть в коде вебпака
+    // target: 'browserslist',
     module: {
         rules: [
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+            },
+            {
+                test: /\.(ts|js)x?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env', {
+                                    targets: 'last 5 years'
+                                }
+                            ],
+                            [
+                                "@babel/preset-typescript", {
+                                    targets: 'last 5 years'
+                                }
+                            ]
+                        ],
+                    },
+                },
             }
         ]
     },
@@ -33,20 +56,28 @@ module.exports = {
     ],
     optimization: {
         minimize: true,
+        // minimize: false,   // for not mininmizing js (debug)
         minimizer: [
             new TerserPlugin({
                 extractComments: false,  //remove license files
                 terserOptions: {
-                    mangle: {
-                        toplevel: true,  //TODO: doesn't work
-                    },
                     output: {
-                        comments: false, //TODO: doesn't work
+                        comments: false,
                     },
                 },
-            })
+            }),
+            new CssMinimizerPlugin({
+                minimizerOptions: [{
+                    preset: [
+                        "default",
+                        {
+                            discardComments: { removeAll: true },
+                        },
+                    ],
+                },
+                ]
+            }),
         ],
-        // minimize: false,   // for not mininmizing js (debug)
         concatenateModules: true,
         splitChunks: {
             filename: './scripts/commonModules.[hash:4].js',

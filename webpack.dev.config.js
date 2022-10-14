@@ -9,6 +9,27 @@ module.exports = {
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+                test: /\.(ts|js)x?$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env', {
+                                    targets: 'last 2 versions'
+                                }
+                            ],
+                            [
+                                "@babel/preset-typescript", {
+                                    targets: 'last 2 versions'
+                                }
+                            ]
+                        ],
+                    },
+                },
             }
         ]
     },

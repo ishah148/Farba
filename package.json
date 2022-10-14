@@ -28,6 +28,7 @@
         "compression-webpack-plugin": "^10.0.0",
         "copy-webpack-plugin": "^7.0.0",
         "css-loader": "^5.1.0",
+        "css-minimizer-webpack-plugin": "^4.2.2",
         "css-mqpacker": "^7.0.0",
         "cssnano": "^5.1.13",
         "file-loader": "^6.2.0",
@@ -50,7 +51,7 @@
         "webpack-merge": "^5.7.3"
     },
     "browserslist": [
-        "> 0.5%",
+        "> 0.2%",
         "last 2 years",
         "IE 10"
     ]
