@@ -11,17 +11,12 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(ts|js)x?$/,
+                test: /\.ts$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
                         presets: [
-                            [
-                                '@babel/preset-env', {
-                                    targets: 'last 2 versions'
-                                }
-                            ],
                             [
                                 "@babel/preset-typescript", {
                                     targets: 'last 2 versions'
@@ -48,13 +43,16 @@ module.exports = {
         //       },
         // },
         // inline: true, //?
-        hot: true,
+        // hot: true,
         //compress: true, //?
         port: 8009,
         open: true,
         // host: '192.168.100.18',//your ip address
     },
     optimization: {
-        runtimeChunk: 'single', //?
+        runtimeChunk: 'single',
+        // runtimeChunk: {
+        //     name: 'runtime',
+        // }
     },
 };

@@ -26,9 +26,3 @@ window.addEventListener("load", () => {
     new GridGalery("portfolio");
 });
 
-
-
-
-
-
-
