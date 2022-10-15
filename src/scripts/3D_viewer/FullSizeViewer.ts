@@ -28,7 +28,7 @@ class FullSizeViewer {
                 </div>
                 <p class="spinner__persent"></p>
             </div>
-            <img src='../assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
+            <img src='./assets/3D/${this.folder}-${this.photoNumber}.webp' alt = ''>
         </div>
         `;
         // const a = new ThreeDViewerMouse(this.wrapper,'lg')

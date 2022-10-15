@@ -45,7 +45,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: './styles/[name].[hash:4].css',
+            filename: './src/styles/[name].[hash:4].css',
             chunkFilename: '[id].css',    //?
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),

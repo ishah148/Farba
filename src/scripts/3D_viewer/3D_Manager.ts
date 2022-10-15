@@ -66,7 +66,7 @@ export class ThreeDManager {
   dowloadPhotos(target, folder) {
     for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
       const img = new Image();
-      img.src = `../assets/3D-webp/${folder}-${i}.webp`;
+      img.src = `./assets/3D-webp/${folder}-${i}.webp`;
       img.onload = () => {
         this.checkCountDownloadedPhotos(target, folder);
       };
@@ -101,7 +101,7 @@ export class ThreeDManager {
     if (folder) {
       for (let i = 1; i < tdTotalAmount[folder] + 1; i++) {
         const img = new Image();
-        img.src = `../assets/3D/${folder}-${i}.webp`;
+        img.src = `./assets/3D/${folder}-${i}.webp`;
       }
     }
   }

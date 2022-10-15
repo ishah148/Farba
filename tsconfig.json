@@ -26,12 +26,12 @@
 
     //"sourceMap": true,
     "types": ["webpack-env"],
-    "baseUrl": "./scripts",
+    "baseUrl": "./src/scripts",
     "paths": {
       "*": ["*"]
    },
   },
-   "exclude": ["node_modules", "dist", "./scripts/stuff/*"],
+   "exclude": ["node_modules", "dist", "./src/scripts/stuff/*"],
    "include": [
      "./scripts/*",
    ]

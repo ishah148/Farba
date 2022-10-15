@@ -20,15 +20,15 @@ export class VideoPlayer {
     <div class="video-player__controls disappearance" id="video-player__controls_${this.videoNumber}">
         <button class="video-player__play" id="video-player__play_${this.videoNumber}">
             <svg class="video-player__stop-svg disappearance" id="video-player__stop-svg_${this.videoNumber}">
-                <use xlink:href="../assets/svg/player-sprite.svg#pausebutton"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#pausebutton"></use>
             </svg>
             <svg class="video-player__play-svg" id="video-player__play-svg_${this.videoNumber}">
-                <use xlink:href="../assets/svg/player-sprite.svg#playbutton"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#playbutton"></use>
             </svg>
         </button>
         <button class="video-player__backward" id="video-player__backward_${this.videoNumber}">
             <svg class="video-player__backward-svg">
-                <use xlink:href="../assets/svg/player-sprite.svg#fast-backward"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#fast-backward"></use>
             </svg>
         </button>
         <div class="video-player__progress-bar-container">
@@ -36,16 +36,16 @@ export class VideoPlayer {
         </div>
         <button class="video-player__forward" id="video-player__forward_${this.videoNumber}">
             <svg class="video-player__forward-svg">
-                <use xlink:href="../assets/svg/player-sprite.svg#fast-forward"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#fast-forward"></use>
             </svg>
         </button>
         <div class="video-player__volume-settings">
             <button class="video-player__volume-button" id="video-player__volume-button_${this.videoNumber}">
                 <svg class="video-player__volume-svg" id="video-player__volume-svg_${this.videoNumber}">
-                    <use xlink:href="../assets/svg/player-sprite.svg#volume"></use>
+                    <use xlink:href="./assets/svg/player-sprite.svg#volume"></use>
                 </svg>
                 <svg class="video-player__mute-svg disappearance" id="video-player__mute-svg_${this.videoNumber}">
-                    <use xlink:href="../assets/svg/player-sprite.svg#mute"></use>
+                    <use xlink:href="./assets/svg/player-sprite.svg#mute"></use>
                 </svg>
             </button>
             <div class="video-player__volume-range-wrapper">
@@ -55,7 +55,7 @@ export class VideoPlayer {
         </div>
         <button class="video-player__settings" id="video-player__settings_${this.videoNumber}">
             <svg class="video-player__settings-svg">
-                <use xlink:href="../assets/svg/player-sprite.svg#settings-button"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#settings-button"></use>
             </svg>
         </button>
         <div class="settings-menu disappearance" id="settings-menu_${this.videoNumber}">
@@ -67,10 +67,10 @@ export class VideoPlayer {
         </div>
         <button class="video-player__fullscreen" id="video-player__fullscreen_${this.videoNumber}">
             <svg class="video-player__fullscreen-svg" id="video-player__fullscreen-svg_${this.videoNumber}">
-                <use xlink:href="../assets/svg/player-sprite.svg#fullscreen"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#fullscreen"></use>
             </svg>
             <svg class="video-player__exit-fullscreen-svg disappearance" id="video-player__exit-fullscreen-svg_${this.videoNumber}">
-                <use xlink:href="../assets/svg/player-sprite.svg#exit-full-screen"></use>
+                <use xlink:href="./assets/svg/player-sprite.svg#exit-full-screen"></use>
             </svg>
         </button>
     </div>`

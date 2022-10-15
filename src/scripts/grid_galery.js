@@ -31,7 +31,7 @@ export class GridGalery {
     galeryEventsInit() {
         window.addEventListener("photoDowloaded", () => {
             if (!this.isAllPhotosDownloaded) {
-                this.elems.source.setAttribute("src", "../assets/video/video_fullHD_clip.mp4");
+                this.elems.source.setAttribute("src", "./assets/video/video_fullHD_clip.mp4");
                 this.elems.video.load();
                 this.elems.video.play();
             }
@@ -120,7 +120,7 @@ export class GridGalery {
         newCard.classList.add("portfolio__card");
         newCard.classList.add(`${this.photoCategory}_${photoNumber}`);
         let img = new Image()
-        img.src = `../assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
+        img.src = `./assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
         img.classList.add(`${this.photoCategory}_${photoNumber}-img`);
         img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);
         img.onerror = function (e) {

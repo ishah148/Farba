@@ -22,7 +22,7 @@ new ThreeDManager();
 new VideoPlayersHandler(mainPageVideoInfo);
 
 window.addEventListener("load", () => {
-    document.querySelector(".start-screen__video-source").setAttribute("src", "../assets/video/video_360_clip.mp4");
+    document.querySelector(".start-screen__video-source").setAttribute("src", "./assets/video/video_360_clip.mp4");
     new GridGalery("portfolio");
 });
 

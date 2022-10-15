@@ -6,8 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: {
-        index: path.resolve(__dirname, './scripts/main.js'),
-        video: path.resolve(__dirname, './scripts/second_page.ts'),
+        index: path.resolve(__dirname, './src/scripts/main.js'),
+        video: path.resolve(__dirname, './src/scripts/second_page.ts'),
     },
     module: {
         rules: [
@@ -20,7 +20,7 @@ const baseConfig = {
             },
             {
                 test: /\.(woff|woff2|ttf|eot)$/,
-                include: [path.resolve(__dirname, './assets/fonts/')],
+                include: [path.resolve(__dirname, './src/assets/fonts/')],
                 type: 'asset/resource',
                 generator: {
                     filename: './assetsResource/fonts/[name][ext]',
@@ -39,13 +39,13 @@ const baseConfig = {
     },                                          // https://dev.to/yadhus/what-is-output-webpack-5-cho
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './pages/index.html'),
+            template: path.resolve(__dirname, './src/index.html'),
             // filename: 'index.[hash:4].html',
             filename: 'index.html',
             chunks: ['index'],           //?
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, `./pages/video.html`),
+            template: path.resolve(__dirname, `./src/video.html`),
             // filename: `video.[hash:4].html`,
             filename: `video.html`,
             chunks: [`video`]            //?
@@ -53,8 +53,8 @@ const baseConfig = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, './assets'),
-                    to: path.resolve(__dirname, './dist/assets/'),
+                    from: path.resolve(__dirname, './src/assets'),
+                    to: path.resolve(__dirname, './dist/assets'),
                 },
             ],
         }),

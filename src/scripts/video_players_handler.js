@@ -21,19 +21,19 @@ export class VideoPlayersHandler {
                 <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
                     <!--item__video-->
                     <video class="video-player__video" id="video-player__video_${videoInfo.id}"
-                        poster="../assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
-                        <source id="source__HD-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_1080.mp4"
+                        poster="./assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
+                        <source id="source__HD-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_1080.mp4"
                             type="video/mp4">
-                        <source id="source__high-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_720.mp4"
+                        <source id="source__high-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_720.mp4"
                             type="video/mp4">
                         <source id="source__medium-quality_${videoInfo.id}"
-                            src="../assets/video/content/video_${videoInfo.id}_540.mp4" type="video/mp4">
-                        <source id="source__low-quality_${videoInfo.id}" src="../assets/video/content/video_${videoInfo.id}_360.mp4"
+                            src="./assets/video/content/video_${videoInfo.id}_540.mp4" type="video/mp4">
+                        <source id="source__low-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_360.mp4"
                             type="video/mp4">
                     </video>
                     <button class="video-player__start-button" id="video-player__start-button_${videoInfo.id}">
                         <svg class="video-player__start-button-svg">
-                            <use xlink:href="../assets/svg/player-sprite.svg#Play_hover"></use>
+                            <use xlink:href="./assets/svg/player-sprite.svg#Play_hover"></use>
                         </svg>
                     </button>
                 </div>

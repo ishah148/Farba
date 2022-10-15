@@ -163,7 +163,7 @@ export class Slider {
         const html = `
             <div class="modal-window__container next--slide" >
                 ${this.spinnerHTML}
-                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.next)}.webp' alt = ''>
+                <img src='./assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.next)}.webp' alt = ''>
             </div>    
         `;
         this.wrapper.insertAdjacentHTML("beforeend", html);
@@ -173,7 +173,7 @@ export class Slider {
         const modalWindow = `
             <div class="modal-window__container current--slide">
                 ${this.spinnerHTML}
-                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.current)}.webp' alt = ''>
+                <img src='./assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.current)}.webp' alt = ''>
             </div>
             `;
         this.wrapper.insertAdjacentHTML("beforeend", modalWindow);
@@ -183,7 +183,7 @@ export class Slider {
         const html = `
             <div class="modal-window__container prev--slide" >
                 ${this.spinnerHTML}
-                <img src='../assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.prev)}.webp' alt = ''>
+                <img src='./assets/portfolio/${this.photoCategory}_full/${this.photoCategory}_${this.getIndexOfPhotoNumbersArray(this.slideCodes.prev)}.webp' alt = ''>
             </div>    
         `;
         this.wrapper.insertAdjacentHTML("afterbegin", html);
