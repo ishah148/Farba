@@ -25,6 +25,7 @@
     "forceConsistentCasingInFileNames": true,
 
     //"sourceMap": true,
+    "types": ["webpack-env"],
     "baseUrl": "./scripts",
     "paths": {
       "*": ["*"]

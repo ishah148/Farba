@@ -30,12 +30,12 @@ module.exports = {
     },
     devServer: {
         // static: {
-        //     directory: path.join(__dirname, './devfolder'),
+        //     directory: path.join(__dirname, './dist'),
         // },
+        // static: ['pages', 'scripts', 'styles'],
         // devMiddleware: {
         //     writeToDisk: true,
         // },
-
         // client: {
         //     overlay: {
         //         errors: true,
@@ -43,13 +43,13 @@ module.exports = {
         //       },
         // },
         // inline: true, //?
-        // hot: true,
-        //compress: true, //?
+        // compress: true, //?
         port: 8009,
         open: true,
         // host: '192.168.100.18',//your ip address
     },
     optimization: {
+        minimize: false, //? вроде и так выключено по дефолту в dev моде
         runtimeChunk: 'single',
         // runtimeChunk: {
         //     name: 'runtime',

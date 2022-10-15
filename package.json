@@ -22,6 +22,7 @@
         "@types/babel__core": "^7.1.19",
         "@types/babel__preset-env": "^7.9.2",
         "@types/webpack": "^5.28.0",
+        "@types/webpack-env": "^1.18.0",
         "autoprefixer": "^10.4.7",
         "babel-loader": "^8.2.5",
         "clean-webpack-plugin": "^3.0.0",
