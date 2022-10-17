@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CompressionPlugin = require("compression-webpack-plugin");
+// const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
@@ -49,14 +49,13 @@ module.exports = {
             chunkFilename: '[id].css',    //?
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
-        new CompressionPlugin({
-            test: /\.(js|css|html)$/i,
-        }),
+        // new CompressionPlugin({
+        //     test: /\.(js|css|html)$/i,
+        // }),
         // new BundleAnalyzerPlugin(),
     ],
     optimization: {
         minimize: true,
-        // minimize: false,   // for not mininmizing js (debug)
         minimizer: [
             new TerserPlugin({
                 extractComments: false,  //remove license files
