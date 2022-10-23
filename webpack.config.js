@@ -42,13 +42,13 @@ const baseConfig = {
             template: path.resolve(__dirname, './src/index.html'),
             // filename: 'index.[hash:4].html',
             filename: 'index.html',
-            chunks: ['index'],           //?
+            chunks: ['index'],
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, `./src/video.html`),
             // filename: `video.[hash:4].html`,
             filename: `video.html`,
-            chunks: [`video`]            //?
+            chunks: [`video`]
         }),
         new CopyWebpackPlugin({
             patterns: [

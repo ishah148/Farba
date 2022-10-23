@@ -1,5 +1,5 @@
 import '../styles/css/normalize.css'
-import '../styles/sass/pages/main.scss'
+import '../styles/sass/pages/video.scss'
 import '../assets/images/favicon.jpg'
 import "./contacts-window.js"
 import "./hamburger.js";

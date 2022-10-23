@@ -49,7 +49,6 @@ module.exports = {
         // host: '192.168.100.18',//your ip address
     },
     optimization: {
-        minimize: false, //? вроде и так выключено по дефолту в dev моде
         runtimeChunk: 'single',
         // runtimeChunk: {
         //     name: 'runtime',
