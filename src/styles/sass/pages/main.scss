@@ -4,9 +4,10 @@
 // @use "../layout/header";
 
 @use "../base";
-@use "../components/main";
-@use "../components/common";
-@use "../layout";
+@use "../components/common" as common-components;
+@use "../components/main" as main-components;
+@use "../layout/common" as common-layout;
+@use "../layout/main" as main-layout;
 
 // #jpg {
 //     position: fixed;

@@ -1,5 +1,5 @@
-@use "../base";
-@use "../base/variables" as var;
+@use "../../base";
+@use "../../base/variables" as var;
 .header {
     position: fixed;
     z-index: 10;
