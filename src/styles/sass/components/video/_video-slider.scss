@@ -71,7 +71,7 @@
     }
     position: absolute;
     height: 50vh;
-    width: 150px;
+    width: 80px;
     cursor: pointer;
     z-index: 102;
     // border: 1px solid red;
@@ -79,7 +79,7 @@
       right: 3px;
       &:hover {
         .video-galery__right-button {
-          background: var(--primary-color);
+          background: var(--primary-light);
         }
       }
     }
@@ -87,7 +87,7 @@
       left: 3px;
       &:hover {
         .video-galery__left-button {
-          background: var(--primary-color);
+          background: var(--primary-light);
         }
       }
     }

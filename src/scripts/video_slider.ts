@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { VideoPlayer } from "./video_player.js";
+
 export class VideoSlider {
     constructor(src, videoCategory, currentPos, videoInfoArray) {
         this.src = src;
@@ -15,11 +17,16 @@ export class VideoSlider {
             current: 0,
             next: 1
         }
+
+        this.currentPlayButtonElement = null;
+        this.videoPlayerElement = null;
+        this.videoPlayer = null;
         this.init();
     }
 
     init() {
         this.createSlides(this.src);
+        this.setVideoPlayerHandler();
         this.addEvents();
     }
 
@@ -27,7 +34,6 @@ export class VideoSlider {
         this.generatePrevSlide();
         this.generateCurrentSlide();
         this.generateNextSlide();
-        document.querySelector('body').classList.add('stop-scrolling');
     }
 
     addEvents() {
@@ -94,6 +100,8 @@ export class VideoSlider {
     }
 
     openNextSlide() {
+        this.removeVideoPlayer();
+
         if (this.currentPos === this.videoInfoArray.length - 1) {
             this.currentPos = 0;
         } else {
@@ -103,9 +111,13 @@ export class VideoSlider {
         document.querySelector('.next--slide').classList.replace('next--slide', 'current--slide');
         this.generateNextSlide();
         this.clearSlide(0);
+
+        this.setVideoPlayerHandler();
     }
 
     openPrevSlide() {
+        this.removeVideoPlayer();
+
         if (this.currentPos === 0) {
             this.currentPos = this.videoInfoArray.length - 1;
         } else {
@@ -115,6 +127,8 @@ export class VideoSlider {
         document.querySelector('.prev--slide').classList.replace('prev--slide', 'current--slide');
         this.generatePrevSlide();
         this.clearSlide(3);
+
+        this.setVideoPlayerHandler();
     }
 
     clearSlide(order) {
@@ -218,11 +232,30 @@ export class VideoSlider {
         `
     }
 
-    // getContacts() {
-    //     return `
-    //     <div class="video-contacts">
-    //         stfarba@gmail.com // +375 29 777 40 59
-    //         <a>VK</a> // <a>Instagram</a> // <a>Vimeo</a>
-    //     </div>`
-    // }
+    setVideoPlayerHandler() {
+        this.currentPlayButtonElement = document.querySelector(`#video-player__start-button_${this.currentPos + 1}`);
+        this.videoPlayerElement = document.getElementById(`video-player__video_${this.currentPos + 1}`);
+        this.currentPlayButtonElement.addEventListener("click", () => this.createVideoPlayer())
+    }
+
+    createVideoPlayer() {
+        this.videoPlayer = new VideoPlayer(this.currentPos + 1);
+        this.videoPlayerElement.addEventListener("videoEnded", () => this.removeVideoPlayer());
+        this.videoPlayer.start();
+        this.currentPlayButtonElement.classList.add('disappearance');
+    }
+
+    removeVideoPlayer() {
+        const videoPlayerControls = document.getElementById(`video-player__controls_${this.currentPos + 1}`);
+        if (videoPlayerControls) {
+            delete this.videoPlayer;
+            this.currentPlayButtonElement.classList.remove('disappearance');
+            videoPlayerControls.remove();
+            
+            if(this.videoPlayerElement) {
+                let videoClone = this.videoPlayerElement.cloneNode(true);  //remove event listeners from this.videoPlayerElement
+                this.videoPlayerElement.parentNode.replaceChild(videoClone, this.videoPlayerElement);
+            }
+        } 
+    }
 }
