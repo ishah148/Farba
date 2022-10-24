@@ -29,11 +29,14 @@
         height: 40px;
         width: 357px;
         margin: 30px auto 0px auto;
-        background-color: #d7d719;
-        color: #000;
-        &:hover {
-            background-color: var(--primary-light);
-            color: #ffff00;
+
+        @media (max-width: var.$tablet) {
+            height: 40px;
+            width: 200px;
+        }
+        @media (max-width: var.$mobile-s) {
+            width: 135px;
+            height: 35px;
         }
     }
 }

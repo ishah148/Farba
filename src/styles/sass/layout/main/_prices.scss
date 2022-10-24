@@ -103,13 +103,51 @@
         display: flex;
         justify-content: center;
         margin: 30px auto 0 auto;
-        &:hover .prices__button-svg{
-            transition: 0.5s;
-            fill: var(--primary-light);
+        cursor: pointer;
+    }
+
+    &__price-list-button {
+        height: 40px;
+        width: 357px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        transition: 0.5s;
+        @media (max-width: var.$tablet) {
+            height: 40px;
+            width: 155px;
         }
-        &:hover .prices__price-list-button{
-            transition: 0.5s;
-            background-color: var(--primary-extra-light);
+        @media (max-width: var.$mobile-s) {
+            width: 135px;
+            height: 35px;
+        }
+
+        &:hover ~ .prices__button-svg {
+            fill: #ffff00;
+        }
+    }
+
+    &__price-list-button:hover &__button-text {
+        color: #ffff00;
+    }
+
+    &__price-list-button.svg-button-is-hovered {
+        background-color: var(--primary-light);
+        .prices__button-text {
+            color: #ffff00;
+        }
+    }
+
+    &__button-text {
+        font-family: inherit;
+        font-size: 0.7rem;
+        user-select: none;
+        color: #000;
+        transition: 0.5s;
+        @media (max-width: var.$tablet) {
+            font-size: 0.6rem;
         }
     }
 
@@ -119,46 +157,21 @@
         left: calc(50% - 10px);
         width: 20px;
         height: 20px;
-        fill: var(--primary-extra-light);
+        fill: #000;
+        transition: 0.5s;
+        
         &.rotate {
             top: -27px;
-            transition: 0.5s;
             transform: rotate(180deg);
         }
+
         @media (max-width: var.$tablet) {
             height: 15px;
             width: 15px;
         }
-    }
 
-    &__price-list-button {
-        height: 40px;
-        width: 357px;
-        border: 0;
-        border-radius: 10px;
-        display: inline-flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background-color: #d7d719;
-        color: #000;
         &:hover {
-            background-color: var(--primary-light);
-            color: #ffff00;
-        }
-        @media (max-width: var.$tablet) {
-            height: 45px;
-            width: 155px;
-        }
-        @media (max-width: var.$mobile-s) {
-            width: 135px;
-            height: 35px;
-        }
-
-        &.inverted { 
-            transition: 0.5s;
-            align-items: flex-end;
+            fill: #ffff00;
         }
     }
 }

@@ -65,24 +65,6 @@ html {
     }
 }
 
-.prices__button-text {
-    font-family: inherit;
-    font-size: 0.7rem;
-    user-select: none;
-    color: var(--primary-extra-light);
-    @media (max-width: var.$tablet) {
-        font-size: 0.6rem;
-    }
-}
-
-.prices__button-wrapper {
-    cursor: pointer;
-    &:hover .prices__button-text {
-        transition: 0.5s;
-        color: var(--primary-light);
-    }
-}
-
 .title-wrapper {
     &__section-title {
         font-weight: bold;
