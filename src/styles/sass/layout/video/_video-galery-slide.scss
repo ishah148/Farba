@@ -224,10 +224,8 @@
 
 .video-galery__wrapper {
     .video-contacts {
-        padding-top: 20px;
         width: 100%;
         font-size: 20px;
-        min-width: 660px;
         p {
             font-size: 17px;
         }
@@ -241,8 +239,7 @@
     .video-description-wrapper {
         display: flex;
         align-items: flex-end;
-        width: 20%;
-        padding-bottom: 58px;
+        width: 25%;
     }
 
     .video-description {
@@ -251,8 +248,13 @@
 
     .slide-content {
         display: flex;
-        justify-content: center;
-        gap: 130px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        column-gap: 130px;
+        row-gap: 20px;
+        @media (max-width: 1422px) {
+            column-gap: 90px;
+        }
     }
 
     .slide-menu {
@@ -266,6 +268,7 @@
     .video-player__caption {
         margin-bottom: 20px;
         text-align: left;
+        min-width: 660px;
     }
 
     .video-player__caption-subheader {

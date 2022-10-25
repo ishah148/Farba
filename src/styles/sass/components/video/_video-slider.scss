@@ -2,22 +2,15 @@
 // @use "./buttons";
 
 .video-galery__wrapper {
-  // display: none;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
   display: flex;
-  z-index: 100;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  // z-index: 100;
 
-  -webkit-transition: background-color 0.5s ease;
-  -moz-transition: background-color 0.5s ease;
-  -o-transition: background-color 0.5s ease;
-  transition: background-color 0.5s ease;
-
-  .video-galery__container {
+  .video-galery__slide {
     position: absolute;
     display: flex;
     flex-direction: column; //? добавлено к фалу modal-window, откуда скопирован код файла
@@ -77,6 +70,7 @@
     // border: 1px solid red;
     &.area-right {
       right: 3px;
+      top: 26%;
       &:hover {
         .video-galery__right-button {
           background: var(--primary-light);
@@ -85,6 +79,7 @@
     }
     &.area-left {
       left: 3px;
+      top: 26%;
       &:hover {
         .video-galery__left-button {
           background: var(--primary-light);
@@ -153,9 +148,16 @@
   }
 }
 
+.video-galery__container {
+  position: fixed;
+  top: 200px;
+  width: 80%;
+  height: 80%;
+}
+
 // ! TODO check it
 // TODO
-.video-galery__wrapper.visible .video-galery__container {
+.video-galery__wrapper.visible .video-galery__slide {
   align-content: center;
 }
 .video-galery__wrapper.visible {

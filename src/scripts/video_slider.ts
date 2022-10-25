@@ -7,7 +7,7 @@ export class VideoSlider {
         this.videoCategory = videoCategory;
         this.currentPos = currentPos;
         this.videoInfoArray = videoInfoArray;
-        this.wrapper = document.querySelector(".video-galery__wrapper");
+        this.slideContainer = document.querySelector(".video-galery__container");
         this.buttons = {
             rightButton: document.querySelector(".video-galery__mouse.area-right"),
             leftButton: document.querySelector(".video-galery__mouse.area-left"),
@@ -58,7 +58,7 @@ export class VideoSlider {
     }
 
     touchHandle() {
-        const wrapper = this.wrapper
+        const wrapper = this.slideContainer
         wrapper.addEventListener('touchstart', handleTouchStart.bind(this), false);
         wrapper.addEventListener('touchmove', handleTouchMove.bind(this), false);
         let xStart = null;
@@ -132,7 +132,7 @@ export class VideoSlider {
     }
 
     clearSlide(order) {
-        let slides = this.wrapper.querySelectorAll(".video-galery__container");
+        let slides = this.slideContainer.querySelectorAll(".video-galery__slide");
         if (slides[order]) {
             slides[order].remove()
         }
@@ -142,33 +142,33 @@ export class VideoSlider {
         const index = this.getIndexOfVideoInfoArray(this.slideCodes.next);
         const videoInfo = this.videoInfoArray[index];
         const html = `
-        <div class="video-galery__container next--slide" >
+        <div class="video-galery__slide next--slide" >
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
-        this.wrapper.insertAdjacentHTML("beforeend", html);
+        this.slideContainer.insertAdjacentHTML("beforeend", html);
     }
 
     generateCurrentSlide() {
         const index = this.getIndexOfVideoInfoArray(this.slideCodes.current);
         const videoInfo = this.videoInfoArray[index];
         const html = `
-                <div class="video-galery__container current--slide">
+                <div class="video-galery__slide current--slide">
                     ${this.getVideoPlayerElement(videoInfo)}
                 </div>
             `;
-        this.wrapper.insertAdjacentHTML("beforeend", html);
+        this.slideContainer.insertAdjacentHTML("beforeend", html);
     }
 
     generatePrevSlide() {
         const index = this.getIndexOfVideoInfoArray(this.slideCodes.prev);
         const videoInfo = this.videoInfoArray[index];
         const html = `
-        <div class="video-galery__container prev--slide" >
+        <div class="video-galery__slide prev--slide" >
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
-        this.wrapper.insertAdjacentHTML("afterbegin", html);
+        this.slideContainer.insertAdjacentHTML("afterbegin", html);
     }
 
     getIndexOfVideoInfoArray(order) {
@@ -184,9 +184,6 @@ export class VideoSlider {
 
     getVideoPlayerElement(videoInfo) {
         return `
-        <h1 class="slide-menu">
-            <a>РЕКЛАМНЫЕ ВИДЕОРОЛИКИ</a> | <a>ВИДЕООБЗОРЫ ТОВАРОВ</a>
-        </h1>
         <div class="slide-content">
             <div class="video-player">
                 <div class="video-player__caption" data-translate="${videoInfo.dataTranslate}">
@@ -211,16 +208,16 @@ export class VideoSlider {
                         </svg>
                     </button>
                 </div>
-                <div class="video-contacts">
-                    <p>stfarba@gmail.com<span>&nbsp;&nbsp;//&nbsp;&nbsp;</span>+375 29 777 40 59</p>
-                    <a>Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Viber</a>
-                </div>
             </div>
             <div class="video-description-wrapper">
                 <div class="video-description">
                     Обычно, когда бренду нужен ролик на 5 секунд, получается один пэк-шот. Но не в этот раз. 
                     Три слова и три ролика о наших любимых консервах Доброфлот. По традиции, в стоп-моушн анимации.
                 </div>
+            </div>
+            <div class="video-contacts">
+                <p>stfarba@gmail.com<span>&nbsp;&nbsp;//&nbsp;&nbsp;</span>+375 29 777 40 59</p>
+                <a>Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Viber</a>
             </div>
         </div>
         `
@@ -251,11 +248,11 @@ export class VideoSlider {
             delete this.videoPlayer;
             this.currentPlayButtonElement.classList.remove('disappearance');
             videoPlayerControls.remove();
-            
-            if(this.videoPlayerElement) {
+
+            if (this.videoPlayerElement) {
                 let videoClone = this.videoPlayerElement.cloneNode(true);  //remove event listeners from this.videoPlayerElement
                 this.videoPlayerElement.parentNode.replaceChild(videoClone, this.videoPlayerElement);
             }
-        } 
+        }
     }
 }
