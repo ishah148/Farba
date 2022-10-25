@@ -221,57 +221,66 @@
 
 
 //? ////////////////////////////////////////////// добавлено (отличие от _video-section.css)
-
-.video-galery__wrapper {
-    .video-contacts {
-        width: 100%;
-        font-size: 20px;
-        p {
-            font-size: 17px;
+.video-galery {
+    &__wrapper {
+        .video-contacts {
+            width: 100%;
+            font-size: 20px;
+            p {
+                font-size: 17px;
+            }
+    
+            a, span {
+                display: inline-block;
+                font-size: 17px;
+            }
         }
-
-        a, span {
-            display: inline-block;
-            font-size: 17px;
+    
+        .video-description-wrapper {
+            display: flex;
+            align-items: flex-end;
+            width: 25%;
+        }
+    
+        .video-description {
+            font-size: 18px;
+        }
+    
+        .slide-content {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            column-gap: 130px;
+            row-gap: 20px;
+            @media (max-width: 1422px) {
+                column-gap: 90px;
+            }
+        }
+    
+        .video-player__caption {
+            margin-bottom: 20px;
+            text-align: left;
+            min-width: 660px;
+        }
+    
+        .video-player__caption-subheader {
+            font-size: 20px;
         }
     }
-
-    .video-description-wrapper {
-        display: flex;
-        align-items: flex-end;
-        width: 25%;
-    }
-
-    .video-description {
-        font-size: 18px;
-    }
-
-    .slide-content {
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        column-gap: 130px;
-        row-gap: 20px;
-        @media (max-width: 1422px) {
-            column-gap: 90px;
-        }
-    }
-
-    .slide-menu {
+    
+    &__slide-menu {
         padding-top: 100px;
         text-align: center;
         a {
             display: inline;
         }
     }
-
-    .video-player__caption {
-        margin-bottom: 20px;
-        text-align: left;
-        min-width: 660px;
-    }
-
-    .video-player__caption-subheader {
-        font-size: 20px;
+    
+    &__active-section {
+        font-weight: 800;
+        border-bottom: 2px solid white;
+        &:hover {
+            border-bottom: 2px solid white;
+        }
     }
 }

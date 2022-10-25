@@ -2,8 +2,7 @@
 import { VideoPlayer } from "./video_player.js";
 
 export class VideoSlider {
-    constructor(src, videoCategory, currentPos, videoInfoArray) {
-        this.src = src;
+    constructor(videoCategory, currentPos, videoInfoArray) {
         this.videoCategory = videoCategory;
         this.currentPos = currentPos;
         this.videoInfoArray = videoInfoArray;
@@ -25,12 +24,12 @@ export class VideoSlider {
     }
 
     init() {
-        this.createSlides(this.src);
+        this.createSlides();
         this.setVideoPlayerHandler();
         this.addEvents();
     }
 
-    createSlides(src) {
+    createSlides() {
         this.generatePrevSlide();
         this.generateCurrentSlide();
         this.generateNextSlide();
@@ -220,12 +219,6 @@ export class VideoSlider {
                 <a>Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Viber</a>
             </div>
         </div>
-        `
-    }
-
-    getDescription() {
-        return `
-            
         `
     }
 

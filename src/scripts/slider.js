@@ -41,7 +41,7 @@ export class Slider {
         this.buttons.closeButton.onclick = () => this.closeModalWindow();
         this.buttons.closeAreaUp.onclick = () => this.closeModalWindow();
         this.buttons.closeAreaDown.onclick = () => this.closeModalWindow();
-        if (this.isTouchDevice) {
+        if (this.isTouchDevice) {  //!!check (maybe this.isTouchDevice()?)
             this.touchHandle()
         }
         this.keyHandler = this.keyHandler.bind(this);
