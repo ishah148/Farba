@@ -25,7 +25,7 @@ export class VideoSlider {
 
     init() {
         this.createSlides();
-        this.setVideoPlayerHandler();
+        this.setPlayButtonEventHandlers();
         this.addEvents();
     }
 
@@ -100,6 +100,7 @@ export class VideoSlider {
 
     openNextSlide() {
         this.removeVideoPlayer();
+        this.removePlayButtonEventHandlers();
 
         if (this.currentPos === this.videoInfoArray.length - 1) {
             this.currentPos = 0;
@@ -111,11 +112,12 @@ export class VideoSlider {
         this.generateNextSlide();
         this.clearSlide(0);
 
-        this.setVideoPlayerHandler();
+        this.setPlayButtonEventHandlers();
     }
 
     openPrevSlide() {
         this.removeVideoPlayer();
+        this.removePlayButtonEventHandlers();
 
         if (this.currentPos === 0) {
             this.currentPos = this.videoInfoArray.length - 1;
@@ -127,7 +129,7 @@ export class VideoSlider {
         this.generatePrevSlide();
         this.clearSlide(3);
 
-        this.setVideoPlayerHandler();
+        this.setPlayButtonEventHandlers();
     }
 
     clearSlide(order) {
@@ -222,18 +224,34 @@ export class VideoSlider {
         `
     }
 
-    setVideoPlayerHandler() {
+    setPlayButtonEventHandlers() {
         this.currentPlayButtonElement = document.querySelector(`#video-player__start-button_${this.currentPos + 1}`);
-        this.videoPlayerElement = document.getElementById(`video-player__video_${this.currentPos + 1}`);
-        this.currentPlayButtonElement.addEventListener("click", () => this.createVideoPlayer())
+        this.currentPlayButtonElement.addEventListener("click", () => this.createVideoPlayer());
     }
 
+    
     createVideoPlayer() {
         this.videoPlayer = new VideoPlayer(this.currentPos + 1);
-        this.videoPlayerElement.addEventListener("videoEnded", () => this.removeVideoPlayer());
+        this.setVideoEndedEventHandler();
         this.videoPlayer.start();
         this.currentPlayButtonElement.classList.add('disappearance');
     }
+    
+    setVideoEndedEventHandler() {
+        this.videoPlayerElement = document.getElementById(`video-player__video_${this.currentPos + 1}`);
+        this.videoPlayerElement.addEventListener("videoEnded", () => this.removeVideoPlayer());
+    }
+
+    removePlayButtonEventHandlers() {
+        let playButtonClone = this.currentPlayButtonElement.cloneNode(true);
+        this.currentPlayButtonElement.parentNode.replaceChild(playButtonClone, this.currentPlayButtonElement);
+    }
+
+    removeVideoEndedEventHandler() {
+        let videoClone = this.videoPlayerElement.cloneNode(true);
+        this.videoPlayerElement.parentNode.replaceChild(videoClone, this.videoPlayerElement);
+    }
+
 
     removeVideoPlayer() {
         const videoPlayerControls = document.getElementById(`video-player__controls_${this.currentPos + 1}`);
@@ -243,8 +261,7 @@ export class VideoSlider {
             videoPlayerControls.remove();
 
             if (this.videoPlayerElement) {
-                let videoClone = this.videoPlayerElement.cloneNode(true);  //remove event listeners from this.videoPlayerElement
-                this.videoPlayerElement.parentNode.replaceChild(videoClone, this.videoPlayerElement);
+                this.removeVideoEndedEventHandler();
             }
         }
     }
