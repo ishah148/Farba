@@ -69,20 +69,21 @@
         top: 200px;
         width: 80%;
         height: 80%;
+
+        -webkit-transition: opacity 0.4s ease-out;
+        -moz-transition: opacity 0.4s ease-out;
+        -o-transition: opacity 0.4s ease-out;
+        transition: opacity 0.4s ease-out;
     }
 
-    &__container-inner {
+    &__container-transition-opaque {
+        opacity: 1;
     }
 
-    &__promotional-slides,
-    &__reviews-slides {
-        -webkit-transition: opacity 1s ease-out;
-        -moz-transition: opacity 1s ease-out;
-        -o-transition: opacity 1s ease-out;
-        transition: opacity 1s ease-out;
+    &__container-transition-transparent {
         opacity: 0;
     }
-
+    
     &__slide-menu {
         padding-top: 100px;
         text-align: center;
@@ -166,9 +167,4 @@
         height: 30%;
         fill: var(--primary-extra-dark);
     }
-}
-
-
-.container-inner-transition {
-    opacity: 1;
 }

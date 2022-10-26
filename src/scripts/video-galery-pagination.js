@@ -7,8 +7,7 @@ export class VideoGaleryPagination {
   constructor() {
     this.promoButton = document.querySelector('.video-galery__promo-section-button');
     this.reviewsButton = document.querySelector('.video-galery__reviews-section-button');
-    this.videoSliderContainer = document.querySelector('.video-galery__container');
-    this.videoSliderContainerInner = document.querySelector('.video-galery__container-inner');
+    this.slideContainer = document.querySelector('.video-galery__container');
     this.rightButton = document.querySelector(".video-galery__area-right");
     this.leftButton = document.querySelector(".video-galery__area-left");
     this.currentVideoSlider = null;
@@ -18,6 +17,7 @@ export class VideoGaleryPagination {
 
   init() {
     this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
+    this.slideContainer.classList.add('video-galery__container-transition-opaque');
   }
 
   addEventHandlers() {
@@ -27,28 +27,28 @@ export class VideoGaleryPagination {
 
   changePage(targetLink) {
     if (!targetLink.classList.contains('video-galery__active-section')) {
-      this.videoSliderContainerInner.replaceChildren();
       this.removeEventHandlers();
       delete this.currentVideoSlider;
+      this.slideContainer.classList.add('video-galery__container-transition-transparent');
 
       if (targetLink.classList.contains('video-galery__promo-section-button')) {
-        this.videoSliderContainerInner.classList.replace('video-galery__reviews-slides', 'video-galery__promotional-slides');
-        this.videoSliderContainerInner.classList.remove('container-inner-transition');
         setTimeout(() => {
-          this.videoSliderContainerInner.classList.add('container-inner-transition');
-        }, 1000)
-        this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
+          this.slideContainer.replaceChildren();
+          this.slideContainer.classList.remove('video-galery__container-transition-transparent');
+          this.slideContainer.classList.add('video-galery__container-transition-opaque');
+          this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
+        }, 400)
         this.promoButton.classList.add('video-galery__active-section');
         this.reviewsButton.classList.remove('video-galery__active-section');
       }
 
       if (targetLink.classList.contains('video-galery__reviews-section-button')) {
-        this.videoSliderContainerInner.classList.replace('video-galery__promotional-slides', 'video-galery__reviews-slides');
-        this.videoSliderContainerInner.classList.remove('container-inner-transition');
         setTimeout(() => {
-          this.videoSliderContainerInner.classList.add('container-inner-transition');
-        }, 1000)
-        this.currentVideoSlider = new VideoSlider('productReviews', 0, videoGaleryConfig.productReviews);
+          this.slideContainer.replaceChildren();
+          this.slideContainer.classList.remove('video-galery__container-transition-transparent');
+          this.slideContainer.classList.add('video-galery__container-transition-opaque');
+          this.currentVideoSlider = new VideoSlider('productReviews', 0, videoGaleryConfig.productReviews);
+        }, 400)
         this.reviewsButton.classList.add('video-galery__active-section');
         this.promoButton.classList.remove('video-galery__active-section');
       }

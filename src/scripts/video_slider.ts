@@ -6,7 +6,7 @@ export class VideoSlider {
         this.videoCategory = videoCategory;
         this.currentPos = currentPos;
         this.videoInfoArray = videoInfoArray;
-        this.slideContainerInner = document.querySelector(".video-galery__container-inner");
+        this.slideContainer = document.querySelector(".video-galery__container");
         this.buttons = {
             rightButton: document.querySelector(".video-galery__area-right"),
             leftButton: document.querySelector(".video-galery__area-left"),
@@ -57,7 +57,7 @@ export class VideoSlider {
     }
 
     touchHandle() {
-        const wrapper = this.slideContainerInner
+        const wrapper = this.slideContainer
         wrapper.addEventListener('touchstart', handleTouchStart.bind(this), false);
         wrapper.addEventListener('touchmove', handleTouchMove.bind(this), false);
         let xStart = null;
@@ -133,7 +133,7 @@ export class VideoSlider {
     }
 
     clearSlide(order) {
-        let slides = this.slideContainerInner.querySelectorAll(".video-galery__slide");
+        let slides = this.slideContainer.querySelectorAll(".video-galery__slide");
         if (slides[order]) {
             slides[order].remove()
         }
@@ -147,7 +147,7 @@ export class VideoSlider {
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
-        this.slideContainerInner.insertAdjacentHTML("beforeend", html);
+        this.slideContainer.insertAdjacentHTML("beforeend", html);
     }
 
     generateCurrentSlide() {
@@ -158,7 +158,7 @@ export class VideoSlider {
                     ${this.getVideoPlayerElement(videoInfo)}
                 </div>
             `;
-        this.slideContainerInner.insertAdjacentHTML("beforeend", html);
+        this.slideContainer.insertAdjacentHTML("beforeend", html);
     }
 
     generatePrevSlide() {
@@ -169,7 +169,7 @@ export class VideoSlider {
             ${this.getVideoPlayerElement(videoInfo)}
         </div>    
         `;
-        this.slideContainerInner.insertAdjacentHTML("afterbegin", html);
+        this.slideContainer.insertAdjacentHTML("afterbegin", html);
     }
 
     getIndexOfVideoInfoArray(order) {
