@@ -8,8 +8,8 @@ export class VideoSlider {
         this.videoInfoArray = videoInfoArray;
         this.slideContainer = document.querySelector(".video-galery__container");
         this.buttons = {
-            rightButton: document.querySelector(".video-galery__mouse.area-right"),
-            leftButton: document.querySelector(".video-galery__mouse.area-left"),
+            rightButton: document.querySelector(".video-galery__area-right"),
+            leftButton: document.querySelector(".video-galery__area-left"),
         };
         this.slideCodes = {
             prev: -1,

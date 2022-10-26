@@ -8,8 +8,8 @@ export class VideoGaleryPagination {
     this.promoButton = document.querySelector('.video-galery__promo-section-button');
     this.reviewsButton = document.querySelector('.video-galery__reviews-section-button');
     this.videoSliderContainer = document.querySelector('.video-galery__container');
-    this.rightButton = document.querySelector(".video-galery__mouse.area-right");
-    this.leftButton = document.querySelector(".video-galery__mouse.area-left");
+    this.rightButton = document.querySelector(".video-galery__area-right");
+    this.leftButton = document.querySelector(".video-galery__area-left");
     this.currentVideoSlider = null;
     this.init();
     this.addEventHandlers();
@@ -50,7 +50,7 @@ export class VideoGaleryPagination {
     let leftButtonClone = this.leftButton.cloneNode(true);
     this.rightButton.parentNode.replaceChild(rightButtonClone, this.rightButton);
     this.leftButton.parentNode.replaceChild(leftButtonClone, this.leftButton);
-    this.rightButton = document.querySelector(".video-galery__mouse.area-right");
-    this.leftButton = document.querySelector(".video-galery__mouse.area-left");
+    this.rightButton = document.querySelector(".video-galery__area-right");
+    this.leftButton = document.querySelector(".video-galery__area-left");
   }
 }
