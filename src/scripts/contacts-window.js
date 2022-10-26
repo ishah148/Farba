@@ -4,6 +4,9 @@ const msgSelectors = [
     ".contacts-window__container",
     ".contacts-window__wrapper",
 ];
+const inputName = document.querySelector('#contacts-window__user-name');
+const inputNumber = document.querySelector('#contacts-window__user-number');
+const contactsWindowWrapper = document.querySelector('.contacts-window__wrapper');
 
 document.querySelector(".contacts-window__callback-bt").onclick = openMessageWindow;
 function openMessageWindow() {
@@ -28,3 +31,33 @@ function closeMessageWindow(){
 blackout.addEventListener("click", () => {
     closeMessageWindow();
 });
+
+
+  
+inputName.addEventListener('focus', ()=>{
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) && window.innerHeight < window.innerWidth) {
+        if(!contactsWindowWrapper.classList.contains("absolute")) {
+            contactsWindowWrapper.classList.add('absolute');
+        }
+    }
+})
+
+inputNumber.addEventListener('focus', ()=>{
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) && window.innerHeight < window.innerWidth ) {
+        if(!contactsWindowWrapper.classList.contains("absolute")) {
+            contactsWindowWrapper.classList.add('absolute');
+        }
+    }
+})
+
+inputName.addEventListener('blur', ()=>{
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        contactsWindowWrapper.classList.remove('absolute');
+    }
+})
+
+inputNumber.addEventListener('blur', ()=>{
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        contactsWindowWrapper.classList.remove('absolute');
+    }
+})
