@@ -8,6 +8,7 @@ export class VideoGaleryPagination {
     this.promoButton = document.querySelector('.video-galery__promo-section-button');
     this.reviewsButton = document.querySelector('.video-galery__reviews-section-button');
     this.videoSliderContainer = document.querySelector('.video-galery__container');
+    this.videoSliderContainerInner = document.querySelector('.video-galery__container-inner');
     this.rightButton = document.querySelector(".video-galery__area-right");
     this.leftButton = document.querySelector(".video-galery__area-left");
     this.currentVideoSlider = null;
@@ -26,17 +27,27 @@ export class VideoGaleryPagination {
 
   changePage(targetLink) {
     if (!targetLink.classList.contains('video-galery__active-section')) {
-      this.videoSliderContainer.replaceChildren();
+      this.videoSliderContainerInner.replaceChildren();
       this.removeEventHandlers();
       delete this.currentVideoSlider;
 
       if (targetLink.classList.contains('video-galery__promo-section-button')) {
+        this.videoSliderContainerInner.classList.replace('video-galery__reviews-slides', 'video-galery__promotional-slides');
+        this.videoSliderContainerInner.classList.remove('container-inner-transition');
+        setTimeout(() => {
+          this.videoSliderContainerInner.classList.add('container-inner-transition');
+        }, 1000)
         this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
         this.promoButton.classList.add('video-galery__active-section');
         this.reviewsButton.classList.remove('video-galery__active-section');
       }
-  
+
       if (targetLink.classList.contains('video-galery__reviews-section-button')) {
+        this.videoSliderContainerInner.classList.replace('video-galery__promotional-slides', 'video-galery__reviews-slides');
+        this.videoSliderContainerInner.classList.remove('container-inner-transition');
+        setTimeout(() => {
+          this.videoSliderContainerInner.classList.add('container-inner-transition');
+        }, 1000)
         this.currentVideoSlider = new VideoSlider('productReviews', 0, videoGaleryConfig.productReviews);
         this.reviewsButton.classList.add('video-galery__active-section');
         this.promoButton.classList.remove('video-galery__active-section');
