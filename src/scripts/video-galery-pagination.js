@@ -17,7 +17,6 @@ export class VideoGaleryPagination {
 
   init() {
     this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
-    this.slideContainer.classList.add('video-galery__container-transition-opaque');
   }
 
   addEventHandlers() {
@@ -32,10 +31,10 @@ export class VideoGaleryPagination {
       this.slideContainer.classList.add('video-galery__container-transition-transparent');
 
       if (targetLink.classList.contains('video-galery__promo-section-button')) {
+        this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
-          this.slideContainer.classList.remove('video-galery__container-transition-transparent');
-          this.slideContainer.classList.add('video-galery__container-transition-opaque');
+          this.slideContainer.classList.remove('video-galery__container-transition');
           this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
         }, 400)
         this.promoButton.classList.add('video-galery__active-section');
@@ -43,10 +42,10 @@ export class VideoGaleryPagination {
       }
 
       if (targetLink.classList.contains('video-galery__reviews-section-button')) {
+        this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
-          this.slideContainer.classList.remove('video-galery__container-transition-transparent');
-          this.slideContainer.classList.add('video-galery__container-transition-opaque');
+          this.slideContainer.classList.remove('video-galery__container-transition');
           this.currentVideoSlider = new VideoSlider('productReviews', 0, videoGaleryConfig.productReviews);
         }, 400)
         this.reviewsButton.classList.add('video-galery__active-section');
