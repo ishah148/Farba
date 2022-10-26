@@ -217,8 +217,8 @@ export class VideoSlider {
                 </div>
             </div>
             <div class="video-contacts">
-                <p>stfarba@gmail.com<span>&nbsp;&nbsp;//&nbsp;&nbsp;</span>+375 29 777 40 59</p>
-                <a>Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a>Viber</a>
+                <p><a href="mailto:stfarba@gmail.com" target="_blank">stfarba@gmail.com</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="tel:+375297774059">+375 29 777 40 59</a></p>
+                <a href="https://telegram.me/IgorTg123" target="_blank">Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="https://wa.me/%2B375259041736" target="_blank">Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="viber://chat?number=%2B375259041736" target="_blank">Viber</a>
             </div>
         </div>
         `
