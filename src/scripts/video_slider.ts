@@ -226,7 +226,7 @@ export class VideoSlider {
             </div>
             <div class="video-contacts">
                 <p><a href="mailto:stfarba@gmail.com" target="_blank">stfarba@gmail.com</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="tel:+375297774059">+375 29 777 40 59</a></p>
-                <p><a href="https://telegram.me/IgorTg123" target="_blank">Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="https://wa.me/%2B375259041736" target="_blank">Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="viber://chat?number=%2B375259041736" target="_blank">Viber</a></p>
+                <p><a href="https://telegram.me/+H47fp_ahujtjYWMy" target="_blank">Telegram</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="https://wa.me/%2B375297774059" target="_blank">Whatsapp</a><span>&nbsp;&nbsp;//&nbsp;&nbsp;</span><a href="viber://chat?number=%2B375297774059" target="_blank">Viber</a></p>
             </div>
         </div>
         `
