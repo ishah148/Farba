@@ -1,6 +1,18 @@
 @use "../variables" as var;
 
 .main {
-  max-width: var(--max-width);;
+  max-width: var(--max-width);
   margin: 0 auto;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body .footer {
+  @media (max-width: var.$tablet) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 }

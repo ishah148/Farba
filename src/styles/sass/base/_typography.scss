@@ -87,6 +87,12 @@ html {
         }
     }
 
+    &__phone {
+        @media (max-width: 906px) {
+            font-size: 20px
+        }
+    }
+
     &__logo {
         user-select: none;
     }
