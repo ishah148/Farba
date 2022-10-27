@@ -2,7 +2,7 @@ import translateObj from './translate.js';
 export const currentLang = {
     lang: 'ru',
 }
-const switchLang = document.querySelector('.switch-lang');
+const switchLang = document.querySelectorAll('.switch-lang');
 
 function translatePage(language) {
     let data = document.querySelectorAll('[data-translate]');
@@ -16,11 +16,19 @@ function translatePage(language) {
     }
 
     if (language === 'ru') {
-        document.querySelector('.en').classList.remove('active');
-        document.querySelector('.ru').classList.add('active');
+        document.querySelectorAll('.en').forEach(item => {
+            item.classList.remove('active');
+        })
+        document.querySelectorAll('.ru').forEach(item => {
+            item.classList.add('active');
+        })
     } else {
-        document.querySelector('.ru').classList.remove('active');
-        document.querySelector('.en').classList.add('active');
+        document.querySelectorAll('.ru').forEach(item => {
+            item.classList.remove('active');
+        })
+        document.querySelectorAll('.en').forEach(item => {
+            item.classList.add('active');
+        })
     }
 
 }
@@ -33,5 +41,9 @@ function chooseLangButton(event) {
 }
 
 
-switchLang.addEventListener("click", chooseLangButton);
+switchLang.forEach(item => {
+    item.addEventListener("click", chooseLangButton);
+})
+
+
 
