@@ -11,6 +11,8 @@ export class VideoGaleryPagination {
     this.rightButton = document.querySelector(".video-galery__area-right");
     this.leftButton = document.querySelector(".video-galery__area-left");
     this.currentVideoSlider = null;
+    this.storedPromotionalPosition = 0;
+    this.storedReviewsPosition = 0;
     this.init();
     this.addEventHandlers();
   }
@@ -27,26 +29,29 @@ export class VideoGaleryPagination {
   changePage(targetLink) {
     if (!targetLink.classList.contains('video-galery__active-section')) {
       this.removeEventHandlers();
-      delete this.currentVideoSlider;
       this.slideContainer.classList.add('video-galery__container-transition-transparent');
 
       if (targetLink.classList.contains('video-galery__promo-section-button')) {
+        this.storedReviewsPosition = this.currentVideoSlider.currentPos;
+        delete this.currentVideoSlider;
         this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
           this.slideContainer.classList.remove('video-galery__container-transition');
-          this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
+          this.currentVideoSlider = new VideoSlider('promotional', this.storedPromotionalPosition, videoGaleryConfig.promotional);
         }, 400)
         this.promoButton.classList.add('video-galery__active-section');
         this.reviewsButton.classList.remove('video-galery__active-section');
       }
 
       if (targetLink.classList.contains('video-galery__reviews-section-button')) {
+        this.storedPromotionalPosition = this.currentVideoSlider.currentPos;
+        delete this.currentVideoSlider;
         this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
           this.slideContainer.classList.remove('video-galery__container-transition');
-          this.currentVideoSlider = new VideoSlider('productReviews', 0, videoGaleryConfig.productReviews);
+          this.currentVideoSlider = new VideoSlider('productReviews', this.storedReviewsPosition, videoGaleryConfig.productReviews);
         }, 400)
         this.reviewsButton.classList.add('video-galery__active-section');
         this.promoButton.classList.remove('video-galery__active-section');
