@@ -1,4 +1,4 @@
-function messageWindowEvents(){}
+function messageWindowEvents() { }
 const blackout = document.querySelector('.blackout');
 const msgSelectors = [
     ".contacts-window__container",
@@ -15,17 +15,17 @@ function openMessageWindow() {
         document.querySelector(selector).classList.toggle("open")
     );
     blackout.classList.toggle("visible");
-    document.querySelector(".contacts-window__wrapper").addEventListener('click',(e)=>{
-            if(e.target.classList.contains('contacts-window__wrapper')) closeMessageWindow()
+    document.querySelector(".contacts-window__wrapper").addEventListener('click', (e) => {
+        if (e.target.classList.contains('contacts-window__wrapper')) closeMessageWindow()
     })
 }
-function closeMessageWindow(){
+function closeMessageWindow() {
     document.querySelector(".contacts-window__callback-bt").classList.remove('hidden')
     msgSelectors.forEach((selector) =>
         document.querySelector(selector).classList.remove("open")
     );
     blackout.classList.remove("visible");
-    document.querySelector(".contacts-window__wrapper").removeEventListener('click',closeMessageWindow)
+    document.querySelector(".contacts-window__wrapper").removeEventListener('click', closeMessageWindow)
 }
 
 blackout.addEventListener("click", () => {
@@ -33,31 +33,31 @@ blackout.addEventListener("click", () => {
 });
 
 
-  
-inputName.addEventListener('focus', ()=>{
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) && window.innerHeight < window.innerWidth) {
-        if(!contactsWindowWrapper.classList.contains("absolute")) {
+
+inputName.addEventListener('focus', () => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
+        if (!contactsWindowWrapper.classList.contains("absolute")) {
             contactsWindowWrapper.classList.add('absolute');
         }
     }
 })
 
-inputNumber.addEventListener('focus', ()=>{
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) && window.innerHeight < window.innerWidth ) {
-        if(!contactsWindowWrapper.classList.contains("absolute")) {
+inputNumber.addEventListener('focus', () => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
+        if (!contactsWindowWrapper.classList.contains("absolute")) {
             contactsWindowWrapper.classList.add('absolute');
         }
     }
 })
 
-inputName.addEventListener('blur', ()=>{
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+inputName.addEventListener('blur', () => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
         contactsWindowWrapper.classList.remove('absolute');
     }
 })
 
-inputNumber.addEventListener('blur', ()=>{
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+inputNumber.addEventListener('blur', () => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
         contactsWindowWrapper.classList.remove('absolute');
     }
 })
