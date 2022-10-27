@@ -199,7 +199,18 @@
         }
 
         @media (max-width: var.$tablet) {
-            display: none;
+            height: 70px;
+            width: 70px;
+            top: 51vw;
+        }
+
+        @media (max-width: 512px) {
+            width: 45px;
+            top: 60vw;
+        }
+
+        @media (max-width: 450px) {
+            top: 65vw;
         }
     }
 
@@ -243,7 +254,7 @@
         background-color: var(--primary-extra-light);
 
         @media (max-width: var.$tablet) {
-            display: none;
+            
         }
     }
 
