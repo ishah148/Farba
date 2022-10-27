@@ -29,7 +29,6 @@ export class VideoGaleryPagination {
   changePage(targetLink) {
     if (!targetLink.classList.contains('video-galery__active-section')) {
       this.removeEventHandlers();
-      this.slideContainer.classList.add('video-galery__container-transition-transparent');
 
       if (targetLink.classList.contains('video-galery__promo-section-button')) {
         this.storedReviewsPosition = this.currentVideoSlider.currentPos;
@@ -37,6 +36,9 @@ export class VideoGaleryPagination {
         this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
+          this.removeTouchListenersFromSlideContainer()
+        }, 350)
+        setTimeout(() => {
           this.slideContainer.classList.remove('video-galery__container-transition');
           this.currentVideoSlider = new VideoSlider('promotional', this.storedPromotionalPosition, videoGaleryConfig.promotional);
         }, 400)
@@ -50,6 +52,9 @@ export class VideoGaleryPagination {
         this.slideContainer.classList.add('video-galery__container-transition');
         setTimeout(() => {
           this.slideContainer.replaceChildren();
+          this.removeTouchListenersFromSlideContainer()
+        }, 350)
+        setTimeout(() => {
           this.slideContainer.classList.remove('video-galery__container-transition');
           this.currentVideoSlider = new VideoSlider('productReviews', this.storedReviewsPosition, videoGaleryConfig.productReviews);
         }, 400)
@@ -59,9 +64,15 @@ export class VideoGaleryPagination {
     }
   }
 
+  removeTouchListenersFromSlideContainer() {
+    let slideContainerClone = this.slideContainer.cloneNode(true);
+    this.slideContainer.parentNode.replaceChild(slideContainerClone, this.slideContainer);
+    this.slideContainer = document.querySelector('.video-galery__container');
+  }
+
   removeEventHandlers() {
-    if(this.currentVideoSlider.keyHandler) {
-      document.removeEventListener('keyup', this.currentVideoSlider.keyHandler); //TODO таким же (или иным) образом удалять события тача
+    if (this.currentVideoSlider.keyHandler) {
+      document.removeEventListener('keyup', this.currentVideoSlider.keyHandler);
     }
     let rightButtonClone = this.rightButton.cloneNode(true);
     let leftButtonClone = this.leftButton.cloneNode(true);

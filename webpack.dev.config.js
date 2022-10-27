@@ -46,7 +46,7 @@ module.exports = {
         // compress: true, //?
         port: 8009,
         open: true,
-        host: '192.168.100.7',  //your ip address (cmd => ipconfig)
+        host: '192.168.100.5',  //your ip address (cmd => ipconfig)
     },
     optimization: {
         runtimeChunk: 'single',

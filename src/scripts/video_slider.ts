@@ -40,6 +40,18 @@ export class VideoSlider {
         this.buttons.leftButton.onclick = this.openPrevSlide.bind(this);
         this.keyHandler = this.keyHandler.bind(this);
         document.addEventListener('keyup', this.keyHandler);
+        if (this.isTouchDevice()) {
+            this.touchHandle()
+        }
+    }
+
+    isTouchDevice() {
+        try {
+            document.createEvent("TouchEvent");
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 
     keyHandler(e) {
@@ -80,10 +92,6 @@ export class VideoSlider {
 
             function right() {
                 return (xStart + sensitivity) < xMove
-            }
-
-            const removeEvents = () => {
-                wrapper.replaceWith(wrapper.cloneNode(true));
             }
 
             if (left()) {
