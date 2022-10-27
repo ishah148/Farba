@@ -1,22 +1,12 @@
 .video-galery {
     &__wrapper {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: center;
         position: relative;
         width: 100%;
-        height: 100%;
-        // z-index: 100;
-
-        &.visible .video-galery__slide {
-            // ! TODO check it
-            align-content: center;
-        }
-
-        &.visible {
-            // ! TODO check it
-            align-content: center;
-        }
+        min-height: 750px; //? alternative
+        gap: 40px;
 
         .video-contacts {
             width: 100%;
@@ -65,10 +55,11 @@
     }
 
     &__container {
-        position: fixed;
-        top: 200px;
         width: 80%;
-        height: 80%;
+        // min-height: 60%;
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
 
         -webkit-transition: opacity 0.4s ease-out;
         -moz-transition: opacity 0.4s ease-out;
@@ -99,13 +90,12 @@
     }
 
     &__area {
-        height: 50vh;
-        width: 80px;
+        height: 400px;
+        width: 110px;
         display: flex;
 
         position: absolute;
-        z-index: 102;
-        top: 26%;
+        top: 235px;
 
         cursor: pointer;
 
@@ -115,7 +105,7 @@
     }
 
     &__area-right {
-        right: 3px;
+        right: 0px;
         &:hover {
             .video-galery__right-button {
                 background: var(--primary-light);
@@ -124,7 +114,7 @@
     }
 
     &__area-left {
-        left: 3px;
+        left: 0px;
         &:hover {
             .video-galery__left-button {
                 background: var(--primary-light);
@@ -143,7 +133,6 @@
         align-items: center;
 
         position: absolute;
-        z-index: 101;
         right: 0;
         top: 0;
         bottom: 0;

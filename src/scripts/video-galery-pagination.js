@@ -55,7 +55,9 @@ export class VideoGaleryPagination {
   }
 
   removeEventHandlers() {
-    document.removeEventListener('keyup', this.currentVideoSlider.keyHandler); //TODO таким же (или иным) образом удалять события тача
+    if(this.currentVideoSlider.keyHandler) {
+      document.removeEventListener('keyup', this.currentVideoSlider.keyHandler); //TODO таким же (или иным) образом удалять события тача
+    }
     let rightButtonClone = this.rightButton.cloneNode(true);
     let leftButtonClone = this.leftButton.cloneNode(true);
     this.rightButton.parentNode.replaceChild(rightButtonClone, this.rightButton);
