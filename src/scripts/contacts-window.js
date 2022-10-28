@@ -4,13 +4,17 @@ const msgSelectors = [
     ".contacts-window__container",
     ".contacts-window__wrapper",
 ];
+const priceCardButtons = document.querySelectorAll('.price-card__button');
 const inputName = document.querySelector('#contacts-window__user-name');
 const inputNumber = document.querySelector('#contacts-window__user-number');
 const contactsWindowWrapper = document.querySelector('.contacts-window__wrapper');
 
-document.querySelector(".contacts-window__callback-bt").onclick = openMessageWindow;
+const contactsWindowButton = document.querySelector(".contacts-window__callback-bt");
+
+contactsWindowButton.onclick = openMessageWindow;
+
 function openMessageWindow() {
-    this.classList.add('hidden')
+    contactsWindowButton.classList.add('hidden')
     msgSelectors.forEach((selector) =>
         document.querySelector(selector).classList.toggle("open")
     );
@@ -19,6 +23,7 @@ function openMessageWindow() {
         if (e.target.classList.contains('contacts-window__wrapper')) closeMessageWindow()
     })
 }
+
 function closeMessageWindow() {
     document.querySelector(".contacts-window__callback-bt").classList.remove('hidden')
     msgSelectors.forEach((selector) =>
@@ -31,6 +36,15 @@ function closeMessageWindow() {
 blackout.addEventListener("click", () => {
     closeMessageWindow();
 });
+
+
+priceCardButtons.forEach((priceCardButton) => {
+    priceCardButton.addEventListener('click', () => openMessageWindow())
+})
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@ $border-color: #f5f5f6;
 :root {
     --msg-window-width: 340px;
     --right-msg-window: 40px;
-    @media  screen and (max-height: 576px) and (orientation: landscape) {
+    @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
         --right-msg-window: 100px;
     }
 }
@@ -35,7 +35,7 @@ $border-color: #f5f5f6;
         position: absolute;
     }
 }
-.contacts-window-footer__wrapper{
+.contacts-window-footer__wrapper {
     display: flex;
     flex-direction: column;
     gap: 23px;
@@ -64,14 +64,14 @@ $border-color: #f5f5f6;
         height: 494px;
         transform: scale(1);
 
-        @media screen and (max-height: 768px) and (orientation: landscape) {
+        @media screen and (max-height: var.$tablet) and (orientation: landscape) {
             bottom: 5px;
         }
-        @media  screen and (max-height: 576px) and (orientation: landscape) {
+        @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
             height: 300px;
         }
     }
-    @media screen and (max-height: 576px) and (orientation: landscape) {
+    @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
         padding: 5px 7px 0px 7px;
         gap: 10px;
     }
@@ -82,7 +82,7 @@ $border-color: #f5f5f6;
 .contacts-window__h2 {
     text-align: center;
     font-size: 24px;
-    @media  screen and (max-height: 576px) and (orientation: landscape) {
+    @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
         font-size: 15px;
     }
 }
@@ -90,7 +90,7 @@ $border-color: #f5f5f6;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    @media  screen and (max-height: 576px) and (orientation: landscape) {
+    @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
         gap: 7px;
     }
     .contacts-window__icons-container {
@@ -125,7 +125,7 @@ $border-color: #f5f5f6;
             border: none;
             -moz-appearance: textfield;
             // outline: none;
-            @media  screen and (max-height: 576px) and (orientation: landscape) {
+            @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
                 height: 23px;
                 padding: 0;
                 font-size: 16px;
@@ -181,7 +181,7 @@ $border-color: #f5f5f6;
     flex-direction: column;
     gap: 20px;
     position: relative;
-    @media  screen and (max-height: 576px) and (orientation: landscape) {
+    @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
         gap: 7px;
     }
     .contacts-window__border-main {
@@ -196,7 +196,7 @@ $border-color: #f5f5f6;
         text-align: center;
         padding: 2px;
         position: relative;
-        @media  screen and (max-height: 768px) and (orientation: landscape) {
+        @media screen and (max-height: var.$tablet) and (orientation: landscape) {
             margin: 0 auto;
         }
     }
@@ -210,20 +210,20 @@ $border-color: #f5f5f6;
         &.decore--up {
             top: 40px;
             left: 10px;
-            @media  screen and (max-height: 768px) and (orientation: landscape) {
+            @media screen and (max-height: var.$tablet) and (orientation: landscape) {
                 left: 13px;
             }
-            @media  screen and (max-height: 576px) and (orientation: landscape) {
+            @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
                 display: none;
             }
         }
         &.decore--down {
             top: 72px;
             left: 10px;
-            @media  screen and (max-height: 768px) and (orientation: landscape) {
+            @media screen and (max-height: var.$tablet) and (orientation: landscape) {
                 left: 13px;
             }
-            @media  screen and (max-height: 576px) and (orientation: landscape) {
+            @media screen and (max-height: var.$mobile-m) and (orientation: landscape) {
                 display: none;
             }
         }
@@ -255,17 +255,28 @@ $border-color: #f5f5f6;
     text-align: center;
     width: 68px;
     position: fixed;
-    right: 15px;
-    bottom: 15px;
+    right: 70px;
+    bottom: 50px;
     z-index: 15;
     transition: 0.3s;
     -webkit-animation: hoverWave linear 1s infinite;
     animation: hoverWave linear 1s infinite;
     transform: scale(1);
-    @media  (max-width: var.$mobile-m) {
+
+    @media (max-width: var.$tablet) {
+        bottom: 30px;
+    }
+
+    @media (max-width: var.$mobile-m) {
         height: 55px;
         width: 55px;
     }
+
+    @media (max-width: 485px) {
+        bottom: 25px;
+        right: 5vw;
+    }
+
     &.hidden {
         transform: scale(0.001);
         z-index: -1;
@@ -371,7 +382,7 @@ $border-color: #f5f5f6;
 }
 
 // .contacts-window__callback-bt .fa-phone:before {
-//     content: url(/213074_f095_icon.png); 
+//     content: url(/213074_f095_icon.png);
 // }
 
 @keyframes shake {

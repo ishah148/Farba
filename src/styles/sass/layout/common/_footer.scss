@@ -3,14 +3,30 @@
 .footer {
     padding-top: 40px;
     padding-bottom: 40px;
+
+    @media (max-width: var.$tablet) {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
     &__container {
         height: 60px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        gap: 25vw;
         max-width: var(--max-width);
         padding: 0 120px;
         margin: 0 auto;
+
+        @media (max-width: var.$laptop) {
+            gap: 15vw;
+        }
+
+        @media (max-width: var.$tablet) {
+            padding: 0 70px;
+            gap: 10vw;
+        }
+
         @media (max-width: var.$mobile-m) {
             margin: 0px auto 0px 0px;
             width: 80%;
@@ -31,9 +47,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (max-width: var.$laptop) {
+            width: 140px;
+        }
+
         @media (max-width: var.$tablet) {
-            gap: 10px;
-            width: 50%;
+            width: 25vw;
         }
     }
 
