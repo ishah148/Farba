@@ -173,6 +173,9 @@
             top: -32px;
             right: -32px;
         }
+        &:hover {
+            background: var(--primary-color);
+        }
     }
     .modal-window__mouse-close{
         position: absolute;

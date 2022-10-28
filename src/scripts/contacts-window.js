@@ -35,7 +35,7 @@ blackout.addEventListener("click", () => {
 
 
 inputName.addEventListener('focus', () => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
+    if (/Mobi/i.test(window.navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
         if (!contactsWindowWrapper.classList.contains("absolute")) {
             contactsWindowWrapper.classList.add('absolute');
         }
@@ -43,7 +43,7 @@ inputName.addEventListener('focus', () => {
 })
 
 inputNumber.addEventListener('focus', () => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
+    if (/Mobi/i.test(window.navigator.userAgent) /* && window.innerHeight < window.innerWidth */) {
         if (!contactsWindowWrapper.classList.contains("absolute")) {
             contactsWindowWrapper.classList.add('absolute');
         }
@@ -51,13 +51,13 @@ inputNumber.addEventListener('focus', () => {
 })
 
 inputName.addEventListener('blur', () => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
+    if (/Mobi/i.test(window.navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
         contactsWindowWrapper.classList.remove('absolute');
     }
 })
 
 inputNumber.addEventListener('blur', () => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
+    if (/Mobi/i.test(window.navigator.userAgent)  /* && window.innerHeight < window.innerWidth */) {
         contactsWindowWrapper.classList.remove('absolute');
     }
 })
