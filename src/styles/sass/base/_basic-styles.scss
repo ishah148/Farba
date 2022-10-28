@@ -75,11 +75,15 @@ span {
     position: absolute;
     width: 0;
     height: 0;
-    z-index: 15;
+    z-index: 14;
     -webkit-transition: background-color 0.5s ease;
     -moz-transition: background-color 0.5s ease;
     -o-transition: background-color 0.5s ease;
     transition: background-color 0.5s ease;
+}
+
+.contacts-window__wrapper.open~.blackout {
+    z-index: 19;   
 }
 
 .blackout.visible {

@@ -46,8 +46,17 @@ export class VideoPlayersHandler {
 
     addEventListeners() {
         this.startButtons.forEach((startButton) => {
-            startButton.addEventListener("click", (event) => this.createVideoPlayer(event))
+            startButton.addEventListener("click", (event) => {
+                this.stopAllPlayers();
+                this.createVideoPlayer(event);
+            })
         });
+    }
+
+    stopAllPlayers() {
+        for(let activeVideoPlayerNumber in this.videoPlayers) {
+            this.removeVideoPlayer(document.querySelector(`#video-player__video_${activeVideoPlayerNumber}`));
+        }
     }
 
     createVideoPlayer(event) {
@@ -56,13 +65,12 @@ export class VideoPlayersHandler {
         const videoPlayer = new VideoPlayer(videoNumber);
         this.videoPlayers[`${videoNumber}`] = videoPlayer;
         document.getElementById(`video-player__video_${videoNumber}`).addEventListener("videoEnded", (event) =>
-            this.removeVideoPlayer(event));
+            this.removeVideoPlayer(event.target));
         videoPlayer.start();
         startButton.classList.add('disappearance');
     }
 
-    removeVideoPlayer(event) {
-        const video = event.target;
+    removeVideoPlayer(video) {
         const videoNumber = (video.id.match(/\d+$/m) || [])[0];
         delete this.videoPlayers[`${videoNumber}`];
         document.getElementById(`video-player__start-button_${videoNumber}`).classList.remove('disappearance');
