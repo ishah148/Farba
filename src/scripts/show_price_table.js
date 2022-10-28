@@ -16,7 +16,7 @@ let isClickAllowed = true;
                 priceList.classList.remove('invisible');
                 priceListButton.classList.remove('window-closed');
                 priceListButtonSvg.classList.add('rotate');
-                priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Cкрыть прайс' : 'Hide price';
+                priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Cкрыть цены' : 'Hide price';
                 priceListButtonText.dataset.translate = 'hide-price';
                 setTimeout(() => {
                     const yOffset = -100;
@@ -27,7 +27,7 @@ let isClickAllowed = true;
                 priceList.classList.add('invisible');
                 priceListButton.classList.add('window-closed');
                 priceListButtonSvg.classList.remove('rotate');
-                priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Показать весь прайс' : 'Show all price';
+                priceListButtonText.innerHTML = currentLang.lang === 'ru' ? 'Показать все цены' : 'Show all price';
                 priceListButtonText.dataset.translate = 'show-price';
                 setTimeout(() => {
                     const yOffset = -100;

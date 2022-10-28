@@ -12,7 +12,9 @@ const translateObj = {
       'technics': 'Technics',
       'clothes': 'Clothes',
       'prams': 'Prams',
-      'show-all': 'Show all',
+      'show-all-photos': 'Show more photos',
+      'threeD': '3D photo 360°',
+      'show-all-videos': 'Show more video',
       'loft-furniture': 'Promotional video - Loft furniture',
       'shelf-installing': 'Video - Unpacking and installing the shelf',
       'stroller-review': 'Promotion video - Baby stroller review',
@@ -74,7 +76,9 @@ const translateObj = {
       'technics': 'Техника',
       'clothes': 'Одежда',
       'prams': 'Коляски',
-      'show-all': 'Показать всё',
+      'show-all-photos': 'Показать больше фотографий',
+      'threeD': '3D фото 360°',
+      'show-all-videos': 'Показать больше видеопроектов',
       'loft-furniture': 'Рекламный видеоролик - Лофт Мебель',
       'shelf-installing': 'Видеоролик - Распаковка и установка полки',
       'stroller-review': 'Рекламный видеоролик - Обзор детской коляски',
@@ -120,8 +124,8 @@ const translateObj = {
       'delivery': 'Доставка до студии',
       'style-development': 'Разработка стиля карточек товара (контента)',
       'style-price': '100BYN (бесплатно\xa0от\xa0100\xa0фото)',
-      'show-price': 'Показать прайс',
-      'hide-price': 'Скрыть прайс',
+      'show-price': 'Показать все цены',
+      'hide-price': 'Скрыть цены',
     }
   }
   export default translateObj;
