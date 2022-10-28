@@ -1,0 +1,207 @@
+@use "../../base";
+@use "../../base/variables" as var;
+
+.portfolio {
+    &__wrapper {
+        max-width: var(--max-width);
+        padding: 40px var(--padding-primary) 40px;
+        margin: 0 auto;
+        min-height: 2150px;  //TODO устрановлена для корректной работы якорных ссылок с другой страницы
+                             //TODO должна быть 3000px, но есть секции, в которых высота меньше
+                             //TODO добавить класс специально для первого раздела портфолио, у которого будет минимальная высота 3к
+                             //TODO так же позаботиться чтобы кнопка ПОКАЗАТЬ БОЛЬШЕ ФОТОК не скакала к верху секции при переключении между разделами
+        // overflow: hidden; // TODO: remove this
+        @media (max-width: var.$mobile-m) {
+            padding: 40px 10px 40px;
+        }
+    }
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding: var(--padding-primary);
+        gap: 20px;
+        width: 1120px;
+        margin: 0 auto;
+
+        @media (max-width: var.$laptop-m) {
+            width: 700px;
+        }
+
+        @media (max-width: var.$tablet) {
+            width: 400px;
+            gap: 12px;
+            button {
+                width: 100px;
+            }
+        }
+
+        @media (max-width: var.$mobile-m) {
+            width: 265px;
+        }
+    }
+    &__container {
+        // height: 1150px;
+        // grid-template-columns: repeat(4,var.$grid-ratio*150px); // old value
+        grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        // grid-template-rows: repeat(4, calc(300px / var.$grid-ratio));
+        width: min-content;
+        display: grid;
+        margin: 0 auto;
+        grid-auto-flow: row dense;
+        row-gap: calc(30px / var.$grid-ratio);
+        column-gap: calc(30px / var.$grid-ratio);
+        // gap: 15px;
+
+        @media (max-width: var.$laptop-l) {
+            grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        }
+        @media (max-width: 1380px) {
+            grid-template-columns: repeat(3 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        }
+        @media (max-width: 1070px) {
+            grid-template-columns: repeat(2 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        }
+        @media (max-width: 700px) {
+            width: 350px;
+            grid-template-columns: repeat(2 * var.$grid-ratio, calc(300px / var.$grid-ratio/2));
+            img {
+                width: 150px;
+            }
+        }
+        @media (max-width: 400px) {
+            width: 300px;
+            grid-template-columns: repeat(2 * var.$grid-ratio, 20px);
+            img {
+                width: 120px;
+            }
+        }
+
+        .g1-2 {
+            //
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 2;
+        }
+        .g2-1 {
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 1;
+        }
+        .g1-1 {
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 1;
+        }
+        .g2-2 {
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 2;
+        }
+        .g1-0_66 {
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span 4;
+        }
+        .g2-1_5 {
+            grid-column: span var.$grid-ratio * 2;
+            grid-row: span var.$grid-ratio * 1.5;
+            height: -webkit-fill-available;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .g1-1_5 {
+            grid-column: span var.$grid-ratio * 1;
+            grid-row: span var.$grid-ratio * 1.5;
+        }
+    }
+    // &__card {
+    .portfolio__card {
+        // !experimental start !
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        // !  experimental end  !
+        align-self: center;
+        img {
+            width: 100%; // TODO REMOVE THIS! discass with Vadim!
+        }
+        @media (max-width: var.$mobile-m) {
+            img {
+                width: 100%;
+            }
+        }
+        img {
+            @media (max-width: var.$tablet) {
+                // width: 100%;
+            }
+        }
+    }
+
+    &__show-all {
+        height: 40px;
+        width: 357px;
+        margin: auto;
+        margin-top: 25px;
+
+        @media (max-width: var.$tablet) {
+            height: 40px;
+            width: 200px;
+        }
+        @media (max-width: var.$mobile-s) {
+            width: 135px;
+            height: 35px;
+        }
+        &.invisible {
+            display: none;
+        }
+    }
+}
+
+.portfolio__container {
+    .portfolio__card {
+        background: white;
+        @media (min-width: 1381px) {
+            &.portfolio_83 {
+                grid-row: span 5;
+                height: 100%;
+                align-self: center;
+            }
+            &.portfolio_36 {
+                img {
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_42 {
+                grid-row: span 10;
+                img {
+                    object-fit: contain;
+                }
+            }
+        }
+        @media (max-width: 1380px) {
+            &.portfolio_62 {
+                grid-row: span 9;
+                img {
+                    object-fit: cover;
+                }
+            }
+        }
+        @media (max-width: 1070px) {
+            &.portfolio_75 {
+                grid-row: span 5;
+                img {
+                    object-fit: contain;
+                }
+            }
+            &.portfolio_17 {
+                grid-row: span 7;
+                img {
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

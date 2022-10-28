@@ -1,0 +1,42 @@
+@use "../../base/variables" as var;
+
+.video-section {
+    padding: 20px 15px;
+
+    @media (max-width: var.$mobile-m) {
+        padding: 10px 5px;
+    }
+
+    &__container {
+        max-width: 1200px;
+        margin: 0px auto;
+    }
+
+    &__content {
+        display: grid;
+        column-gap: 15px;
+        row-gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        @media (max-width: var.$mobile-m) {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        @media (max-width: var.$mobile-s) {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        }
+    }
+
+    &__show-all {
+        height: 40px;
+        width: 357px;
+        margin: 30px auto 0px auto;
+
+        @media (max-width: var.$tablet) {
+            height: 40px;
+            width: 200px;
+        }
+        @media (max-width: var.$mobile-s) {
+            width: 135px;
+            height: 35px;
+        }
+    }
+}

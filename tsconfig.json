@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES6", //ES5
+    "module": "ES6",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+
+    "strict": false, 
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "allowUnreachableCode": false,
+    
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    //"sourceMap": true,
+    "types": ["webpack-env"],
+    "baseUrl": "./src/scripts",
+    "paths": {
+      "*": ["*"]
+   },
+  },
+   "exclude": ["node_modules", "dist", "./src/scripts/stuff/*"],
+   "include": [
+     "./src/scripts/*",
+   ]
+ }

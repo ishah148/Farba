@@ -1,0 +1,40 @@
+@use "../../base/variables" as var;
+
+.default-button {
+    width: 155px;
+    height: 45px;
+    border: 0;
+    border-radius: 10px;
+
+    &--light {
+        background-color: var(--primary-gold);
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-light);
+        }
+    }
+
+    &--dark {
+        background-color: var(--primary-light);
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-gold);
+        }
+    }
+
+    &--gold {
+        // background-color: var(--primary-gold);
+        background-color: #d7d719;
+        color: #000;
+        &:hover {
+            transition: 0.5s;
+            background-color: var(--primary-light);
+            color: #ffff00;
+        }
+    }
+
+    @media (max-width: var.$mobile-s) {
+        width: 135px;
+        height: 35px;
+    }
+}

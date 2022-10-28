@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Farba Studio - Видео</title>
+</head>
+
+<body>
+
+  <div class="contacts-window__wrapper fixed">
+    <div class="contacts-window__container">
+      <div class="contacts-window__connect">
+        <h2 class="contacts-window__h2">МЫ НА СВЯЗИ</h2>
+        <div class="contacts-window__icons-container">
+          <a href="viber://chat?number=%2B375297774059" target="_blank">
+            <img class="contacts-window__icon" src="./assets/png_icons/viber.png" alt="">
+          </a>
+          <a href="https://wa.me/%2B375297774059" target="_blank">
+            <img class="contacts-window__icon" src="./assets/png_icons/whats_app.png" alt="">
+          </a>
+          <a href="https://telegram.me/+H47fp_ahujtjYWMy" target="_blank">
+            <img class="contacts-window__icon" src="./assets/png_icons/telegram.png" alt="">
+          </a>
+          <a href="tel:+375297774059">
+            <img class="contacts-window__icon" src="./assets/png_icons/phone.png" alt="">
+          </a>
+        </div>
+        <div class="contacts-window__phone-container">
+          <img class="contacts-window__vibration-icon" src="./assets/png_icons/vibration.png" alt="">
+          <h2 class="contacts-window__h2"><a href="tel:+375297774059">+375 29 777 40 59</a></h2>
+        </div>
+      </div>
+
+      <div class="contacts-window__order-call">
+        <form method="post" id="contacts-window__form" class="contacts-window__form">
+          <input id="contacts-window__user-name" type="text" name="userName" placeholder="Имя" />
+          <input id="contacts-window__user-number" class="contacts-window__user-number" type="tel" name="userNumber"
+            placeholder="Номер" min="8" max="25" />
+          <button id="contacts-window__button-send" class="contacts-window__button-send">ЗАКАЗАТЬ
+            ЗВОНОК</button>
+        </form>
+      </div>
+
+      <div class="contacts-window__text-me">
+        <h2 class="contacts-window__h2">НАПИСАТЬ</h2>
+        <a href="mailto:stfarba@gmail.com" target="_blank">
+          <div class="contacts-window__decorate-border-container"></div>
+          <div class="contacts-window__border-test decore--up"></div>
+          <div class="contacts-window__border-test decore--down"></div>
+          <div class="contacts-window__border-main">stfarba@gmail.com
+          </div>
+          <!-- <div class="contacts-window__border"></div>  -->
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="blackout"></div>
+
+  <button class="contacts-window__callback-bt">
+    <div class="contacts-window__text-call">
+      <div class="fa fa-phone"></div>
+      <div class="text">МЫ НА<br>СВЯЗИ</div>
+    </div>
+  </button>
+
+  <header class="header">
+    <div id="newForm"></div>
+    <div class="header__container">
+      <div class="header__logo">
+        <a href="./index.html" target="_blank">
+          <img class="header__logo-img" src="./assets/images/Farba_logo_svg.svg" alt="logo">
+        </a>
+      </div>
+      <nav class="menu video-page-menu">
+        <ul class="menu__list">
+          <li class="menu__list-item">
+            <a class="menu__link" href="./index.html#portfolio-section" data-translate="photo">Фото</a>
+          </li>
+          <li class="menu__list-item">
+            <a class="menu__link" href="./index.html#threeD-section" target="_blank">360°</a>
+          </li>
+          <li class="menu__list-item">
+            <a class="menu__link" href="./index.html#price-section" data-translate="prices" target="_blank">Цены</a>
+          </li>
+          <li class="menu__list-item">
+            <a class="menu__link" href="./index.html#contacts-section" data-translate="contacts">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__contacts"><a href="tel:+375297774059" class="header__phone">+375 29 777 40 59</a></div>
+      <!--!switch-lang-->
+      <div class="switch-lang switch-lang--header">
+        <button class="en" data-switch="en">en</button>
+        <span class="slash">/</span>
+        <button class="ru active" data-switch="ru">ru</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="burger-menu">
+      <div class="switch-lang switch-lang--burger">
+        <button class="en" data-switch="en">en</button>
+        <span class="slash">/</span>
+        <button class="ru active" data-switch="ru">ru</button>
+      </div>
+      <div class="burger-menu__logo">
+        <!-- <svg class="svg-icon burger-menu__svg" target="_blank">
+              <use xlink:href="./assets/svg/burger_sprite.svg#burger"></use>
+          </svg> -->
+        <img class="burger-menu__svg" src="./assets/images/Farba_logo_w.svg" alt="logo">
+      </div>
+      <div class="burger-menu__contacts"><a href="tel:+375297774059">+375 29 777 40 59</a></div>
+      <nav class="burger-menu__content">
+        <ul class="burger-menu__list">
+          <li class="burger-menu__list-item">
+            <a class="burger-menu__link" href="./index.html#portfolio-section" data-translate="photo">Фото</a>
+          </li>
+          <li class="burger-menu__list-item">
+            <a class="burger-menu__link" href="./index.html#threeD-section" target="_blank">360°</a>
+          </li>
+          <li class="burger-menu__list-item">
+            <a class="burger-menu__link" href="./index.html#price-section" data-translate="prices" target="_blank">Цены</a>
+          </li>
+          <li class="burger-menu__list-item">
+            <a class="burger-menu__link" href="./index.html#contacts-section" data-translate="contacts">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="video-galery__wrapper">
+      <h1 class="video-galery__slide-menu">
+        <a class="video-galery__promo-section-button video-galery__active-section">РЕКЛАМНЫЕ&nbsp;ВИДЕОРОЛИКИ</a> <span class="video-galery__menu-separator">|</span> <a
+          class="video-galery__reviews-section-button">ВИДЕООБЗОРЫ&nbsp;ТОВАРОВ</a>
+      </h1>
+      <div class="video-galery__container">
+      </div>
+
+      <div class="hamburger">
+        <div class="hamburger__line"></div>
+        <div class="hamburger__line"></div>
+        <div class="hamburger__line"></div>
+      </div>
+
+      <div class="video-galery__area video-galery__area-left">
+        <button class="video-galery__left-button">
+          <svg class="video-galery__arrow-left">
+            <use xlink:href="./assets/svg/sprite.svg#arrow-left"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="video-galery__area video-galery__area-right">
+        <button class="video-galery__right-button">
+          <svg class="video-galery__arrow-right">
+            <use xlink:href="./assets/svg/sprite.svg#arrow-right"></use>
+          </svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- !footer -->
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__copyright-container">
+          <span class="footer__copyright">©&nbsp;2012&nbsp;-&nbsp;2022</span>
+        </div>
+        <div class="footer__links-wrapper">
+          <ul class="footer__links-list">
+            <li class="footer__link-item">
+              <a class="footer__link" href="https://www.instagram.com/farbapro/" target="_blank">
+                <svg class="footer__svg-icon footer__inst-icon">
+                  <use xlink:href="./assets/svg/sprite.svg#inst"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="footer__link-item">
+              <a class="footer__link" href="https://vimeo.com/farbapro" target="_blank">
+                <svg class="footer__svg-icon footer__vim-icon">
+                  <use xlink:href="./assets/svg/sprite.svg#vim"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="footer__link-item">
+              <a class="footer__link" href="https://vk.com/studio_farba" target="_blank">
+                <svg class="footer__svg-icon footer__vk-icon">
+                  <use xlink:href="./assets/svg/sprite.svg#vk"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>
