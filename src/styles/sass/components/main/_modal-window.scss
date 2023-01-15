@@ -32,7 +32,7 @@
         background-color: rgba(0, 0, 0, 0.6);
         // backdrop-filter: blur(10px); //! Off for perfomanse!
         .modal-window__mouse,
-        .modal-window__mouse-close,
+        // .modal-window__mouse-close,
         .modal-window__right-button,
         .modal-window__left-button,
         .modal-window__close-button {
@@ -55,31 +55,31 @@
         align-items: center;
         // background-color: var(--primary-light);
         border-radius: 1.2%;
-        transform: translate3d(0px, 0px,0);
+        transform: translate3d(0px, 0px, 0);
         transform: scale(0);
         transition: transform 0.5s;
-        
+
         &.prev--slide {
             transition: transform 0.5s;
-            transform: translate3d(-100vw, 0px,0);
+            transform: translate3d(-100vw, 0px, 0);
         }
 
         &.next--slide {
             transition: transform 0.5s;
-            transform: translate3d(100vw, 0px,0);
+            transform: translate3d(100vw, 0px, 0);
         }
 
         &.current--slide {
             transition: transform 0.5s;
-            transform: translate3d(0px, 0px,0);
+            transform: translate3d(0px, 0px, 0);
         }
 
         &.up {
-            transform: translate3d(0px, 100vh,0);
+            transform: translate3d(0px, 100vh, 0);
         }
 
         &.down {
-            transform: translate3d(0px, -100vh,0);
+            transform: translate3d(0px, -100vh, 0);
         }
 
         img {
@@ -99,8 +99,8 @@
     // & &__close-button:hover {
     //     background-color: var(--primary);
     // }
+
     .modal-window__mouse {
-        display: none;
         position: absolute;
         height: 50vh;
         width: 150px;
@@ -109,31 +109,32 @@
         // border: 1px solid red;
         &.area-right {
             right: 3px;
-            &:hover{
-                .modal-window__right-button{
+            &:hover {
+                .modal-window__right-button {
                     background: var(--primary-color);
                 }
             }
         }
         &.area-left {
             left: 3px;
-            &:hover{
-                .modal-window__left-button{
+            &:hover {
+                .modal-window__left-button {
                     background: var(--primary-color);
                 }
             }
         }
-        .modal-window__right-button{
+        .modal-window__right-button {
             transition: all 0.05;
         }
-        .modal-window__left-button{
+        .modal-window__left-button {
             transition: all 0.05;
         }
     }
-    
+
     .modal-window__close-button {
         display: none;
     }
+
     .modal-window__right-button,
     .modal-window__left-button {
         display: none;
@@ -163,6 +164,7 @@
             display: none;
         }
     }
+
     .modal-window__close-button {
         top: 15px;
         right: 15px;
@@ -177,27 +179,37 @@
             background: var(--primary-color);
         }
     }
-    .modal-window__mouse-close{
+
+    .modal-window__mouse-close {
         position: absolute;
-        display: none;
         z-index: 102;
         width: 100vw;
-        height: 150px;
         // border: 1px solid red; //! debug
         cursor: pointer;
-        &.area-up{
+        height: 150px;
+
+        @media (max-width: 768px) {
+            height: 25vh;
+        }
+
+        @media (max-width: 450px) {
+            height: 30vh;
+        }
+
+        &.area-up {
             top: 0;
-            &:hover ~ .modal-window__close-button{
+            &:hover ~ .modal-window__close-button {
                 background: var(--primary-color);
             }
         }
-        &.area-down{
-            top: calc(100vh - 150px);
-            &:hover ~ .modal-window__close-button{
+        &.area-down {
+            bottom: 0;
+            &:hover ~ .modal-window__close-button {
                 background: var(--primary-color);
             }
         }
     }
+
     button {
         display: flex;
         justify-content: center;

@@ -153,17 +153,10 @@
             @media (max-width: 475px) {
                 font-size: 0.5rem;
             }
-        }
 
-        a {
             @media (max-width: 380px) {
-                display: block;
-            }
-        }
-
-        span {
-            @media (max-width: 380px) {
-                display: none;
+                // display: block;
+                font-size: 0.425rem;
             }
         }
     }

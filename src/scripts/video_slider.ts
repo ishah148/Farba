@@ -2,8 +2,7 @@
 import { VideoPlayer } from "./video_player.js";
 
 export class VideoSlider {
-    constructor(videoCategory, currentPos, videoInfoArray) {
-        this.videoCategory = videoCategory;
+    constructor(currentPos, videoInfoArray) {
         this.currentPos = currentPos;
         this.videoInfoArray = videoInfoArray;
         this.slideContainer = document.querySelector(".video-galery__container");
@@ -86,13 +85,8 @@ export class VideoSlider {
             let xMove = e.touches[0].clientX;
             let yMove = e.touches[0].clientY;
 
-            function left() {
-                return xStart > (xMove + sensitivity)
-            }
-
-            function right() {
-                return (xStart + sensitivity) < xMove
-            }
+            const left = () => xStart > (xMove + sensitivity);
+            const right = () => (xStart + sensitivity) < xMove;
 
             if (left()) {
                 this.openNextSlide();
@@ -237,14 +231,14 @@ export class VideoSlider {
         this.currentPlayButtonElement.addEventListener("click", () => this.createVideoPlayer());
     }
 
-    
+
     createVideoPlayer() {
         this.videoPlayer = new VideoPlayer(this.currentPos + 1);
         this.setVideoEndedEventHandler();
         this.videoPlayer.start();
         this.currentPlayButtonElement.classList.add('disappearance');
     }
-    
+
     setVideoEndedEventHandler() {
         this.videoPlayerElement = document.getElementById(`video-player__video_${this.currentPos + 1}`);
         this.videoPlayerElement.addEventListener("videoEnded", () => this.removeVideoPlayer());

@@ -18,7 +18,7 @@ export class VideoGaleryPagination {
   }
 
   init() {
-    this.currentVideoSlider = new VideoSlider('promotional', 0, videoGaleryConfig.promotional);
+    this.currentVideoSlider = new VideoSlider(0, videoGaleryConfig.promotional);
   }
 
   addEventHandlers() {
@@ -40,7 +40,7 @@ export class VideoGaleryPagination {
         }, 350)
         setTimeout(() => {
           this.slideContainer.classList.remove('video-galery__container-transition');
-          this.currentVideoSlider = new VideoSlider('promotional', this.storedPromotionalPosition, videoGaleryConfig.promotional);
+          this.currentVideoSlider = new VideoSlider(this.storedPromotionalPosition, videoGaleryConfig.promotional);
         }, 400)
         this.promoButton.classList.add('video-galery__active-section');
         this.reviewsButton.classList.remove('video-galery__active-section');
@@ -56,7 +56,7 @@ export class VideoGaleryPagination {
         }, 350)
         setTimeout(() => {
           this.slideContainer.classList.remove('video-galery__container-transition');
-          this.currentVideoSlider = new VideoSlider('productReviews', this.storedReviewsPosition, videoGaleryConfig.productReviews);
+          this.currentVideoSlider = new VideoSlider(this.storedReviewsPosition, videoGaleryConfig.productReviews);
         }, 400)
         this.reviewsButton.classList.add('video-galery__active-section');
         this.promoButton.classList.remove('video-galery__active-section');

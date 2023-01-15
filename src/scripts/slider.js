@@ -36,6 +36,7 @@ export class Slider {
     }
 
     addEvents() {
+        // this.wrapper.addEventListener('click', );
         this.buttons.rightButton.onclick = this.openNextSlide.bind(this);
         this.buttons.leftButton.onclick = this.openPrevSlide.bind(this);
         this.buttons.closeButton.onclick = () => this.closeModalWindow();
@@ -63,11 +64,11 @@ export class Slider {
     }
 
     touchHandle() {
-        const wrapper = this.wrapper
+        const wrapper = this.wrapper;
         wrapper.addEventListener('touchstart', handleTouchStart.bind(this), false);
         wrapper.addEventListener('touchmove', handleTouchMove.bind(this), false);
-        let xStart = null;
-        let yStart = null;
+        let xStart = 0;
+        let yStart = 0;
         let sensitivity = 100;
 
         function handleTouchStart(e) {
@@ -80,21 +81,10 @@ export class Slider {
             let xMove = e.touches[0].clientX;
             let yMove = e.touches[0].clientY;
 
-            function left() {
-                return xStart > (xMove + sensitivity)
-            }
-
-            function right() {
-                return (xStart + sensitivity) < xMove
-            }
-
-            function down() {
-                return (yStart + sensitivity) < yMove
-            }
-
-            function up() {
-                return yStart > (yMove + sensitivity)
-            }
+            const left = () => xStart > (xMove + sensitivity);
+            const right = () => (xStart + sensitivity) < xMove;
+            const down = () => (yStart + sensitivity) < yMove;
+            const up = () => yStart > (yMove + sensitivity);
 
             const removeEvents = () => {
                 wrapper.replaceWith(wrapper.cloneNode(true));
@@ -103,11 +93,13 @@ export class Slider {
             if (left()) {
                 this.openNextSlide();
                 xStart = xMove;
+                return;
             }
 
             if (right()) {
                 this.openPrevSlide();
                 xStart = xMove;
+                return;
             }
 
             if (down() && !left() && !right()) {
@@ -116,6 +108,7 @@ export class Slider {
                     this.closeModalWindow();
                     removeEvents();
                 })
+                return;
             }
 
             if (up() && !left() && !right()) {
@@ -124,6 +117,7 @@ export class Slider {
                     this.closeModalWindow();
                     removeEvents();
                 })
+                return;
             }
         };
     }
