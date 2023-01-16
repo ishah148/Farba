@@ -32,11 +32,18 @@
         background-color: rgba(0, 0, 0, 0.6);
         // backdrop-filter: blur(10px); //! Off for perfomanse!
         .modal-window__mouse,
-        // .modal-window__mouse-close,
+        .modal-window__mouse-close,
         .modal-window__right-button,
         .modal-window__left-button,
         .modal-window__close-button {
             display: flex;
+            // @media (max-width: 768px) {
+            //     display: none;
+            // }
+        }
+
+        .modal-window__right-button,
+        .modal-window__left-button {
             @media (max-width: 768px) {
                 display: none;
             }
@@ -102,11 +109,17 @@
 
     .modal-window__mouse {
         position: absolute;
+        display: none;
         height: 50vh;
         width: 150px;
         cursor: pointer;
         z-index: 102;
-        // border: 1px solid red;
+        
+        @media (max-width: 768px) {
+            width: 50px;
+            height: 80vh;
+        }
+
         &.area-right {
             right: 3px;
             &:hover {
@@ -182,6 +195,7 @@
 
     .modal-window__mouse-close {
         position: absolute;
+        display: none;
         z-index: 102;
         width: 100vw;
         // border: 1px solid red; //! debug
@@ -231,7 +245,6 @@
 }
 
 // ! TODO check it
-// TODO
 .modal-window__wrapper.visible .modal-window__container {
     align-content: center;
 }

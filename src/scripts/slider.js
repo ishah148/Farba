@@ -36,17 +36,37 @@ export class Slider {
     }
 
     addEvents() {
-        // this.wrapper.addEventListener('click', );
-        this.buttons.rightButton.onclick = this.openNextSlide.bind(this);
-        this.buttons.leftButton.onclick = this.openPrevSlide.bind(this);
+        if (window.innerWidth <= 768) {
+            this.buttons.rightButton.onclick = () => this.closeModalWindow();
+            this.buttons.leftButton.onclick = () => this.closeModalWindow();
+        } else {
+            this.buttons.rightButton.onclick = () => this.openNextSlide();
+            this.buttons.leftButton.onclick = () => this.openPrevSlide();
+        }
         this.buttons.closeButton.onclick = () => this.closeModalWindow();
         this.buttons.closeAreaUp.onclick = () => this.closeModalWindow();
         this.buttons.closeAreaDown.onclick = () => this.closeModalWindow();
+        this.changeEventHandlersOnResize();
         if (this.isTouchDevice) {  //!!check (maybe this.isTouchDevice()?)
             this.touchHandle()
         }
         this.keyHandler = this.keyHandler.bind(this);
         document.addEventListener('keyup', this.keyHandler);
+    }
+
+    changeEventHandlersOnResize() {
+        const mediaQueryList = window.matchMedia('(max-width: 768px)');
+
+        mediaQueryList.addEventListener('change', event => {
+            console.log(window.innerWidth);
+            if (event.matches) {
+                this.buttons.rightButton.onclick = () => this.closeModalWindow();
+                this.buttons.leftButton.onclick = () => this.closeModalWindow();
+            } else {
+                this.buttons.rightButton.onclick = () => this.openNextSlide();
+                this.buttons.leftButton.onclick = () => this.openPrevSlide();
+            }
+        })
     }
 
     keyHandler(e) {
