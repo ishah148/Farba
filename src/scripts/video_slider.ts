@@ -197,7 +197,7 @@ export class VideoSlider {
                 </div>
                 <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
                     <video class="video-player__video" id="video-player__video_${videoInfo.id}"
-                        poster="./assets/images/video_posters/${this.arrayType}/poster${videoInfo.id}.jpg" preload="metadata">
+                        poster="./assets/images/video_posters/${this.arrayType}/poster${videoInfo.id}.webp" preload="metadata">
                         <source id="source__HD-quality_${videoInfo.id}" src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_1080.mp4"
                             type="video/mp4">
                         <source id="source__high-quality_${videoInfo.id}" src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_720.mp4"
