@@ -2,9 +2,10 @@
 import { VideoPlayer } from "./video_player.js";
 
 export class VideoSlider {
-    constructor(currentPos, videoInfoArray) {
+    constructor(currentPos, videoInfoArray, arrayType) {
         this.currentPos = currentPos;
         this.videoInfoArray = videoInfoArray;
+        this.arrayType = arrayType;
         this.slideContainer = document.querySelector(".video-galery__container");
         this.buttons = {
             rightButton: document.querySelector(".video-galery__area-right"),
@@ -186,23 +187,24 @@ export class VideoSlider {
     }
 
     getVideoPlayerElement(videoInfo) {
+        
         return `
         <div class="slide-content">
             <div class="video-player">
-                <div class="video-player__caption" data-translate="${videoInfo.dataTranslate}">
+                <div class="video-player__caption">
                     <p class="video-player__caption-header">${videoInfo['caption-header']}</p>
                     <p class="video-player__caption-subheader">${videoInfo['caption-subheader']}</p>
                 </div>
                 <div class="video-player__video-wrapper" id="video-player__video-wrapper_${videoInfo.id}">
                     <video class="video-player__video" id="video-player__video_${videoInfo.id}"
-                        poster="./assets/images/video_posters/poster${videoInfo.id}.jpg" preload="metadata">
-                        <source id="source__HD-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_1080.mp4"
+                        poster="./assets/images/video_posters/${this.arrayType}/poster${videoInfo.id}.jpg" preload="metadata">
+                        <source id="source__HD-quality_${videoInfo.id}" src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_1080.mp4"
                             type="video/mp4">
-                        <source id="source__high-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_720.mp4"
+                        <source id="source__high-quality_${videoInfo.id}" src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_720.mp4"
                             type="video/mp4">
                         <source id="source__medium-quality_${videoInfo.id}"
-                            src="./assets/video/content/video_${videoInfo.id}_540.mp4" type="video/mp4">
-                        <source id="source__low-quality_${videoInfo.id}" src="./assets/video/content/video_${videoInfo.id}_360.mp4"
+                            src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_540.mp4" type="video/mp4">
+                        <source id="source__low-quality_${videoInfo.id}" src="./assets/video-galery/${this.arrayType}/video_${videoInfo.id}_360.mp4"
                             type="video/mp4">
                     </video>
                     <button class="video-player__start-button" id="video-player__start-button_${videoInfo.id}">
@@ -214,8 +216,7 @@ export class VideoSlider {
             </div>
             <div class="video-description-wrapper">
                 <div class="video-description">
-                    Обычно, когда бренду нужен ролик на 5 секунд, получается один пэк-шот. Но не в этот раз. 
-                    Три слова и три ролика о наших любимых консервах Доброфлот. По традиции, в стоп-моушн анимации.
+                    ${videoInfo.description}
                 </div>
             </div>
             <div class="video-contacts">
