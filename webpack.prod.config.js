@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -53,6 +54,22 @@ module.exports = {
         //     test: /\.(js|css|html)$/i,
         // }),
         // new BundleAnalyzerPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './src/assets'),
+                    to: path.resolve(__dirname, './dist/assets'),
+                    globOptions: {
+                        ignore: [
+                            '**/fonts/**',
+                            '**/favicon.jpg',
+                            '**/mailButton.png',
+                            '**/phoneButton.png'
+                        ]
+                    }
+                },
+            ],
+        }),
     ],
     optimization: {
         minimize: true,

@@ -16,6 +16,7 @@ import { ThreeDManager } from "./3D_viewer/3D_Manager"
 import { VideoPlayersHandler } from "./video_players_handler.js";
 import { mainPageVideoInfo } from "./configs/video-configs"
 
+const startTime = Date.now();
 new TelegramSendMessage("contacts-window__form", "contacts-window__user-number", "contacts-window__button-send");
 new TelegramSendMessage("contacts-window__form-footer", "contacts-window__user-number-footer", "contacts-window__button-send-footer");
 new ThreeDManager();
@@ -25,6 +26,29 @@ window.addEventListener("load", () => {
     document.querySelector(".start-screen__video-source").setAttribute("src", "./assets/video/video_360_clip.mp4");
     new GridGalery("portfolio");
 });
+
+
+(function handleScrollToAnchors() {
+    let isScrollDone = false;
+    window.addEventListener("photoDowloaded", () => {
+        const endTime = Date.now();
+        if (endTime - startTime <= 10000 && !isScrollDone) {
+            isScrollDone = true;
+            // таймер нужен по нескольким причинам
+            // 1. юзабилити - если фотки будут грузиться долго - нужно отменять, поскольку пользователь явно сам начнет листать
+            // 2. ивент photoDowloaded испускается при нажатии на любую кнопку в галерее
+            const section = (document.URL.match(/.*#([\w-]+)/) || [])[1];
+            if (section === 'portfolio-section'
+                || section === 'threeD-section'
+                || section === 'video-section'
+                || section === 'price-section'
+                || section === 'contacts-section') {
+                document.getElementById(section)?.scrollIntoView();
+            }
+        }
+    });
+})();
+
 
 
 if (module.hot) {

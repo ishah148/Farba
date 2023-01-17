@@ -2,7 +2,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: {
@@ -49,22 +48,6 @@ const baseConfig = {
             // filename: `video.[hash:4].html`,
             filename: `video.html`,
             chunks: [`video`]
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, './src/assets'),
-                    to: path.resolve(__dirname, './dist/assets'),
-                    globOptions: {
-                        ignore: [
-                            '**/fonts/**',
-                            '**/favicon.jpg',
-                            '**/mailButton.png',
-                            '**/phoneButton.png'
-                        ]
-                    }
-                },
-            ],
         }),
     ],
 };

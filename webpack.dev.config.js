@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -28,6 +29,25 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, './src/assets'),
+                    to: path.resolve(__dirname, './dist/assets'),
+                    globOptions: {
+                        ignore: [
+                            '**/video-galery/**',
+                            '**/fonts/**',
+                            '**/favicon.jpg',
+                            '**/mailButton.png',
+                            '**/phoneButton.png'
+                        ]
+                    }
+                },
+            ],
+        }),
+    ],
     devServer: {
         // static: {
         //     directory: path.join(__dirname, './dist'),

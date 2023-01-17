@@ -8,6 +8,7 @@ export class GridGalery {
         this.isAllPhotosDownloaded = false;
         this.isGridAligning = false;  //flag is firing when photos are loaded and aligning works
         // this.isGridAligning goes down when this.countOfAlignedPhotos == this.countOfLoadedPhotos
+        this.isVideoDownloaded = false;
         this.elems = {
             buttons: document.querySelectorAll(".buttons-container__button"),
             showAllButton: document.getElementById('show-all'),
@@ -30,12 +31,7 @@ export class GridGalery {
 
     galeryEventsInit() {
         window.addEventListener("photoDowloaded", () => {
-            if (!this.isAllPhotosDownloaded) {
-                this.elems.source.setAttribute("src", "./assets/video/video_fullHD_clip.mp4");
-                this.elems.video.load();
-                this.elems.video.play();
-            }
-            this.fixBastards();
+            this.downloadHDVideo();
             this.alignGrid();
         });
 
@@ -65,6 +61,7 @@ export class GridGalery {
         //* when "this.countOfLoadedPhotos" === "this.numberOfPreShowedPhotos" , we dispatch an event "photoDowloaded",
         //* that removes all cards and adds them again;
         //*
+        //* P.S. алгоритм говно, лучше было изначально писать на промисах (поочередная загрузка изображений)
         this.isGridAligning = true;
         this.removeCards();
         if (!this.isAllPhotosDownloaded) {
@@ -122,7 +119,7 @@ export class GridGalery {
         let img = new Image()
         img.src = `./assets/portfolio/${this.photoCategory}/${this.photoCategory}_${photoNumber}.webp`;
         img.classList.add(`${this.photoCategory}_${photoNumber}-img`);
-        img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);
+        img.onload = this.countLoadedAndAlignedImgs.bind(this, [newCard, img]);  // Изображения начинают загружаться, когда получают src
         img.onerror = function (e) {
             console.log('error', e);
             console.log(photoNumber);
@@ -134,10 +131,8 @@ export class GridGalery {
         let [newCard, img] = args;
         if (!this.isGridAligning) {
             this.countOfLoadedPhotos++;
-            // console.log(`loaded`, this.countOfLoadedPhotos);
         } else {
             this.countOfAlignedPhotos++;
-            // console.log(`aligned`, this.countOfAlignedPhotos);
         }
 
         this.addGridStyleOnload(newCard, img)
@@ -170,10 +165,8 @@ export class GridGalery {
     }
 
     removeCards() {
-        // debugger
         this.elems.getPortfolioCards().forEach((card) => card.remove());
     }
-
 
     switchPhotos(event) {
         // debugger
@@ -228,13 +221,22 @@ export class GridGalery {
         document.execCommand("copy");
     }
 
-    fixBastards() {
-        // const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
-        // let style = document.createElement('style');
-        // for (let bastardNumber in bastards) {
-        //     style.innerHTML += bastards[bastardNumber];
-        // }
-        // document.head.appendChild(style);
+    downloadHDVideo() {
+        if (!this.isVideoDownloaded) {
+            this.isVideoDownloaded = true;
+            this.elems.source.setAttribute("src", "./assets/video/video_fullHD_clip.mp4");
+            this.elems.video.load();
+            this.elems.video.play();
+        }
     }
+
+    // fixBastards() {
+    // const bastards = bastardsConfig[this.photoCategory][this.numberOfColumns];
+    // let style = document.createElement('style');
+    // for (let bastardNumber in bastards) {
+    //     style.innerHTML += bastards[bastardNumber];
+    // }
+    // document.head.appendChild(style);
+    // }
 }
 

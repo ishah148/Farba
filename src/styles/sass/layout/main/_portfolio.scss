@@ -6,15 +6,44 @@
         max-width: var(--max-width);
         padding: 40px var(--padding-primary) 40px;
         margin: 0 auto;
-        min-height: 2150px;  //TODO устрановлена для корректной работы якорных ссылок с другой страницы
-                             //TODO должна быть 3000px, но есть секции, в которых высота меньше
-                             //TODO добавить класс специально для первого раздела портфолио, у которого будет минимальная высота 3к
-                             //TODO так же позаботиться чтобы кнопка ПОКАЗАТЬ БОЛЬШЕ ФОТОК не скакала к верху секции при переключении между разделами
-        // overflow: hidden; // TODO: remove this
+        min-height: 2150px;
         @media (max-width: var.$mobile-m) {
             padding: 40px 10px 40px;
         }
     }
+
+    // &__wrapper.default-page {     // это жесткие гвозди
+    //                                // чтобы при переходе со второй страницы пролистывалось до нужного заголовка 
+    //     height: 2961px;
+
+    //     @media (max-width: 1380px) {
+    //         height: 4613px;
+    //     }
+    //     @media (max-width: var.$laptop-m) {
+    //         height: 4678px;
+    //     }
+    //     @media (max-width: 1070px) {
+    //         height: 5602px;
+    //     }
+    //     @media (max-width: var.$laptop) {
+    //         height: 5562px;
+    //     }
+    //     @media (max-width: var.$tablet) {
+    //         height: 5520px;
+    //     }
+    //     @media (max-width: 700px) {
+    //         height: 3177px;
+    //     }
+    //     @media (max-width: var.$mobile-m) {
+    //         height: 3221px;
+    //     }
+    //     @media (max-width: 400px) {
+    //         height: 2752px;
+    //     }
+    //     @media (max-width: var.$mobile-s) {
+    //         height: 2707px;
+    //     }
+    // }
     .buttons-container {
         display: flex;
         flex-direction: row;
@@ -54,9 +83,9 @@
         column-gap: calc(30px / var.$grid-ratio);
         // gap: 15px;
 
-        @media (max-width: var.$laptop-l) {
-            grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
-        }
+        // @media (max-width: var.$laptop-l) {
+        //     grid-template-columns: repeat(4 * var.$grid-ratio, calc(300px / var.$grid-ratio));
+        // }
         @media (max-width: 1380px) {
             grid-template-columns: repeat(3 * var.$grid-ratio, calc(300px / var.$grid-ratio));
         }
